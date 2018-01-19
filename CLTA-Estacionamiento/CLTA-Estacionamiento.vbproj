@@ -133,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Btn_tarifas_yellow.jpg" />
+    <None Include="Resources\Btn_tarifas_red.jpg" />
+    <None Include="Resources\Btn_tarifas_green.jpg" />
+    <None Include="Resources\BtnClients_yellow1.jpg" />
+    <None Include="Resources\BtnClients_red1.jpg" />
+    <None Include="Resources\BtnClients_green1.jpg" />
     <None Include="Resources\bOTONESESTACIONAMIENTO.jpg" />
   </ItemGroup>
   <ItemGroup>

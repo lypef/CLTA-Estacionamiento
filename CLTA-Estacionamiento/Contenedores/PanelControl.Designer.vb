@@ -22,31 +22,31 @@ Partial Class PanelControl
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BtnClientes = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'BtnClientes
         '
-        Me.Button1.BackgroundImage = Global.CLTA_Estacionamiento.My.Resources.Resources.bOTONESESTACIONAMIENTO
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(222, 293)
-        Me.Button1.TabIndex = 0
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnClientes.BackgroundImage = Global.CLTA_Estacionamiento.My.Resources.Resources.BtnClients_yellow
+        Me.BtnClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BtnClientes.FlatAppearance.BorderSize = 0
+        Me.BtnClientes.Location = New System.Drawing.Point(12, 12)
+        Me.BtnClientes.Name = "BtnClientes"
+        Me.BtnClientes.Size = New System.Drawing.Size(181, 239)
+        Me.BtnClientes.TabIndex = 0
+        Me.BtnClientes.UseVisualStyleBackColor = True
         '
         'PanelControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(794, 429)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.BtnClientes)
         Me.Name = "PanelControl"
         Me.Text = "PanelControl"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BtnClientes As Button
 End Class
