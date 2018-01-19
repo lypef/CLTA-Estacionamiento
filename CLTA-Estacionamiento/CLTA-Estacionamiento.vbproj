@@ -76,17 +76,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Functions.vb" />
+    <Compile Include="Contenedores\Login.Designer.vb">
+      <DependentUpon>Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contenedores\Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Contenedores\PanelControl.Designer.vb">
       <DependentUpon>PanelControl.vb</DependentUpon>
     </Compile>
     <Compile Include="Contenedores\PanelControl.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -106,11 +105,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Contenedores\Login.resx">
+      <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contenedores\PanelControl.resx">
       <DependentUpon>PanelControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -133,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Icon1.png" />
     <None Include="Resources\Btn_tarifas_yellow.jpg" />
     <None Include="Resources\Btn_tarifas_red.jpg" />
     <None Include="Resources\Btn_tarifas_green.jpg" />

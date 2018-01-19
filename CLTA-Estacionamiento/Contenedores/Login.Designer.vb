@@ -22,42 +22,42 @@ Partial Class Login
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Username = New System.Windows.Forms.TextBox()
         Me.Password = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(197, 226)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Username
         '
-        Me.Username.Location = New System.Drawing.Point(13, 13)
+        Me.Username.Location = New System.Drawing.Point(22, 28)
         Me.Username.Name = "Username"
         Me.Username.Size = New System.Drawing.Size(100, 20)
-        Me.Username.TabIndex = 1
+        Me.Username.TabIndex = 0
         '
         'Password
         '
-        Me.Password.Location = New System.Drawing.Point(12, 39)
+        Me.Password.Location = New System.Drawing.Point(22, 54)
         Me.Password.Name = "Password"
         Me.Password.Size = New System.Drawing.Size(100, 20)
-        Me.Password.TabIndex = 2
+        Me.Password.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(152, 196)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Password)
         Me.Controls.Add(Me.Username)
-        Me.Controls.Add(Me.Button1)
         Me.Name = "Login"
         Me.Text = "Login"
         Me.ResumeLayout(False)
@@ -65,7 +65,7 @@ Partial Class Login
 
     End Sub
 
-    Friend WithEvents Button1 As Button
     Friend WithEvents Username As TextBox
     Friend WithEvents Password As TextBox
+    Friend WithEvents Button1 As Button
 End Class

@@ -2,7 +2,7 @@
 
     Public Sub forms_setmodel(ByVal form As Form)
         'form.Text = ReturnEmpresa_Parametros(Empresa_Nombre) + " - USUARIO: " + ReturnNameID(userID)
-        'form.Icon = System.Drawing.Icon.FromHandle(My.Resources.ico.GetHicon())
+        form.Icon = System.Drawing.Icon.FromHandle(My.Resources.Icon.GetHicon())
         form.FormBorderStyle = FormBorderStyle.Sizable
         form.MaximizeBox = False
         form.MaximumSize = New Size(form.Width, form.Height)
