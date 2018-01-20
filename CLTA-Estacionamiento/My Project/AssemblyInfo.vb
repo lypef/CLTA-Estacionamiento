@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("CLTA-Estacionamiento")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("CLTA-Estacionamiento")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyTitle("CLTA - ESTACIONAMIENTO")>
+<Assembly: AssemblyDescription("ESTE SISTEMA ES IMPLEMENTADO Y DESARROLLADO POR CLTA PARA %name_enterprise%,  CON DIRECCION : %direccion%, RFC: %rfc%. - PROHIBIDA SU DISTRIBUCION O INSTALACION SIN AUTORIZACION DE CLTA - DESARROLLO DE SOFTWARE. CONSULTE TERMINOS, CONDICIONES Y LICENCIAS ORIGINALES EN WWW.CYBERCHOAPAS.COM")>
+<Assembly: AssemblyCompany("CLTA - DESARROLLO DE SOFTWARE")>
+<Assembly: AssemblyProduct("CLTA - ESTACIONAMIENTO")>
+<Assembly: AssemblyCopyright("Copyright ©  2018 - WWW.CYBERCHOAPAS.COM")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

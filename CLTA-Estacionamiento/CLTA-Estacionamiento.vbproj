@@ -76,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Functions.vb" />
+    <Compile Include="Contenedores\About.Designer.vb">
+      <DependentUpon>About.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contenedores\About.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Contenedores\Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -103,8 +109,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Vistas\Clientes.Designer.vb">
+      <DependentUpon>Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Contenedores\About.resx">
+      <DependentUpon>About.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contenedores\Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
@@ -113,9 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Clientes.resx">
+      <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -132,18 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\AJUSTES.png" />
+    <None Include="Resources\clean.png" />
+    <None Include="Resources\logo_about.jpg" />
+    <None Include="Resources\about.png" />
+    <None Include="Resources\btn_minimizar.png" />
+    <None Include="Resources\btn_exit.png" />
     <None Include="Resources\Icon1.png" />
-    <None Include="Resources\Btn_tarifas_yellow.jpg" />
-    <None Include="Resources\Btn_tarifas_red.jpg" />
-    <None Include="Resources\Btn_tarifas_green.jpg" />
-    <None Include="Resources\BtnClients_yellow1.jpg" />
-    <None Include="Resources\BtnClients_red1.jpg" />
-    <None Include="Resources\BtnClients_green1.jpg" />
-    <None Include="Resources\bOTONESESTACIONAMIENTO.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Vistas\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

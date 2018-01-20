@@ -1,15 +1,28 @@
 ﻿Public Class PanelControl
     Dim f As New Functions
     Private Sub PanelControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        f.forms_setmodel(Me)
-        f.Button_SetModel(BtnClientes, My.Resources.BtnClients_yellow)
+        Me.Icon = System.Drawing.Icon.FromHandle(My.Resources.Icon.GetHicon())
     End Sub
 
-    Private Sub BtnClientes_MouseEnter(sender As Object, e As EventArgs) Handles BtnClientes.MouseEnter
-        f.Button_SetModel(BtnClientes, My.Resources.BtnClients_green)
+    Private Sub MinimizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizarToolStripMenuItem.Click
+        Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub BtnClientes_MouseLeave(sender As Object, e As EventArgs) Handles BtnClientes.MouseLeave
-        f.Button_SetModel(BtnClientes, My.Resources.BtnClients_yellow)
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+        If (MsgBox("¿Desea salir?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        f.AddForm_Desktop(About, Desktop)
+    End Sub
+
+    Private Sub ArchivoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchivoToolStripMenuItem.Click
+        f.AddForm_Desktop(Clientes, Desktop)
+    End Sub
+
+    Private Sub LimpiarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LimpiarToolStripMenuItem.Click
+        Desktop.Controls.Clear()
     End Sub
 End Class
