@@ -1,12 +1,21 @@
 ﻿Public Class Functions
+    Dim Db As New Conexion
+    Shared Db_shared As New Conexion
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
     Public ReadOnly Alert_NumberCritical As Integer = 16
     Public ReadOnly Alert_NumberExclamacion As Integer = 48
 
+    'Informacion de usuario
+    Public Shared username_id As String
+    Public Shared username_username As String
+    Public Shared username_name As String
+
     Public Sub Alert(ByVal txt As String, ByVal style As Integer)
-        MsgBox(txt)
+        AlertContainer.Show()
+        AlertContainer.style(style)
+        AlertContainer.TextBoxMensaje.Text = txt.ToUpper()
     End Sub
 
     Public Sub forms_setmodel(ByVal form As Form)
@@ -19,7 +28,22 @@
     End Sub
 
     Public Function Login(ByVal username As TextBox, ByVal password As TextBox)
-        Return True
+        Dim r = False
+        Dim dato = Db.Consult("select id, username, name from users where username = '" + username.Text + "' and password = '" + password.Text + "' ")
+
+        If dato.hasrows Then
+
+            Do While dato.Read()
+                username_id = dato.GetString(0)
+                username_username = dato.GetString(1)
+                username_name = dato.GetString(2)
+                r = True
+            Loop
+        Else
+            r = False
+        End If
+
+        Return r
     End Function
 
     Public Sub AddForm_Desktop(ByVal form As Form, ByVal Desktop As Panel)
