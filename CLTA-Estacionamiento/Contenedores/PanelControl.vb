@@ -45,7 +45,12 @@
     End Sub
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
-        f.AddForm_Desktop(Clientes, Desktop)
+        If f.GetPermiso(f.Permiso_Cliet_Access) Then
+            f.AddForm_Desktop(Clientes, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

@@ -11,7 +11,7 @@
             PanelControl.Show()
             Me.Visible = False
         Else
-            f.Alert("Acceso no valido", f.Alert_NumberCritical)
+            MsgBox("Acceso no valido", MsgBoxStyle.Critical)
         End If
     End Sub
 
