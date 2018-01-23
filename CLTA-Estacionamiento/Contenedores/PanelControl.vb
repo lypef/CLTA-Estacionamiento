@@ -1,14 +1,19 @@
-﻿Public Class PanelControl
+﻿Imports System.IO
+
+Public Class PanelControl
     Dim f As New Functions
 
     Private Sub PanelControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        f.loadforms(Desktop)
         Me.Text = "CLTA - ESTACIONAMIENTO"
         Me.Icon = System.Drawing.Icon.FromHandle(My.Resources.Icon.GetHicon())
         Desktop.Height = Me.Height - (Footer.Height + BarraMenu.Height)
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(My.Settings.DesktopBackgroundImage) Then
-            Desktop.BackgroundImage = Image.FromFile(My.Settings.DesktopBackgroundImage)
+            Dim fs As FileStream = New System.IO.FileStream(My.Settings.DesktopBackgroundImage, FileMode.Open, FileAccess.Read)
+            Desktop.BackgroundImage = Image.FromStream(fs)
             Desktop.BackgroundImageLayout = ImageLayout.Stretch
+            fs.Close()
         End If
     End Sub
 

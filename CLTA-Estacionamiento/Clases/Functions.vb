@@ -18,6 +18,12 @@ Public Class Functions
     'Informacion de usuario
     Public Shared username_id As String
     Public Shared username_username As String
+
+    Public Sub loadforms(desktop As Panel)
+        AddForm_Desktop(Clientes, desktop)
+        desktop.Controls.Clear()
+    End Sub
+
     Public Shared username_name As String
 
     Public Sub Alert(ByVal txt As String, ByVal style As Integer, ByVal desktop As Panel)
@@ -57,6 +63,7 @@ Public Class Functions
     Public Sub AddForm_Desktop(ByVal form As Form, ByVal Desktop As Panel)
         form.TopLevel = False
         Desktop.Controls.Add(form)
+        form.FormBorderStyle = FormBorderStyle.None
         form.WindowState = FormWindowState.Normal
         form.Location = New Point((Desktop.Width - form.Width) / 2, (Desktop.Height - form.Height) / 2)
         form.BringToFront()
