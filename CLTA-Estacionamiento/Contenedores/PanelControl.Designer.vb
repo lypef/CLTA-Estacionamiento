@@ -236,7 +236,6 @@ Partial Class PanelControl
     Friend WithEvents ArchivoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MinimizarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Desktop As Panel
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LimpiarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
@@ -253,4 +252,5 @@ Partial Class PanelControl
     Friend WithEvents LabelHora As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents CambiarUsuarioToolStripMenuItem As ToolStripMenuItem
+    Public WithEvents Desktop As Panel
 End Class

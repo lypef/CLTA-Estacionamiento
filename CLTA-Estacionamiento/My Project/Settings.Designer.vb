@@ -149,6 +149,66 @@ Namespace My
                 Me("DesktopBackgroundImage") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Silver")>  _
+        Public Property datagridview_color() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("datagridview_color"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("datagridview_color") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("64, 64, 64")>  _
+        Public Property datagridview_selectrow() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("datagridview_selectrow"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("datagridview_selectrow") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ActiveCaption")>  _
+        Public Property Menu_color() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("Menu_color"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("Menu_color") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Segoe UI, 13pt")>  _
+        Public Property Menu_font() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("Menu_font"),Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("Menu_font") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Segoe UI, 12pt")>  _
+        Public Property text_font() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("text_font"),Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("text_font") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

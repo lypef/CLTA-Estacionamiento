@@ -15,6 +15,16 @@ Public Class PanelControl
             Desktop.BackgroundImageLayout = ImageLayout.Stretch
             fs.Close()
         End If
+        BarraMenu.BackColor = My.Settings.Menu_color
+        BarraMenu.Font = My.Settings.Menu_font
+        ArchivoToolStripMenuItem.Font = My.Settings.Menu_font
+        ClientesToolStripMenuItem.Font = My.Settings.Menu_font
+        TarifasToolStripMenuItem.Font = My.Settings.Menu_font
+        ToolStripMenuItem1.Font = My.Settings.Menu_font
+        AJUSTESToolStripMenuItem.Font = My.Settings.Menu_font
+        LimpiarToolStripMenuItem.Font = My.Settings.Menu_font
+        MinimizarToolStripMenuItem.Font = My.Settings.Menu_font
+        SalirToolStripMenuItem.Font = My.Settings.Menu_font
     End Sub
 
     Private Sub MinimizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizarToolStripMenuItem.Click
@@ -51,6 +61,7 @@ Public Class PanelControl
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         If f.GetPermiso(f.Permiso_Cliet_Access) Then
+            Clientes.Loader()
             f.AddForm_Desktop(Clientes, Desktop)
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)

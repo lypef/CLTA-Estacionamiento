@@ -26,5 +26,20 @@
     <Setting Name="DesktopBackgroundImage" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\ISC\Dropbox\Walpapers\8e0CP4E.jpg</Value>
     </Setting>
+    <Setting Name="datagridview_color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Silver</Value>
+    </Setting>
+    <Setting Name="datagridview_selectrow" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">64, 64, 64</Value>
+    </Setting>
+    <Setting Name="Menu_color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ActiveCaption</Value>
+    </Setting>
+    <Setting Name="Menu_font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Segoe UI, 13pt</Value>
+    </Setting>
+    <Setting Name="text_font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Segoe UI, 12pt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

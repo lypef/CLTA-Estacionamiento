@@ -38,7 +38,18 @@ Partial Class properties
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TxtDesktopBackground = New System.Windows.Forms.TextBox()
+        Me.Tabla_ColorFondo = New System.Windows.Forms.Button()
+        Me.TablaColorSeleccion = New System.Windows.Forms.Button()
+        Me.TipoLetra = New System.Windows.Forms.Button()
+        Me.ColorMenu = New System.Windows.Forms.Button()
+        Me.LetraMenu = New System.Windows.Forms.Button()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -54,7 +65,7 @@ Partial Class properties
         Me.GroupBox1.Controls.Add(Me.Txt_DB_Username)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Txt_DB_Servidor)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 34)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(183, 263)
         Me.GroupBox1.TabIndex = 1
@@ -158,7 +169,7 @@ Partial Class properties
         '
         'TxtGuardar
         '
-        Me.TxtGuardar.Location = New System.Drawing.Point(467, 242)
+        Me.TxtGuardar.Location = New System.Drawing.Point(467, 264)
         Me.TxtGuardar.Name = "TxtGuardar"
         Me.TxtGuardar.Size = New System.Drawing.Size(93, 33)
         Me.TxtGuardar.TabIndex = 101
@@ -167,7 +178,7 @@ Partial Class properties
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(201, 75)
+        Me.Button7.Location = New System.Drawing.Point(201, 97)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(359, 33)
         Me.Button7.TabIndex = 102
@@ -177,35 +188,118 @@ Partial Class properties
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(201, 12)
+        Me.Label7.Location = New System.Drawing.Point(201, 34)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 13)
+        Me.Label7.Size = New System.Drawing.Size(87, 13)
         Me.Label7.TabIndex = 103
-        Me.Label7.Text = "Logo desktop"
+        Me.Label7.Text = "Imagen de fondo"
         '
         'TxtDesktopBackground
         '
         Me.TxtDesktopBackground.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDesktopBackground.Location = New System.Drawing.Point(201, 27)
+        Me.TxtDesktopBackground.Location = New System.Drawing.Point(201, 49)
         Me.TxtDesktopBackground.Multiline = True
         Me.TxtDesktopBackground.Name = "TxtDesktopBackground"
         Me.TxtDesktopBackground.Size = New System.Drawing.Size(359, 42)
         Me.TxtDesktopBackground.TabIndex = 104
         '
+        'Tabla_ColorFondo
+        '
+        Me.Tabla_ColorFondo.Location = New System.Drawing.Point(204, 136)
+        Me.Tabla_ColorFondo.Name = "Tabla_ColorFondo"
+        Me.Tabla_ColorFondo.Size = New System.Drawing.Size(132, 33)
+        Me.Tabla_ColorFondo.TabIndex = 105
+        Me.Tabla_ColorFondo.Text = "Color de fondo Tablas"
+        Me.Tabla_ColorFondo.UseVisualStyleBackColor = True
+        '
+        'TablaColorSeleccion
+        '
+        Me.TablaColorSeleccion.Location = New System.Drawing.Point(342, 136)
+        Me.TablaColorSeleccion.Name = "TablaColorSeleccion"
+        Me.TablaColorSeleccion.Size = New System.Drawing.Size(132, 33)
+        Me.TablaColorSeleccion.TabIndex = 106
+        Me.TablaColorSeleccion.Text = "Color seleccion Tablas"
+        Me.TablaColorSeleccion.UseVisualStyleBackColor = True
+        '
+        'TipoLetra
+        '
+        Me.TipoLetra.Location = New System.Drawing.Point(204, 175)
+        Me.TipoLetra.Name = "TipoLetra"
+        Me.TipoLetra.Size = New System.Drawing.Size(132, 33)
+        Me.TipoLetra.TabIndex = 107
+        Me.TipoLetra.Text = "Tipo de letra"
+        Me.TipoLetra.UseVisualStyleBackColor = True
+        '
+        'ColorMenu
+        '
+        Me.ColorMenu.Location = New System.Drawing.Point(342, 175)
+        Me.ColorMenu.Name = "ColorMenu"
+        Me.ColorMenu.Size = New System.Drawing.Size(132, 33)
+        Me.ColorMenu.TabIndex = 108
+        Me.ColorMenu.Text = "Color menu"
+        Me.ColorMenu.UseVisualStyleBackColor = True
+        '
+        'LetraMenu
+        '
+        Me.LetraMenu.Location = New System.Drawing.Point(204, 214)
+        Me.LetraMenu.Name = "LetraMenu"
+        Me.LetraMenu.Size = New System.Drawing.Size(270, 33)
+        Me.LetraMenu.TabIndex = 109
+        Me.LetraMenu.Text = "Letra menu"
+        Me.LetraMenu.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(368, 264)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(93, 33)
+        Me.Button2.TabIndex = 110
+        Me.Button2.Text = "Restaurar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(572, 24)
+        Me.MenuStrip1.TabIndex = 111
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'SalirToolStripMenuItem
+        '
+        Me.SalirToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.SalirToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
+        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.SalirToolStripMenuItem.Text = "Salir"
+        '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(572, 287)
+        Me.ClientSize = New System.Drawing.Size(572, 309)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.LetraMenu)
+        Me.Controls.Add(Me.ColorMenu)
+        Me.Controls.Add(Me.TipoLetra)
+        Me.Controls.Add(Me.TablaColorSeleccion)
+        Me.Controls.Add(Me.Tabla_ColorFondo)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TxtDesktopBackground)
         Me.Controls.Add(Me.TxtGuardar)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "properties"
         Me.Text = "properties"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -227,4 +321,14 @@ Partial Class properties
     Friend WithEvents Button7 As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents TxtDesktopBackground As TextBox
+    Friend WithEvents Tabla_ColorFondo As Button
+    Friend WithEvents TablaColorSeleccion As Button
+    Friend WithEvents TipoLetra As Button
+    Friend WithEvents ColorMenu As Button
+    Friend WithEvents LetraMenu As Button
+    Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents FontDialog1 As FontDialog
+    Friend WithEvents Button2 As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
 End Class
