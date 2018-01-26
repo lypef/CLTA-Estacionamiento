@@ -5,7 +5,7 @@ Public Class properties
     Dim f As New Functions
 
     Private Sub properties_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        f.forms_setmodel(Me)
+        f.forms_setmodel(Me, FormBorderStyle.None)
         Txt_DB_Servidor.Text = My.Settings.db_servidor
         Txt_DB_Username.Text = My.Settings.db_username
         Txt_DB_Password.Text = My.Settings.db_password

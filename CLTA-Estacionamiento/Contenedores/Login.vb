@@ -16,7 +16,7 @@
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        f.forms_setmodel(Me)
+        f.forms_setmodel(Me, FormBorderStyle.Sizable)
         Username.ForeColor = Color.FromArgb(36, 59, 121)
         Password.ForeColor = Color.FromArgb(36, 59, 121)
         Username.Text = My.Settings.login_username

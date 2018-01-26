@@ -66,7 +66,6 @@ Public Class PanelControl
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
         End If
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -129,5 +128,14 @@ Public Class PanelControl
 
     Private Sub AjustesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AjustesToolStripMenuItem1.Click
         f.AddForm_Desktop(properties, Desktop)
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        If f.GetPermiso(f.Permiso_Vehicle_Access) Then
+            Vehicles.Loader()
+            f.AddForm_Desktop(Vehicles, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
     End Sub
 End Class

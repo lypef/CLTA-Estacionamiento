@@ -209,6 +209,18 @@ Namespace My
                 Me("text_font") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\clta_estacionamiento_data\clientes")>  _
+        Public Property data_url() As String
+            Get
+                Return CType(Me("data_url"),String)
+            End Get
+            Set
+                Me("data_url") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

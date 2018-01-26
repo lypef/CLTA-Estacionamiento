@@ -41,5 +41,8 @@
     <Setting Name="text_font" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)">Segoe UI, 12pt</Value>
     </Setting>
+    <Setting Name="data_url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\clta_estacionamiento_data\clientes</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
