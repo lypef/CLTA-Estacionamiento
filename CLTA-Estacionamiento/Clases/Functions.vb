@@ -13,6 +13,7 @@ Public Class Functions
 
     'Variables de sistema
     Public Shared Client As String
+    Public Shared Vehicle As String
 
     'Variables permisos de usuario
     Public ReadOnly Permiso_Cliet_Access As String = "client_access"
@@ -155,9 +156,34 @@ Public Class Functions
 
     End Sub
 
+    Public Sub GetVehicles(ByVal sql As String, ByVal t As DataGridView)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("client", "Cliente")
+        t.Columns.Add("matricula", "Matricula")
+        t.Columns.Add("modelo", "Modelo")
+        t.Columns.Add("color", "Color")
+        t.Columns.Add("estado", "Estado")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5))
+            Loop
+        End If
+
+    End Sub
+
     Public Shared Function Clients_DELETE() As Boolean
-        DeleteIMGClient()
         Return Db_shared.Ejecutar("delete from clients where id = " + Client + " ")
+    End Function
+
+    Public Shared Function Vehicles_DELETE() As Boolean
+        Return Db_shared.Ejecutar("delete from vehicles where id = " + Vehicle + " ")
     End Function
 
     Private Shared Sub DeleteIMGClient()
