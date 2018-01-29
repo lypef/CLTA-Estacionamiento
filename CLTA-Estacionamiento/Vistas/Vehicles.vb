@@ -96,10 +96,9 @@
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
-            'TabControl1.SelectedIndex = 0
-            'f.GetClients("SELECT * FROM clients where name LIKE '%" + TxtSearch.Text + "%' or address LIKE '%" + TxtSearch.Text + "%' or phone LIKE '%" + TxtSearch.Text + "%' OR mail LIKE '%" + TxtSearch.Text + "%' OR rfc LIKE '%" + TxtSearch.Text + "%' OR razonsocial LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
-            'Functions.Client = ""
-            'TxtSearch.Text = ""
+            TabControl1.SelectedIndex = 0
+            f.GetVehicles("SELECT v.matricula, c.name, v.modelo, v.color, v.estado FROM clients c, vehicles v where v.client = c.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.estado like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
+            TxtSearch.Text = ""
         End If
     End Sub
 
