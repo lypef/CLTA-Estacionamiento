@@ -2,9 +2,11 @@
     Dim f As New Functions
     Dim ex, ey As Integer
     Dim Arrastre As Boolean
+    Dim editar As Boolean = False
 
     Public Sub Loader()
-        f.GetVehicles("SELECT v.id, c.name, v.matricula, v.modelo, v.color, v.estado FROM clients c, vehicles v where v.client = c.id ORDER by c.name asc", Table)
+        editar = False
+        f.GetVehicles("SELECT v.matricula, c.name, v.modelo, v.color, v.estado FROM clients c, vehicles v where v.client = c.id ORDER by c.name ASC", Table)
         Functions.Vehicle = ""
     End Sub
 
@@ -22,6 +24,26 @@
         Label1.BackColor = My.Settings.Menu_color
 
         TabControl1.Font = My.Settings.Menu_font
+
+        Matricula_Textbox.Font = My.Settings.text_font
+        Matricula_label.Font = My.Settings.text_font
+        MatriculaTextBoxEdit.Font = My.Settings.text_font
+        MatriculaLabelEdit.Font = My.Settings.text_font
+
+        ModeloTextBox.Font = My.Settings.text_font
+        ModeloLabel.Font = My.Settings.text_font
+        ModeloTextBoxEdit.Font = My.Settings.text_font
+        ModeloLabelEdit.Font = My.Settings.text_font
+
+        Color_Textbox.Font = My.Settings.text_font
+        Color_label.Font = My.Settings.text_font
+        ColorTextBoxEdit.Font = My.Settings.text_font
+        ColorLabelEdit.Font = My.Settings.text_font
+
+        Estado_Textbox.Font = My.Settings.text_font
+        Estado_Label.Font = My.Settings.text_font
+        EstadoTextboxEdit.Font = My.Settings.text_font
+        EstadoLabelEdit.Font = My.Settings.text_font
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
@@ -115,15 +137,72 @@
                 TabControl1.SelectedIndex = 0
             End If
         ElseIf TabControl1.SelectedIndex = 2 Then
-            f.Alert("Agregar", f.Alert_NumberCritical, PanelControl.Desktop)
+            If f.GetPermiso(f.Permiso_Vehicle_Add) Then
+                LimpiarAddVehicles()
+            Else
+                TabControl1.SelectedIndex = 0
+                f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, PanelControl.Desktop)
+            End If
         End If
     End Sub
 
     Private Sub LoadEdit()
-        f.Alert("editar", f.Alert_NumberInformacion, PanelControl.Desktop)
+        f.ComboboxSetClients(ComboClientsEdit)
+        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit)
+        f.ComboboxSetIMGClient(ComboClientsEdit, ImageClientEdit)
+        editar = True
     End Sub
 
-    Private Sub Table_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellContentDoubleClick
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClients.SelectedIndexChanged
+        f.ComboboxSetIMGClient(ComboClients, ImageClient)
+    End Sub
+
+    Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
+        If ComboClients.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Add) Then
+            If String.IsNullOrEmpty(Matricula_Textbox.Text) = False Then
+                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox) Then
+                    LimpiarAddVehicles()
+                    f.Alert("Vehiculo agregado", f.Alert_NumberInformacion, PanelControl.Desktop)
+                Else
+                    f.Alert("Vehiculo NO agregado. La matricula podria ya estar agregada", f.Alert_NumberCritical, PanelControl.Desktop)
+                End If
+            Else
+                f.Alert("Ingrese una matricula", f.Alert_NumberExclamacion, PanelControl.Desktop)
+            End If
+        Else
+            f.Alert("Seleccione un cliente || Verifique sus permisos", f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub LimpiarAddVehicles()
+        Functions.Vehicle = ""
+        editar = False
+        f.ComboboxSetClients(ComboClients)
+        Matricula_Textbox.Text = ""
+        ModeloTextBox.Text = ""
+        Color_Textbox.Text = ""
+        Estado_Textbox.Text = ""
+    End Sub
+
+    Private Sub ComboClientsEdit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientsEdit.SelectedIndexChanged
+        If editar Then
+            f.ComboboxSetIMGClient(ComboClientsEdit, ImageClientEdit)
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) Then
+            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit) Then
+                f.Alert("Vehiculo actualizado", f.Alert_NumberInformacion, PanelControl.Desktop)
+                TabControl1.SelectedIndex = 0
+            Else
+                f.Alert("Vehiculo NO actualizado", f.Alert_NumberCritical, PanelControl.Desktop)
+            End If
+        End If
+    End Sub
+
+    Private Sub Table_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellDoubleClick
         If String.IsNullOrEmpty(Table.SelectedCells(0).Value) = False Then
             Functions.Vehicle = Table.SelectedCells(0).Value
             ContextMenuStrip1.Show(MousePosition)

@@ -5,6 +5,9 @@ Public Class Functions
     Dim Db As New Conexion
     Shared Db_shared As New Conexion
 
+    'Listas
+    Dim ListClients As New List(Of Integer)
+
     'Rutas data
     Public Shared ReadOnly Data_clients As String = "\clients"
     Public Shared ReadOnly Data_reports As String = "\reports"
@@ -40,6 +43,7 @@ Public Class Functions
     Public Sub loadforms(desktop As Panel)
         AddForm_Desktop(Clientes, desktop)
         AddForm_Desktop(properties, desktop)
+        AddForm_Desktop(Vehicles, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -163,23 +167,80 @@ Public Class Functions
 
         Dim dato = Db.Consult(sql)
 
-        t.Columns.Add("id", "ID")
-        t.Columns.Add("client", "Cliente")
         t.Columns.Add("matricula", "Matricula")
+        t.Columns.Add("client", "Cliente")
         t.Columns.Add("modelo", "Modelo")
         t.Columns.Add("color", "Color")
         t.Columns.Add("estado", "Estado")
 
         If dato.HasRows Then
             Do While dato.Read()
-                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5))
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4))
             Loop
         End If
 
     End Sub
 
+    Public Sub Vehicle_LoadValues(matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, c As ComboBox)
+        Dim dato = Db.Consult("SELECT * FROM vehicles WHERE matricula = '" + Vehicle + "' ")
+
+        If dato.Read() Then
+            For i As Integer = 0 To ListClients.Count - 1
+                If dato.GetString(0) = ListClients.Item(i) Then
+                    c.SelectedIndex = i
+                End If
+            Next i
+            matriculaTextBoxEdit.Text = dato.GetString(1)
+            modeloTextBoxEdit.Text = dato.GetString(2)
+            colorTextBoxEdit.Text = dato.GetString(3)
+            estadoTextboxEdit.Text = dato.GetString(4)
+        End If
+    End Sub
+
+    Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "')")
+    End Function
+
+    Public Sub ComboboxSetClients(ByVal c As ComboBox)
+        c.Items.Clear()
+        ListClients.Clear()
+
+        Dim dato = Db.Consult("SELECT id, name from clients ORDER by name asc")
+        c.Items.Add("SELECCIONE UN CLIENTE")
+        ListClients.Add("0")
+        If dato.HasRows Then
+            Do While dato.Read()
+                ListClients.Add(dato.GetString(0))
+                c.Items.Add(dato.GetString(1))
+            Loop
+        End If
+        c.SelectedIndex = 0
+        c.Font = My.Settings.text_font
+    End Sub
+
+    Public Sub ComboboxSetIMGClient(ByVal c As ComboBox, ByVal p As PictureBox)
+        If c.SelectedIndex > 0 And c.Items.Count > 0 Then
+            Dim dato = Db.Consult("SELECT foto from clients where id = '" + ListClients.Item(c.SelectedIndex).ToString() + "' ")
+
+            If dato.Read() Then
+                If My.Computer.FileSystem.FileExists(My.Settings.data_url + Data_clients + dato.GetString(0)) Then
+                    Dim fs As FileStream = New FileStream(My.Settings.data_url + Data_clients + dato.GetString(0), FileMode.Open, FileAccess.Read)
+                    p.Image = Image.FromStream(fs)
+                    PictureBoxSetModel(p)
+                    fs.Close()
+                End If
+            End If
+        Else
+            p.Image = Nothing
+        End If
+    End Sub
+
     Public Shared Function Clients_DELETE() As Boolean
         Return Db_shared.Ejecutar("delete from clients where id = " + Client + " ")
+    End Function
+
+    Public Function Vehicle_Update(c As ComboBox, matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox)
+        Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "' where matricula = '" + Vehicle + "' ")
     End Function
 
     Public Shared Function Vehicles_DELETE() As Boolean
@@ -267,4 +328,12 @@ Public Class Functions
     Public Function Empresa_Name() As String
         Return "Nombre de la empresa"
     End Function
+
+    Public Sub ModelTextBox(ByVal txt As TextBox)
+        txt.Font = My.Settings.text_font
+    End Sub
+
+    Private Sub PictureBoxSetModel(ByVal p As PictureBox)
+        p.SizeMode = PictureBoxSizeMode.Zoom
+    End Sub
 End Class
