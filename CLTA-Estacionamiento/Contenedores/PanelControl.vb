@@ -138,4 +138,13 @@ Public Class PanelControl
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
         End If
     End Sub
+
+    Private Sub TarifasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TarifasToolStripMenuItem.Click
+        If f.GetPermiso(f.Permiso_Rate_Access) Then
+            Rate.Loader()
+            f.AddForm_Desktop(Rate, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
 End Class

@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -176,6 +176,12 @@
     <Compile Include="Vistas\Clientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\Rate.Designer.vb">
+      <DependentUpon>Rate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Rate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Vehicles.Designer.vb">
       <DependentUpon>Vehicles.vb</DependentUpon>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Rate.resx">
+      <DependentUpon>Rate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vehicles.resx">
       <DependentUpon>Vehicles.vb</DependentUpon>

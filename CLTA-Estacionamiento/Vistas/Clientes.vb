@@ -17,6 +17,7 @@
         TabPage2.Font = My.Settings.Menu_font
         TabPage3.Font = My.Settings.Menu_font
         Label1.Font = My.Settings.Menu_font
+        Label1.BackColor = My.Settings.Menu_color
         ToolStripMenuItem3.Font = My.Settings.Menu_font
         ToolStripMenuItem2.Font = My.Settings.Menu_font
         ToolStripMenuItem4.Font = My.Settings.Menu_font
@@ -78,7 +79,7 @@
     End Sub
 
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
-        If f.GetPermiso(f.Permiso_Cliet_Delete) Then
+        If f.GetPermiso(f.Permiso_Rate_Delete) Then
             If (MsgBox("¿Esta seguro de eliminar el cliente # " + Functions.Client + " ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                 If Functions.Clients_DELETE Then
                     Loader()
@@ -214,10 +215,10 @@
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
-            TabControl1.SelectedIndex = 0
-            f.GetClients("SELECT * FROM clients where name LIKE '%" + TxtSearch.Text + "%' or address LIKE '%" + TxtSearch.Text + "%' or phone LIKE '%" + TxtSearch.Text + "%' OR mail LIKE '%" + TxtSearch.Text + "%' OR rfc LIKE '%" + TxtSearch.Text + "%' OR razonsocial LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
-            Functions.Client = ""
-            TxtSearch.Text = ""
+            'TabControl1.SelectedIndex = 0
+            'f.GetClients("SELECT * FROM clients where name LIKE '%" + TxtSearch.Text + "%' or address LIKE '%" + TxtSearch.Text + "%' or phone LIKE '%" + TxtSearch.Text + "%' OR mail LIKE '%" + TxtSearch.Text + "%' OR rfc LIKE '%" + TxtSearch.Text + "%' OR razonsocial LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
+            'Functions.Client = ""
+            'TxtSearch.Text = ""
         End If
     End Sub
 

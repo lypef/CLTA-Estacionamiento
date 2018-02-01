@@ -221,6 +221,18 @@ Namespace My
                 Me("data_url") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("MXN")>  _
+        Public Property moneda() As String
+            Get
+                Return CType(Me("moneda"),String)
+            End Get
+            Set
+                Me("moneda") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

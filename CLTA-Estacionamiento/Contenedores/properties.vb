@@ -20,6 +20,13 @@ Public Class properties
 
         MainMenuStrip.BackColor = My.Settings.Menu_color
         MainMenuStrip.Font = My.Settings.Menu_font
+
+        For i As Integer = 0 To ComboBox1.Items.Count - 1
+            ComboBox1.SelectedIndex = i
+            If ComboBox1.SelectedItem.ToString.ToLower = My.Settings.moneda.ToLower Then
+                Exit For
+            End If
+        Next
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -47,6 +54,7 @@ Public Class properties
         My.Settings.text_font = TipoLetra.Font
         My.Settings.Menu_color = ColorMenu.BackColor
         My.Settings.Menu_font = LetraMenu.Font
+        My.Settings.moneda = ComboBox1.SelectedItem.ToString.ToUpper
         My.Settings.Save()
         Application.Restart()
     End Sub

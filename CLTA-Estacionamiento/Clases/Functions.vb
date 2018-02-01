@@ -7,6 +7,7 @@ Public Class Functions
 
     'Listas
     Dim ListClients As New List(Of Integer)
+    Dim ListTarifas As New List(Of Integer)
 
     'Rutas data
     Public Shared ReadOnly Data_clients As String = "\clients"
@@ -16,7 +17,8 @@ Public Class Functions
 
     'Variables de sistema
     Public Shared Client As String
-    Public Shared Vehicle As String
+    Public Shared Matricula As String
+    Public Shared Tarifa As String
 
     'Variables permisos de usuario
     Public ReadOnly Permiso_Cliet_Access As String = "client_access"
@@ -27,6 +29,11 @@ Public Class Functions
     Public ReadOnly Permiso_Vehicle_Add As String = "vehicle_add"
     Public ReadOnly Permiso_Vehicle_Edit As String = "vehicle_edit"
     Public ReadOnly Permiso_Vehicle_Delete As String = "vehicle_delete"
+    Public ReadOnly Permiso_Rate_Access As String = "rate_access"
+    Public ReadOnly Permiso_Rate_Add As String = "rate_add"
+    Public ReadOnly Permiso_Rate_Edit As String = "rate_edit"
+    Public ReadOnly Permiso_Rate_Delete As String = "rate_delete"
+
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -44,6 +51,7 @@ Public Class Functions
         AddForm_Desktop(Clientes, desktop)
         AddForm_Desktop(properties, desktop)
         AddForm_Desktop(Vehicles, desktop)
+        AddForm_Desktop(Rate, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -135,6 +143,7 @@ Public Class Functions
         d.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         d.DefaultCellStyle.WrapMode = DataGridViewTriState.True
         d.Font = My.Settings.text_font
+        d.MultiSelect = False
     End Sub
 
     Public Sub GetClients(ByVal sql As String, ByVal t As DataGridView)
@@ -160,6 +169,33 @@ Public Class Functions
 
     End Sub
 
+    Public Sub GetTarifas(ByVal sql As String, ByVal t As DataGridView)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("name", "Nombre")
+        t.Columns.Add("tolerancia", "Tolerancia")
+        t.Columns.Add("cminimo", "Costo minimo")
+        t.Columns.Add("price", "Precio X hora")
+        t.Columns.Add("Modo", "Modo")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                If dato.GetString(5).ToString.ToLower = "true" Then
+                    t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2) + " Minutos", dato.GetString(3) + " " + My.Settings.moneda, dato.GetString(4) + " " + My.Settings.moneda, "Horas")
+                Else
+                    t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2) + " Minutos", dato.GetString(3) + " " + My.Settings.moneda, dato.GetString(4) + " " + My.Settings.moneda, "Dias")
+                End If
+
+            Loop
+        End If
+
+    End Sub
+
     Public Sub GetVehicles(ByVal sql As String, ByVal t As DataGridView)
         t.Columns.Clear()
         t.Rows.Clear()
@@ -169,36 +205,44 @@ Public Class Functions
 
         t.Columns.Add("matricula", "Matricula")
         t.Columns.Add("client", "Cliente")
+        t.Columns.Add("tarif", "Tarifa")
         t.Columns.Add("modelo", "Modelo")
         t.Columns.Add("color", "Color")
         t.Columns.Add("estado", "Estado")
 
         If dato.HasRows Then
             Do While dato.Read()
-                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4))
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5))
             Loop
         End If
 
     End Sub
 
-    Public Sub Vehicle_LoadValues(matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, c As ComboBox)
-        Dim dato = Db.Consult("SELECT * FROM vehicles WHERE matricula = '" + Vehicle + "' ")
+    Public Sub Vehicle_LoadValues(matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, c As ComboBox, tarifa As ComboBox)
+        Dim dato = Db.Consult("SELECT * FROM vehicles WHERE matricula = '" + Matricula + "' ")
 
         If dato.Read() Then
             For i As Integer = 0 To ListClients.Count - 1
-                If dato.GetString(0) = ListClients.Item(i) Then
+                If dato.GetString(1) = ListClients.Item(i) Then
                     c.SelectedIndex = i
                 End If
             Next i
-            matriculaTextBoxEdit.Text = dato.GetString(1)
-            modeloTextBoxEdit.Text = dato.GetString(2)
-            colorTextBoxEdit.Text = dato.GetString(3)
-            estadoTextboxEdit.Text = dato.GetString(4)
+
+            For i As Integer = 0 To ListTarifas.Count - 1
+                If dato.GetString(2) = ListTarifas.Item(i) Then
+                    tarifa.SelectedIndex = i
+                End If
+            Next i
+
+            matriculaTextBoxEdit.Text = dato.GetString(0)
+            modeloTextBoxEdit.Text = dato.GetString(3)
+            colorTextBoxEdit.Text = dato.GetString(4)
+            estadoTextboxEdit.Text = dato.GetString(5)
         End If
     End Sub
 
-    Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox) As Boolean
-        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "')")
+    Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "')")
     End Function
 
     Public Sub ComboboxSetClients(ByVal c As ComboBox)
@@ -211,6 +255,23 @@ Public Class Functions
         If dato.HasRows Then
             Do While dato.Read()
                 ListClients.Add(dato.GetString(0))
+                c.Items.Add(dato.GetString(1))
+            Loop
+        End If
+        c.SelectedIndex = 0
+        c.Font = My.Settings.text_font
+    End Sub
+
+    Public Sub ComboboxSetTarifas(ByVal c As ComboBox)
+        c.Items.Clear()
+        ListTarifas.Clear()
+
+        Dim dato = Db.Consult("SELECT id, name from tarifas ORDER by name asc")
+        c.Items.Add("SELECCIONE UNA TARIFA")
+        ListTarifas.Add("0")
+        If dato.HasRows Then
+            Do While dato.Read()
+                ListTarifas.Add(dato.GetString(0))
                 c.Items.Add(dato.GetString(1))
             Loop
         End If
@@ -239,12 +300,16 @@ Public Class Functions
         Return Db_shared.Ejecutar("delete from clients where id = " + Client + " ")
     End Function
 
-    Public Function Vehicle_Update(c As ComboBox, matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox)
-        Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "' where matricula = '" + Vehicle + "' ")
+    Public Shared Function Rate_DELETE() As Boolean
+        Return Db_shared.Ejecutar("delete from tarifas where id = " + Tarifa + " ")
+    End Function
+
+    Public Function Vehicle_Update(c As ComboBox, matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, ComboTarifa As ComboBox)
+        Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', tarifa = '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "' where matricula = '" + Matricula + "' ")
     End Function
 
     Public Shared Function Vehicles_DELETE() As Boolean
-        Return Db_shared.Ejecutar("delete from vehicles where id = " + Vehicle + " ")
+        Return Db_shared.Ejecutar("delete from vehicles where matricula = '" + Matricula + "' ")
     End Function
 
     Private Shared Sub DeleteIMGClient()

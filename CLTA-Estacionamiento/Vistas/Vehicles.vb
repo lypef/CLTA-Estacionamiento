@@ -6,8 +6,8 @@
 
     Public Sub Loader()
         editar = False
-        f.GetVehicles("SELECT v.matricula, c.name, v.modelo, v.color, v.estado FROM clients c, vehicles v where v.client = c.id ORDER by c.name ASC", Table)
-        Functions.Vehicle = ""
+        f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id ORDER by c.name ASC", Table)
+        Functions.Matricula = ""
     End Sub
 
     Private Sub Vehicles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -44,6 +44,12 @@
         Estado_Label.Font = My.Settings.text_font
         EstadoTextboxEdit.Font = My.Settings.text_font
         EstadoLabelEdit.Font = My.Settings.text_font
+        ComboBoxTarifa.Font = My.Settings.text_font
+
+        MenuStrip1.Font = My.Settings.Menu_font
+        MenuStrip1.BackColor = My.Settings.Menu_color
+        TxtSearch.Font = My.Settings.Menu_font
+        TxtSearch.BackColor = My.Settings.Menu_color
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
@@ -97,7 +103,7 @@
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
             TabControl1.SelectedIndex = 0
-            f.GetVehicles("SELECT v.matricula, c.name, v.modelo, v.color, v.estado FROM clients c, vehicles v where v.client = c.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.estado like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
+            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
             TxtSearch.Text = ""
         End If
     End Sub
@@ -129,7 +135,7 @@
         If TabControl1.SelectedIndex = 0 Then
             Loader()
         ElseIf TabControl1.SelectedIndex = 1 Then
-            If (f.GetPermiso(f.Permiso_Vehicle_Edit) And String.IsNullOrEmpty(Functions.Vehicle) = False) Then
+            If (f.GetPermiso(f.Permiso_Vehicle_Edit) And String.IsNullOrEmpty(Functions.Matricula) = False) Then
                 LoadEdit()
             Else
                 f.Alert("Seleccione un vehiculo | Verifique sus permisos", f.Alert_NumberExclamacion, PanelControl.Desktop)
@@ -147,7 +153,8 @@
 
     Private Sub LoadEdit()
         f.ComboboxSetClients(ComboClientsEdit)
-        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit)
+        f.ComboboxSetTarifas(ComboBoxTarifaEdit)
+        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit, ComboBoxTarifaEdit)
         f.ComboboxSetIMGClient(ComboClientsEdit, ImageClientEdit)
         editar = True
     End Sub
@@ -158,9 +165,9 @@
     End Sub
 
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
-        If ComboClients.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Add) Then
+        If ComboClients.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Add) And ComboBoxTarifa.SelectedIndex > 0 Then
             If String.IsNullOrEmpty(Matricula_Textbox.Text) = False Then
-                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox) Then
+                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox, ComboBoxTarifa) Then
                     LimpiarAddVehicles()
                     f.Alert("Vehiculo agregado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 Else
@@ -170,14 +177,15 @@
                 f.Alert("Ingrese una matricula", f.Alert_NumberExclamacion, PanelControl.Desktop)
             End If
         Else
-            f.Alert("Seleccione un cliente || Verifique sus permisos", f.Alert_NumberExclamacion, PanelControl.Desktop)
+            f.Alert("Seleccione un cliente || Verifique sus permisos || Seleccione una tarifa", f.Alert_NumberExclamacion, PanelControl.Desktop)
         End If
     End Sub
 
     Private Sub LimpiarAddVehicles()
-        Functions.Vehicle = ""
+        Functions.Matricula = ""
         editar = False
         f.ComboboxSetClients(ComboClients)
+        f.ComboboxSetTarifas(ComboBoxTarifa)
         Matricula_Textbox.Text = ""
         ModeloTextBox.Text = ""
         Color_Textbox.Text = ""
@@ -191,8 +199,8 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) Then
-            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit) Then
+        If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) And ComboBoxTarifaEdit.SelectedIndex > 0 Then
+            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit) Then
                 f.Alert("Vehiculo actualizado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 TabControl1.SelectedIndex = 0
             Else
@@ -203,7 +211,7 @@
 
     Private Sub Table_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellDoubleClick
         If String.IsNullOrEmpty(Table.SelectedCells(0).Value) = False Then
-            Functions.Vehicle = Table.SelectedCells(0).Value
+            Functions.Matricula = Table.SelectedCells(0).Value
             ContextMenuStrip1.Show(MousePosition)
         Else
             f.Alert("Seleccione un cliente verdadero", f.Alert_NumberExclamacion, PanelControl.Desktop)
