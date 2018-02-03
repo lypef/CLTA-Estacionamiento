@@ -44,6 +44,7 @@ Partial Class PanelControl
         Me.Footer = New System.Windows.Forms.Panel()
         Me.LabelHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.AsignacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BarraMenu.SuspendLayout()
         Me.Footer.SuspendLayout()
         Me.SuspendLayout()
@@ -51,10 +52,10 @@ Partial Class PanelControl
         'BarraMenu
         '
         Me.BarraMenu.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.TarifasToolStripMenuItem, Me.ToolStripMenuItem1, Me.AJUSTESToolStripMenuItem})
+        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.TarifasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.AsignacionesToolStripMenuItem, Me.AJUSTESToolStripMenuItem})
         Me.BarraMenu.Location = New System.Drawing.Point(0, 0)
         Me.BarraMenu.Name = "BarraMenu"
-        Me.BarraMenu.Size = New System.Drawing.Size(794, 34)
+        Me.BarraMenu.Size = New System.Drawing.Size(1110, 34)
         Me.BarraMenu.TabIndex = 2
         '
         'ArchivoToolStripMenuItem
@@ -182,7 +183,7 @@ Partial Class PanelControl
         Me.Desktop.Dock = System.Windows.Forms.DockStyle.Top
         Me.Desktop.Location = New System.Drawing.Point(0, 34)
         Me.Desktop.Name = "Desktop"
-        Me.Desktop.Size = New System.Drawing.Size(794, 359)
+        Me.Desktop.Size = New System.Drawing.Size(1110, 359)
         Me.Desktop.TabIndex = 4
         '
         'Footer
@@ -192,7 +193,7 @@ Partial Class PanelControl
         Me.Footer.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Footer.Location = New System.Drawing.Point(0, 399)
         Me.Footer.Name = "Footer"
-        Me.Footer.Size = New System.Drawing.Size(794, 30)
+        Me.Footer.Size = New System.Drawing.Size(1110, 30)
         Me.Footer.TabIndex = 5
         '
         'LabelHora
@@ -209,11 +210,18 @@ Partial Class PanelControl
         'Timer1
         '
         '
+        'AsignacionesToolStripMenuItem
+        '
+        Me.AsignacionesToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
+        Me.AsignacionesToolStripMenuItem.Name = "AsignacionesToolStripMenuItem"
+        Me.AsignacionesToolStripMenuItem.Size = New System.Drawing.Size(128, 30)
+        Me.AsignacionesToolStripMenuItem.Text = "Asignaciones"
+        '
         'PanelControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 429)
+        Me.ClientSize = New System.Drawing.Size(1110, 429)
         Me.Controls.Add(Me.Footer)
         Me.Controls.Add(Me.Desktop)
         Me.Controls.Add(Me.BarraMenu)
@@ -253,4 +261,5 @@ Partial Class PanelControl
     Friend WithEvents Timer1 As Timer
     Friend WithEvents CambiarUsuarioToolStripMenuItem As ToolStripMenuItem
     Public WithEvents Desktop As Panel
+    Friend WithEvents AsignacionesToolStripMenuItem As ToolStripMenuItem
 End Class

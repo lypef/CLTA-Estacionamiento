@@ -33,7 +33,10 @@ Public Class Functions
     Public ReadOnly Permiso_Rate_Add As String = "rate_add"
     Public ReadOnly Permiso_Rate_Edit As String = "rate_edit"
     Public ReadOnly Permiso_Rate_Delete As String = "rate_delete"
-
+    Public ReadOnly Permiso_Assign_Access As String = "assign_access"
+    Public ReadOnly Permiso_Assign_Add As String = "assign_add"
+    Public ReadOnly Permiso_Assign_Edit As String = "assign_edit"
+    Public ReadOnly Permiso_Assign_Delete As String = "assign_delete"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -52,6 +55,7 @@ Public Class Functions
         AddForm_Desktop(properties, desktop)
         AddForm_Desktop(Vehicles, desktop)
         AddForm_Desktop(Rate, desktop)
+        AddForm_Desktop(Assigns, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -153,7 +157,7 @@ Public Class Functions
         d.MultiSelect = False
     End Sub
 
-    Public Sub Tarifa_LoadValues(txtNombreEdit As TextBox, txtMinToleEdit As TextBox, txtCostoMinEdit As TextBox, txtPrecioHoraEdit As TextBox, txtPrecioDiaEdit As TextBox, useFraccionesEdit As CheckBox)
+    Public Sub Tarifa_LoadValues(txtNombreEdit As TextBox, txtMinToleEdit As TextBox, txtCostoMinEdit As TextBox, txtPrecioHoraEdit As TextBox, txtPrecioDiaEdit As TextBox, useFraccionesEdit As CheckBox, tarifaPension As TextBox, pensiondias As TextBox)
         Dim dato = Db_shared.Consult("select * from tarifas where id =  '" + Tarifa + "'  ")
 
         If dato.Read() Then
@@ -162,7 +166,9 @@ Public Class Functions
             txtCostoMinEdit.Text = dato.GetString(3)
             txtPrecioHoraEdit.Text = dato.GetString(4)
             txtPrecioDiaEdit.Text = dato.GetString(5)
-            useFraccionesEdit.Checked = dato.GetBoolean(6)
+            tarifaPension.Text = dato.GetString(6)
+            pensiondias.Text = dato.GetString(7)
+            useFraccionesEdit.Checked = dato.GetBoolean(8)
         End If
     End Sub
 
@@ -202,17 +208,17 @@ Public Class Functions
         t.Columns.Add("cminimo", "Costo minimo")
         t.Columns.Add("price_hora", "Precio X hora")
         t.Columns.Add("price_dia", "Precio X dia")
-
+        t.Columns.Add("price_pension", "Precio X pension")
         If dato.HasRows Then
             Do While dato.Read()
-                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2) + " Minutos", dato.GetString(3) + " " + My.Settings.moneda, dato.GetString(4) + " " + My.Settings.moneda, dato.GetString(5) + " " + My.Settings.moneda)
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2) + " Minutos", dato.GetString(3) + " " + My.Settings.moneda, dato.GetString(4) + " " + My.Settings.moneda, dato.GetString(5) + " " + My.Settings.moneda, dato.GetString(6) + " " + My.Settings.moneda + "( " + dato.GetString(7) + " DIAS)")
             Loop
         End If
 
     End Sub
 
-    Public Function AddVehicle(txtName As TextBox, txtMinTolerancia As TextBox, txtCostoMinimo As TextBox, txtPrcieXHora As TextBox, txtPrcieXDia As TextBox, usarFracciones As CheckBox) As Boolean
-        Return Db.Ejecutar("INSERT INTO tarifas (name, tolerance_minutes, costo_minimo, price_hora, price_dia, use_fraccion) VALUES ('" + txtName.Text.ToString.ToUpper + "', '" + txtMinTolerancia.Text.ToString + "', '" + txtCostoMinimo.Text.ToString + "', '" + txtPrcieXHora.Text.ToString + "', '" + txtPrcieXDia.Text.ToString + "', '" + ReturnCheckBox(usarFracciones).ToString + "');")
+    Public Function AddVehicle(txtName As TextBox, txtMinTolerancia As TextBox, txtCostoMinimo As TextBox, txtPrcieXHora As TextBox, txtPrcieXDia As TextBox, usarFracciones As CheckBox, tarifaPension As TextBox, diasPension As TextBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO tarifas (name, tolerance_minutes, costo_minimo, price_hora, price_dia, use_fraccion, price_pension, dias_pencion) VALUES ('" + txtName.Text.ToString.ToUpper + "', '" + txtMinTolerancia.Text.ToString + "', '" + txtCostoMinimo.Text.ToString + "', '" + txtPrcieXHora.Text.ToString + "', '" + txtPrcieXDia.Text.ToString + "', '" + ReturnCheckBox(usarFracciones).ToString + "', '" + tarifaPension.Text + "', '" + diasPension.Text + "');")
     End Function
 
     Public Sub GetVehicles(ByVal sql As String, ByVal t As DataGridView)
@@ -237,11 +243,11 @@ Public Class Functions
 
     End Sub
 
-    Public Function UpdateRate(txtNombreEdit As TextBox, txtMinToleEdit As TextBox, txtCostoMinEdit As TextBox, txtPrecioHoraEdit As TextBox, txtPrecioDiaEdit As TextBox, useFraccionesEdit As CheckBox) As Boolean
-        Return Db.Ejecutar("UPDATE tarifas SET name = '" + txtNombreEdit.Text.ToUpper + "', tolerance_minutes = '" + txtMinToleEdit.Text + "', costo_minimo = '" + txtCostoMinEdit.Text + "', price_hora = '" + txtPrecioHoraEdit.Text + "', price_dia = '" + txtPrecioDiaEdit.Text + "', use_fraccion = '" + ReturnCheckBox(useFraccionesEdit).ToString + "' WHERE id = '" + Tarifa + "' ")
+    Public Function UpdateRate(txtNombreEdit As TextBox, txtMinToleEdit As TextBox, txtCostoMinEdit As TextBox, txtPrecioHoraEdit As TextBox, txtPrecioDiaEdit As TextBox, useFraccionesEdit As CheckBox, TxtPricePension As TextBox, DiasPension As TextBox) As Boolean
+        Return Db.Ejecutar("UPDATE tarifas SET name = '" + txtNombreEdit.Text.ToUpper + "', tolerance_minutes = '" + txtMinToleEdit.Text + "', costo_minimo = '" + txtCostoMinEdit.Text + "', price_hora = '" + txtPrecioHoraEdit.Text + "', price_dia = '" + txtPrecioDiaEdit.Text + "', use_fraccion = '" + ReturnCheckBox(useFraccionesEdit).ToString + "', price_pension = '" + TxtPricePension.Text + "', dias_pencion  = '" + DiasPension.Text + "' WHERE id = '" + Tarifa + "' ")
     End Function
 
-    Public Sub Vehicle_LoadValues(matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, c As ComboBox, tarifa As ComboBox, Rfid As TextBox, horas As RadioButton, dias As RadioButton)
+    Public Sub Vehicle_LoadValues(matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, c As ComboBox, tarifa As ComboBox, Rfid As TextBox)
         Dim dato = Db.Consult("SELECT * FROM vehicles WHERE matricula = '" + Matricula + "' ")
 
         If dato.Read() Then
@@ -262,13 +268,11 @@ Public Class Functions
             colorTextBoxEdit.Text = dato.GetString(4)
             estadoTextboxEdit.Text = dato.GetString(5)
             Rfid.Text = dato.GetString(6)
-            horas.Checked = dato.GetBoolean(9)
-            dias.Checked = dato.GetBoolean(10)
         End If
     End Sub
 
-    Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox, Rfid As TextBox, horas As RadioButton, dias As RadioButton) As Boolean
-        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, tarifa_hora, tarifa_dia) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '" + Rfid.Text.ToString + "', '" + ReturnRadioButon(horas).ToString + "', '" + ReturnRadioButon(dias).ToString + "')")
+    Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox, Rfid As TextBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, tarifa_hora) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '" + Rfid.Text.ToString + "', '1')")
     End Function
 
     Private Function ReturnRadioButon(r As RadioButton) As Integer
@@ -312,13 +316,13 @@ Public Class Functions
         c.Items.Clear()
         ListTarifas.Clear()
 
-        Dim dato = Db.Consult("SELECT id, name, price_hora, price_dia from tarifas ORDER by name asc")
+        Dim dato = Db.Consult("SELECT id, name, price_hora, price_dia, price_pension , dias_pencion  from tarifas ORDER by name asc")
         c.Items.Add("SELECCIONE UNA TARIFA")
         ListTarifas.Add("0")
         If dato.HasRows Then
             Do While dato.Read()
                 ListTarifas.Add(dato.GetString(0))
-                c.Items.Add(dato.GetString(1) + " - | X HORA " + dato.GetString(2) + " " + My.Settings.moneda + " | X DIA " + dato.GetString(3) + " " + My.Settings.moneda)
+                c.Items.Add(dato.GetString(1) + " - | X HORA " + dato.GetString(2) + " " + My.Settings.moneda + " | X DIA " + dato.GetString(3) + " " + My.Settings.moneda + " | PENSION " + dato.GetString(4) + " " + My.Settings.moneda + " (" + dato.GetString(5) + " DIAS)")
             Loop
         End If
         c.SelectedIndex = 0
@@ -350,8 +354,8 @@ Public Class Functions
         Return Db_shared.Ejecutar("delete from tarifas where id = " + Tarifa + " ")
     End Function
 
-    Public Function Vehicle_Update(c As ComboBox, matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, ComboTarifa As ComboBox, Rfid As TextBox, horas As RadioButton, dias As RadioButton)
-        Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', tarifa = '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "', rfid = " + Rfid.Text + ", tarifa_hora = '" + ReturnRadioButon(horas).ToString + "', tarifa_dia = '" + ReturnRadioButon(dias).ToString + "' where matricula = '" + Matricula + "' ")
+    Public Function Vehicle_Update(c As ComboBox, matriculaTextBoxEdit As TextBox, modeloTextBoxEdit As TextBox, colorTextBoxEdit As TextBox, estadoTextboxEdit As TextBox, ComboTarifa As ComboBox, Rfid As TextBox)
+        Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', tarifa = '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "', rfid = " + Rfid.Text + " where matricula = '" + Matricula + "' ")
     End Function
 
     Public Shared Function Vehicles_DELETE() As Boolean

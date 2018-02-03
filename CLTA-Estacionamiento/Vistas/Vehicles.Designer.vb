@@ -29,12 +29,12 @@ Partial Class Vehicles
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.VehiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.RB_DiasEdit = New System.Windows.Forms.RadioButton()
-        Me.RB_HorasEdit = New System.Windows.Forms.RadioButton()
         Me.TxtRfid_Edit = New System.Windows.Forms.TextBox()
         Me.LabelRfid_Edit = New System.Windows.Forms.Label()
         Me.ComboBoxTarifaEdit = New System.Windows.Forms.ComboBox()
@@ -50,8 +50,6 @@ Partial Class Vehicles
         Me.MatriculaTextBoxEdit = New System.Windows.Forms.TextBox()
         Me.MatriculaLabelEdit = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.RB_Dias = New System.Windows.Forms.RadioButton()
-        Me.RB_Horas = New System.Windows.Forms.RadioButton()
         Me.TxtRfid = New System.Windows.Forms.TextBox()
         Me.LabelRfid = New System.Windows.Forms.Label()
         Me.ComboBoxTarifa = New System.Windows.Forms.ComboBox()
@@ -69,8 +67,6 @@ Partial Class Vehicles
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VehiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -135,6 +131,19 @@ Partial Class Vehicles
         Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
         Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'VehiculosToolStripMenuItem
+        '
+        Me.VehiculosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
+        Me.VehiculosToolStripMenuItem.Name = "VehiculosToolStripMenuItem"
+        Me.VehiculosToolStripMenuItem.Size = New System.Drawing.Size(88, 25)
+        Me.VehiculosToolStripMenuItem.Text = "Vehiculos"
+        '
+        'GenerarReporteToolStripMenuItem
+        '
+        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
@@ -170,8 +179,6 @@ Partial Class Vehicles
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.Controls.Add(Me.RB_DiasEdit)
-        Me.TabPage2.Controls.Add(Me.RB_HorasEdit)
         Me.TabPage2.Controls.Add(Me.TxtRfid_Edit)
         Me.TabPage2.Controls.Add(Me.LabelRfid_Edit)
         Me.TabPage2.Controls.Add(Me.ComboBoxTarifaEdit)
@@ -192,30 +199,6 @@ Partial Class Vehicles
         Me.TabPage2.Size = New System.Drawing.Size(949, 395)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Editar"
-        '
-        'RB_DiasEdit
-        '
-        Me.RB_DiasEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_DiasEdit.AutoSize = True
-        Me.RB_DiasEdit.Location = New System.Drawing.Point(690, 265)
-        Me.RB_DiasEdit.Name = "RB_DiasEdit"
-        Me.RB_DiasEdit.Size = New System.Drawing.Size(101, 17)
-        Me.RB_DiasEdit.TabIndex = 56
-        Me.RB_DiasEdit.TabStop = True
-        Me.RB_DiasEdit.Text = "TARIFA X DIAS"
-        Me.RB_DiasEdit.UseVisualStyleBackColor = True
-        '
-        'RB_HorasEdit
-        '
-        Me.RB_HorasEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_HorasEdit.AutoSize = True
-        Me.RB_HorasEdit.Location = New System.Drawing.Point(532, 265)
-        Me.RB_HorasEdit.Name = "RB_HorasEdit"
-        Me.RB_HorasEdit.Size = New System.Drawing.Size(114, 17)
-        Me.RB_HorasEdit.TabIndex = 55
-        Me.RB_HorasEdit.TabStop = True
-        Me.RB_HorasEdit.Text = "TARIFA X HORAS"
-        Me.RB_HorasEdit.UseVisualStyleBackColor = True
         '
         'TxtRfid_Edit
         '
@@ -354,8 +337,6 @@ Partial Class Vehicles
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage3.Controls.Add(Me.RB_Dias)
-        Me.TabPage3.Controls.Add(Me.RB_Horas)
         Me.TabPage3.Controls.Add(Me.TxtRfid)
         Me.TabPage3.Controls.Add(Me.LabelRfid)
         Me.TabPage3.Controls.Add(Me.ComboBoxTarifa)
@@ -375,30 +356,6 @@ Partial Class Vehicles
         Me.TabPage3.Size = New System.Drawing.Size(949, 395)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Agregar"
-        '
-        'RB_Dias
-        '
-        Me.RB_Dias.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Dias.AutoSize = True
-        Me.RB_Dias.Location = New System.Drawing.Point(691, 259)
-        Me.RB_Dias.Name = "RB_Dias"
-        Me.RB_Dias.Size = New System.Drawing.Size(101, 17)
-        Me.RB_Dias.TabIndex = 45
-        Me.RB_Dias.TabStop = True
-        Me.RB_Dias.Text = "TARIFA X DIAS"
-        Me.RB_Dias.UseVisualStyleBackColor = True
-        '
-        'RB_Horas
-        '
-        Me.RB_Horas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Horas.AutoSize = True
-        Me.RB_Horas.Location = New System.Drawing.Point(533, 259)
-        Me.RB_Horas.Name = "RB_Horas"
-        Me.RB_Horas.Size = New System.Drawing.Size(114, 17)
-        Me.RB_Horas.TabIndex = 44
-        Me.RB_Horas.TabStop = True
-        Me.RB_Horas.Text = "TARIFA X HORAS"
-        Me.RB_Horas.UseVisualStyleBackColor = True
         '
         'TxtRfid
         '
@@ -554,19 +511,6 @@ Partial Class Vehicles
         Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
-        'VehiculosToolStripMenuItem
-        '
-        Me.VehiculosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
-        Me.VehiculosToolStripMenuItem.Name = "VehiculosToolStripMenuItem"
-        Me.VehiculosToolStripMenuItem.Size = New System.Drawing.Size(88, 25)
-        Me.VehiculosToolStripMenuItem.Text = "Vehiculos"
-        '
-        'GenerarReporteToolStripMenuItem
-        '
-        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
-        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
-        '
         'Vehicles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -636,10 +580,6 @@ Partial Class Vehicles
     Friend WithEvents LabelRfid As Label
     Friend WithEvents TxtRfid_Edit As TextBox
     Friend WithEvents LabelRfid_Edit As Label
-    Friend WithEvents RB_Dias As RadioButton
-    Friend WithEvents RB_Horas As RadioButton
-    Friend WithEvents RB_DiasEdit As RadioButton
-    Friend WithEvents RB_HorasEdit As RadioButton
     Friend WithEvents VehiculosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerarReporteToolStripMenuItem As ToolStripMenuItem
 End Class

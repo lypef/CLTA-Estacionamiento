@@ -29,26 +29,12 @@ Partial Class Rate
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.TarifasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.TxtName = New System.Windows.Forms.TextBox()
-        Me.LabelName = New System.Windows.Forms.Label()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LabelMinTolerancia = New System.Windows.Forms.Label()
-        Me.TxtCostoMinimo = New System.Windows.Forms.TextBox()
-        Me.LabelCostoMinimo = New System.Windows.Forms.Label()
-        Me.TxtPrcieXHora = New System.Windows.Forms.TextBox()
-        Me.LabelPrcieXHora = New System.Windows.Forms.Label()
-        Me.TxtPrcieXDia = New System.Windows.Forms.TextBox()
-        Me.LabelPrcieXDia = New System.Windows.Forms.Label()
-        Me.UsarFracciones = New System.Windows.Forms.CheckBox()
-        Me.TxtMinTolerancia = New System.Windows.Forms.TextBox()
-        Me.Add = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtMinToleEdit = New System.Windows.Forms.TextBox()
         Me.UseFraccionesEdit = New System.Windows.Forms.CheckBox()
@@ -61,8 +47,30 @@ Partial Class Rate
         Me.LabelMinToleEdit = New System.Windows.Forms.Label()
         Me.TxtNombreEdit = New System.Windows.Forms.TextBox()
         Me.LabelNombreEdit = New System.Windows.Forms.Label()
-        Me.TarifasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Add = New System.Windows.Forms.Button()
+        Me.TxtMinTolerancia = New System.Windows.Forms.TextBox()
+        Me.UsarFracciones = New System.Windows.Forms.CheckBox()
+        Me.TxtPrcieXDia = New System.Windows.Forms.TextBox()
+        Me.LabelPrcieXDia = New System.Windows.Forms.Label()
+        Me.TxtPrcieXHora = New System.Windows.Forms.TextBox()
+        Me.LabelPrcieXHora = New System.Windows.Forms.Label()
+        Me.TxtCostoMinimo = New System.Windows.Forms.TextBox()
+        Me.LabelCostoMinimo = New System.Windows.Forms.Label()
+        Me.LabelMinTolerancia = New System.Windows.Forms.Label()
+        Me.TxtName = New System.Windows.Forms.TextBox()
+        Me.LabelName = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtTarifaPension = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaPension = New System.Windows.Forms.Label()
+        Me.TxtDiasPendion = New System.Windows.Forms.TextBox()
+        Me.LabelDiasPendion = New System.Windows.Forms.Label()
+        Me.TxtTarifaDiasEdit = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaDiasEdit = New System.Windows.Forms.Label()
+        Me.TxtTarifaPensionEdit = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaPensionEdit = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -125,6 +133,19 @@ Partial Class Rate
         Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
         Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'TarifasToolStripMenuItem
+        '
+        Me.TarifasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
+        Me.TarifasToolStripMenuItem.Name = "TarifasToolStripMenuItem"
+        Me.TarifasToolStripMenuItem.Size = New System.Drawing.Size(66, 25)
+        Me.TarifasToolStripMenuItem.Text = "Tarifas"
+        '
+        'GenerarReporteToolStripMenuItem
+        '
+        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
@@ -160,6 +181,10 @@ Partial Class Rate
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.TxtTarifaDiasEdit)
+        Me.TabPage2.Controls.Add(Me.LabelTarifaDiasEdit)
+        Me.TabPage2.Controls.Add(Me.TxtTarifaPensionEdit)
+        Me.TabPage2.Controls.Add(Me.LabelTarifaPensionEdit)
         Me.TabPage2.Controls.Add(Me.Button1)
         Me.TabPage2.Controls.Add(Me.TxtMinToleEdit)
         Me.TabPage2.Controls.Add(Me.UseFraccionesEdit)
@@ -179,163 +204,10 @@ Partial Class Rate
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Editar"
         '
-        'TabPage3
-        '
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage3.Controls.Add(Me.Add)
-        Me.TabPage3.Controls.Add(Me.TxtMinTolerancia)
-        Me.TabPage3.Controls.Add(Me.UsarFracciones)
-        Me.TabPage3.Controls.Add(Me.TxtPrcieXDia)
-        Me.TabPage3.Controls.Add(Me.LabelPrcieXDia)
-        Me.TabPage3.Controls.Add(Me.TxtPrcieXHora)
-        Me.TabPage3.Controls.Add(Me.LabelPrcieXHora)
-        Me.TabPage3.Controls.Add(Me.TxtCostoMinimo)
-        Me.TabPage3.Controls.Add(Me.LabelCostoMinimo)
-        Me.TabPage3.Controls.Add(Me.LabelMinTolerancia)
-        Me.TabPage3.Controls.Add(Me.TxtName)
-        Me.TabPage3.Controls.Add(Me.LabelName)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(949, 395)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Agregar"
-        '
-        'TxtName
-        '
-        Me.TxtName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtName.Location = New System.Drawing.Point(11, 30)
-        Me.TxtName.Name = "TxtName"
-        Me.TxtName.Size = New System.Drawing.Size(454, 20)
-        Me.TxtName.TabIndex = 16
-        '
-        'LabelName
-        '
-        Me.LabelName.AutoSize = True
-        Me.LabelName.Location = New System.Drawing.Point(8, 12)
-        Me.LabelName.Name = "LabelName"
-        Me.LabelName.Size = New System.Drawing.Size(70, 13)
-        Me.LabelName.TabIndex = 17
-        Me.LabelName.Text = "Nombre tarifa"
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
-        '
-        'EditarToolStripMenuItem
-        '
-        Me.EditarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.edit_24
-        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
-        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.EditarToolStripMenuItem.Text = "Editar"
-        '
-        'EliminarToolStripMenuItem
-        '
-        Me.EliminarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.delete_24
-        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.EliminarToolStripMenuItem.Text = "Eliminar"
-        '
-        'LabelMinTolerancia
-        '
-        Me.LabelMinTolerancia.AutoSize = True
-        Me.LabelMinTolerancia.Location = New System.Drawing.Point(8, 71)
-        Me.LabelMinTolerancia.Name = "LabelMinTolerancia"
-        Me.LabelMinTolerancia.Size = New System.Drawing.Size(108, 13)
-        Me.LabelMinTolerancia.TabIndex = 19
-        Me.LabelMinTolerancia.Text = "Minutos de tolerancia"
-        '
-        'TxtCostoMinimo
-        '
-        Me.TxtCostoMinimo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtCostoMinimo.Location = New System.Drawing.Point(11, 152)
-        Me.TxtCostoMinimo.Name = "TxtCostoMinimo"
-        Me.TxtCostoMinimo.Size = New System.Drawing.Size(454, 20)
-        Me.TxtCostoMinimo.TabIndex = 3
-        '
-        'LabelCostoMinimo
-        '
-        Me.LabelCostoMinimo.AutoSize = True
-        Me.LabelCostoMinimo.Location = New System.Drawing.Point(13, 134)
-        Me.LabelCostoMinimo.Name = "LabelCostoMinimo"
-        Me.LabelCostoMinimo.Size = New System.Drawing.Size(69, 13)
-        Me.LabelCostoMinimo.TabIndex = 21
-        Me.LabelCostoMinimo.Text = "Costo minimo"
-        '
-        'TxtPrcieXHora
-        '
-        Me.TxtPrcieXHora.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtPrcieXHora.Location = New System.Drawing.Point(11, 206)
-        Me.TxtPrcieXHora.Name = "TxtPrcieXHora"
-        Me.TxtPrcieXHora.Size = New System.Drawing.Size(454, 20)
-        Me.TxtPrcieXHora.TabIndex = 4
-        '
-        'LabelPrcieXHora
-        '
-        Me.LabelPrcieXHora.AutoSize = True
-        Me.LabelPrcieXHora.Location = New System.Drawing.Point(13, 188)
-        Me.LabelPrcieXHora.Name = "LabelPrcieXHora"
-        Me.LabelPrcieXHora.Size = New System.Drawing.Size(69, 13)
-        Me.LabelPrcieXHora.TabIndex = 23
-        Me.LabelPrcieXHora.Text = "Precio x hora"
-        '
-        'TxtPrcieXDia
-        '
-        Me.TxtPrcieXDia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtPrcieXDia.Location = New System.Drawing.Point(11, 261)
-        Me.TxtPrcieXDia.Name = "TxtPrcieXDia"
-        Me.TxtPrcieXDia.Size = New System.Drawing.Size(454, 20)
-        Me.TxtPrcieXDia.TabIndex = 5
-        '
-        'LabelPrcieXDia
-        '
-        Me.LabelPrcieXDia.AutoSize = True
-        Me.LabelPrcieXDia.Location = New System.Drawing.Point(13, 243)
-        Me.LabelPrcieXDia.Name = "LabelPrcieXDia"
-        Me.LabelPrcieXDia.Size = New System.Drawing.Size(62, 13)
-        Me.LabelPrcieXDia.TabIndex = 25
-        Me.LabelPrcieXDia.Text = "Precio x dia"
-        '
-        'UsarFracciones
-        '
-        Me.UsarFracciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UsarFracciones.AutoSize = True
-        Me.UsarFracciones.Location = New System.Drawing.Point(11, 297)
-        Me.UsarFracciones.Name = "UsarFracciones"
-        Me.UsarFracciones.Size = New System.Drawing.Size(100, 17)
-        Me.UsarFracciones.TabIndex = 6
-        Me.UsarFracciones.Text = "Usar fracciones"
-        Me.UsarFracciones.UseVisualStyleBackColor = True
-        '
-        'TxtMinTolerancia
-        '
-        Me.TxtMinTolerancia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtMinTolerancia.Location = New System.Drawing.Point(11, 89)
-        Me.TxtMinTolerancia.Name = "TxtMinTolerancia"
-        Me.TxtMinTolerancia.Size = New System.Drawing.Size(454, 20)
-        Me.TxtMinTolerancia.TabIndex = 2
-        '
-        'Add
-        '
-        Me.Add.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Add.Location = New System.Drawing.Point(322, 297)
-        Me.Add.Name = "Add"
-        Me.Add.Size = New System.Drawing.Size(143, 42)
-        Me.Add.TabIndex = 8
-        Me.Add.Text = "Agregar"
-        Me.Add.UseVisualStyleBackColor = True
-        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(324, 305)
+        Me.Button1.Location = New System.Drawing.Point(324, 345)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(143, 42)
         Me.Button1.TabIndex = 31
@@ -356,7 +228,7 @@ Partial Class Rate
         Me.UseFraccionesEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.UseFraccionesEdit.AutoSize = True
-        Me.UseFraccionesEdit.Location = New System.Drawing.Point(13, 305)
+        Me.UseFraccionesEdit.Location = New System.Drawing.Point(59, 359)
         Me.UseFraccionesEdit.Name = "UseFraccionesEdit"
         Me.UseFraccionesEdit.Size = New System.Drawing.Size(100, 17)
         Me.UseFraccionesEdit.TabIndex = 30
@@ -444,18 +316,230 @@ Partial Class Rate
         Me.LabelNombreEdit.TabIndex = 33
         Me.LabelNombreEdit.Text = "Nombre tarifa"
         '
-        'TarifasToolStripMenuItem
+        'TabPage3
         '
-        Me.TarifasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
-        Me.TarifasToolStripMenuItem.Name = "TarifasToolStripMenuItem"
-        Me.TarifasToolStripMenuItem.Size = New System.Drawing.Size(66, 25)
-        Me.TarifasToolStripMenuItem.Text = "Tarifas"
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage3.Controls.Add(Me.TxtDiasPendion)
+        Me.TabPage3.Controls.Add(Me.LabelDiasPendion)
+        Me.TabPage3.Controls.Add(Me.TxtTarifaPension)
+        Me.TabPage3.Controls.Add(Me.LabelTarifaPension)
+        Me.TabPage3.Controls.Add(Me.Add)
+        Me.TabPage3.Controls.Add(Me.TxtMinTolerancia)
+        Me.TabPage3.Controls.Add(Me.UsarFracciones)
+        Me.TabPage3.Controls.Add(Me.TxtPrcieXDia)
+        Me.TabPage3.Controls.Add(Me.LabelPrcieXDia)
+        Me.TabPage3.Controls.Add(Me.TxtPrcieXHora)
+        Me.TabPage3.Controls.Add(Me.LabelPrcieXHora)
+        Me.TabPage3.Controls.Add(Me.TxtCostoMinimo)
+        Me.TabPage3.Controls.Add(Me.LabelCostoMinimo)
+        Me.TabPage3.Controls.Add(Me.LabelMinTolerancia)
+        Me.TabPage3.Controls.Add(Me.TxtName)
+        Me.TabPage3.Controls.Add(Me.LabelName)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(949, 395)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Agregar"
         '
-        'GenerarReporteToolStripMenuItem
+        'Add
         '
-        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
-        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        Me.Add.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Add.Location = New System.Drawing.Point(322, 345)
+        Me.Add.Name = "Add"
+        Me.Add.Size = New System.Drawing.Size(143, 42)
+        Me.Add.TabIndex = 9
+        Me.Add.Text = "Agregar"
+        Me.Add.UseVisualStyleBackColor = True
+        '
+        'TxtMinTolerancia
+        '
+        Me.TxtMinTolerancia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtMinTolerancia.Location = New System.Drawing.Point(11, 89)
+        Me.TxtMinTolerancia.Name = "TxtMinTolerancia"
+        Me.TxtMinTolerancia.Size = New System.Drawing.Size(454, 20)
+        Me.TxtMinTolerancia.TabIndex = 2
+        '
+        'UsarFracciones
+        '
+        Me.UsarFracciones.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UsarFracciones.AutoSize = True
+        Me.UsarFracciones.Location = New System.Drawing.Point(63, 359)
+        Me.UsarFracciones.Name = "UsarFracciones"
+        Me.UsarFracciones.Size = New System.Drawing.Size(100, 17)
+        Me.UsarFracciones.TabIndex = 8
+        Me.UsarFracciones.Text = "Usar fracciones"
+        Me.UsarFracciones.UseVisualStyleBackColor = True
+        '
+        'TxtPrcieXDia
+        '
+        Me.TxtPrcieXDia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtPrcieXDia.Location = New System.Drawing.Point(11, 261)
+        Me.TxtPrcieXDia.Name = "TxtPrcieXDia"
+        Me.TxtPrcieXDia.Size = New System.Drawing.Size(454, 20)
+        Me.TxtPrcieXDia.TabIndex = 5
+        '
+        'LabelPrcieXDia
+        '
+        Me.LabelPrcieXDia.AutoSize = True
+        Me.LabelPrcieXDia.Location = New System.Drawing.Point(13, 243)
+        Me.LabelPrcieXDia.Name = "LabelPrcieXDia"
+        Me.LabelPrcieXDia.Size = New System.Drawing.Size(62, 13)
+        Me.LabelPrcieXDia.TabIndex = 25
+        Me.LabelPrcieXDia.Text = "Precio x dia"
+        '
+        'TxtPrcieXHora
+        '
+        Me.TxtPrcieXHora.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtPrcieXHora.Location = New System.Drawing.Point(11, 206)
+        Me.TxtPrcieXHora.Name = "TxtPrcieXHora"
+        Me.TxtPrcieXHora.Size = New System.Drawing.Size(454, 20)
+        Me.TxtPrcieXHora.TabIndex = 4
+        '
+        'LabelPrcieXHora
+        '
+        Me.LabelPrcieXHora.AutoSize = True
+        Me.LabelPrcieXHora.Location = New System.Drawing.Point(13, 188)
+        Me.LabelPrcieXHora.Name = "LabelPrcieXHora"
+        Me.LabelPrcieXHora.Size = New System.Drawing.Size(69, 13)
+        Me.LabelPrcieXHora.TabIndex = 23
+        Me.LabelPrcieXHora.Text = "Precio x hora"
+        '
+        'TxtCostoMinimo
+        '
+        Me.TxtCostoMinimo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtCostoMinimo.Location = New System.Drawing.Point(11, 152)
+        Me.TxtCostoMinimo.Name = "TxtCostoMinimo"
+        Me.TxtCostoMinimo.Size = New System.Drawing.Size(454, 20)
+        Me.TxtCostoMinimo.TabIndex = 3
+        '
+        'LabelCostoMinimo
+        '
+        Me.LabelCostoMinimo.AutoSize = True
+        Me.LabelCostoMinimo.Location = New System.Drawing.Point(13, 134)
+        Me.LabelCostoMinimo.Name = "LabelCostoMinimo"
+        Me.LabelCostoMinimo.Size = New System.Drawing.Size(69, 13)
+        Me.LabelCostoMinimo.TabIndex = 21
+        Me.LabelCostoMinimo.Text = "Costo minimo"
+        '
+        'LabelMinTolerancia
+        '
+        Me.LabelMinTolerancia.AutoSize = True
+        Me.LabelMinTolerancia.Location = New System.Drawing.Point(8, 71)
+        Me.LabelMinTolerancia.Name = "LabelMinTolerancia"
+        Me.LabelMinTolerancia.Size = New System.Drawing.Size(108, 13)
+        Me.LabelMinTolerancia.TabIndex = 19
+        Me.LabelMinTolerancia.Text = "Minutos de tolerancia"
+        '
+        'TxtName
+        '
+        Me.TxtName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtName.Location = New System.Drawing.Point(11, 30)
+        Me.TxtName.Name = "TxtName"
+        Me.TxtName.Size = New System.Drawing.Size(454, 20)
+        Me.TxtName.TabIndex = 1
+        '
+        'LabelName
+        '
+        Me.LabelName.AutoSize = True
+        Me.LabelName.Location = New System.Drawing.Point(8, 12)
+        Me.LabelName.Name = "LabelName"
+        Me.LabelName.Size = New System.Drawing.Size(70, 13)
+        Me.LabelName.TabIndex = 17
+        Me.LabelName.Text = "Nombre tarifa"
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
+        '
+        'EditarToolStripMenuItem
+        '
+        Me.EditarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.edit_24
+        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
+        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EditarToolStripMenuItem.Text = "Editar"
+        '
+        'EliminarToolStripMenuItem
+        '
+        Me.EliminarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.delete_24
+        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        '
+        'TxtTarifaPension
+        '
+        Me.TxtTarifaPension.Location = New System.Drawing.Point(11, 316)
+        Me.TxtTarifaPension.Name = "TxtTarifaPension"
+        Me.TxtTarifaPension.Size = New System.Drawing.Size(215, 20)
+        Me.TxtTarifaPension.TabIndex = 6
+        '
+        'LabelTarifaPension
+        '
+        Me.LabelTarifaPension.AutoSize = True
+        Me.LabelTarifaPension.Location = New System.Drawing.Point(13, 298)
+        Me.LabelTarifaPension.Name = "LabelTarifaPension"
+        Me.LabelTarifaPension.Size = New System.Drawing.Size(75, 13)
+        Me.LabelTarifaPension.TabIndex = 27
+        Me.LabelTarifaPension.Text = "Tarifa Pension"
+        '
+        'TxtDiasPendion
+        '
+        Me.TxtDiasPendion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtDiasPendion.Location = New System.Drawing.Point(247, 316)
+        Me.TxtDiasPendion.Name = "TxtDiasPendion"
+        Me.TxtDiasPendion.Size = New System.Drawing.Size(218, 20)
+        Me.TxtDiasPendion.TabIndex = 7
+        '
+        'LabelDiasPendion
+        '
+        Me.LabelDiasPendion.AutoSize = True
+        Me.LabelDiasPendion.Location = New System.Drawing.Point(244, 298)
+        Me.LabelDiasPendion.Name = "LabelDiasPendion"
+        Me.LabelDiasPendion.Size = New System.Drawing.Size(69, 13)
+        Me.LabelDiasPendion.TabIndex = 29
+        Me.LabelDiasPendion.Text = "Dias Pension"
+        '
+        'TxtTarifaDiasEdit
+        '
+        Me.TxtTarifaDiasEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtTarifaDiasEdit.Location = New System.Drawing.Point(249, 319)
+        Me.TxtTarifaDiasEdit.Name = "TxtTarifaDiasEdit"
+        Me.TxtTarifaDiasEdit.Size = New System.Drawing.Size(218, 20)
+        Me.TxtTarifaDiasEdit.TabIndex = 39
+        '
+        'LabelTarifaDiasEdit
+        '
+        Me.LabelTarifaDiasEdit.AutoSize = True
+        Me.LabelTarifaDiasEdit.Location = New System.Drawing.Point(246, 301)
+        Me.LabelTarifaDiasEdit.Name = "LabelTarifaDiasEdit"
+        Me.LabelTarifaDiasEdit.Size = New System.Drawing.Size(69, 13)
+        Me.LabelTarifaDiasEdit.TabIndex = 41
+        Me.LabelTarifaDiasEdit.Text = "Dias Pension"
+        '
+        'TxtTarifaPensionEdit
+        '
+        Me.TxtTarifaPensionEdit.Location = New System.Drawing.Point(13, 319)
+        Me.TxtTarifaPensionEdit.Name = "TxtTarifaPensionEdit"
+        Me.TxtTarifaPensionEdit.Size = New System.Drawing.Size(215, 20)
+        Me.TxtTarifaPensionEdit.TabIndex = 38
+        '
+        'LabelTarifaPensionEdit
+        '
+        Me.LabelTarifaPensionEdit.AutoSize = True
+        Me.LabelTarifaPensionEdit.Location = New System.Drawing.Point(15, 301)
+        Me.LabelTarifaPensionEdit.Name = "LabelTarifaPensionEdit"
+        Me.LabelTarifaPensionEdit.Size = New System.Drawing.Size(75, 13)
+        Me.LabelTarifaPensionEdit.TabIndex = 40
+        Me.LabelTarifaPensionEdit.Text = "Tarifa Pension"
         '
         'Rate
         '
@@ -522,4 +606,12 @@ Partial Class Rate
     Friend WithEvents LabelNombreEdit As Label
     Friend WithEvents TarifasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerarReporteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TxtDiasPendion As TextBox
+    Friend WithEvents LabelDiasPendion As Label
+    Friend WithEvents TxtTarifaPension As TextBox
+    Friend WithEvents LabelTarifaPension As Label
+    Friend WithEvents TxtTarifaDiasEdit As TextBox
+    Friend WithEvents LabelTarifaDiasEdit As Label
+    Friend WithEvents TxtTarifaPensionEdit As TextBox
+    Friend WithEvents LabelTarifaPensionEdit As Label
 End Class

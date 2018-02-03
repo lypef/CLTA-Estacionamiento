@@ -21,6 +21,20 @@
         TabControl1.Font = My.Settings.text_font
         TxtSearch.Text = "//BUSCAR"
 
+        LabelTarifaPension.Font = My.Settings.text_font
+        TxtTarifaPension.Font = My.Settings.text_font
+        LabelTarifaPensionEdit.Font = My.Settings.text_font
+        TxtTarifaPensionEdit.Font = My.Settings.text_font
+
+        LabelDiasPendion.Font = My.Settings.text_font
+        LabelDiasPendion.Font = My.Settings.text_font
+        LabelTarifaDiasEdit.Font = My.Settings.text_font
+        TxtTarifaDiasEdit.Font = My.Settings.text_font
+
+        LabelName.Font = My.Settings.text_font
+        TxtName.Font = My.Settings.text_font
+
+
         LabelName.Font = My.Settings.text_font
         TxtName.Font = My.Settings.text_font
         LabelNombreEdit.Font = My.Settings.text_font
@@ -132,7 +146,7 @@
 
     Private Sub LoadValuesEdit()
         TabControl1.SelectedIndex = 1
-        f.Tarifa_LoadValues(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit)
+        f.Tarifa_LoadValues(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit, TxtTarifaPensionEdit, TxtTarifaDiasEdit)
     End Sub
 
     Private Sub Agregar()
@@ -173,8 +187,8 @@
     End Sub
 
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
-        If f.GetPermiso(f.Permiso_Rate_Add) And String.IsNullOrEmpty(TxtName.Text) = False And f.IsNumber(TxtPrcieXHora.Text) And f.IsNumber(TxtPrcieXDia.Text) Then
-            If f.AddVehicle(TxtName, TxtMinTolerancia, TxtCostoMinimo, TxtPrcieXHora, TxtPrcieXDia, UsarFracciones) Then
+        If f.GetPermiso(f.Permiso_Rate_Add) And String.IsNullOrEmpty(TxtName.Text) = False And f.IsNumber(TxtPrcieXHora.Text) And f.IsNumber(TxtPrcieXDia.Text) And f.IsNumber(TxtTarifaPension.Text) And f.IsNumber(TxtDiasPendion.Text) Then
+            If f.AddVehicle(TxtName, TxtMinTolerancia, TxtCostoMinimo, TxtPrcieXHora, TxtPrcieXDia, UsarFracciones, TxtTarifaPension, TxtDiasPendion) Then
                 LimpiarAddTarifa()
                 f.Alert("Tarifa agregada", f.Alert_NumberInformacion, PanelControl.Desktop)
             Else
@@ -196,8 +210,8 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If f.GetPermiso(f.Permiso_Rate_Edit) And String.IsNullOrEmpty(TxtNombreEdit.Text) = False And f.IsNumber(TxtPrecioHoraEdit.Text) And f.IsNumber(TxtPrecioDiaEdit.Text) Then
-            If f.UpdateRate(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit) Then
+        If f.GetPermiso(f.Permiso_Rate_Edit) And String.IsNullOrEmpty(TxtNombreEdit.Text) = False And f.IsNumber(TxtPrecioHoraEdit.Text) And f.IsNumber(TxtPrecioDiaEdit.Text) And f.IsNumber(TxtTarifaPensionEdit.Text) And f.IsNumber(TxtTarifaDiasEdit.Text) Then
+            If f.UpdateRate(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit, TxtTarifaPensionEdit, TxtTarifaDiasEdit) Then
                 LimpiarEditTarifa()
                 TabControl1.SelectedIndex = 0
                 f.Alert("Tarifa actualizada", f.Alert_NumberInformacion, PanelControl.Desktop)

@@ -23,8 +23,6 @@
 
         TabControl1.Font = My.Settings.Menu_font
 
-        RB_Horas.Font = My.Settings.text_font
-        RB_Dias.Font = My.Settings.text_font
 
         TxtRfid.Font = My.Settings.text_font
         LabelRfid.Font = My.Settings.text_font
@@ -168,7 +166,7 @@
     Private Sub LoadEdit()
         f.ComboboxSetClients(ComboClientsEdit)
         f.ComboboxSetTarifas(ComboBoxTarifaEdit)
-        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit, ComboBoxTarifaEdit, TxtRfid_Edit, RB_HorasEdit, RB_DiasEdit)
+        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit, ComboBoxTarifaEdit, TxtRfid_Edit)
         f.ComboboxSetIMGClient(ComboClientsEdit, ImageClientEdit)
         editar = True
     End Sub
@@ -181,7 +179,7 @@
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
         If ComboClients.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Add) And ComboBoxTarifa.SelectedIndex > 0 Then
             If String.IsNullOrEmpty(Matricula_Textbox.Text) = False Then
-                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox, ComboBoxTarifa, TxtRfid, RB_Horas, RB_Dias) Then
+                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox, ComboBoxTarifa, TxtRfid) Then
                     LimpiarAddVehicles()
                     f.Alert("Vehiculo agregado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 Else
@@ -205,7 +203,6 @@
         Color_Textbox.Text = ""
         Estado_Textbox.Text = ""
         TxtRfid.Text = ""
-        RB_Horas.Checked = True
     End Sub
 
     Private Sub ComboClientsEdit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientsEdit.SelectedIndexChanged
@@ -216,7 +213,7 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) And ComboBoxTarifaEdit.SelectedIndex > 0 Then
-            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit, TxtRfid_Edit, RB_HorasEdit, RB_DiasEdit) Then
+            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit, TxtRfid_Edit) Then
                 f.Alert("Vehiculo actualizado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 TabControl1.SelectedIndex = 0
             Else
