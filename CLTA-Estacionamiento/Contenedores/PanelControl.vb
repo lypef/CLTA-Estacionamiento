@@ -128,6 +128,7 @@ Public Class PanelControl
 
     Private Sub AjustesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AjustesToolStripMenuItem1.Click
         f.AddForm_Desktop(properties, Desktop)
+        properties.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
