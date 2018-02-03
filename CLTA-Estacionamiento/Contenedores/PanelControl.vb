@@ -95,7 +95,7 @@ Public Class PanelControl
 
         If mes = 1 Then
             fecha += " " + dia_mes.ToString + " de " + "Enero de " + DateTime.Now.Year.ToString + " | HORA: " + DateTime.Now.Hour.ToString + ":" + DateTime.Now.Minute.ToString + ":" + DateTime.Now.Second.ToString
-        ElseIf dia = 2 Then
+        ElseIf mes = 2 Then
             fecha += " " + dia_mes.ToString + " de " + "febrero de " + DateTime.Now.Year.ToString + " | HORA: " + DateTime.Now.Hour.ToString + ":" + DateTime.Now.Minute.ToString + ":" + DateTime.Now.Second.ToString
         ElseIf mes = 3 Then
             fecha += " " + dia_mes.ToString + " de " + "marzo de " + DateTime.Now.Year.ToString + " | HORA: " + DateTime.Now.Hour.ToString + ":" + DateTime.Now.Minute.ToString + ":" + DateTime.Now.Second.ToString

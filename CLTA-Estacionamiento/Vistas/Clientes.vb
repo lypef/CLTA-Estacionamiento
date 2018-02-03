@@ -11,13 +11,10 @@
         TxtSearch.BackColor = My.Settings.Menu_color
         MainMenuStrip.Font = My.Settings.Menu_font
         TxtSearch.Font = My.Settings.Menu_font
-        Label1.Font = My.Settings.Menu_font
 
         TabPage1.Font = My.Settings.Menu_font
         TabPage2.Font = My.Settings.Menu_font
         TabPage3.Font = My.Settings.Menu_font
-        Label1.Font = My.Settings.Menu_font
-        Label1.BackColor = My.Settings.Menu_color
         ToolStripMenuItem3.Font = My.Settings.Menu_font
         ToolStripMenuItem2.Font = My.Settings.Menu_font
         ToolStripMenuItem4.Font = My.Settings.Menu_font
@@ -215,10 +212,10 @@
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
-            'TabControl1.SelectedIndex = 0
-            'f.GetClients("SELECT * FROM clients where name LIKE '%" + TxtSearch.Text + "%' or address LIKE '%" + TxtSearch.Text + "%' or phone LIKE '%" + TxtSearch.Text + "%' OR mail LIKE '%" + TxtSearch.Text + "%' OR rfc LIKE '%" + TxtSearch.Text + "%' OR razonsocial LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
-            'Functions.Client = ""
-            'TxtSearch.Text = ""
+            TabControl1.SelectedIndex = 0
+            f.GetClients("SELECT * FROM clients where name LIKE '%" + TxtSearch.Text + "%' or address LIKE '%" + TxtSearch.Text + "%' or phone LIKE '%" + TxtSearch.Text + "%' OR mail LIKE '%" + TxtSearch.Text + "%' OR rfc LIKE '%" + TxtSearch.Text + "%' OR razonsocial LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
+            Functions.Client = ""
+            TxtSearch.Text = ""
         End If
     End Sub
 

@@ -25,4 +25,5 @@
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Me.Dispose()
     End Sub
+
 End Class

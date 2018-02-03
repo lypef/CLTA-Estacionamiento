@@ -29,11 +29,15 @@ Partial Class Vehicles
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.RB_DiasEdit = New System.Windows.Forms.RadioButton()
+        Me.RB_HorasEdit = New System.Windows.Forms.RadioButton()
+        Me.TxtRfid_Edit = New System.Windows.Forms.TextBox()
+        Me.LabelRfid_Edit = New System.Windows.Forms.Label()
+        Me.ComboBoxTarifaEdit = New System.Windows.Forms.ComboBox()
         Me.ImageClientEdit = New System.Windows.Forms.PictureBox()
         Me.ComboClientsEdit = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -46,6 +50,11 @@ Partial Class Vehicles
         Me.MatriculaTextBoxEdit = New System.Windows.Forms.TextBox()
         Me.MatriculaLabelEdit = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.RB_Dias = New System.Windows.Forms.RadioButton()
+        Me.RB_Horas = New System.Windows.Forms.RadioButton()
+        Me.TxtRfid = New System.Windows.Forms.TextBox()
+        Me.LabelRfid = New System.Windows.Forms.Label()
+        Me.ComboBoxTarifa = New System.Windows.Forms.ComboBox()
         Me.ImageClient = New System.Windows.Forms.PictureBox()
         Me.ComboClients = New System.Windows.Forms.ComboBox()
         Me.Add = New System.Windows.Forms.Button()
@@ -60,8 +69,8 @@ Partial Class Vehicles
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ComboBoxTarifa = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxTarifaEdit = New System.Windows.Forms.ComboBox()
+        Me.VehiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -77,7 +86,7 @@ Partial Class Vehicles
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.TxtSearch})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.TxtSearch, Me.VehiculosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(957, 29)
@@ -126,17 +135,6 @@ Partial Class Vehicles
         Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
         Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
-        Me.Label1.Location = New System.Drawing.Point(12, 5)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(82, 20)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Vehiculos"
-        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
@@ -172,6 +170,10 @@ Partial Class Vehicles
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.RB_DiasEdit)
+        Me.TabPage2.Controls.Add(Me.RB_HorasEdit)
+        Me.TabPage2.Controls.Add(Me.TxtRfid_Edit)
+        Me.TabPage2.Controls.Add(Me.LabelRfid_Edit)
         Me.TabPage2.Controls.Add(Me.ComboBoxTarifaEdit)
         Me.TabPage2.Controls.Add(Me.ImageClientEdit)
         Me.TabPage2.Controls.Add(Me.ComboClientsEdit)
@@ -190,6 +192,59 @@ Partial Class Vehicles
         Me.TabPage2.Size = New System.Drawing.Size(949, 395)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Editar"
+        '
+        'RB_DiasEdit
+        '
+        Me.RB_DiasEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RB_DiasEdit.AutoSize = True
+        Me.RB_DiasEdit.Location = New System.Drawing.Point(690, 265)
+        Me.RB_DiasEdit.Name = "RB_DiasEdit"
+        Me.RB_DiasEdit.Size = New System.Drawing.Size(101, 17)
+        Me.RB_DiasEdit.TabIndex = 56
+        Me.RB_DiasEdit.TabStop = True
+        Me.RB_DiasEdit.Text = "TARIFA X DIAS"
+        Me.RB_DiasEdit.UseVisualStyleBackColor = True
+        '
+        'RB_HorasEdit
+        '
+        Me.RB_HorasEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RB_HorasEdit.AutoSize = True
+        Me.RB_HorasEdit.Location = New System.Drawing.Point(532, 265)
+        Me.RB_HorasEdit.Name = "RB_HorasEdit"
+        Me.RB_HorasEdit.Size = New System.Drawing.Size(114, 17)
+        Me.RB_HorasEdit.TabIndex = 55
+        Me.RB_HorasEdit.TabStop = True
+        Me.RB_HorasEdit.Text = "TARIFA X HORAS"
+        Me.RB_HorasEdit.UseVisualStyleBackColor = True
+        '
+        'TxtRfid_Edit
+        '
+        Me.TxtRfid_Edit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtRfid_Edit.Location = New System.Drawing.Point(8, 106)
+        Me.TxtRfid_Edit.Name = "TxtRfid_Edit"
+        Me.TxtRfid_Edit.Size = New System.Drawing.Size(457, 20)
+        Me.TxtRfid_Edit.TabIndex = 53
+        '
+        'LabelRfid_Edit
+        '
+        Me.LabelRfid_Edit.AutoSize = True
+        Me.LabelRfid_Edit.Location = New System.Drawing.Point(8, 85)
+        Me.LabelRfid_Edit.Name = "LabelRfid_Edit"
+        Me.LabelRfid_Edit.Size = New System.Drawing.Size(32, 13)
+        Me.LabelRfid_Edit.TabIndex = 54
+        Me.LabelRfid_Edit.Text = "RFID"
+        '
+        'ComboBoxTarifaEdit
+        '
+        Me.ComboBoxTarifaEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBoxTarifaEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxTarifaEdit.FormattingEnabled = True
+        Me.ComboBoxTarifaEdit.Location = New System.Drawing.Point(8, 56)
+        Me.ComboBoxTarifaEdit.Name = "ComboBoxTarifaEdit"
+        Me.ComboBoxTarifaEdit.Size = New System.Drawing.Size(457, 21)
+        Me.ComboBoxTarifaEdit.TabIndex = 52
         '
         'ImageClientEdit
         '
@@ -227,16 +282,16 @@ Partial Class Vehicles
         Me.EstadoTextboxEdit.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.EstadoTextboxEdit.Location = New System.Drawing.Point(8, 292)
+        Me.EstadoTextboxEdit.Location = New System.Drawing.Point(8, 302)
         Me.EstadoTextboxEdit.Multiline = True
         Me.EstadoTextboxEdit.Name = "EstadoTextboxEdit"
-        Me.EstadoTextboxEdit.Size = New System.Drawing.Size(457, 95)
+        Me.EstadoTextboxEdit.Size = New System.Drawing.Size(457, 82)
         Me.EstadoTextboxEdit.TabIndex = 44
         '
         'EstadoLabelEdit
         '
         Me.EstadoLabelEdit.AutoSize = True
-        Me.EstadoLabelEdit.Location = New System.Drawing.Point(8, 268)
+        Me.EstadoLabelEdit.Location = New System.Drawing.Point(8, 281)
         Me.EstadoLabelEdit.Name = "EstadoLabelEdit"
         Me.EstadoLabelEdit.Size = New System.Drawing.Size(128, 13)
         Me.EstadoLabelEdit.TabIndex = 48
@@ -246,7 +301,7 @@ Partial Class Vehicles
         '
         Me.ColorTextBoxEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ColorTextBoxEdit.Location = New System.Drawing.Point(8, 232)
+        Me.ColorTextBoxEdit.Location = New System.Drawing.Point(8, 253)
         Me.ColorTextBoxEdit.Name = "ColorTextBoxEdit"
         Me.ColorTextBoxEdit.Size = New System.Drawing.Size(457, 20)
         Me.ColorTextBoxEdit.TabIndex = 43
@@ -254,7 +309,7 @@ Partial Class Vehicles
         'ColorLabelEdit
         '
         Me.ColorLabelEdit.AutoSize = True
-        Me.ColorLabelEdit.Location = New System.Drawing.Point(8, 211)
+        Me.ColorLabelEdit.Location = New System.Drawing.Point(8, 232)
         Me.ColorLabelEdit.Name = "ColorLabelEdit"
         Me.ColorLabelEdit.Size = New System.Drawing.Size(31, 13)
         Me.ColorLabelEdit.TabIndex = 47
@@ -264,7 +319,7 @@ Partial Class Vehicles
         '
         Me.ModeloTextBoxEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ModeloTextBoxEdit.Location = New System.Drawing.Point(8, 176)
+        Me.ModeloTextBoxEdit.Location = New System.Drawing.Point(8, 204)
         Me.ModeloTextBoxEdit.Name = "ModeloTextBoxEdit"
         Me.ModeloTextBoxEdit.Size = New System.Drawing.Size(457, 20)
         Me.ModeloTextBoxEdit.TabIndex = 42
@@ -272,7 +327,7 @@ Partial Class Vehicles
         'ModeloLabelEdit
         '
         Me.ModeloLabelEdit.AutoSize = True
-        Me.ModeloLabelEdit.Location = New System.Drawing.Point(8, 151)
+        Me.ModeloLabelEdit.Location = New System.Drawing.Point(8, 183)
         Me.ModeloLabelEdit.Name = "ModeloLabelEdit"
         Me.ModeloLabelEdit.Size = New System.Drawing.Size(42, 13)
         Me.ModeloLabelEdit.TabIndex = 46
@@ -282,7 +337,7 @@ Partial Class Vehicles
         '
         Me.MatriculaTextBoxEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MatriculaTextBoxEdit.Location = New System.Drawing.Point(8, 113)
+        Me.MatriculaTextBoxEdit.Location = New System.Drawing.Point(8, 155)
         Me.MatriculaTextBoxEdit.Name = "MatriculaTextBoxEdit"
         Me.MatriculaTextBoxEdit.Size = New System.Drawing.Size(457, 20)
         Me.MatriculaTextBoxEdit.TabIndex = 41
@@ -290,7 +345,7 @@ Partial Class Vehicles
         'MatriculaLabelEdit
         '
         Me.MatriculaLabelEdit.AutoSize = True
-        Me.MatriculaLabelEdit.Location = New System.Drawing.Point(8, 91)
+        Me.MatriculaLabelEdit.Location = New System.Drawing.Point(8, 134)
         Me.MatriculaLabelEdit.Name = "MatriculaLabelEdit"
         Me.MatriculaLabelEdit.Size = New System.Drawing.Size(50, 13)
         Me.MatriculaLabelEdit.TabIndex = 45
@@ -299,6 +354,10 @@ Partial Class Vehicles
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage3.Controls.Add(Me.RB_Dias)
+        Me.TabPage3.Controls.Add(Me.RB_Horas)
+        Me.TabPage3.Controls.Add(Me.TxtRfid)
+        Me.TabPage3.Controls.Add(Me.LabelRfid)
         Me.TabPage3.Controls.Add(Me.ComboBoxTarifa)
         Me.TabPage3.Controls.Add(Me.ImageClient)
         Me.TabPage3.Controls.Add(Me.ComboClients)
@@ -317,6 +376,59 @@ Partial Class Vehicles
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Agregar"
         '
+        'RB_Dias
+        '
+        Me.RB_Dias.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RB_Dias.AutoSize = True
+        Me.RB_Dias.Location = New System.Drawing.Point(691, 259)
+        Me.RB_Dias.Name = "RB_Dias"
+        Me.RB_Dias.Size = New System.Drawing.Size(101, 17)
+        Me.RB_Dias.TabIndex = 45
+        Me.RB_Dias.TabStop = True
+        Me.RB_Dias.Text = "TARIFA X DIAS"
+        Me.RB_Dias.UseVisualStyleBackColor = True
+        '
+        'RB_Horas
+        '
+        Me.RB_Horas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RB_Horas.AutoSize = True
+        Me.RB_Horas.Location = New System.Drawing.Point(533, 259)
+        Me.RB_Horas.Name = "RB_Horas"
+        Me.RB_Horas.Size = New System.Drawing.Size(114, 17)
+        Me.RB_Horas.TabIndex = 44
+        Me.RB_Horas.TabStop = True
+        Me.RB_Horas.Text = "TARIFA X HORAS"
+        Me.RB_Horas.UseVisualStyleBackColor = True
+        '
+        'TxtRfid
+        '
+        Me.TxtRfid.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtRfid.Location = New System.Drawing.Point(7, 103)
+        Me.TxtRfid.Name = "TxtRfid"
+        Me.TxtRfid.Size = New System.Drawing.Size(457, 20)
+        Me.TxtRfid.TabIndex = 3
+        '
+        'LabelRfid
+        '
+        Me.LabelRfid.AutoSize = True
+        Me.LabelRfid.Location = New System.Drawing.Point(7, 82)
+        Me.LabelRfid.Name = "LabelRfid"
+        Me.LabelRfid.Size = New System.Drawing.Size(32, 13)
+        Me.LabelRfid.TabIndex = 43
+        Me.LabelRfid.Text = "RFID"
+        '
+        'ComboBoxTarifa
+        '
+        Me.ComboBoxTarifa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBoxTarifa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxTarifa.FormattingEnabled = True
+        Me.ComboBoxTarifa.Location = New System.Drawing.Point(7, 48)
+        Me.ComboBoxTarifa.Name = "ComboBoxTarifa"
+        Me.ComboBoxTarifa.Size = New System.Drawing.Size(457, 21)
+        Me.ComboBoxTarifa.TabIndex = 2
+        '
         'ImageClient
         '
         Me.ImageClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -333,10 +445,10 @@ Partial Class Vehicles
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboClients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboClients.FormattingEnabled = True
-        Me.ComboClients.Location = New System.Drawing.Point(9, 11)
+        Me.ComboClients.Location = New System.Drawing.Point(7, 11)
         Me.ComboClients.Name = "ComboClients"
         Me.ComboClients.Size = New System.Drawing.Size(457, 21)
-        Me.ComboClients.TabIndex = 39
+        Me.ComboClients.TabIndex = 1
         '
         'Add
         '
@@ -344,7 +456,7 @@ Partial Class Vehicles
         Me.Add.Location = New System.Drawing.Point(798, 246)
         Me.Add.Name = "Add"
         Me.Add.Size = New System.Drawing.Size(143, 42)
-        Me.Add.TabIndex = 38
+        Me.Add.TabIndex = 8
         Me.Add.Text = "Agregar"
         Me.Add.UseVisualStyleBackColor = True
         '
@@ -353,16 +465,16 @@ Partial Class Vehicles
         Me.Estado_Textbox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Estado_Textbox.Location = New System.Drawing.Point(8, 280)
+        Me.Estado_Textbox.Location = New System.Drawing.Point(7, 299)
         Me.Estado_Textbox.Multiline = True
         Me.Estado_Textbox.Name = "Estado_Textbox"
-        Me.Estado_Textbox.Size = New System.Drawing.Size(457, 107)
-        Me.Estado_Textbox.TabIndex = 30
+        Me.Estado_Textbox.Size = New System.Drawing.Size(457, 86)
+        Me.Estado_Textbox.TabIndex = 7
         '
         'Estado_Label
         '
         Me.Estado_Label.AutoSize = True
-        Me.Estado_Label.Location = New System.Drawing.Point(8, 259)
+        Me.Estado_Label.Location = New System.Drawing.Point(7, 278)
         Me.Estado_Label.Name = "Estado_Label"
         Me.Estado_Label.Size = New System.Drawing.Size(128, 13)
         Me.Estado_Label.TabIndex = 36
@@ -372,15 +484,15 @@ Partial Class Vehicles
         '
         Me.Color_Textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Color_Textbox.Location = New System.Drawing.Point(8, 223)
+        Me.Color_Textbox.Location = New System.Drawing.Point(7, 250)
         Me.Color_Textbox.Name = "Color_Textbox"
         Me.Color_Textbox.Size = New System.Drawing.Size(457, 20)
-        Me.Color_Textbox.TabIndex = 28
+        Me.Color_Textbox.TabIndex = 6
         '
         'Color_label
         '
         Me.Color_label.AutoSize = True
-        Me.Color_label.Location = New System.Drawing.Point(8, 202)
+        Me.Color_label.Location = New System.Drawing.Point(7, 229)
         Me.Color_label.Name = "Color_label"
         Me.Color_label.Size = New System.Drawing.Size(31, 13)
         Me.Color_label.TabIndex = 34
@@ -390,15 +502,15 @@ Partial Class Vehicles
         '
         Me.ModeloTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ModeloTextBox.Location = New System.Drawing.Point(8, 167)
+        Me.ModeloTextBox.Location = New System.Drawing.Point(7, 201)
         Me.ModeloTextBox.Name = "ModeloTextBox"
         Me.ModeloTextBox.Size = New System.Drawing.Size(457, 20)
-        Me.ModeloTextBox.TabIndex = 27
+        Me.ModeloTextBox.TabIndex = 5
         '
         'ModeloLabel
         '
         Me.ModeloLabel.AutoSize = True
-        Me.ModeloLabel.Location = New System.Drawing.Point(8, 142)
+        Me.ModeloLabel.Location = New System.Drawing.Point(7, 180)
         Me.ModeloLabel.Name = "ModeloLabel"
         Me.ModeloLabel.Size = New System.Drawing.Size(42, 13)
         Me.ModeloLabel.TabIndex = 33
@@ -408,15 +520,15 @@ Partial Class Vehicles
         '
         Me.Matricula_Textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Matricula_Textbox.Location = New System.Drawing.Point(8, 104)
+        Me.Matricula_Textbox.Location = New System.Drawing.Point(7, 152)
         Me.Matricula_Textbox.Name = "Matricula_Textbox"
         Me.Matricula_Textbox.Size = New System.Drawing.Size(457, 20)
-        Me.Matricula_Textbox.TabIndex = 26
+        Me.Matricula_Textbox.TabIndex = 4
         '
         'Matricula_label
         '
         Me.Matricula_label.AutoSize = True
-        Me.Matricula_label.Location = New System.Drawing.Point(8, 82)
+        Me.Matricula_label.Location = New System.Drawing.Point(7, 131)
         Me.Matricula_label.Name = "Matricula_label"
         Me.Matricula_label.Size = New System.Drawing.Size(50, 13)
         Me.Matricula_label.TabIndex = 32
@@ -442,27 +554,18 @@ Partial Class Vehicles
         Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
-        'ComboBoxTarifa
+        'VehiculosToolStripMenuItem
         '
-        Me.ComboBoxTarifa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBoxTarifa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxTarifa.FormattingEnabled = True
-        Me.ComboBoxTarifa.Location = New System.Drawing.Point(8, 48)
-        Me.ComboBoxTarifa.Name = "ComboBoxTarifa"
-        Me.ComboBoxTarifa.Size = New System.Drawing.Size(457, 21)
-        Me.ComboBoxTarifa.TabIndex = 41
+        Me.VehiculosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
+        Me.VehiculosToolStripMenuItem.Name = "VehiculosToolStripMenuItem"
+        Me.VehiculosToolStripMenuItem.Size = New System.Drawing.Size(88, 25)
+        Me.VehiculosToolStripMenuItem.Text = "Vehiculos"
         '
-        'ComboBoxTarifaEdit
+        'GenerarReporteToolStripMenuItem
         '
-        Me.ComboBoxTarifaEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBoxTarifaEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxTarifaEdit.FormattingEnabled = True
-        Me.ComboBoxTarifaEdit.Location = New System.Drawing.Point(8, 56)
-        Me.ComboBoxTarifaEdit.Name = "ComboBoxTarifaEdit"
-        Me.ComboBoxTarifaEdit.Size = New System.Drawing.Size(457, 21)
-        Me.ComboBoxTarifaEdit.TabIndex = 52
+        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
         '
         'Vehicles
         '
@@ -470,7 +573,6 @@ Partial Class Vehicles
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(957, 450)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Vehicles"
@@ -498,7 +600,6 @@ Partial Class Vehicles
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents TxtSearch As ToolStripTextBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -531,4 +632,14 @@ Partial Class Vehicles
     Friend WithEvents MatriculaLabelEdit As Label
     Friend WithEvents ComboBoxTarifa As ComboBox
     Friend WithEvents ComboBoxTarifaEdit As ComboBox
+    Friend WithEvents TxtRfid As TextBox
+    Friend WithEvents LabelRfid As Label
+    Friend WithEvents TxtRfid_Edit As TextBox
+    Friend WithEvents LabelRfid_Edit As Label
+    Friend WithEvents RB_Dias As RadioButton
+    Friend WithEvents RB_Horas As RadioButton
+    Friend WithEvents RB_DiasEdit As RadioButton
+    Friend WithEvents RB_HorasEdit As RadioButton
+    Friend WithEvents VehiculosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenerarReporteToolStripMenuItem As ToolStripMenuItem
 End Class

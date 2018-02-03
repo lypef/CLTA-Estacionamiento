@@ -20,10 +20,21 @@
         TxtSearch.Font = My.Settings.Menu_font
         TxtSearch.ForeColor = Color.Gray
         TxtSearch.Text = "//BUSCAR"
-        Label1.Font = My.Settings.Menu_font
-        Label1.BackColor = My.Settings.Menu_color
 
         TabControl1.Font = My.Settings.Menu_font
+
+        RB_Horas.Font = My.Settings.text_font
+        RB_Dias.Font = My.Settings.text_font
+
+        TxtRfid.Font = My.Settings.text_font
+        LabelRfid.Font = My.Settings.text_font
+        TxtRfid.Font = My.Settings.text_font
+        LabelRfid.Font = My.Settings.text_font
+
+        TxtRfid_Edit.Font = My.Settings.text_font
+        LabelRfid_Edit.Font = My.Settings.text_font
+        TxtRfid_Edit.Font = My.Settings.text_font
+        LabelRfid_Edit.Font = My.Settings.text_font
 
         Matricula_Textbox.Font = My.Settings.text_font
         Matricula_label.Font = My.Settings.text_font
@@ -103,7 +114,10 @@
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
             TabControl1.SelectedIndex = 0
-            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
+            If (f.IsNumber(TxtSearch.Text)) Then
+                TxtSearch.Text = (Convert.ToInt32(TxtSearch.Text)).ToString
+            End If
+            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.rfid like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
             TxtSearch.Text = ""
         End If
     End Sub
@@ -154,7 +168,7 @@
     Private Sub LoadEdit()
         f.ComboboxSetClients(ComboClientsEdit)
         f.ComboboxSetTarifas(ComboBoxTarifaEdit)
-        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit, ComboBoxTarifaEdit)
+        f.Vehicle_LoadValues(MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboClientsEdit, ComboBoxTarifaEdit, TxtRfid_Edit, RB_HorasEdit, RB_DiasEdit)
         f.ComboboxSetIMGClient(ComboClientsEdit, ImageClientEdit)
         editar = True
     End Sub
@@ -167,7 +181,7 @@
     Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
         If ComboClients.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Add) And ComboBoxTarifa.SelectedIndex > 0 Then
             If String.IsNullOrEmpty(Matricula_Textbox.Text) = False Then
-                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox, ComboBoxTarifa) Then
+                If f.AddVehicle(ComboClients, Matricula_Textbox, ModeloTextBox, Color_Textbox, Estado_Textbox, ComboBoxTarifa, TxtRfid, RB_Horas, RB_Dias) Then
                     LimpiarAddVehicles()
                     f.Alert("Vehiculo agregado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 Else
@@ -190,6 +204,8 @@
         ModeloTextBox.Text = ""
         Color_Textbox.Text = ""
         Estado_Textbox.Text = ""
+        TxtRfid.Text = ""
+        RB_Horas.Checked = True
     End Sub
 
     Private Sub ComboClientsEdit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientsEdit.SelectedIndexChanged
@@ -200,7 +216,7 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) And ComboBoxTarifaEdit.SelectedIndex > 0 Then
-            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit) Then
+            If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit, TxtRfid_Edit, RB_HorasEdit, RB_DiasEdit) Then
                 f.Alert("Vehiculo actualizado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 TabControl1.SelectedIndex = 0
             Else

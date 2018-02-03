@@ -47,5 +47,8 @@
     <Setting Name="moneda" Type="System.String" Scope="User">
       <Value Profile="(Default)">MXN</Value>
     </Setting>
+    <Setting Name="form_windowstate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

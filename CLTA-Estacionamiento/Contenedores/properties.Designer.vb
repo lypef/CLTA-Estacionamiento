@@ -49,6 +49,7 @@ Partial Class properties
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Ventana = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -284,14 +285,26 @@ Partial Class properties
         Me.ComboBox1.Items.AddRange(New Object() {"SELECCIONE UNA MONEDA", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "nenhum", "Nenhum", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAF", "XAF", "XAF", "XAF", "XCD", "XCD", "XCD", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XPF", "XPF", "YER", "ZAR", "ZMK", "ZWL"})
         Me.ComboBox1.Location = New System.Drawing.Point(204, 252)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(297, 30)
+        Me.ComboBox1.Size = New System.Drawing.Size(143, 30)
         Me.ComboBox1.TabIndex = 112
+        '
+        'Ventana
+        '
+        Me.Ventana.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Ventana.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.25!)
+        Me.Ventana.FormattingEnabled = True
+        Me.Ventana.Items.AddRange(New Object() {"VENTANAS", "NORMAL", "MAXIMIZADAS"})
+        Me.Ventana.Location = New System.Drawing.Point(353, 253)
+        Me.Ventana.Name = "Ventana"
+        Me.Ventana.Size = New System.Drawing.Size(148, 30)
+        Me.Ventana.TabIndex = 113
         '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 311)
+        Me.Controls.Add(Me.Ventana)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.LetraMenu)
@@ -345,4 +358,5 @@ Partial Class properties
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Ventana As ComboBox
 End Class

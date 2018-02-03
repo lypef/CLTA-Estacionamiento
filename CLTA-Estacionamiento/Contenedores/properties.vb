@@ -27,6 +27,7 @@ Public Class properties
                 Exit For
             End If
         Next
+        Ventana.SelectedIndex = My.Settings.form_windowstate
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -55,6 +56,7 @@ Public Class properties
         My.Settings.Menu_color = ColorMenu.BackColor
         My.Settings.Menu_font = LetraMenu.Font
         My.Settings.moneda = ComboBox1.SelectedItem.ToString.ToUpper
+        My.Settings.form_windowstate = Ventana.SelectedIndex
         My.Settings.Save()
         Application.Restart()
     End Sub

@@ -233,6 +233,18 @@ Namespace My
                 Me("moneda") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property form_windowstate() As Integer
+            Get
+                Return CType(Me("form_windowstate"),Integer)
+            End Get
+            Set
+                Me("form_windowstate") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

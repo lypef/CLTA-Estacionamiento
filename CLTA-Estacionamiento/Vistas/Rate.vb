@@ -9,8 +9,6 @@
         editar = False
         MenuStrip1.Font = My.Settings.Menu_font
         MenuStrip1.BackColor = My.Settings.Menu_color
-        Label1.Font = My.Settings.Menu_font
-        Label1.BackColor = My.Settings.Menu_color
 
         TxtSearch.BackColor = My.Settings.Menu_color
         TxtSearch.Font = My.Settings.Menu_font
@@ -22,6 +20,34 @@
         ToolStripMenuItem4.Font = My.Settings.Menu_font
         TabControl1.Font = My.Settings.text_font
         TxtSearch.Text = "//BUSCAR"
+
+        LabelName.Font = My.Settings.text_font
+        TxtName.Font = My.Settings.text_font
+        LabelNombreEdit.Font = My.Settings.text_font
+        TxtNombreEdit.Font = My.Settings.text_font
+
+        LabelMinTolerancia.Font = My.Settings.text_font
+        TxtMinTolerancia.Font = My.Settings.text_font
+        LabelMinToleEdit.Font = My.Settings.text_font
+        TxtMinToleEdit.Font = My.Settings.text_font
+
+        LabelCostoMinimo.Font = My.Settings.text_font
+        TxtCostoMinimo.Font = My.Settings.text_font
+        LabelCostoMinEdit.Font = My.Settings.text_font
+        TxtCostoMinEdit.Font = My.Settings.text_font
+
+        LabelPrcieXHora.Font = My.Settings.text_font
+        TxtPrcieXHora.Font = My.Settings.text_font
+        LabelPrecioHoraEdit.Font = My.Settings.text_font
+        TxtPrecioHoraEdit.Font = My.Settings.text_font
+
+        LabelPrcieXDia.Font = My.Settings.text_font
+        TxtPrcieXDia.Font = My.Settings.text_font
+        LabelPrecioDiaEdit.Font = My.Settings.text_font
+        TxtPrecioDiaEdit.Font = My.Settings.text_font
+
+        UsarFracciones.Font = My.Settings.text_font
+        UseFraccionesEdit.Font = My.Settings.text_font
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
@@ -67,7 +93,12 @@
     End Sub
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
-
+        If e.KeyCode = Keys.Enter Then
+            TabControl1.SelectedIndex = 0
+            f.GetTarifas("SELECT * FROM tarifas where name LIKE '%" + TxtSearch.Text + "%' ORDER by name asc", Table)
+            Functions.Tarifa = ""
+            TxtSearch.Text = ""
+        End If
     End Sub
 
     Private Sub TxtSearch_Enter(sender As Object, e As EventArgs) Handles TxtSearch.Enter
@@ -91,11 +122,26 @@
     End Sub
 
     Private Sub Edit()
-        f.Alert("Editar", f.Alert_NumberInformacion, PanelControl.Desktop)
+        If f.GetPermiso(f.Permiso_Rate_Edit) And String.IsNullOrEmpty(Functions.Tarifa) = False Then
+            LoadValuesEdit()
+        Else
+            TabControl1.SelectedIndex = 0
+            f.Alert(f.Alert_PermisoNOAutorizado + " || Seleccione una tarifa", f.Alert_NumberCritical, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub LoadValuesEdit()
+        TabControl1.SelectedIndex = 1
+        f.Tarifa_LoadValues(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit)
     End Sub
 
     Private Sub Agregar()
-        f.Alert("Agregar", f.Alert_NumberInformacion, PanelControl.Desktop)
+        If f.GetPermiso(f.Permiso_Rate_Add) Then
+            LimpiarAddTarifa()
+        Else
+            TabControl1.SelectedIndex = 0
+            f.Alert(f.Alert_PermisoNOAutorizado + " || Seleccione una tarifa", f.Alert_NumberCritical, PanelControl.Desktop)
+        End If
     End Sub
 
     Private Sub Table_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellDoubleClick
@@ -120,6 +166,56 @@
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberExclamacion, PanelControl.Desktop)
         End If
+    End Sub
+
+    Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem.Click
+        Edit()
+    End Sub
+
+    Private Sub Add_Click(sender As Object, e As EventArgs) Handles Add.Click
+        If f.GetPermiso(f.Permiso_Rate_Add) And String.IsNullOrEmpty(TxtName.Text) = False And f.IsNumber(TxtPrcieXHora.Text) And f.IsNumber(TxtPrcieXDia.Text) Then
+            If f.AddVehicle(TxtName, TxtMinTolerancia, TxtCostoMinimo, TxtPrcieXHora, TxtPrcieXDia, UsarFracciones) Then
+                LimpiarAddTarifa()
+                f.Alert("Tarifa agregada", f.Alert_NumberInformacion, PanelControl.Desktop)
+            Else
+                f.Alert("Tarifa NO agregada.", f.Alert_NumberCritical, PanelControl.Desktop)
+            End If
+        Else
+            f.Alert("Verifique precios || Verifique sus permisos", f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub LimpiarAddTarifa()
+        TxtName.Text = ""
+        TxtMinTolerancia.Text = ""
+        TxtCostoMinimo.Text = ""
+        TxtPrcieXHora.Text = ""
+        TxtPrcieXDia.Text = ""
+        UsarFracciones.Checked = False
+        Functions.Tarifa = ""
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If f.GetPermiso(f.Permiso_Rate_Edit) And String.IsNullOrEmpty(TxtNombreEdit.Text) = False And f.IsNumber(TxtPrecioHoraEdit.Text) And f.IsNumber(TxtPrecioDiaEdit.Text) Then
+            If f.UpdateRate(TxtNombreEdit, TxtMinToleEdit, TxtCostoMinEdit, TxtPrecioHoraEdit, TxtPrecioDiaEdit, UseFraccionesEdit) Then
+                LimpiarEditTarifa()
+                TabControl1.SelectedIndex = 0
+                f.Alert("Tarifa actualizada", f.Alert_NumberInformacion, PanelControl.Desktop)
+            Else
+                f.Alert("Tarifa NO actualizada.", f.Alert_NumberCritical, PanelControl.Desktop)
+            End If
+        Else
+            f.Alert("Verifique precios || Verifique sus permisos", f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub LimpiarEditTarifa()
+        TxtNombreEdit.Text = ""
+        TxtMinToleEdit.Text = ""
+        TxtCostoMinEdit.Text = ""
+        TxtPrecioHoraEdit.Text = ""
+        TxtPrecioDiaEdit.Text = ""
+        UseFraccionesEdit.Checked = False
     End Sub
 
     Public Sub Loader()
