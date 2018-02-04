@@ -39,6 +39,7 @@ Public Class PanelControl
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         f.AddForm_Desktop(About, Desktop)
+        About.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub LimpiarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LimpiarToolStripMenuItem.Click

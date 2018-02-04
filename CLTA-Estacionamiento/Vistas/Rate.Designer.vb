@@ -35,6 +35,10 @@ Partial Class Rate
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TxtTarifaDiasEdit = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaDiasEdit = New System.Windows.Forms.Label()
+        Me.TxtTarifaPensionEdit = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaPensionEdit = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtMinToleEdit = New System.Windows.Forms.TextBox()
         Me.UseFraccionesEdit = New System.Windows.Forms.CheckBox()
@@ -48,6 +52,10 @@ Partial Class Rate
         Me.TxtNombreEdit = New System.Windows.Forms.TextBox()
         Me.LabelNombreEdit = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TxtDiasPendion = New System.Windows.Forms.TextBox()
+        Me.LabelDiasPendion = New System.Windows.Forms.Label()
+        Me.TxtTarifaPension = New System.Windows.Forms.TextBox()
+        Me.LabelTarifaPension = New System.Windows.Forms.Label()
         Me.Add = New System.Windows.Forms.Button()
         Me.TxtMinTolerancia = New System.Windows.Forms.TextBox()
         Me.UsarFracciones = New System.Windows.Forms.CheckBox()
@@ -63,14 +71,6 @@ Partial Class Rate
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TxtTarifaPension = New System.Windows.Forms.TextBox()
-        Me.LabelTarifaPension = New System.Windows.Forms.Label()
-        Me.TxtDiasPendion = New System.Windows.Forms.TextBox()
-        Me.LabelDiasPendion = New System.Windows.Forms.Label()
-        Me.TxtTarifaDiasEdit = New System.Windows.Forms.TextBox()
-        Me.LabelTarifaDiasEdit = New System.Windows.Forms.Label()
-        Me.TxtTarifaPensionEdit = New System.Windows.Forms.TextBox()
-        Me.LabelTarifaPensionEdit = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -204,13 +204,47 @@ Partial Class Rate
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Editar"
         '
+        'TxtTarifaDiasEdit
+        '
+        Me.TxtTarifaDiasEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtTarifaDiasEdit.Location = New System.Drawing.Point(249, 319)
+        Me.TxtTarifaDiasEdit.Name = "TxtTarifaDiasEdit"
+        Me.TxtTarifaDiasEdit.Size = New System.Drawing.Size(218, 20)
+        Me.TxtTarifaDiasEdit.TabIndex = 7
+        '
+        'LabelTarifaDiasEdit
+        '
+        Me.LabelTarifaDiasEdit.AutoSize = True
+        Me.LabelTarifaDiasEdit.Location = New System.Drawing.Point(246, 301)
+        Me.LabelTarifaDiasEdit.Name = "LabelTarifaDiasEdit"
+        Me.LabelTarifaDiasEdit.Size = New System.Drawing.Size(69, 13)
+        Me.LabelTarifaDiasEdit.TabIndex = 41
+        Me.LabelTarifaDiasEdit.Text = "Dias Pension"
+        '
+        'TxtTarifaPensionEdit
+        '
+        Me.TxtTarifaPensionEdit.Location = New System.Drawing.Point(13, 319)
+        Me.TxtTarifaPensionEdit.Name = "TxtTarifaPensionEdit"
+        Me.TxtTarifaPensionEdit.Size = New System.Drawing.Size(215, 20)
+        Me.TxtTarifaPensionEdit.TabIndex = 6
+        '
+        'LabelTarifaPensionEdit
+        '
+        Me.LabelTarifaPensionEdit.AutoSize = True
+        Me.LabelTarifaPensionEdit.Location = New System.Drawing.Point(15, 301)
+        Me.LabelTarifaPensionEdit.Name = "LabelTarifaPensionEdit"
+        Me.LabelTarifaPensionEdit.Size = New System.Drawing.Size(75, 13)
+        Me.LabelTarifaPensionEdit.TabIndex = 40
+        Me.LabelTarifaPensionEdit.Text = "Tarifa Pension"
+        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Location = New System.Drawing.Point(324, 345)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(143, 42)
-        Me.Button1.TabIndex = 31
+        Me.Button1.TabIndex = 9
         Me.Button1.Text = "Actualizar"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -221,7 +255,7 @@ Partial Class Rate
         Me.TxtMinToleEdit.Location = New System.Drawing.Point(13, 97)
         Me.TxtMinToleEdit.Name = "TxtMinToleEdit"
         Me.TxtMinToleEdit.Size = New System.Drawing.Size(454, 20)
-        Me.TxtMinToleEdit.TabIndex = 26
+        Me.TxtMinToleEdit.TabIndex = 2
         '
         'UseFraccionesEdit
         '
@@ -231,7 +265,7 @@ Partial Class Rate
         Me.UseFraccionesEdit.Location = New System.Drawing.Point(59, 359)
         Me.UseFraccionesEdit.Name = "UseFraccionesEdit"
         Me.UseFraccionesEdit.Size = New System.Drawing.Size(100, 17)
-        Me.UseFraccionesEdit.TabIndex = 30
+        Me.UseFraccionesEdit.TabIndex = 8
         Me.UseFraccionesEdit.Text = "Usar fracciones"
         Me.UseFraccionesEdit.UseVisualStyleBackColor = True
         '
@@ -242,7 +276,7 @@ Partial Class Rate
         Me.TxtPrecioDiaEdit.Location = New System.Drawing.Point(13, 269)
         Me.TxtPrecioDiaEdit.Name = "TxtPrecioDiaEdit"
         Me.TxtPrecioDiaEdit.Size = New System.Drawing.Size(454, 20)
-        Me.TxtPrecioDiaEdit.TabIndex = 29
+        Me.TxtPrecioDiaEdit.TabIndex = 5
         '
         'LabelPrecioDiaEdit
         '
@@ -260,7 +294,7 @@ Partial Class Rate
         Me.TxtPrecioHoraEdit.Location = New System.Drawing.Point(13, 214)
         Me.TxtPrecioHoraEdit.Name = "TxtPrecioHoraEdit"
         Me.TxtPrecioHoraEdit.Size = New System.Drawing.Size(454, 20)
-        Me.TxtPrecioHoraEdit.TabIndex = 28
+        Me.TxtPrecioHoraEdit.TabIndex = 4
         '
         'LabelPrecioHoraEdit
         '
@@ -278,7 +312,7 @@ Partial Class Rate
         Me.TxtCostoMinEdit.Location = New System.Drawing.Point(13, 160)
         Me.TxtCostoMinEdit.Name = "TxtCostoMinEdit"
         Me.TxtCostoMinEdit.Size = New System.Drawing.Size(454, 20)
-        Me.TxtCostoMinEdit.TabIndex = 27
+        Me.TxtCostoMinEdit.TabIndex = 3
         '
         'LabelCostoMinEdit
         '
@@ -305,7 +339,7 @@ Partial Class Rate
         Me.TxtNombreEdit.Location = New System.Drawing.Point(13, 38)
         Me.TxtNombreEdit.Name = "TxtNombreEdit"
         Me.TxtNombreEdit.Size = New System.Drawing.Size(454, 20)
-        Me.TxtNombreEdit.TabIndex = 32
+        Me.TxtNombreEdit.TabIndex = 1
         '
         'LabelNombreEdit
         '
@@ -340,6 +374,40 @@ Partial Class Rate
         Me.TabPage3.Size = New System.Drawing.Size(949, 395)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Agregar"
+        '
+        'TxtDiasPendion
+        '
+        Me.TxtDiasPendion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtDiasPendion.Location = New System.Drawing.Point(247, 316)
+        Me.TxtDiasPendion.Name = "TxtDiasPendion"
+        Me.TxtDiasPendion.Size = New System.Drawing.Size(218, 20)
+        Me.TxtDiasPendion.TabIndex = 7
+        '
+        'LabelDiasPendion
+        '
+        Me.LabelDiasPendion.AutoSize = True
+        Me.LabelDiasPendion.Location = New System.Drawing.Point(244, 298)
+        Me.LabelDiasPendion.Name = "LabelDiasPendion"
+        Me.LabelDiasPendion.Size = New System.Drawing.Size(69, 13)
+        Me.LabelDiasPendion.TabIndex = 29
+        Me.LabelDiasPendion.Text = "Dias Pension"
+        '
+        'TxtTarifaPension
+        '
+        Me.TxtTarifaPension.Location = New System.Drawing.Point(11, 316)
+        Me.TxtTarifaPension.Name = "TxtTarifaPension"
+        Me.TxtTarifaPension.Size = New System.Drawing.Size(215, 20)
+        Me.TxtTarifaPension.TabIndex = 6
+        '
+        'LabelTarifaPension
+        '
+        Me.LabelTarifaPension.AutoSize = True
+        Me.LabelTarifaPension.Location = New System.Drawing.Point(13, 298)
+        Me.LabelTarifaPension.Name = "LabelTarifaPension"
+        Me.LabelTarifaPension.Size = New System.Drawing.Size(75, 13)
+        Me.LabelTarifaPension.TabIndex = 27
+        Me.LabelTarifaPension.Text = "Tarifa Pension"
         '
         'Add
         '
@@ -472,74 +540,6 @@ Partial Class Rate
         Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
         Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
-        '
-        'TxtTarifaPension
-        '
-        Me.TxtTarifaPension.Location = New System.Drawing.Point(11, 316)
-        Me.TxtTarifaPension.Name = "TxtTarifaPension"
-        Me.TxtTarifaPension.Size = New System.Drawing.Size(215, 20)
-        Me.TxtTarifaPension.TabIndex = 6
-        '
-        'LabelTarifaPension
-        '
-        Me.LabelTarifaPension.AutoSize = True
-        Me.LabelTarifaPension.Location = New System.Drawing.Point(13, 298)
-        Me.LabelTarifaPension.Name = "LabelTarifaPension"
-        Me.LabelTarifaPension.Size = New System.Drawing.Size(75, 13)
-        Me.LabelTarifaPension.TabIndex = 27
-        Me.LabelTarifaPension.Text = "Tarifa Pension"
-        '
-        'TxtDiasPendion
-        '
-        Me.TxtDiasPendion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtDiasPendion.Location = New System.Drawing.Point(247, 316)
-        Me.TxtDiasPendion.Name = "TxtDiasPendion"
-        Me.TxtDiasPendion.Size = New System.Drawing.Size(218, 20)
-        Me.TxtDiasPendion.TabIndex = 7
-        '
-        'LabelDiasPendion
-        '
-        Me.LabelDiasPendion.AutoSize = True
-        Me.LabelDiasPendion.Location = New System.Drawing.Point(244, 298)
-        Me.LabelDiasPendion.Name = "LabelDiasPendion"
-        Me.LabelDiasPendion.Size = New System.Drawing.Size(69, 13)
-        Me.LabelDiasPendion.TabIndex = 29
-        Me.LabelDiasPendion.Text = "Dias Pension"
-        '
-        'TxtTarifaDiasEdit
-        '
-        Me.TxtTarifaDiasEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtTarifaDiasEdit.Location = New System.Drawing.Point(249, 319)
-        Me.TxtTarifaDiasEdit.Name = "TxtTarifaDiasEdit"
-        Me.TxtTarifaDiasEdit.Size = New System.Drawing.Size(218, 20)
-        Me.TxtTarifaDiasEdit.TabIndex = 39
-        '
-        'LabelTarifaDiasEdit
-        '
-        Me.LabelTarifaDiasEdit.AutoSize = True
-        Me.LabelTarifaDiasEdit.Location = New System.Drawing.Point(246, 301)
-        Me.LabelTarifaDiasEdit.Name = "LabelTarifaDiasEdit"
-        Me.LabelTarifaDiasEdit.Size = New System.Drawing.Size(69, 13)
-        Me.LabelTarifaDiasEdit.TabIndex = 41
-        Me.LabelTarifaDiasEdit.Text = "Dias Pension"
-        '
-        'TxtTarifaPensionEdit
-        '
-        Me.TxtTarifaPensionEdit.Location = New System.Drawing.Point(13, 319)
-        Me.TxtTarifaPensionEdit.Name = "TxtTarifaPensionEdit"
-        Me.TxtTarifaPensionEdit.Size = New System.Drawing.Size(215, 20)
-        Me.TxtTarifaPensionEdit.TabIndex = 38
-        '
-        'LabelTarifaPensionEdit
-        '
-        Me.LabelTarifaPensionEdit.AutoSize = True
-        Me.LabelTarifaPensionEdit.Location = New System.Drawing.Point(15, 301)
-        Me.LabelTarifaPensionEdit.Name = "LabelTarifaPensionEdit"
-        Me.LabelTarifaPensionEdit.Size = New System.Drawing.Size(75, 13)
-        Me.LabelTarifaPensionEdit.TabIndex = 40
-        Me.LabelTarifaPensionEdit.Text = "Tarifa Pension"
         '
         'Rate
         '

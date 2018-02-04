@@ -26,4 +26,27 @@
         Me.Dispose()
     End Sub
 
+    Private Sub AlertContainer_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub TextBoxMensaje_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxMensaje.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub MenuStrip1_KeyDown(sender As Object, e As KeyEventArgs) Handles MenuStrip1.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub PictureBox1_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles PictureBox1.PreviewKeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
 End Class

@@ -201,6 +201,8 @@
 
     Private Sub LimpiarAddTarifa()
         TxtName.Text = ""
+        TxtTarifaPension.Text = ""
+        TxtDiasPendion.Text = ""
         TxtMinTolerancia.Text = ""
         TxtCostoMinimo.Text = ""
         TxtPrcieXHora.Text = ""

@@ -103,6 +103,7 @@ Public Class Functions
         form.Location = New Point((Desktop.Width - form.Width) / 2, (Desktop.Height - form.Height) / 2)
         form.BringToFront()
         form.Show()
+        form.Focus()
 
         If My.Settings.form_windowstate = 1 Then
             form.WindowState = FormWindowState.Normal

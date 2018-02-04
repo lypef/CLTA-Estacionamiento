@@ -17,11 +17,41 @@
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description
-        'Me.TextBoxDescription.Text = My.Application.Info.Description.Replace("%name_enterprise%", f.ReturnEmpresa_Parametros(f.Empresa_Nombre)).Replace("%direccion%", f.ReturnEmpresa_Parametros(f.Empresa_Direccion)).Replace("%rfc%", f.ReturnEmpresa_Parametros(f.Empresa_Rfc))
+        'Me.TextBoxDescription.Text = My.Application.Info.Description.Replace("%name_enterprise%", f.ReturnEmpresa_Parametros(f.Empresa_Nombre)).Replace("%direccion%", f.ReturnEmpresa_Parametros(f.Empresa_Direccion)).Replace("%rfc%", f.ReturnEmpresa_Parametros(f.Empresa_Rfc))}
+        MenuStrip1.Font = My.Settings.Menu_font
+        MenuStrip1.BackColor = My.Settings.Menu_color
+        Panel1.Height = My.Settings.Menu_font.Height + 10
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
         Me.Close()
     End Sub
 
+    Private Sub About_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub TableLayoutPanel_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles TableLayoutPanel.PreviewKeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub TextBoxDescription_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxDescription.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub OKButton_KeyDown(sender As Object, e As KeyEventArgs) Handles OKButton.KeyDown
+        If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+            Me.Dispose()
+        End If
+    End Sub
+
+    Private Sub Salir_Click(sender As Object, e As EventArgs) Handles Salir.Click
+        Me.Dispose()
+    End Sub
 End Class
