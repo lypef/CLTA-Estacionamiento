@@ -35,6 +35,8 @@ Partial Class Rate
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TxtHoursXDiaEdit = New System.Windows.Forms.TextBox()
+        Me.LabelHoursXDiaEdit = New System.Windows.Forms.Label()
         Me.TxtTarifaDiasEdit = New System.Windows.Forms.TextBox()
         Me.LabelTarifaDiasEdit = New System.Windows.Forms.Label()
         Me.TxtTarifaPensionEdit = New System.Windows.Forms.TextBox()
@@ -52,6 +54,8 @@ Partial Class Rate
         Me.TxtNombreEdit = New System.Windows.Forms.TextBox()
         Me.LabelNombreEdit = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TxtHoursXDia = New System.Windows.Forms.TextBox()
+        Me.LabelHoursXDia = New System.Windows.Forms.Label()
         Me.TxtDiasPendion = New System.Windows.Forms.TextBox()
         Me.LabelDiasPendion = New System.Windows.Forms.Label()
         Me.TxtTarifaPension = New System.Windows.Forms.TextBox()
@@ -181,6 +185,8 @@ Partial Class Rate
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.TxtHoursXDiaEdit)
+        Me.TabPage2.Controls.Add(Me.LabelHoursXDiaEdit)
         Me.TabPage2.Controls.Add(Me.TxtTarifaDiasEdit)
         Me.TabPage2.Controls.Add(Me.LabelTarifaDiasEdit)
         Me.TabPage2.Controls.Add(Me.TxtTarifaPensionEdit)
@@ -204,6 +210,24 @@ Partial Class Rate
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Editar"
         '
+        'TxtHoursXDiaEdit
+        '
+        Me.TxtHoursXDiaEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtHoursXDiaEdit.Location = New System.Drawing.Point(249, 269)
+        Me.TxtHoursXDiaEdit.Name = "TxtHoursXDiaEdit"
+        Me.TxtHoursXDiaEdit.Size = New System.Drawing.Size(218, 20)
+        Me.TxtHoursXDiaEdit.TabIndex = 6
+        '
+        'LabelHoursXDiaEdit
+        '
+        Me.LabelHoursXDiaEdit.AutoSize = True
+        Me.LabelHoursXDiaEdit.Location = New System.Drawing.Point(246, 251)
+        Me.LabelHoursXDiaEdit.Name = "LabelHoursXDiaEdit"
+        Me.LabelHoursXDiaEdit.Size = New System.Drawing.Size(60, 13)
+        Me.LabelHoursXDiaEdit.TabIndex = 43
+        Me.LabelHoursXDiaEdit.Text = "Horas x dia"
+        '
         'TxtTarifaDiasEdit
         '
         Me.TxtTarifaDiasEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -211,7 +235,7 @@ Partial Class Rate
         Me.TxtTarifaDiasEdit.Location = New System.Drawing.Point(249, 319)
         Me.TxtTarifaDiasEdit.Name = "TxtTarifaDiasEdit"
         Me.TxtTarifaDiasEdit.Size = New System.Drawing.Size(218, 20)
-        Me.TxtTarifaDiasEdit.TabIndex = 7
+        Me.TxtTarifaDiasEdit.TabIndex = 8
         '
         'LabelTarifaDiasEdit
         '
@@ -227,7 +251,7 @@ Partial Class Rate
         Me.TxtTarifaPensionEdit.Location = New System.Drawing.Point(13, 319)
         Me.TxtTarifaPensionEdit.Name = "TxtTarifaPensionEdit"
         Me.TxtTarifaPensionEdit.Size = New System.Drawing.Size(215, 20)
-        Me.TxtTarifaPensionEdit.TabIndex = 6
+        Me.TxtTarifaPensionEdit.TabIndex = 7
         '
         'LabelTarifaPensionEdit
         '
@@ -244,7 +268,7 @@ Partial Class Rate
         Me.Button1.Location = New System.Drawing.Point(324, 345)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(143, 42)
-        Me.Button1.TabIndex = 9
+        Me.Button1.TabIndex = 10
         Me.Button1.Text = "Actualizar"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -265,17 +289,15 @@ Partial Class Rate
         Me.UseFraccionesEdit.Location = New System.Drawing.Point(59, 359)
         Me.UseFraccionesEdit.Name = "UseFraccionesEdit"
         Me.UseFraccionesEdit.Size = New System.Drawing.Size(100, 17)
-        Me.UseFraccionesEdit.TabIndex = 8
+        Me.UseFraccionesEdit.TabIndex = 9
         Me.UseFraccionesEdit.Text = "Usar fracciones"
         Me.UseFraccionesEdit.UseVisualStyleBackColor = True
         '
         'TxtPrecioDiaEdit
         '
-        Me.TxtPrecioDiaEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtPrecioDiaEdit.Location = New System.Drawing.Point(13, 269)
         Me.TxtPrecioDiaEdit.Name = "TxtPrecioDiaEdit"
-        Me.TxtPrecioDiaEdit.Size = New System.Drawing.Size(454, 20)
+        Me.TxtPrecioDiaEdit.Size = New System.Drawing.Size(215, 20)
         Me.TxtPrecioDiaEdit.TabIndex = 5
         '
         'LabelPrecioDiaEdit
@@ -353,6 +375,8 @@ Partial Class Rate
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage3.Controls.Add(Me.TxtHoursXDia)
+        Me.TabPage3.Controls.Add(Me.LabelHoursXDia)
         Me.TabPage3.Controls.Add(Me.TxtDiasPendion)
         Me.TabPage3.Controls.Add(Me.LabelDiasPendion)
         Me.TabPage3.Controls.Add(Me.TxtTarifaPension)
@@ -375,6 +399,24 @@ Partial Class Rate
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Agregar"
         '
+        'TxtHoursXDia
+        '
+        Me.TxtHoursXDia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtHoursXDia.Location = New System.Drawing.Point(247, 261)
+        Me.TxtHoursXDia.Name = "TxtHoursXDia"
+        Me.TxtHoursXDia.Size = New System.Drawing.Size(218, 20)
+        Me.TxtHoursXDia.TabIndex = 6
+        '
+        'LabelHoursXDia
+        '
+        Me.LabelHoursXDia.AutoSize = True
+        Me.LabelHoursXDia.Location = New System.Drawing.Point(244, 243)
+        Me.LabelHoursXDia.Name = "LabelHoursXDia"
+        Me.LabelHoursXDia.Size = New System.Drawing.Size(60, 13)
+        Me.LabelHoursXDia.TabIndex = 31
+        Me.LabelHoursXDia.Text = "Horas x dia"
+        '
         'TxtDiasPendion
         '
         Me.TxtDiasPendion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -382,7 +424,7 @@ Partial Class Rate
         Me.TxtDiasPendion.Location = New System.Drawing.Point(247, 316)
         Me.TxtDiasPendion.Name = "TxtDiasPendion"
         Me.TxtDiasPendion.Size = New System.Drawing.Size(218, 20)
-        Me.TxtDiasPendion.TabIndex = 7
+        Me.TxtDiasPendion.TabIndex = 8
         '
         'LabelDiasPendion
         '
@@ -398,7 +440,7 @@ Partial Class Rate
         Me.TxtTarifaPension.Location = New System.Drawing.Point(11, 316)
         Me.TxtTarifaPension.Name = "TxtTarifaPension"
         Me.TxtTarifaPension.Size = New System.Drawing.Size(215, 20)
-        Me.TxtTarifaPension.TabIndex = 6
+        Me.TxtTarifaPension.TabIndex = 7
         '
         'LabelTarifaPension
         '
@@ -415,7 +457,7 @@ Partial Class Rate
         Me.Add.Location = New System.Drawing.Point(322, 345)
         Me.Add.Name = "Add"
         Me.Add.Size = New System.Drawing.Size(143, 42)
-        Me.Add.TabIndex = 9
+        Me.Add.TabIndex = 10
         Me.Add.Text = "Agregar"
         Me.Add.UseVisualStyleBackColor = True
         '
@@ -436,17 +478,15 @@ Partial Class Rate
         Me.UsarFracciones.Location = New System.Drawing.Point(63, 359)
         Me.UsarFracciones.Name = "UsarFracciones"
         Me.UsarFracciones.Size = New System.Drawing.Size(100, 17)
-        Me.UsarFracciones.TabIndex = 8
+        Me.UsarFracciones.TabIndex = 9
         Me.UsarFracciones.Text = "Usar fracciones"
         Me.UsarFracciones.UseVisualStyleBackColor = True
         '
         'TxtPrcieXDia
         '
-        Me.TxtPrcieXDia.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtPrcieXDia.Location = New System.Drawing.Point(11, 261)
         Me.TxtPrcieXDia.Name = "TxtPrcieXDia"
-        Me.TxtPrcieXDia.Size = New System.Drawing.Size(454, 20)
+        Me.TxtPrcieXDia.Size = New System.Drawing.Size(215, 20)
         Me.TxtPrcieXDia.TabIndex = 5
         '
         'LabelPrcieXDia
@@ -614,4 +654,8 @@ Partial Class Rate
     Friend WithEvents LabelTarifaDiasEdit As Label
     Friend WithEvents TxtTarifaPensionEdit As TextBox
     Friend WithEvents LabelTarifaPensionEdit As Label
+    Friend WithEvents TxtHoursXDia As TextBox
+    Friend WithEvents LabelHoursXDia As Label
+    Friend WithEvents TxtHoursXDiaEdit As TextBox
+    Friend WithEvents LabelHoursXDiaEdit As Label
 End Class

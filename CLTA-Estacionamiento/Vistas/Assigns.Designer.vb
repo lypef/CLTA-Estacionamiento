@@ -23,14 +23,16 @@ Partial Class Assigns
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
+        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Table = New System.Windows.Forms.DataGridView()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
-        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.Table, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -43,6 +45,36 @@ Partial Class Assigns
         Me.MenuStrip1.Size = New System.Drawing.Size(941, 29)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'TxtSearch
+        '
+        Me.TxtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TxtSearch.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TxtSearch.Name = "TxtSearch"
+        Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
+        Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ClientesToolStripMenuItem
+        '
+        Me.ClientesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
+        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(113, 25)
+        Me.ClientesToolStripMenuItem.Text = "Asignaciones"
+        '
+        'GenerarReporteToolStripMenuItem
+        '
+        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        '
+        'Table
+        '
+        Me.Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Table.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Table.Location = New System.Drawing.Point(0, 29)
+        Me.Table.Name = "Table"
+        Me.Table.Size = New System.Drawing.Size(941, 353)
+        Me.Table.TabIndex = 2
         '
         'SalirToolStripMenuItem
         '
@@ -78,37 +110,18 @@ Partial Class Assigns
         Me.ToolStripMenuItem4.Size = New System.Drawing.Size(108, 25)
         Me.ToolStripMenuItem4.Text = "Minimizar"
         '
-        'TxtSearch
-        '
-        Me.TxtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.TxtSearch.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TxtSearch.Name = "TxtSearch"
-        Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
-        Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'ClientesToolStripMenuItem
-        '
-        Me.ClientesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
-        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(113, 25)
-        Me.ClientesToolStripMenuItem.Text = "Asignaciones"
-        '
-        'GenerarReporteToolStripMenuItem
-        '
-        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
-        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
-        '
         'Assigns
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(941, 382)
+        Me.Controls.Add(Me.Table)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "Assigns"
         Me.Text = "Assigns"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.Table, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -122,4 +135,5 @@ Partial Class Assigns
     Friend WithEvents TxtSearch As ToolStripTextBox
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerarReporteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Table As DataGridView
 End Class
