@@ -52,7 +52,7 @@ Public Class Functions
         AddForm_Desktop(properties, desktop)
         AddForm_Desktop(Vehicles, desktop)
         AddForm_Desktop(Rate, desktop)
-        AddForm_Desktop(AsignacionesUPDATE, desktop)
+        AddForm_Desktop(Assignments, desktop)
         desktop.Controls.Clear()
     End Sub
 

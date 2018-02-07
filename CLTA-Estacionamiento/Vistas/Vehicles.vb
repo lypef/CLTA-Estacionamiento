@@ -233,9 +233,9 @@
 
     Private Sub AsignacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignacionesToolStripMenuItem.Click
         If f.GetPermiso(f.Permiso_Assign_Access) Then
-            AsignacionesUPDATE.Dispose()
-            AsignacionesUPDATE.loadvalues()
-            f.AddForm_Desktop(AsignacionesUPDATE, PanelControl.Desktop)
+            Assignments.Dispose()
+            Assignments.loadvalues()
+            f.AddForm_Desktop(Assignments, PanelControl.Desktop)
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, PanelControl.Desktop)
         End If

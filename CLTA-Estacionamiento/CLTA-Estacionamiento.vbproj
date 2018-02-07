@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>32</ApplicationRevision>
+    <ApplicationRevision>33</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -170,10 +170,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Vistas\AsignacionesUPDATE.Designer.vb">
-      <DependentUpon>AsignacionesUPDATE.vb</DependentUpon>
+    <Compile Include="Vistas\Assignments.Designer.vb">
+      <DependentUpon>Assignments.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\AsignacionesUPDATE.vb">
+    <Compile Include="Vistas\Assignments.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\Clientes.Designer.vb">
@@ -217,8 +217,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\AsignacionesUPDATE.resx">
-      <DependentUpon>AsignacionesUPDATE.vb</DependentUpon>
+    <EmbeddedResource Include="Vistas\Assignments.resx">
+      <DependentUpon>Assignments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>

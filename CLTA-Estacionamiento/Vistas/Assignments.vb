@@ -1,4 +1,4 @@
-﻿Public Class AsignacionesUPDATE
+﻿Public Class Assignments
     Dim f As New Functions
     Dim Client As Integer = 0
     Dim total As Double = 0
