@@ -6,7 +6,7 @@
 
     Public Sub Loader()
         editar = False
-        f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id ORDER by c.name ASC", Table)
+        f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado, v.fecha_salida FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id ORDER by c.name ASC", Table)
         Functions.Matricula = ""
     End Sub
 
@@ -115,7 +115,7 @@
             If (f.IsNumber(TxtSearch.Text)) Then
                 TxtSearch.Text = (Convert.ToInt32(TxtSearch.Text)).ToString
             End If
-            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.rfid like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
+            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado, f.fecha_salida FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.rfid like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
             TxtSearch.Text = ""
         End If
     End Sub
@@ -228,6 +228,16 @@
             ContextMenuStrip1.Show(MousePosition)
         Else
             f.Alert("Seleccione un cliente verdadero", f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub AsignacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignacionesToolStripMenuItem.Click
+        If f.GetPermiso(f.Permiso_Assign_Access) Then
+            AsignacionesUPDATE.Dispose()
+            AsignacionesUPDATE.loadvalues()
+            f.AddForm_Desktop(AsignacionesUPDATE, PanelControl.Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, PanelControl.Desktop)
         End If
     End Sub
 

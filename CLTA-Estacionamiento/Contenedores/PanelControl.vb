@@ -133,7 +133,7 @@ Public Class PanelControl
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        If f.GetPermiso(f.Permiso_Vehicle_Access) Then
+        If f.GetPermiso(f.Permiso_Vehicle_Access) Or f.GetPermiso(f.Permiso_Assign_Access) Then
             Vehicles.Loader()
             f.AddForm_Desktop(Vehicles, Desktop)
         Else
@@ -150,12 +150,4 @@ Public Class PanelControl
         End If
     End Sub
 
-    Private Sub AsignacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignacionesToolStripMenuItem.Click
-        If f.GetPermiso(f.Permiso_Assign_Access) Then
-            Assigns.Loader()
-            f.AddForm_Desktop(Assigns, Desktop)
-        Else
-            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
-        End If
-    End Sub
 End Class

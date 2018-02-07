@@ -28,17 +28,12 @@ Public Class Functions
     Public ReadOnly Permiso_Vehicle_Access As String = "vehicle_access"
     Public ReadOnly Permiso_Vehicle_Add As String = "vehicle_add"
     Public ReadOnly Permiso_Vehicle_Edit As String = "vehicle_edit"
-
-
     Public ReadOnly Permiso_Vehicle_Delete As String = "vehicle_delete"
     Public ReadOnly Permiso_Rate_Access As String = "rate_access"
     Public ReadOnly Permiso_Rate_Add As String = "rate_add"
     Public ReadOnly Permiso_Rate_Edit As String = "rate_edit"
     Public ReadOnly Permiso_Rate_Delete As String = "rate_delete"
     Public ReadOnly Permiso_Assign_Access As String = "assign_access"
-    Public ReadOnly Permiso_Assign_Add As String = "assign_add"
-    Public ReadOnly Permiso_Assign_Edit As String = "assign_edit"
-    Public ReadOnly Permiso_Assign_Delete As String = "assign_delete"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -57,7 +52,6 @@ Public Class Functions
         AddForm_Desktop(properties, desktop)
         AddForm_Desktop(Vehicles, desktop)
         AddForm_Desktop(Rate, desktop)
-        AddForm_Desktop(Assigns, desktop)
         AddForm_Desktop(AsignacionesUPDATE, desktop)
         desktop.Controls.Clear()
     End Sub
@@ -115,6 +109,10 @@ Public Class Functions
         End If
 
     End Sub
+
+    Public Function AddVenta(id_cliente As Integer, concepto As String, monto As Double, ticket As Integer) As Boolean
+        Return Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, cut_x, cut_z) VALUES ('" + id_cliente.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + concepto.ToUpper + "', '" + monto.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0');")
+    End Function
 
     Public Function GetPermiso(ByVal campo As String) As Boolean
         Dim r = False
@@ -239,10 +237,11 @@ Public Class Functions
         t.Columns.Add("modelo", "Modelo")
         t.Columns.Add("color", "Color")
         t.Columns.Add("estado", "Estado")
+        t.Columns.Add("f_salida", "Fecha salida")
 
         If dato.HasRows Then
             Do While dato.Read()
-                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5))
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
             Loop
         End If
 
@@ -276,8 +275,8 @@ Public Class Functions
         End If
     End Sub
 
-    Public Sub Vehicle_LoadValuesAsignacion(p As PictureBox, c As ComboBox, Propietario As Label, LabelVehiculo As Label, horas As RadioButton, dias As RadioButton, pension As RadioButton, placas As Label)
-        Dim dato = Db.Consult("SELECT v.matricula, v.tarifa, c.name, c.foto, v.modelo, v.color, v.tarifa_hora, v.tarifa_dia, v.tarifa_pension FROM vehicles v, clients c where v.client = c.id and matricula = '" + Matricula + "' ")
+    Public Sub Vehicle_LoadValuesAsignacion(p As PictureBox, c As ComboBox, Propietario As Label, LabelVehiculo As Label, horas As RadioButton, dias As RadioButton, pension As RadioButton, placas As Label, ByRef id_client As Integer)
+        Dim dato = Db.Consult("SELECT v.matricula, v.tarifa, c.name, c.foto, v.modelo, v.color, v.tarifa_hora, v.tarifa_dia, v.tarifa_pension, c.id FROM vehicles v, clients c where v.client = c.id and matricula = '" + Matricula + "' ")
 
         If dato.Read() Then
             For i As Integer = 0 To ListTarifas.Count - 1
@@ -304,11 +303,12 @@ Public Class Functions
             ElseIf dato.GetBoolean(8) Then
                 pension.Checked = True
             End If
+            id_client = Convert.ToInt32(dato.GetString(9))
         End If
     End Sub
 
     Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox, Rfid As TextBox) As Boolean
-        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, tarifa_hora) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '" + Rfid.Text.ToString + "', '1')")
+        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, tarifa_hora, fecha_ingreso, fecha_salida) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '" + Rfid.Text.ToString + "', '1', '" + GetDateString(DateTime.Now.AddDays(-1)) + "', '" + GetDateString(DateTime.Now.AddDays(-1)) + "')")
     End Function
 
     Private Function ReturnRadioButon(r As RadioButton) As Integer
@@ -526,4 +526,31 @@ Public Class Functions
         End If
     End Sub
 
+    Public Function GetDateString(d As DateTime) As String
+        Return (d.Year.ToString + "-" + d.Month.ToString + "-" + d.Day.ToString + " " + d.Hour.ToString + ":" + d.Minute.ToString + ":" + d.Second.ToString).ToString
+    End Function
+
+    Public Function TickerID_Siguiente() As Integer
+        Dim r As Integer = 0
+        Dim dato = Db.Consult("SELECT MAX(ID_TICKET) FROM ventas")
+
+        If dato.Read() Then
+            r = Convert.ToInt32(dato.GetString(0)) + 1
+        End If
+
+        Return r
+    End Function
+
+    Public Function Vehicle_MembresisVigente(Matricula As String) As Boolean
+        Dim r As Boolean = False
+        Dim dato = Db.Consult("SELECT fecha_salida FROM vehicles WHERE matricula = '" + Matricula + "'")
+
+        If dato.Read() Then
+            Dim f_salida As DateTime = Convert.ToDateTime(dato.GetString(0).replace("-", "/"))
+            If f_salida > DateTime.Now Then
+                r = True
+            End If
+        End If
+        Return r
+    End Function
 End Class

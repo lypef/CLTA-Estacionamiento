@@ -67,6 +67,7 @@ Partial Class Vehicles
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -493,23 +494,30 @@ Partial Class Vehicles
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem, Me.AsignacionesToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 92)
         '
         'EditarToolStripMenuItem
         '
         Me.EditarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.edit_24
         Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
-        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.EditarToolStripMenuItem.Text = "Editar"
         '
         'EliminarToolStripMenuItem
         '
         Me.EliminarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.delete_24
         Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        '
+        'AsignacionesToolStripMenuItem
+        '
+        Me.AsignacionesToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.hours
+        Me.AsignacionesToolStripMenuItem.Name = "AsignacionesToolStripMenuItem"
+        Me.AsignacionesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AsignacionesToolStripMenuItem.Text = "Asignaciones"
         '
         'Vehicles
         '
@@ -582,4 +590,5 @@ Partial Class Vehicles
     Friend WithEvents LabelRfid_Edit As Label
     Friend WithEvents VehiculosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerarReporteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AsignacionesToolStripMenuItem As ToolStripMenuItem
 End Class

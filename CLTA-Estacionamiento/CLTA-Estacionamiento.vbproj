@@ -176,12 +176,6 @@
     <Compile Include="Vistas\AsignacionesUPDATE.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Assigns.Designer.vb">
-      <DependentUpon>Assigns.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Assigns.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Vistas\Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
@@ -225,9 +219,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\AsignacionesUPDATE.resx">
       <DependentUpon>AsignacionesUPDATE.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Assigns.resx">
-      <DependentUpon>Assigns.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
