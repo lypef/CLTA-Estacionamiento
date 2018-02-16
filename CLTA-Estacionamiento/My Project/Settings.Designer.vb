@@ -245,6 +245,78 @@ Namespace My
                 Me("form_windowstate") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("210")>  _
+        Public Property Height_Button() As Integer
+            Get
+                Return CType(Me("Height_Button"),Integer)
+            End Get
+            Set
+                Me("Height_Button") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("180")>  _
+        Public Property Width_Button() As Integer
+            Get
+                Return CType(Me("Width_Button"),Integer)
+            End Get
+            Set
+                Me("Width_Button") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
+        Public Property Space_button() As Long
+            Get
+                Return CType(Me("Space_button"),Long)
+            End Get
+            Set
+                Me("Space_button") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("5")>  _
+        Public Property ItemsXFilas() As String
+            Get
+                Return CType(Me("ItemsXFilas"),String)
+            End Get
+            Set
+                Me("ItemsXFilas") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ActiveBorder")>  _
+        Public Property button_colorSelect() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("button_colorSelect"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("button_colorSelect") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Control")>  _
+        Public Property button_color() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("button_color"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("button_color") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

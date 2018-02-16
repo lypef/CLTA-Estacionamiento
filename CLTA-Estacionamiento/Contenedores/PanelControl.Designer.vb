@@ -25,6 +25,7 @@ Partial Class PanelControl
         Me.components = New System.ComponentModel.Container()
         Me.BarraMenu = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsuariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LimpiarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CambiarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,13 +38,14 @@ Partial Class PanelControl
         Me.TarifasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AJUSTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AjustesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Desktop = New System.Windows.Forms.Panel()
         Me.Footer = New System.Windows.Forms.Panel()
         Me.LabelHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.UsuariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtBox = New System.Windows.Forms.ToolStripTextBox()
         Me.BarraMenu.SuspendLayout()
         Me.Footer.SuspendLayout()
         Me.SuspendLayout()
@@ -51,7 +53,7 @@ Partial Class PanelControl
         'BarraMenu
         '
         Me.BarraMenu.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.TarifasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.AJUSTESToolStripMenuItem})
+        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.TarifasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.AJUSTESToolStripMenuItem, Me.TxtBox})
         Me.BarraMenu.Location = New System.Drawing.Point(0, 0)
         Me.BarraMenu.Name = "BarraMenu"
         Me.BarraMenu.Size = New System.Drawing.Size(1110, 34)
@@ -64,6 +66,13 @@ Partial Class PanelControl
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(105, 30)
         Me.ArchivoToolStripMenuItem.Text = "▼ Archivo"
+        '
+        'UsuariosToolStripMenuItem1
+        '
+        Me.UsuariosToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.users_i
+        Me.UsuariosToolStripMenuItem1.Name = "UsuariosToolStripMenuItem1"
+        Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
+        Me.UsuariosToolStripMenuItem1.Text = "Usuarios"
         '
         'LimpiarToolStripMenuItem1
         '
@@ -156,6 +165,13 @@ Partial Class PanelControl
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(98, 30)
         Me.ToolStripMenuItem1.Text = "Vehiculos"
         '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 13.0!)
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(114, 30)
+        Me.ToolStripMenuItem2.Text = "Control E/S"
+        '
         'AJUSTESToolStripMenuItem
         '
         Me.AJUSTESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AjustesToolStripMenuItem1})
@@ -167,7 +183,7 @@ Partial Class PanelControl
         'AjustesToolStripMenuItem1
         '
         Me.AjustesToolStripMenuItem1.Name = "AjustesToolStripMenuItem1"
-        Me.AjustesToolStripMenuItem1.Size = New System.Drawing.Size(152, 30)
+        Me.AjustesToolStripMenuItem1.Size = New System.Drawing.Size(141, 30)
         Me.AjustesToolStripMenuItem1.Text = "Ajustes"
         '
         'Desktop
@@ -203,11 +219,11 @@ Partial Class PanelControl
         'Timer1
         '
         '
-        'UsuariosToolStripMenuItem1
+        'TxtBox
         '
-        Me.UsuariosToolStripMenuItem1.Name = "UsuariosToolStripMenuItem1"
-        Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
-        Me.UsuariosToolStripMenuItem1.Text = "Usuarios"
+        Me.TxtBox.Name = "TxtBox"
+        Me.TxtBox.Size = New System.Drawing.Size(200, 30)
+        Me.TxtBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'PanelControl
         '
@@ -253,4 +269,6 @@ Partial Class PanelControl
     Friend WithEvents CambiarUsuarioToolStripMenuItem As ToolStripMenuItem
     Public WithEvents Desktop As Panel
     Friend WithEvents UsuariosToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents TxtBox As ToolStripTextBox
 End Class

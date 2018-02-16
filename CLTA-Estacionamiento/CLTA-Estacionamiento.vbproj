@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>38</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -182,6 +182,12 @@
     <Compile Include="Vistas\Clientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\EnterExitControl.Designer.vb">
+      <DependentUpon>EnterExitControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EnterExitControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Rate.Designer.vb">
       <DependentUpon>Rate.vb</DependentUpon>
     </Compile>
@@ -223,6 +229,9 @@
     <EmbeddedResource Include="Vistas\Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\EnterExitControl.resx">
+      <DependentUpon>EnterExitControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Rate.resx">
       <DependentUpon>Rate.vb</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +254,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\verify2_128.png" />
+    <None Include="Resources\verify2_48.png" />
+    <None Include="Resources\verify_48.png" />
+    <None Include="Resources\update_48.png" />
+    <None Include="Resources\users_i.png" />
     <None Include="Resources\if__79ui_2303184.png" />
     <None Include="Resources\if_calendar-clock_299096.png" />
     <None Include="Resources\hours.png" />

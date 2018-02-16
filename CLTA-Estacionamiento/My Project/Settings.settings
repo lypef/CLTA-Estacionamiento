@@ -50,5 +50,23 @@
     <Setting Name="form_windowstate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="Height_Button" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">210</Value>
+    </Setting>
+    <Setting Name="Width_Button" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+    <Setting Name="Space_button" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="ItemsXFilas" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="button_colorSelect" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ActiveBorder</Value>
+    </Setting>
+    <Setting Name="button_color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -25,6 +25,12 @@ Public Class PanelControl
         LimpiarToolStripMenuItem.Font = My.Settings.Menu_font
         MinimizarToolStripMenuItem.Font = My.Settings.Menu_font
         SalirToolStripMenuItem.Font = My.Settings.Menu_font
+        ToolStripMenuItem2.Font = My.Settings.Menu_font
+        ToolStripMenuItem2.BackColor = My.Settings.Menu_color
+        TxtBox.Font = My.Settings.Menu_font
+        TxtBox.BackColor = My.Settings.Menu_color
+        TxtBox.Text = "Matricula / QR"
+        TxtBox.ForeColor = Color.Gray
     End Sub
 
     Private Sub MinimizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizarToolStripMenuItem.Click
@@ -150,4 +156,68 @@ Public Class PanelControl
         End If
     End Sub
 
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        EnterExitControl.Dispose()
+        EnterExitControl.Loader()
+        f.AddForm_Desktop(EnterExitControl, Desktop)
+    End Sub
+
+    Private Sub TxtBox_Enter(sender As Object, e As EventArgs) Handles TxtBox.Enter
+        TxtBox.Text = ""
+    End Sub
+
+    Private Sub TxtBox_Leave(sender As Object, e As EventArgs) Handles TxtBox.Leave
+        TxtBox.Text = "Matricula / QR"
+    End Sub
+
+    Private Sub TxtBox_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtBox.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Dim hours As Boolean
+            Dim day As Boolean
+            Dim pension As Boolean
+
+            If f.VehicleReturnTarifa(hours, day, pension, TxtBox) Then
+                If f.Vehicle_Status(TxtBox) = False Then
+                    If hours Then
+                        If (MsgBox("Ingresar vehiculo con matricula: ".ToUpper + TxtBox.Text + "Para cobro por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                            If f.VehiclesUpdate_StatusForHours(TxtBox.Text, 1) Then
+                                EnterExitControl.Loader()
+                            Else
+                                f.Alert("Error desconocido", f.Alert_NumberCritical, Desktop)
+                            End If
+                        End If
+                    ElseIf day Then
+                        'Ingresa por dia 
+                        If f.VehicleValidateFecha_Salida(TxtBox) Then
+                            f.Vehicle_ChangeStatus(TxtBox.Text, 1)
+                            EnterExitControl.Loader()
+                        Else
+                            If (MsgBox("Dias vencidos. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                                If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
+                                    EnterExitControl.Loader()
+                                End If
+                            End If
+                        End If
+                    ElseIf pension Then
+                        'Pension
+                        If f.VehicleValidateFecha_Salida(TxtBox) Then
+                            f.Vehicle_ChangeStatus(TxtBox.Text, 1)
+                            EnterExitControl.Loader()
+                        Else
+                            If (MsgBox("Pension vencida. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                                If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
+                                    EnterExitControl.Loader()
+                                End If
+                            End If
+                        End If
+                    End If
+                Else
+                    f.Alert("El vehiculo ya se encuentra adento", f.Alert_NumberExclamacion, Desktop)
+                End If
+            Else
+                f.Alert("La matricula no existe", f.Alert_NumberCritical, Desktop)
+            End If
+
+        End If
+    End Sub
 End Class

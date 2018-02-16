@@ -19,6 +19,7 @@ Public Class Functions
     Public Shared Client As String
     Public Shared Matricula As String
     Public Shared Tarifa As String
+    Public Shared Select_VehiclesMatricula As String
 
     'Variables permisos de usuario
     Public ReadOnly Permiso_Cliet_Access As String = "client_access"
@@ -53,6 +54,7 @@ Public Class Functions
         AddForm_Desktop(Vehicles, desktop)
         AddForm_Desktop(Rate, desktop)
         AddForm_Desktop(Assignments, desktop)
+        AddForm_Desktop(EnterExitControl, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -553,4 +555,148 @@ Public Class Functions
         End If
         Return r
     End Function
+
+    Public Sub VehiclesLoadForControl(panel1 As Panel, sql As String, c As ContextMenuStrip)
+        panel1.Controls.Clear()
+        Dim Height_Button As Integer = My.Settings.Height_Button
+        Dim Width_Button As Integer = My.Settings.Width_Button
+        Dim Space_button As Integer = My.Settings.Space_button
+        Dim LocationInicial_button As Integer = 10
+        Dim ItemsXFilas As Integer = My.Settings.ItemsXFilas
+        Dim items As Integer = 20
+
+        Dim dato = Db.Consult(sql)
+
+        Dim i As Integer = 1
+        If dato.HasRows Then
+            Do While dato.Read()
+                Dim b As New Button()
+                b.Name = dato.GetString(0)
+                b.Height = Height_Button
+                b.Width = Width_Button
+                b.Top = (i - 1) * (Height_Button + 3)
+                Dim x As Integer = ((i - 1) * Width_Button + (i - 1) * Space_button) + 10
+                Dim y As Integer = LocationInicial_button
+
+                If i > ItemsXFilas Then
+                    Dim fila As Double = (i - 1) / ItemsXFilas
+
+                    Dim Columna As Integer = i Mod ItemsXFilas
+                    If Columna = 0 Then
+                        Columna = ItemsXFilas
+                    End If
+
+                    x = ((Columna - 1) * Width_Button + (Columna - 1) * Space_button) + 10
+                    y = (Math.Truncate(fila) * Height_Button) + LocationInicial_button
+
+                    Dim MaxFila As Integer = Math.Truncate(items / ItemsXFilas)
+                    If MaxFila - 1 = Math.Truncate(fila) Then
+
+                    End If
+
+                End If
+                b.Font = My.Settings.text_font
+                b.Text = dato.GetString(1)
+                b.TextAlign = ContentAlignment.TopCenter
+                b.Location = New Point(x, y)
+                b.ContextMenuStrip = c
+                b.Image = My.Resources.verify2_128
+                b.ImageAlign = ContentAlignment.MiddleCenter
+                b.BackColor = My.Settings.button_color
+
+                AddHandler b.MouseDown, AddressOf EventoClick
+                AddHandler b.MouseEnter, AddressOf EventoClick_Enter
+                AddHandler b.MouseLeave, AddressOf EventoClick_Leave
+                panel1.Controls.Add(b)
+                i += 1
+            Loop
+        End If
+    End Sub
+
+    Private Sub EventoClick_Leave(sender As Object, e As EventArgs)
+        sender.BackColor = My.Settings.button_color
+    End Sub
+
+    Private Sub EventoClick_Enter(sender As Object, e As EventArgs)
+        sender.BackColor = My.Settings.button_colorSelect
+    End Sub
+
+    Private Sub EventoClick(sender As Object, e As MouseEventArgs)
+        If e.Button = MouseButtons.Right Then
+            Select_VehiclesMatricula = sender.name
+        ElseIf e.Button = MouseButtons.Left Then
+            If (MsgBox("PERMITIR SALIDA A: " + sender.text, Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                Vehicle_ChangeStatus(sender.name, 0)
+                EnterExitControl.Loader()
+            End If
+        End If
+    End Sub
+
+    Public Function Vehicle_Status(Mat As ToolStripTextBox) As Boolean
+        Dim r = False
+
+        Dim dato = Db.Consult("SELECT status FROM vehicles WHERE matricula = '" + Mat.Text + "' ")
+
+        If dato.Read() Then
+            r = dato.GetBoolean(0)
+            Console.WriteLine(r.ToString)
+        End If
+
+        Return r
+
+    End Function
+
+    Public Function VehicleReturnTarifa(ByRef hours As Boolean, ByRef day As Boolean, ByRef pension As Boolean, Mat As ToolStripTextBox) As Boolean
+        Dim r = True
+        If IsNumber(Mat.Text) Then
+            Mat.Text = (Convert.ToInt32(Mat.Text)).ToString
+        End If
+
+        Dim dato = Db.Consult("SELECT tarifa_hora, tarifa_dia, tarifa_pension, matricula FROM vehicles WHERE matricula = '" + Mat.Text + "' or rfid = '" + Mat.Text + "' ")
+
+        If dato.Read() Then
+            hours = dato.GetBoolean(0)
+            day = dato.GetBoolean(1)
+            pension = dato.GetBoolean(2)
+            Mat.Text = dato.GetString(3)
+        Else
+            r = False
+        End If
+        Return r
+    End Function
+
+    Public Function ReturnFechaString(f As DateTime) As String
+        Return (f.Year.ToString + "-" + f.Month.ToString + "-" + f.Day.ToString + " " + f.Hour.ToString + ":" + f.Minute.ToString + ":" + f.Second.ToString).ToString
+    End Function
+
+    Public Function VehiclesUpdate_StatusForHours(ByRef Ma As String, status As Integer) As Boolean
+        Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "', fecha_ingreso = '" + ReturnFechaString(DateTime.Now) + "' WHERE matricula = '" + Ma + "' ")
+    End Function
+
+    Public Function VehiclesUpdate_DiasVencidosForHours(ByRef Ma As String, status As Integer) As Boolean
+        Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "', fecha_ingreso = '" + ReturnFechaString(DateTime.Now) + "', tarifa_dia = '0', tarifa_hora = '1', tarifa_pension = '0' WHERE matricula = '" + Ma + "' ")
+    End Function
+
+    Public Function Vehicle_ChangeStatus(ByRef Ma As String, status As Integer) As Boolean
+        Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "' WHERE matricula = '" + Ma + "' ")
+    End Function
+
+    Public Function VehicleValidateFecha_Salida(Mat As ToolStripTextBox) As Boolean
+        Dim r = False
+        If IsNumber(Mat.Text) Then
+            Mat.Text = (Convert.ToInt32(Mat.Text)).ToString
+        End If
+
+        Dim dato = Db.Consult("SELECT fecha_salida FROM vehicles WHERE matricula = '" + Mat.Text + "' ")
+
+        If dato.Read() Then
+            If Convert.ToDateTime(dato.GetString(0).ToString.Replace("-", "/")) > DateTime.Now Then
+                r = True
+            End If
+        Else
+            r = False
+        End If
+        Return r
+    End Function
+
 End Class

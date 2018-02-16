@@ -115,7 +115,7 @@
             If (f.IsNumber(TxtSearch.Text)) Then
                 TxtSearch.Text = (Convert.ToInt32(TxtSearch.Text)).ToString
             End If
-            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado, f.fecha_salida FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.rfid like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
+            f.GetVehicles("SELECT v.matricula, c.name, t.name, v.modelo, v.color, v.estado, v.fecha_salida FROM clients c, vehicles v, tarifas t where v.client = c.id and v.tarifa = t.id and v.matricula like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and c.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.modelo like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.color like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.estado like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and t.name like '%" + TxtSearch.Text + "%' or v.client = c.id and v.tarifa = t.id and v.rfid like '%" + TxtSearch.Text + "%' ORDER by c.name ASC", Table)
             TxtSearch.Text = ""
         End If
     End Sub
@@ -214,6 +214,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If ComboClientsEdit.SelectedIndex > 0 And f.GetPermiso(f.Permiso_Vehicle_Edit) And ComboBoxTarifaEdit.SelectedIndex > 0 Then
             If f.Vehicle_Update(ComboClientsEdit, MatriculaTextBoxEdit, ModeloTextBoxEdit, ColorTextBoxEdit, EstadoTextboxEdit, ComboBoxTarifaEdit, TxtRfid_Edit) Then
+                EnterExitControl.Loader()
                 f.Alert("Vehiculo actualizado", f.Alert_NumberInformacion, PanelControl.Desktop)
                 TabControl1.SelectedIndex = 0
             Else
