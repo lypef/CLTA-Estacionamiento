@@ -699,4 +699,91 @@ Public Class Functions
         Return r
     End Function
 
+    Public Function ReturnInfoVehicle() As String
+        Dim r = ""
+        Dim dato = Db.Consult("SELECT v.matricula, v.modelo, c.name, t.name, v.fecha_ingreso, v.fecha_salida, v.tarifa_hora, v.tarifa_dia, v.tarifa_pension, t.price_hora, t.price_dia, t.price_pension, t.horas_dias, t.dias_pencion, t.costo_minimo, v.estado from vehicles v, tarifas t, clients c WHERE matricula = '" + Select_VehiclesMatricula + "' and v.tarifa = t.id and v.client = c.id")
+
+        If dato.Read() Then
+            r = "CLIENTE: " + dato.GetString(2) + vbCrLf + vbCrLf
+
+            r += "MATRICULA: " + dato.GetString(0) + vbCrLf
+            r += "UNIDAD: " + dato.GetString(1) + vbCrLf
+            r += "ESTADO: " + dato.GetString(15) + vbCrLf + vbCrLf
+
+            r += "TARIFA: " + dato.GetString(3) + vbCrLf
+            r += "PRECIO X HORA: $ " + dato.GetString(9) + " | 1 HORA" + vbCrLf
+            r += "PRECIO X DIA: $ " + dato.GetString(10) + " | " + dato.GetString(12) + " HORAS" + vbCrLf
+            r += "PRECIO X PENSION: $ " + dato.GetString(11) + " | " + dato.GetString(13) + " DIAS" + vbCrLf
+            r += "CORBRO MINIMO: $ " + dato.GetString(14) + vbCrLf + vbCrLf
+
+            If dato.GetBoolean(6) Then
+                r += "TARIFA SELECCIONADA: COBRO POR HORA" + vbCrLf
+            ElseIf dato.GetBoolean(7) Then
+                r += "TARIFA SELECCIONADA: COBRO POR DIA" + vbCrLf
+            ElseIf dato.GetBoolean(8) Then
+                r += "TARIFA SELECCIONADA: COBRO POR PENSION" + vbCrLf
+            End If
+
+            If dato.GetBoolean(6) = False Then
+                If DateTime.Now > Convert.ToDateTime(dato.GetString(5)) Then
+                    r += "TARIFA: VENCIDA" + vbCrLf
+                Else
+                    r += "TARIFA: VIGENTE" + vbCrLf
+                End If
+                Dim day As Long = DateDiff(DateInterval.Day, DateTime.Now, Convert.ToDateTime(dato.GetString(5)))
+                Dim horas As Long = DateDiff(DateInterval.Hour, DateTime.Now, Convert.ToDateTime(dato.GetString(5)))
+                r += "DIAS/HORAS RESTANTES:" + day.ToString + "DIAS/" + horas.ToString + "HORAS" + vbCrLf
+            End If
+
+            r += "INGRESO: " + dato.GetString(4) + vbCrLf
+            r += "SALIDA: " + dato.GetString(5) + vbCrLf + vbCrLf
+
+            If dato.GetBoolean(6) Then
+                r += "ADEUDO: $ " + CalculateAdeudoXHORA(Convert.ToDateTime(dato.GetString(4)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+            ElseIf dato.GetBoolean(7) Then
+                r += "ADEUDO: $ " + CalculateAdeudoXDia(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+            ElseIf dato.GetBoolean(8) Then
+                r += "ADEUDO: $ " + CalculateAdeudoXPension(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+            End If
+        End If
+        Return r
+    End Function
+
+    Public Function CalculateAdeudoXHORA(Entrada As DateTime, Costo As Double, Costo_Minimo As Double) As Double
+        Dim r = 0
+        Dim Minutos As Long = DateDiff(DateInterval.Minute, Entrada, DateTime.Now)
+        r = (Minutos / 60) * Costo
+        If r < Costo_Minimo Then
+            r = Costo_Minimo
+        End If
+        Return r
+    End Function
+
+    Public Function CalculateAdeudoXDia(Salida As DateTime, Costo As Double, Costo_Minimo As Double) As Double
+        Dim r = 0
+
+        If DateTime.Now > Salida Then
+            Dim Minutos As Long = DateDiff(DateInterval.Minute, DateTime.Now, Salida)
+            r = (Minutos / 60) * Costo
+            If r < Costo_Minimo Then
+                r = Costo_Minimo
+            End If
+        End If
+
+        Return r
+    End Function
+
+    Public Function CalculateAdeudoXPension(Salida As DateTime, Costo As Double, Costo_Minimo As Double) As Double
+        Dim r = 0
+
+        If DateTime.Now > Salida Then
+            Dim Minutos As Long = DateDiff(DateInterval.Minute, DateTime.Now, Salida)
+            r = (Minutos / 60) * Costo
+            If r < Costo_Minimo Then
+                r = Costo_Minimo
+            End If
+        End If
+
+        Return r
+    End Function
 End Class

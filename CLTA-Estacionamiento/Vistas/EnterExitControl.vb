@@ -69,6 +69,6 @@
     End Sub
 
     Private Sub InfoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoToolStripMenuItem.Click
-        f.Alert(Functions.Select_VehiclesMatricula, f.Alert_NumberInformacion, PanelControl.Desktop)
+        MsgBox(f.ReturnInfoVehicle, MsgBoxStyle.Information)
     End Sub
 End Class
