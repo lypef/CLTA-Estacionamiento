@@ -13,11 +13,13 @@ Public Class Functions
     Public Shared ReadOnly Data_clients As String = "\clients"
     Public Shared ReadOnly Data_reports As String = "\reports"
     Public Shared ReadOnly Data_drivers As String = "\drivers"
+    Public Shared ReadOnly Data_products As String = "\products"
     Public Shared ReadOnly Data_Clients_ImgDefault As String = "\default.png"
 
     'Variables de sistema
     Public Shared Client As String
     Public Shared Matricula As String
+    Public Shared VTD_Codebar As String
     Public Shared Tarifa As String
     Public Shared Select_VehiclesMatricula As String
 
@@ -35,6 +37,10 @@ Public Class Functions
     Public ReadOnly Permiso_Rate_Edit As String = "rate_edit"
     Public ReadOnly Permiso_Rate_Delete As String = "rate_delete"
     Public ReadOnly Permiso_Assign_Access As String = "assign_access"
+    Public ReadOnly Permiso_Vtd_access As String = "vtd_access"
+    Public ReadOnly Permiso_Vtd_Add As String = "vtd_add"
+    Public ReadOnly Permiso_Vtd_Edit As String = "vtd_edit"
+    Public ReadOnly Permiso_Vtd_Delete As String = "vtd_delete"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -55,6 +61,8 @@ Public Class Functions
         AddForm_Desktop(Rate, desktop)
         AddForm_Desktop(Assignments, desktop)
         AddForm_Desktop(EnterExitControl, desktop)
+        AddForm_Desktop(Adeudos, desktop)
+        AddForm_Desktop(VentaDirecta, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -200,6 +208,34 @@ Public Class Functions
 
     End Sub
 
+    Public Sub GetProducts(ByVal sql As String, ByVal t As DataGridView)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("codebar", "Codigo")
+        t.Columns.Add("name", "Nombre")
+        t.Columns.Add("description", "Descripcion")
+        t.Columns.Add("price", "Precio")
+        t.Columns.Add("Stock", "Stock")
+        t.Columns.Add("vendidos", "Vendidos")
+        t.Columns.Add("service", "Tipo")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                If dato.GetBoolean(7) Then
+                    t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), "SERVICIO")
+                Else
+                    t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), "PRODUCTO")
+                End If
+
+            Loop
+        End If
+
+    End Sub
+
     Public Sub GetTarifas(ByVal sql As String, ByVal t As DataGridView)
         t.Columns.Clear()
         t.Rows.Clear()
@@ -274,6 +310,29 @@ Public Class Functions
             colorTextBoxEdit.Text = dato.GetString(4)
             estadoTextboxEdit.Text = dato.GetString(5)
             Rfid.Text = dato.GetString(6)
+        End If
+    End Sub
+
+    Public Sub Vtd_LoadValues(ByVal TxtCode As TextBox, ByVal TxtNombre As TextBox, ByVal TxtDescripcion As TextBox, ByVal TxtPrecio As TextBox, ByVal Service As CheckBox, ByVal stock As NumericUpDown, ByRef urlImage As String, imagen As PictureBox, ByRef urlImage_new As String)
+        Dim dato = Db.Consult("SELECT * FROM product_services WHERE codebar = '" + VTD_Codebar + "' ")
+
+        If dato.Read() Then
+            TxtCode.Text = dato.GetString(0)
+            TxtNombre.Text = dato.GetString(1)
+            TxtDescripcion.Text = dato.GetString(2)
+            TxtPrecio.Text = dato.GetString(3)
+            stock.Value = Convert.ToInt32(dato.GetString(4))
+            urlImage = My.Settings.data_url + Data_products + dato.GetString(6)
+            urlImage_new = urlImage
+            If My.Computer.FileSystem.FileExists(urlImage) Then
+                Dim fs As FileStream = New FileStream(urlImage, FileMode.Open, FileAccess.Read)
+                imagen.Image = Image.FromStream(fs)
+                PictureBoxSetModel(imagen)
+                fs.Close()
+            Else
+                imagen.Image = Nothing
+            End If
+            Service.Checked = dato.GetBoolean(7)
         End If
     End Sub
 
@@ -396,6 +455,31 @@ Public Class Functions
         Return Db.Ejecutar("UPDATE vehicles SET client = '" + ListClients.Item(c.SelectedIndex).ToString() + "', tarifa = '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', matricula = '" + matriculaTextBoxEdit.Text.ToUpper + "', modelo = '" + modeloTextBoxEdit.Text.ToUpper + "', color = '" + colorTextBoxEdit.Text.ToUpper + "', estado = '" + estadoTextboxEdit.Text.ToUpper + "', rfid = " + Rfid.Text + " where matricula = '" + Matricula + "' ")
     End Function
 
+    Public Function Vtd_Product_Update(ByVal TxtCode As TextBox, ByVal TxtNombre As TextBox, ByVal TxtDescripcion As TextBox, ByVal TxtPrecio As TextBox, ByVal Service As CheckBox, ByVal stock As NumericUpDown, ByVal foto As String, ByVal foto_edit As String) As Boolean
+        Dim ServiceTmp As Integer = 0
+        If Service.Checked Then
+            ServiceTmp = 1
+        End If
+
+        If foto = foto_edit Then
+            Return Db.Ejecutar("UPDATE product_services SET codebar = '" + TxtCode.Text + "', nombre = '" + TxtNombre.Text.ToUpper + "', descripcion = '" + TxtDescripcion.Text.ToUpper + "', precio = '" + TxtPrecio.Text + "', stock = '" + stock.Value.ToString + "', service = '" + ServiceTmp.ToString + "' WHERE codebar = '" + VTD_Codebar + "' ")
+        Else
+            Dim ruta As String
+            ruta = "/" + username_id + DateTime.Now.ToString().Replace("/", "").Replace(".", "").Replace(":", "").Replace(" ", "") + Path.GetExtension(foto_edit)
+            ruta = ruta.Replace("\", "/")
+
+            Try
+                My.Computer.FileSystem.CopyFile(foto_edit, My.Settings.data_url + Data_products + ruta)
+                If My.Computer.FileSystem.FileExists(foto) Then
+                    My.Computer.FileSystem.DeleteFile(foto)
+                End If
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+            Return Db.Ejecutar("UPDATE product_services SET codebar = '" + TxtCode.Text + "', nombre = '" + TxtNombre.Text.ToUpper + "', descripcion = '" + TxtDescripcion.Text.ToUpper + "', precio = '" + TxtPrecio.Text + "', stock = '" + stock.Value.ToString + "', image = '" + ruta + "', service = '" + ServiceTmp.ToString + "' WHERE codebar = '" + VTD_Codebar + "' ")
+        End If
+    End Function
+
     Public Function Vehicle_Update_Horas(c As ComboBox)
         Return Db.Ejecutar("UPDATE vehicles SET tarifa = '" + ListTarifas.Item(c.SelectedIndex).ToString() + "', tarifa_hora = '1', tarifa_dia = '0', tarifa_pension = '0' where matricula = '" + Matricula + "' ")
     End Function
@@ -414,6 +498,10 @@ Public Class Functions
 
     Public Shared Function Vehicles_DELETE() As Boolean
         Return Db_shared.Ejecutar("delete from vehicles where matricula = '" + Matricula + "' ")
+    End Function
+
+    Public Shared Function VTD_Product_DELETE() As Boolean
+        Return Db_shared.Ejecutar("delete from product_services where codebar = '" + VTD_Codebar + "' ")
     End Function
 
     Private Shared Sub DeleteIMGClient()
@@ -450,6 +538,23 @@ Public Class Functions
         End Try
 
         Return Db_shared.Ejecutar("INSERT INTO clients (name, address, phone, mail, rfc, razonsocial, foto) VALUES ('" + TxtName.Text.ToUpper + "', '" + TxtDireccion.Text.ToUpper + "', '" + TxtPhone.Text.ToUpper + "', '" + TxtMail.Text.ToUpper + "', '" + TxtRfc.Text.ToUpper + "', '" + TxtRazonSocial.Text.ToUpper + "', '" + ruta + "')")
+    End Function
+
+    Public Shared Function Products_add(ByVal TxtCode As TextBox, ByVal TxtNombre As TextBox, ByVal TxtDescripcion As TextBox, ByVal TxtPrecio As TextBox, ByVal Service As CheckBox, ByVal stock As NumericUpDown, ByVal foto As String) As Boolean
+        Dim ruta As String
+        ruta = "/" + username_id + DateTime.Now.ToString().Replace("/", "").Replace(".", "").Replace(":", "").Replace(" ", "") + Path.GetExtension(foto)
+        ruta = ruta.Replace("\", "/")
+
+        Try
+            My.Computer.FileSystem.CopyFile(foto, My.Settings.data_url + Data_products + ruta)
+        Catch ex As Exception
+
+        End Try
+        Dim ServiceTmp As Integer = 0
+        If Service.Checked Then
+            ServiceTmp = 1
+        End If
+        Return Db_shared.Ejecutar("INSERT INTO product_services (codebar, nombre, descripcion, precio, stock, vendidos, image, service) VALUES ('" + TxtCode.Text + "', '" + TxtNombre.Text.ToUpper + "', '" + TxtDescripcion.Text.ToUpper + "', '" + TxtPrecio.Text.Replace(",", ".").Replace(" ", "") + "', '" + stock.Value.ToString + "', '0', '" + ruta + "', '" + ServiceTmp.ToString + "')")
     End Function
 
     Public Shared Function Clients_Update(ByVal TxtName As TextBox, ByVal TxtDireccion As TextBox, ByVal TxtPhone As TextBox, ByVal TxtMail As TextBox, ByVal TxtRfc As TextBox, ByVal TxtRazonSocial As TextBox, ByVal foto As String, ByVal foto_edit As String) As Boolean
@@ -625,9 +730,13 @@ Public Class Functions
         If e.Button = MouseButtons.Right Then
             Select_VehiclesMatricula = sender.name
         ElseIf e.Button = MouseButtons.Left Then
-            If (MsgBox("PERMITIR SALIDA A: " + sender.text, Alert_NumberExclamacion + vbYesNo) = vbYes) Then
-                Vehicle_ChangeStatus(sender.name, 0)
-                EnterExitControl.Loader()
+            If (MsgBox("DAR SALIDA A: " + sender.text, Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                If VehicleReturnAdeudo(sender.name) > 0 Then
+                    EnterExitControl.Adeudo(sender.name, VehicleReturnAdeudo(sender.name))
+                Else
+                    Vehicle_ChangeStatus(sender.name, 0)
+                    EnterExitControl.Loader()
+                End If
             End If
         End If
     End Sub
@@ -681,6 +790,24 @@ Public Class Functions
         Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "' WHERE matricula = '" + Ma + "' ")
     End Function
 
+    Public Function VehicleReturnAdeudo(Matricula As String) As Double
+        Dim r As Double = 0
+        Dim dato = Db.Consult("SELECT v.tarifa_hora, v.tarifa_dia, v.tarifa_pension, v.fecha_ingreso, t.price_hora, t.price_dia, t.price_pension, t.costo_minimo, v.fecha_salida FROM vehicles v, tarifas t where v.tarifa = t.id and matricula = '" + Matricula + "'  ")
+
+        If dato.Read() Then
+            If dato.GetBoolean(0) Then
+                r = CalculateAdeudoXHORA(Convert.ToDateTime(dato.GetString(3)), Convert.ToDouble(dato.GetString(4)), Convert.ToDouble(dato.GetString(7)))
+            ElseIf dato.GetBoolean(1) Then
+                r = CalculateAdeudoXDia(Convert.ToDateTime(dato.GetString(8)), Convert.ToDouble(dato.GetString(5)), Convert.ToDouble(dato.GetString(7)))
+            ElseIf dato.GetBoolean(2) Then
+                r = CalculateAdeudoXPension(Convert.ToDateTime(dato.GetString(8)), Convert.ToDouble(dato.GetString(6)), Convert.ToDouble(dato.GetString(7)))
+            End If
+        Else
+            r = 0
+        End If
+        Return r
+    End Function
+
     Public Function VehicleValidateFecha_Salida(Mat As ToolStripTextBox) As Boolean
         Dim r = False
         If IsNumber(Mat.Text) Then
@@ -714,7 +841,7 @@ Public Class Functions
             r += "PRECIO X HORA: $ " + dato.GetString(9) + " | 1 HORA" + vbCrLf
             r += "PRECIO X DIA: $ " + dato.GetString(10) + " | " + dato.GetString(12) + " HORAS" + vbCrLf
             r += "PRECIO X PENSION: $ " + dato.GetString(11) + " | " + dato.GetString(13) + " DIAS" + vbCrLf
-            r += "CORBRO MINIMO: $ " + dato.GetString(14) + vbCrLf + vbCrLf
+            r += "COBRO MINIMO: $ " + dato.GetString(14) + vbCrLf + vbCrLf
 
             If dato.GetBoolean(6) Then
                 r += "TARIFA SELECCIONADA: COBRO POR HORA" + vbCrLf

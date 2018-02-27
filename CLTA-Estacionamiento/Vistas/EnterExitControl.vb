@@ -28,6 +28,7 @@
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
+            TxtSearch.Text = TxtSearch.Text.Replace("//BUSCAR", "")
             If (f.IsNumber(TxtSearch.Text)) Then
                 TxtSearch.Text = (Convert.ToInt32(TxtSearch.Text)).ToString
             End If
@@ -70,5 +71,16 @@
 
     Private Sub InfoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoToolStripMenuItem.Click
         MsgBox(f.ReturnInfoVehicle, MsgBoxStyle.Information)
+    End Sub
+
+    Public Sub Adeudo(Matricula As Object, monto As Double)
+        Functions.Select_VehiclesMatricula = Matricula
+        Adeudos.Matricula = Matricula
+        Adeudos.MontoTotal = monto
+        Adeudos.Detalles.Text = f.ReturnInfoVehicle()
+        Adeudos.LoadTotalButton()
+        Functions.Select_VehiclesMatricula = ""
+        f.AddForm_Desktop(Adeudos, PanelControl.Desktop)
+        Adeudos.WindowState = FormWindowState.Normal
     End Sub
 End Class

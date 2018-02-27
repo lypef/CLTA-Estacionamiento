@@ -212,7 +212,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("C:\clta_estacionamiento_data\clientes")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\clta_estacionamiento_data")>  _
         Public Property data_url() As String
             Get
                 Return CType(Me("data_url"),String)

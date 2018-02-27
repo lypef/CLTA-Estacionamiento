@@ -7,7 +7,6 @@
                 My.Settings.login_username = Username.Text
                 My.Settings.login_password = Password.Text
             End If
-
             PanelControl.Show()
             Me.Visible = False
         Else

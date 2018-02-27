@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>38</ApplicationRevision>
+    <ApplicationRevision>42</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -170,6 +170,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Vistas\Adeudos.Designer.vb">
+      <DependentUpon>Adeudos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Adeudos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Assignments.Designer.vb">
       <DependentUpon>Assignments.vb</DependentUpon>
     </Compile>
@@ -200,6 +206,12 @@
     <Compile Include="Vistas\Vehicles.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\VentaDirecta.Designer.vb">
+      <DependentUpon>VentaDirecta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VentaDirecta.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Contenedores\About.resx">
@@ -223,6 +235,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Adeudos.resx">
+      <DependentUpon>Adeudos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Assignments.resx">
       <DependentUpon>Assignments.vb</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vehicles.resx">
       <DependentUpon>Vehicles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VentaDirecta.resx">
+      <DependentUpon>VentaDirecta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\details_24.png" />
     <None Include="Resources\verify2_128.png" />
     <None Include="Resources\verify2_48.png" />
     <None Include="Resources\verify_48.png" />

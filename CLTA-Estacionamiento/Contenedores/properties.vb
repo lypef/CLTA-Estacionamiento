@@ -28,6 +28,12 @@ Public Class properties
             End If
         Next
         Ventana.SelectedIndex = My.Settings.form_windowstate
+        AltoBotones.Value = My.Settings.Height_Button
+        AnchoBotones.Value = My.Settings.Width_Button
+        SpacioEntreBotones.Value = My.Settings.Space_button
+        BotonesXfila.Value = My.Settings.ItemsXFilas
+        ColorButton.BackColor = My.Settings.button_color
+        ColorButtonSelect.BackColor = My.Settings.button_colorSelect
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -57,6 +63,12 @@ Public Class properties
         My.Settings.Menu_font = LetraMenu.Font
         My.Settings.moneda = ComboBox1.SelectedItem.ToString.ToUpper
         My.Settings.form_windowstate = Ventana.SelectedIndex
+        My.Settings.Height_Button = AltoBotones.Value
+        My.Settings.Width_Button = AnchoBotones.Value
+        My.Settings.Space_button = SpacioEntreBotones.Value
+        My.Settings.ItemsXFilas = BotonesXfila.Value
+        My.Settings.button_color = ColorButton.BackColor
+        My.Settings.button_colorSelect = ColorButtonSelect.BackColor
         My.Settings.Save()
         Application.Restart()
     End Sub
@@ -107,12 +119,28 @@ Public Class properties
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        My.Settings.Reset()
-        My.Settings.Save()
-        Application.Restart()
+        If (MsgBox("¿Borrar configuracion actual y poner una predeterminada ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+            My.Settings.Reset()
+            My.Settings.Save()
+            Application.Restart()
+        End If
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Me.Dispose()
+    End Sub
+
+    Private Sub ColorButton_Click(sender As Object, e As EventArgs) Handles ColorButton.Click
+        ColorDialog1.Color = ColorButton.BackColor
+        If ColorDialog1.ShowDialog() = DialogResult.OK Then
+            ColorButton.BackColor = ColorDialog1.Color
+        End If
+    End Sub
+
+    Private Sub ColorButtonSelect_Click(sender As Object, e As EventArgs) Handles ColorButtonSelect.Click
+        ColorDialog1.Color = ColorButtonSelect.BackColor
+        If ColorDialog1.ShowDialog() = DialogResult.OK Then
+            ColorButtonSelect.BackColor = ColorDialog1.Color
+        End If
     End Sub
 End Class

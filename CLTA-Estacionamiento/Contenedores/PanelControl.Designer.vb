@@ -26,7 +26,7 @@ Partial Class PanelControl
         Me.BarraMenu = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LimpiarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TarifasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CambiarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,17 +35,17 @@ Partial Class PanelControl
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LimpiarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TarifasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AJUSTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AjustesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtBox = New System.Windows.Forms.ToolStripTextBox()
         Me.Desktop = New System.Windows.Forms.Panel()
         Me.Footer = New System.Windows.Forms.Panel()
         Me.LabelHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TxtBox = New System.Windows.Forms.ToolStripTextBox()
         Me.BarraMenu.SuspendLayout()
         Me.Footer.SuspendLayout()
         Me.SuspendLayout()
@@ -53,15 +53,15 @@ Partial Class PanelControl
         'BarraMenu
         '
         Me.BarraMenu.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.TarifasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.AJUSTESToolStripMenuItem, Me.TxtBox})
+        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.VentasToolStripMenuItem, Me.AJUSTESToolStripMenuItem, Me.TxtBox})
         Me.BarraMenu.Location = New System.Drawing.Point(0, 0)
         Me.BarraMenu.Name = "BarraMenu"
-        Me.BarraMenu.Size = New System.Drawing.Size(1110, 34)
+        Me.BarraMenu.Size = New System.Drawing.Size(1164, 34)
         Me.BarraMenu.TabIndex = 2
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem1, Me.LimpiarToolStripMenuItem1, Me.ToolStripSeparator1, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1})
+        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem1, Me.TarifasToolStripMenuItem1, Me.ToolStripSeparator1, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1})
         Me.ArchivoToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(105, 30)
@@ -74,12 +74,12 @@ Partial Class PanelControl
         Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
         Me.UsuariosToolStripMenuItem1.Text = "Usuarios"
         '
-        'LimpiarToolStripMenuItem1
+        'TarifasToolStripMenuItem1
         '
-        Me.LimpiarToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.clean
-        Me.LimpiarToolStripMenuItem1.Name = "LimpiarToolStripMenuItem1"
-        Me.LimpiarToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
-        Me.LimpiarToolStripMenuItem1.Text = "Limpiar"
+        Me.TarifasToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_128
+        Me.TarifasToolStripMenuItem1.Name = "TarifasToolStripMenuItem1"
+        Me.TarifasToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
+        Me.TarifasToolStripMenuItem1.Text = "Tarifas"
         '
         'ToolStripSeparator1
         '
@@ -144,13 +144,6 @@ Partial Class PanelControl
         Me.LimpiarToolStripMenuItem.Text = "Limpiar"
         Me.LimpiarToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
-        'TarifasToolStripMenuItem
-        '
-        Me.TarifasToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.TarifasToolStripMenuItem.Name = "TarifasToolStripMenuItem"
-        Me.TarifasToolStripMenuItem.Size = New System.Drawing.Size(73, 30)
-        Me.TarifasToolStripMenuItem.Text = "Tarifas"
-        '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
@@ -164,6 +157,13 @@ Partial Class PanelControl
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(98, 30)
         Me.ToolStripMenuItem1.Text = "Vehiculos"
+        '
+        'VentasToolStripMenuItem
+        '
+        Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
+        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(128, 30)
+        Me.VentasToolStripMenuItem.Text = "Venta Directa"
         '
         'ToolStripMenuItem2
         '
@@ -186,13 +186,19 @@ Partial Class PanelControl
         Me.AjustesToolStripMenuItem1.Size = New System.Drawing.Size(141, 30)
         Me.AjustesToolStripMenuItem1.Text = "Ajustes"
         '
+        'TxtBox
+        '
+        Me.TxtBox.Name = "TxtBox"
+        Me.TxtBox.Size = New System.Drawing.Size(200, 30)
+        Me.TxtBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Desktop
         '
         Me.Desktop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Desktop.Dock = System.Windows.Forms.DockStyle.Top
         Me.Desktop.Location = New System.Drawing.Point(0, 34)
         Me.Desktop.Name = "Desktop"
-        Me.Desktop.Size = New System.Drawing.Size(1110, 359)
+        Me.Desktop.Size = New System.Drawing.Size(1164, 359)
         Me.Desktop.TabIndex = 4
         '
         'Footer
@@ -202,7 +208,7 @@ Partial Class PanelControl
         Me.Footer.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Footer.Location = New System.Drawing.Point(0, 399)
         Me.Footer.Name = "Footer"
-        Me.Footer.Size = New System.Drawing.Size(1110, 30)
+        Me.Footer.Size = New System.Drawing.Size(1164, 30)
         Me.Footer.TabIndex = 5
         '
         'LabelHora
@@ -219,17 +225,11 @@ Partial Class PanelControl
         'Timer1
         '
         '
-        'TxtBox
-        '
-        Me.TxtBox.Name = "TxtBox"
-        Me.TxtBox.Size = New System.Drawing.Size(200, 30)
-        Me.TxtBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'PanelControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1110, 429)
+        Me.ClientSize = New System.Drawing.Size(1164, 429)
         Me.Controls.Add(Me.Footer)
         Me.Controls.Add(Me.Desktop)
         Me.Controls.Add(Me.BarraMenu)
@@ -255,11 +255,9 @@ Partial Class PanelControl
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LimpiarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TarifasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AJUSTESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AjustesToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents LimpiarToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents MinimizarToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
@@ -271,4 +269,6 @@ Partial Class PanelControl
     Friend WithEvents UsuariosToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents TxtBox As ToolStripTextBox
+    Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TarifasToolStripMenuItem1 As ToolStripMenuItem
 End Class

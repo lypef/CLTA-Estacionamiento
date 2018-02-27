@@ -42,7 +42,7 @@
       <Value Profile="(Default)">Segoe UI, 12pt</Value>
     </Setting>
     <Setting Name="data_url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\clta_estacionamiento_data\clientes</Value>
+      <Value Profile="(Default)">C:\clta_estacionamiento_data</Value>
     </Setting>
     <Setting Name="moneda" Type="System.String" Scope="User">
       <Value Profile="(Default)">MXN</Value>

@@ -24,18 +24,17 @@ Partial Class EnterExitControl
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ActualizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ActualizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OtraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -51,14 +50,41 @@ Partial Class EnterExitControl
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'ToolStripMenuItem4
+        'ClientesToolStripMenuItem
         '
-        Me.ToolStripMenuItem4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ToolStripMenuItem4.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(108, 25)
-        Me.ToolStripMenuItem4.Text = "Minimizar"
+        Me.ClientesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
+        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(140, 25)
+        Me.ClientesToolStripMenuItem.Text = "Vehiculos activos"
+        '
+        'GenerarReporteToolStripMenuItem
+        '
+        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        '
+        'TxtSearch
+        '
+        Me.TxtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TxtSearch.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TxtSearch.Name = "TxtSearch"
+        Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
+        Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 29)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(941, 434)
+        Me.Panel1.TabIndex = 2
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(116, 26)
         '
         'SalirToolStripMenuItem
         '
@@ -85,18 +111,14 @@ Partial Class EnterExitControl
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(110, 25)
         Me.ToolStripMenuItem3.Text = "Maximizar"
         '
-        'ClientesToolStripMenuItem
+        'ToolStripMenuItem4
         '
-        Me.ClientesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarReporteToolStripMenuItem})
-        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(140, 25)
-        Me.ClientesToolStripMenuItem.Text = "Vehiculos activos"
-        '
-        'GenerarReporteToolStripMenuItem
-        '
-        Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
-        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        Me.ToolStripMenuItem4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ToolStripMenuItem4.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(108, 25)
+        Me.ToolStripMenuItem4.Text = "Minimizar"
         '
         'ActualizarToolStripMenuItem
         '
@@ -106,41 +128,12 @@ Partial Class EnterExitControl
         Me.ActualizarToolStripMenuItem.Size = New System.Drawing.Size(106, 25)
         Me.ActualizarToolStripMenuItem.Text = "Actualizar"
         '
-        'TxtSearch
-        '
-        Me.TxtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.TxtSearch.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TxtSearch.Name = "TxtSearch"
-        Me.TxtSearch.Size = New System.Drawing.Size(140, 25)
-        Me.TxtSearch.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Panel1
-        '
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 29)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(941, 434)
-        Me.Panel1.TabIndex = 2
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoToolStripMenuItem, Me.OtraToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(98, 48)
-        '
         'InfoToolStripMenuItem
         '
-        Me.InfoToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify_48
+        Me.InfoToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.details_24
         Me.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem"
-        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(97, 22)
-        Me.InfoToolStripMenuItem.Text = "Info"
-        '
-        'OtraToolStripMenuItem
-        '
-        Me.OtraToolStripMenuItem.Name = "OtraToolStripMenuItem"
-        Me.OtraToolStripMenuItem.Size = New System.Drawing.Size(97, 22)
-        Me.OtraToolStripMenuItem.Text = "Otra"
+        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.InfoToolStripMenuItem.Text = "Detalles"
         '
         'EnterExitControl
         '
@@ -170,5 +163,4 @@ Partial Class EnterExitControl
     Friend WithEvents TxtSearch As ToolStripTextBox
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents InfoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OtraToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -19,7 +19,7 @@ Public Class PanelControl
         BarraMenu.Font = My.Settings.Menu_font
         ArchivoToolStripMenuItem.Font = My.Settings.Menu_font
         ClientesToolStripMenuItem.Font = My.Settings.Menu_font
-        TarifasToolStripMenuItem.Font = My.Settings.Menu_font
+        VentasToolStripMenuItem.Font = My.Settings.Menu_font
         ToolStripMenuItem1.Font = My.Settings.Menu_font
         AJUSTESToolStripMenuItem.Font = My.Settings.Menu_font
         LimpiarToolStripMenuItem.Font = My.Settings.Menu_font
@@ -52,7 +52,7 @@ Public Class PanelControl
         Desktop.Controls.Clear()
     End Sub
 
-    Private Sub LimpiarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LimpiarToolStripMenuItem1.Click
+    Private Sub LimpiarToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         Desktop.Controls.Clear()
     End Sub
 
@@ -147,13 +147,8 @@ Public Class PanelControl
         End If
     End Sub
 
-    Private Sub TarifasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TarifasToolStripMenuItem.Click
-        If f.GetPermiso(f.Permiso_Rate_Access) Then
-            Rate.Loader()
-            f.AddForm_Desktop(Rate, Desktop)
-        Else
-            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
-        End If
+    Private Sub TarifasToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
@@ -171,6 +166,7 @@ Public Class PanelControl
     End Sub
 
     Private Sub TxtBox_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtBox.KeyDown
+        TxtBox.Text = TxtBox.Text.Replace("Matricula / QR", "")
         If e.KeyCode = Keys.Enter Then
             Dim hours As Boolean
             Dim day As Boolean
@@ -217,7 +213,20 @@ Public Class PanelControl
             Else
                 f.Alert("La matricula no existe", f.Alert_NumberCritical, Desktop)
             End If
-
+            TxtBox.Focus()
         End If
+    End Sub
+
+    Private Sub TarifasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TarifasToolStripMenuItem1.Click
+        If f.GetPermiso(f.Permiso_Rate_Access) Then
+            Rate.Loader()
+            f.AddForm_Desktop(Rate, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        f.AddForm_Desktop(VentaDirecta, Desktop)
     End Sub
 End Class

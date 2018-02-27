@@ -111,6 +111,7 @@
 
     Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
         If e.KeyCode = Keys.Enter Then
+            TxtSearch.Text = TxtSearch.Text.Replace("//BUSCAR", "")
             TabControl1.SelectedIndex = 0
             If (f.IsNumber(TxtSearch.Text)) Then
                 TxtSearch.Text = (Convert.ToInt32(TxtSearch.Text)).ToString
