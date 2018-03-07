@@ -10,6 +10,8 @@
         MenuStrip1.Font = My.Settings.Menu_font
         ToolStripMenuItem4.Font = My.Settings.Menu_font
         TabControl1.Font = My.Settings.Menu_font
+        Panel2.BackColor = My.Settings.Menu_color
+        ComboBox1.SelectedIndex = 0
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
@@ -75,6 +77,10 @@
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        If TabControl1.SelectedIndex = 0 Then
+            loader()
+        End If
+
         If TabControl1.SelectedIndex = 1 Then
             If f.GetPermiso(f.Permiso_Vtd_access) Then
                 f.GetProducts("SELECT * FROM product_services", Table)
@@ -106,20 +112,7 @@
         End If
     End Sub
 
-    Private Sub Table_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
-
-    End Sub
-
-    Private Sub Table_CellDoubleClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellDoubleClick
-        If String.IsNullOrEmpty(Table.SelectedCells(0).Value) = False Then
-            Functions.VTD_Codebar = Table.SelectedCells(0).Value
-            ContextMenuStrip1.Show(MousePosition)
-        Else
-            f.Alert("Seleccione un item verdadero", f.Alert_NumberExclamacion, PanelControl.Desktop)
-        End If
-    End Sub
-
-    Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
+    Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If (f.GetPermiso(f.Permiso_Vtd_Delete)) Then
             If (MsgBox("¿Esta seguro de eliminar el producto ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                 If Functions.VTD_Product_DELETE Then
@@ -134,7 +127,7 @@
         End If
     End Sub
 
-    Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem.Click
+    Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If f.GetPermiso(f.Permiso_Vtd_Edit) Then
             TabControl1.SelectedIndex = 3
         Else
@@ -171,9 +164,6 @@
         End If
     End Sub
 
-    Private Sub BuscarEnVTDToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub search_Consultas(v As String)
         f.GetProducts("SELECT *  FROM product_services WHERE codebar like '%" + v + "%' or nombre like '%" + v + "%' or descripcion like '%" + v + "%' ", Table)
@@ -219,5 +209,13 @@
             TabControl1.SelectedIndex = 0
             'search_Consultas(ToolStripTextBox1.Text)
         End If
+    End Sub
+
+    Public Sub loader()
+        f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services order by nombre asc")
+    End Sub
+
+    Public Sub addproduct(name As String)
+        TextBox2.Text = name
     End Sub
 End Class

@@ -227,6 +227,7 @@ Public Class PanelControl
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        VentaDirecta.loader()
         f.AddForm_Desktop(VentaDirecta, Desktop)
     End Sub
 End Class

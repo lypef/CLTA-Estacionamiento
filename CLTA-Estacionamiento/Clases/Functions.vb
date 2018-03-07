@@ -718,6 +718,78 @@ Public Class Functions
         End If
     End Sub
 
+    Public Sub Vtd_LoadProducts(panel1 As Panel, sql As String)
+        panel1.Controls.Clear()
+        Dim Height_Button As Integer = My.Settings.Height_Button
+        Dim Width_Button As Integer = My.Settings.Width_Button
+        Dim Space_button As Integer = My.Settings.Space_button
+        Dim LocationInicial_button As Integer = 10
+        Dim ItemsXFilas As Integer = My.Settings.ItemsXFilas
+        Dim items As Integer = 20
+
+        Dim dato = Db.Consult(sql)
+
+        Dim i As Integer = 1
+        If dato.HasRows Then
+            Do While dato.Read()
+                Dim b As New Button()
+                b.Height = Height_Button
+                b.Width = Width_Button
+                b.Top = (i - 1) * (Height_Button + 3)
+                Dim x As Integer = ((i - 1) * Width_Button + (i - 1) * Space_button) + 10
+                Dim y As Integer = LocationInicial_button
+
+                If i > ItemsXFilas Then
+                    Dim fila As Double = (i - 1) / ItemsXFilas
+
+                    Dim Columna As Integer = i Mod ItemsXFilas
+                    If Columna = 0 Then
+                        Columna = ItemsXFilas
+                    End If
+
+                    x = ((Columna - 1) * Width_Button + (Columna - 1) * Space_button) + 10
+                    y = (Math.Truncate(fila) * Height_Button) + LocationInicial_button
+
+                    Dim MaxFila As Integer = Math.Truncate(items / ItemsXFilas)
+                    If MaxFila - 1 = Math.Truncate(fila) Then
+
+                    End If
+
+                End If
+                b.Font = My.Settings.text_font
+                b.Name = dato.GetString(0)
+                b.Text = dato.GetString(1)
+                b.TextAlign = ContentAlignment.TopCenter
+                b.Location = New Point(x, y)
+
+                Dim UrlFoto As String = My.Settings.data_url + Data_products + dato.GetString(2)
+                If My.Computer.FileSystem.FileExists(UrlFoto) Then
+                    Dim fs As FileStream = New System.IO.FileStream(UrlFoto, FileMode.Open, FileAccess.Read)
+                    b.BackgroundImage = Image.FromStream(fs)
+                    b.BackgroundImageLayout = ImageLayout.Zoom
+                    fs.Close()
+                End If
+
+                b.ImageAlign = ContentAlignment.MiddleCenter
+                b.BackColor = My.Settings.button_color
+
+                AddHandler b.MouseDown, AddressOf EventoClickVtd
+                AddHandler b.MouseEnter, AddressOf EventoClick_Enter
+                AddHandler b.MouseLeave, AddressOf EventoClick_Leave
+                panel1.Controls.Add(b)
+                i += 1
+            Loop
+        End If
+    End Sub
+
+    Private Sub EventoClickVtd(sender As Object, e As MouseEventArgs)
+        If e.Button = MouseButtons.Right Then
+            MsgBox(ReturnInfoProduct(sender.name), Alert_NumberInformacion)
+        ElseIf e.Button = MouseButtons.Left Then
+            VentaDirecta.addproduct(sender.name)
+        End If
+    End Sub
+
     Private Sub EventoClick_Leave(sender As Object, e As EventArgs)
         sender.BackColor = My.Settings.button_color
     End Sub
@@ -859,11 +931,24 @@ Public Class Functions
                 End If
                 Dim day As Long = DateDiff(DateInterval.Day, DateTime.Now, Convert.ToDateTime(dato.GetString(5)))
                 Dim horas As Long = DateDiff(DateInterval.Hour, DateTime.Now, Convert.ToDateTime(dato.GetString(5)))
-                r += "DIAS/HORAS RESTANTES:" + day.ToString + "DIAS/" + horas.ToString + "HORAS" + vbCrLf
+                r += "DIAS/HORAS RESTANTES: " + day.ToString + " DIAS Ó " + horas.ToString + " HORAS " + vbCrLf
+            End If
+            r += vbCrLf
+            If dato.GetBoolean(6) Then
+                'hora
+                r += "INGRESO: " + dato.GetString(4) + vbCrLf
+                r += "FECHA ACTUAL: " + DateTime.Now.ToString + vbCrLf + vbCrLf
+            ElseIf dato.GetBoolean(7) Then
+                'Dia
+                r += "INGRESO: " + dato.GetString(4) + vbCrLf
+                r += "SALIDA: " + dato.GetString(5) + vbCrLf + vbCrLf
+            ElseIf dato.GetBoolean(8) Then
+                'Pension
+                r += "INGRESO: " + dato.GetString(4) + vbCrLf
+                r += "SALIDA: " + dato.GetString(5) + vbCrLf + vbCrLf
             End If
 
-            r += "INGRESO: " + dato.GetString(4) + vbCrLf
-            r += "SALIDA: " + dato.GetString(5) + vbCrLf + vbCrLf
+
 
             If dato.GetBoolean(6) Then
                 r += "ADEUDO: $ " + CalculateAdeudoXHORA(Convert.ToDateTime(dato.GetString(4)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
@@ -872,6 +957,25 @@ Public Class Functions
             ElseIf dato.GetBoolean(8) Then
                 r += "ADEUDO: $ " + CalculateAdeudoXPension(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
             End If
+        End If
+        Return r
+    End Function
+
+    Public Function ReturnInfoProduct(codebar As String) As String
+        Dim r = ""
+        Dim dato = Db.Consult("SELECT nombre, descripcion, precio, stock, service FROM product_services WHERE codebar = '" + codebar + "'")
+
+        If dato.Read() Then
+            r = "NOMBRE: " + dato.GetString(0) + vbCrLf
+            r += "DESCRIPCION: " + dato.GetString(1) + vbCrLf
+            r += "PRECIO: " + dato.GetString(2) + vbCrLf
+            If dato.GetBoolean(4) Then
+                r += "TIPO: ESTE PRODUCTO ES UN SERVICIO"
+            Else
+                r += "STOCK: " + dato.GetString(3) + vbCrLf
+                r += "TIPO: PRODUCTO"
+            End If
+
         End If
         Return r
     End Function

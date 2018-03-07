@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class VentaDirecta
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,8 @@ Partial Class VentaDirecta
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -30,8 +29,17 @@ Partial Class VentaDirecta
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -51,9 +59,6 @@ Partial Class VentaDirecta
         Me.TxtCode = New System.Windows.Forms.TextBox()
         Me.LabelRfid = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ImagenEdit = New System.Windows.Forms.PictureBox()
@@ -69,17 +74,16 @@ Partial Class VentaDirecta
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxtCodeBarEdit = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.Table, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.Imagen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Stock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.ImagenEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StockEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -91,7 +95,7 @@ Partial Class VentaDirecta
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ClientesToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(902, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(941, 29)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -139,8 +143,22 @@ Partial Class VentaDirecta
         'GenerarReporteToolStripMenuItem
         '
         Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(220, 26)
         Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        '
+        'ToolStripTextBox2
+        '
+        Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(160, 29)
+        Me.ToolStripTextBox2.Text = "Buscar en VTD"
+        '
+        'ToolStripTextBox1
+        '
+        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(160, 29)
+        Me.ToolStripTextBox1.Text = "Buscar en consultas"
         '
         'TabControl1
         '
@@ -152,18 +170,93 @@ Partial Class VentaDirecta
         Me.TabControl1.Location = New System.Drawing.Point(0, 29)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(902, 420)
+        Me.TabControl1.Size = New System.Drawing.Size(941, 434)
         Me.TabControl1.TabIndex = 2
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.Panel2)
+        Me.TabPage1.Controls.Add(Me.Panel1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(894, 394)
+        Me.TabPage1.Size = New System.Drawing.Size(933, 408)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Venta directa"
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Button6)
+        Me.Panel2.Controls.Add(Me.ComboBox1)
+        Me.Panel2.Controls.Add(Me.TextBox1)
+        Me.Panel2.Controls.Add(Me.Button7)
+        Me.Panel2.Controls.Add(Me.TextBox2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(3, 3)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(927, 40)
+        Me.Panel2.TabIndex = 6
+        '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.Button6.Location = New System.Drawing.Point(160, 3)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(110, 33)
+        Me.Button6.TabIndex = 2
+        Me.Button6.Text = "Buscar"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"MOSTRAR", "AMBOS", "PRODUCTOS", "SERVICIOS"})
+        Me.ComboBox1.Location = New System.Drawing.Point(276, 4)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(160, 33)
+        Me.ComboBox1.TabIndex = 5
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(9, 4)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(145, 31)
+        Me.TextBox1.TabIndex = 1
+        '
+        'Button7
+        '
+        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.Button7.Location = New System.Drawing.Point(717, 4)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(191, 33)
+        Me.Button7.TabIndex = 4
+        Me.Button7.Text = "Cobrar $ 0.0"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(442, 4)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(269, 31)
+        Me.TextBox2.TabIndex = 3
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Location = New System.Drawing.Point(3, 44)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(927, 361)
+        Me.Panel1.TabIndex = 0
         '
         'TabPage3
         '
@@ -171,7 +264,7 @@ Partial Class VentaDirecta
         Me.TabPage3.Controls.Add(Me.Table)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(894, 394)
+        Me.TabPage3.Size = New System.Drawing.Size(933, 408)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Consultar"
         '
@@ -181,7 +274,7 @@ Partial Class VentaDirecta
         Me.Table.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Table.Location = New System.Drawing.Point(0, 0)
         Me.Table.Name = "Table"
-        Me.Table.Size = New System.Drawing.Size(894, 394)
+        Me.Table.Size = New System.Drawing.Size(933, 408)
         Me.Table.TabIndex = 0
         '
         'TabPage2
@@ -205,7 +298,7 @@ Partial Class VentaDirecta
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(894, 394)
+        Me.TabPage2.Size = New System.Drawing.Size(933, 408)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Agregar"
         '
@@ -215,7 +308,7 @@ Partial Class VentaDirecta
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(748, 337)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(137, 32)
+        Me.Button2.Size = New System.Drawing.Size(137, 38)
         Me.Button2.TabIndex = 57
         Me.Button2.Text = "Agregar"
         Me.Button2.UseVisualStyleBackColor = True
@@ -225,7 +318,7 @@ Partial Class VentaDirecta
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Location = New System.Drawing.Point(748, 299)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(137, 32)
+        Me.Button1.Size = New System.Drawing.Size(137, 38)
         Me.Button1.TabIndex = 56
         Me.Button1.Text = " Imagen"
         Me.Button1.UseVisualStyleBackColor = True
@@ -245,7 +338,7 @@ Partial Class VentaDirecta
         Me.Generar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Generar.Location = New System.Drawing.Point(200, 37)
         Me.Generar.Name = "Generar"
-        Me.Generar.Size = New System.Drawing.Size(92, 26)
+        Me.Generar.Size = New System.Drawing.Size(92, 38)
         Me.Generar.TabIndex = 2
         Me.Generar.Text = " Generar"
         Me.Generar.UseVisualStyleBackColor = True
@@ -378,29 +471,9 @@ Partial Class VentaDirecta
         Me.TabPage4.Controls.Add(Me.Label9)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(894, 394)
+        Me.TabPage4.Size = New System.Drawing.Size(933, 408)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Editar"
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
-        '
-        'EditarToolStripMenuItem
-        '
-        Me.EditarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.edit_24
-        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
-        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.EditarToolStripMenuItem.Text = "Editar"
-        '
-        'EliminarToolStripMenuItem
-        '
-        Me.EliminarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.delete_24
-        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
         'Button3
         '
@@ -408,7 +481,7 @@ Partial Class VentaDirecta
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Location = New System.Drawing.Point(747, 337)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(137, 32)
+        Me.Button3.Size = New System.Drawing.Size(137, 38)
         Me.Button3.TabIndex = 72
         Me.Button3.Text = "Actualizar"
         Me.Button3.UseVisualStyleBackColor = True
@@ -418,7 +491,7 @@ Partial Class VentaDirecta
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.Location = New System.Drawing.Point(746, 299)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(137, 32)
+        Me.Button4.Size = New System.Drawing.Size(137, 38)
         Me.Button4.TabIndex = 71
         Me.Button4.Text = " Imagen"
         Me.Button4.UseVisualStyleBackColor = True
@@ -438,7 +511,7 @@ Partial Class VentaDirecta
         Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button5.Location = New System.Drawing.Point(198, 37)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(92, 26)
+        Me.Button5.Size = New System.Drawing.Size(92, 38)
         Me.Button5.TabIndex = 59
         Me.Button5.Text = " Generar"
         Me.Button5.UseVisualStyleBackColor = True
@@ -551,25 +624,11 @@ Partial Class VentaDirecta
         Me.Label9.TabIndex = 65
         Me.Label9.Text = "CODIGO"
         '
-        'ToolStripTextBox1
-        '
-        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(160, 29)
-        Me.ToolStripTextBox1.Text = "Buscar en consultas"
-        '
-        'ToolStripTextBox2
-        '
-        Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(160, 29)
-        Me.ToolStripTextBox2.Text = "Buscar en VTD"
-        '
         'VentaDirecta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(902, 449)
+        Me.ClientSize = New System.Drawing.Size(941, 463)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "VentaDirecta"
@@ -577,6 +636,9 @@ Partial Class VentaDirecta
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         CType(Me.Table, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
@@ -585,7 +647,6 @@ Partial Class VentaDirecta
         CType(Me.Stock, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.ImagenEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StockEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -621,9 +682,6 @@ Partial Class VentaDirecta
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Table As DataGridView
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
-    Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents ImagenEdit As PictureBox
@@ -641,4 +699,11 @@ Partial Class VentaDirecta
     Friend WithEvents Label9 As Label
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
     Friend WithEvents ToolStripTextBox2 As ToolStripTextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button7 As Button
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button6 As Button
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Panel2 As Panel
 End Class
