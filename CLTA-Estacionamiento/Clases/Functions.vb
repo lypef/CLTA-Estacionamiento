@@ -8,6 +8,7 @@ Public Class Functions
     'Listas
     Dim ListClients As New List(Of Integer)
     Dim ListTarifas As New List(Of Integer)
+    Dim ListVehiclesActivos As New List(Of String)
 
     'Rutas data
     Public Shared ReadOnly Data_clients As String = "\clients"
@@ -444,6 +445,23 @@ Public Class Functions
         c.Font = My.Settings.text_font
     End Sub
 
+    Public Sub ComboboxSetVehiclesActivos(ByVal c As ComboBox)
+        c.Items.Clear()
+        ListVehiclesActivos.Clear()
+
+        Dim dato = Db.Consult("SELECT matricula, modelo from vehicles where status = 1 ORDER by modelo asc")
+        c.Items.Add("VEHICULOS")
+        ListVehiclesActivos.Add("0")
+        If dato.HasRows Then
+            Do While dato.Read()
+                ListVehiclesActivos.Add(dato.GetString(0))
+                c.Items.Add(dato.GetString(1))
+            Loop
+        End If
+        c.SelectedIndex = 0
+        c.Font = My.Settings.text_font
+    End Sub
+
     Public Sub ComboboxSetTarifas(ByVal c As ComboBox)
         c.Items.Clear()
         ListTarifas.Clear()
@@ -838,8 +856,8 @@ Public Class Functions
             Select_VehiclesMatricula = sender.name
         ElseIf e.Button = MouseButtons.Left Then
             If (MsgBox("DAR SALIDA A: " + sender.text, Alert_NumberExclamacion + vbYesNo) = vbYes) Then
-                If VehicleReturnAdeudo(sender.name) > 0 Then
-                    EnterExitControl.Adeudo(sender.name, VehicleReturnAdeudo(sender.name))
+                If VehicleReturnAdeudoConProducts(sender.name) > 0 Then
+                    EnterExitControl.Adeudo(sender.name, VehicleReturnAdeudoConProducts(sender.name))
                 Else
                     Vehicle_ChangeStatus(sender.name, 0)
                     EnterExitControl.Loader()
@@ -897,7 +915,7 @@ Public Class Functions
         Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "' WHERE matricula = '" + Ma + "' ")
     End Function
 
-    Public Function VehicleReturnAdeudo(Matricula As String) As Double
+    Public Function VehicleReturnAdeudoMembresia(Matricula As String) As Double
         Dim r As Double = 0
         Dim dato = Db.Consult("SELECT v.tarifa_hora, v.tarifa_dia, v.tarifa_pension, v.fecha_ingreso, t.price_hora, t.price_dia, t.price_pension, t.costo_minimo, v.fecha_salida FROM vehicles v, tarifas t where v.tarifa = t.id and matricula = '" + Matricula + "'  ")
 
@@ -912,7 +930,13 @@ Public Class Functions
         Else
             r = 0
         End If
+
         Return r
+    End Function
+
+    Public Function VehicleReturnAdeudoConProducts(Matricula As String) As Double
+        Dim a As String = String.Empty
+        Return VehicleReturnAdeudoMembresia(Matricula) + Vehicles_TotalProducts(Matricula, a)
     End Function
 
     Public Function VehicleValidateFecha_Salida(Mat As ToolStripTextBox) As Boolean
@@ -983,17 +1007,22 @@ Public Class Functions
                 r += "SALIDA: " + dato.GetString(5) + vbCrLf + vbCrLf
             End If
 
-
+            Dim ListVtd As String = String.Empty
 
             If dato.GetBoolean(6) Then
-                r += "ADEUDO: $ " + CalculateAdeudoXHORA(Convert.ToDateTime(dato.GetString(4)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+                r += "ADEUDO: $ " + (CalculateAdeudoXHORA(Convert.ToDateTime(dato.GetString(4)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))) + Vehicles_TotalProducts(Select_VehiclesMatricula, ListVtd)).ToString + vbCrLf + vbCrLf
             ElseIf dato.GetBoolean(7) Then
-                r += "ADEUDO: $ " + CalculateAdeudoXDia(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+                r += "ADEUDO: $ " + (CalculateAdeudoXDia(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))) + Vehicles_TotalProducts(Select_VehiclesMatricula, ListVtd)).ToString + vbCrLf + vbCrLf
             ElseIf dato.GetBoolean(8) Then
-                r += "ADEUDO: $ " + CalculateAdeudoXPension(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))).ToString + vbCrLf + vbCrLf
+                r += "ADEUDO: $ " + (CalculateAdeudoXPension(Convert.ToDateTime(dato.GetString(5)), Convert.ToDouble(dato.GetString(9)), Convert.ToDouble(dato.GetString(14))) + Vehicles_TotalProducts(Select_VehiclesMatricula, ListVtd)).ToString + vbCrLf + vbCrLf
             End If
+
+            If String.IsNullOrEmpty(ListVtd) = False Then
+                r += ListVtd
+            End If
+
         End If
-        Return r
+            Return r
     End Function
 
     Public Function ReturnInfoProduct(codebar As String) As String
@@ -1012,6 +1041,72 @@ Public Class Functions
             End If
 
         End If
+        Return r
+    End Function
+
+    Public Function Vehicles_TotalProducts(vehiculo As String, ByRef ListVtd As String) As Decimal
+        Dim r As Decimal = 0
+
+        Dim dato = Db.Consult("SELECT d.id, p.nombre, p.precio FROM delivery_tmp d, product_services p WHERE d.product = p.codebar and d.vehicle = '" + vehiculo + "'")
+
+        If dato.hasrows Then
+            ListVtd = "PRODUCTOS: "
+            Do While dato.Read()
+                ListVtd += "(1) " + dato.GetString(1) + " " + dato.GetString(2) + " " + My.Settings.moneda + "| "
+                r += Convert.ToDecimal(dato.GetString(2))
+            Loop
+        End If
+
+        Return r
+    End Function
+
+    Public Function Vehicles_ProductsRealizarVenta(vehiculo As String) As Boolean
+        Dim r As Boolean = True
+        Dim clientTmp As String = VehiclesPropietarioID(vehiculo).ToString
+
+        Try
+            Dim ticket As Integer = Ticket_GenerateID()
+
+            Dim dato = Db.ConsultNewConexion("SELECT d.id, p.codebar FROM delivery_tmp d, product_services p WHERE d.product = p.codebar and d.vehicle = '" + vehiculo + "'")
+
+            If dato.hasrows Then
+                Do While dato.Read()
+                    Dim dato_id As String = dato.GetString(0)
+                    Dim dato_codebar As String = dato.GetString(1)
+
+                    Dim NameProduct As String = String.Empty
+                    Dim PriceProduct As Decimal = 0
+                    Dim IsService As Boolean = False
+                    Product_NamePrice_Return(dato_codebar, NameProduct, PriceProduct, IsService)
+
+                    If String.IsNullOrEmpty(NameProduct) = False Then
+                        Dim Add As Boolean
+                        If IsService Then
+                            Add = Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + clientTmp + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + NameProduct + "', '" + PriceProduct.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '1', '0' , '0', '0')")
+                        Else
+                            Add = Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + clientTmp + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + NameProduct + "', '" + PriceProduct.ToString + "', '" + GetDateString(DateTime.Now) + "', '1', '0', '0' , '0', '0')")
+                        End If
+
+                        If Add Then
+                            If IsService = False Then
+                                Db.Ejecutar("UPDATE product_services SET stock = stock - 1 WHERE codebar = '" + dato_codebar + "' ")
+                            End If
+                            Db.Ejecutar("delete from delivery_tmp where id = " + dato_id + " ")
+                        Else
+                            r = False
+                        End If
+                    End If
+                Loop
+            End If
+
+            If r Then
+                Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + clientTmp + "', '" + username_id.ToString + "', '" + ticket.ToString + "', 'COBRO TIEMPO', '" + VehicleReturnAdeudoMembresia(vehiculo).ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0', '1' , '0', '0')")
+            End If
+
+            TicketGeneratePrint(ticket)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
         Return r
     End Function
 
@@ -1080,7 +1175,23 @@ Public Class Functions
         Return total
     End Function
 
-    Public Sub VTD_Cobrar(txt As TextBox, client As Integer)
+    Public Function VTD_Cobrar_Delivery(txt As TextBox, vehicle As ComboBox) As Boolean
+        Dim r = True
+        Dim Matricula As String = ListVehiclesActivos.Item(vehicle.SelectedIndex).ToString
+
+        For Each item In txt.Text.Split("+")
+            If String.IsNullOrEmpty(item) = False Then
+                If Db.Ejecutar("INSERT INTO delivery_tmp (product, vehicle) VALUES ('" + item + "', '" + Matricula + "')") = False Then
+                    r = False
+                End If
+            End If
+        Next
+        Return r
+    End Function
+
+    Public Function VTD_Cobrar(txt As TextBox, client As Integer)
+        Dim r = True
+
         Dim ticket As Integer = Ticket_GenerateID()
 
         For Each item In txt.Text.Split("+")
@@ -1101,11 +1212,14 @@ Public Class Functions
                     If IsService = False Then
                         Db.Ejecutar("UPDATE product_services SET stock = stock - 1 WHERE codebar = '" + item.ToString + "' ")
                     End If
+                Else
+                    r = False
                 End If
             End If
         Next
         TicketGeneratePrint(ticket)
-    End Sub
+        Return r
+    End Function
 
     Public Sub TicketGeneratePrint(ticket As Integer)
         Console.WriteLine("se imrpime el ticket")
@@ -1135,4 +1249,16 @@ Public Class Functions
             IsService = dato.GetBoolean(2)
         End If
     End Sub
+
+    Public Function VehiclesPropietarioID(matricula As String) As Integer
+        Dim r = 0
+        Dim dato = Db.Consult("SELECT client FROM vehicles where matricula = '" + matricula + "' ")
+
+        If dato.Read() Then
+            r = Convert.ToInt32(dato.GetString(0))
+        End If
+
+        Return r
+
+    End Function
 End Class

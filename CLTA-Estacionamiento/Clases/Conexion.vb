@@ -27,6 +27,29 @@ Public Class Conexion
 
     End Function
 
+    Public Function ConsultNewConexion(ByVal sql As String)
+        Dim c = New MySqlConnection()
+        Dim dato As MySqlDataReader
+
+        Try
+            c.Close()
+            c.ConnectionString = Conectar
+            c.Open()
+            Dim adapter As New MySqlDataAdapter
+            Dim commando As New MySqlCommand
+            commando.Connection = c
+            commando.CommandText = sql
+            adapter.SelectCommand = commando
+            dato = commando.ExecuteReader()
+        Catch ex As Exception
+            dato = Nothing
+            MsgBox("Imposible conectar a la base de datos", MsgBoxStyle.Critical, "Error")
+        End Try
+
+        Return dato
+
+    End Function
+
     Public Function Ejecutar(ByVal sql As String) As Boolean
         Try
             Conexion.close()

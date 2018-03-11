@@ -4,6 +4,7 @@
     Public MontoTotal As Double
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        f.Vehicles_ProductsRealizarVenta(Matricula)
         f.Vehicle_ChangeStatus(Matricula, 0)
         EnterExitControl.Loader()
         Me.Dispose()

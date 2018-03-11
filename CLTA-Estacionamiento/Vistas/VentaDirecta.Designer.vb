@@ -35,7 +35,7 @@ Partial Class VentaDirecta
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ComboVehiculos = New System.Windows.Forms.ComboBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TxtSearch = New System.Windows.Forms.TextBox()
         Me.BtnTotal = New System.Windows.Forms.Button()
@@ -192,7 +192,7 @@ Partial Class VentaDirecta
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Button6)
+        Me.Panel2.Controls.Add(Me.ComboVehiculos)
         Me.Panel2.Controls.Add(Me.ComboBox1)
         Me.Panel2.Controls.Add(Me.TxtSearch)
         Me.Panel2.Controls.Add(Me.BtnTotal)
@@ -203,31 +203,32 @@ Partial Class VentaDirecta
         Me.Panel2.Size = New System.Drawing.Size(927, 40)
         Me.Panel2.TabIndex = 6
         '
-        'Button6
+        'ComboVehiculos
         '
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.Button6.Location = New System.Drawing.Point(165, 3)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(110, 33)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Buscar"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.ComboVehiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboVehiculos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboVehiculos.FormattingEnabled = True
+        Me.ComboVehiculos.Items.AddRange(New Object() {"MOSTRAR", "PRODUCTOS", "SERVICIOS"})
+        Me.ComboVehiculos.Location = New System.Drawing.Point(156, 6)
+        Me.ComboVehiculos.Name = "ComboVehiculos"
+        Me.ComboVehiculos.Size = New System.Drawing.Size(164, 28)
+        Me.ComboVehiculos.TabIndex = 6
         '
         'ComboBox1
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"MOSTRAR", "PRODUCTOS", "SERVICIOS"})
-        Me.ComboBox1.Location = New System.Drawing.Point(281, 4)
+        Me.ComboBox1.Location = New System.Drawing.Point(326, 6)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(160, 33)
+        Me.ComboBox1.Size = New System.Drawing.Size(124, 28)
         Me.ComboBox1.TabIndex = 5
         '
         'TxtSearch
         '
         Me.TxtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtSearch.Location = New System.Drawing.Point(14, 4)
+        Me.TxtSearch.Location = New System.Drawing.Point(5, 3)
         Me.TxtSearch.Name = "TxtSearch"
         Me.TxtSearch.Size = New System.Drawing.Size(145, 31)
         Me.TxtSearch.TabIndex = 1
@@ -236,7 +237,7 @@ Partial Class VentaDirecta
         '
         Me.BtnTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.BtnTotal.Location = New System.Drawing.Point(722, 4)
+        Me.BtnTotal.Location = New System.Drawing.Point(731, 1)
         Me.BtnTotal.Name = "BtnTotal"
         Me.BtnTotal.Size = New System.Drawing.Size(191, 33)
         Me.BtnTotal.TabIndex = 4
@@ -248,7 +249,7 @@ Partial Class VentaDirecta
         Me.TxtListCodebar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtListCodebar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtListCodebar.Location = New System.Drawing.Point(447, 4)
+        Me.TxtListCodebar.Location = New System.Drawing.Point(456, 3)
         Me.TxtListCodebar.Name = "TxtListCodebar"
         Me.TxtListCodebar.Size = New System.Drawing.Size(269, 31)
         Me.TxtListCodebar.TabIndex = 3
@@ -729,10 +730,10 @@ Partial Class VentaDirecta
     Friend WithEvents TxtSearch As TextBox
     Friend WithEvents BtnTotal As Button
     Friend WithEvents TxtListCodebar As TextBox
-    Friend WithEvents Button6 As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ComboVehiculos As ComboBox
 End Class

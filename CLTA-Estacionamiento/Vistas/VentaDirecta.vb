@@ -214,6 +214,7 @@
 
     Public Sub loader()
         f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services order by nombre asc")
+        f.ComboboxSetVehiclesActivos(ComboVehiculos)
     End Sub
 
     Public Sub addproduct(name As String)
@@ -269,9 +270,30 @@
     End Sub
 
     Private Sub Cobrar()
-        If (MsgBox("¿Realizar venta por un total de: ".ToUpper + Total_Products.ToString + " " + My.Settings.moneda + " ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
-            f.VTD_Cobrar(TxtListCodebar, My.Settings.id_publicoGeneral)
-            Limpiar()
+        Total()
+        If Total_Products > 0 Then
+            If ComboVehiculos.SelectedIndex > 0 Then
+                If MsgBox("¿Cargar productos a el vehiculo: ".ToUpper + ComboVehiculos.Text + " por un total de: ".ToUpper + Total_Products.ToString + " " + My.Settings.moneda + " ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes And Total_Products > 0 Then
+                    If f.VTD_Cobrar_Delivery(TxtListCodebar, ComboVehiculos) Then
+                        Limpiar()
+                        f.Alert("Productos cargados con exito", f.Alert_NumberInformacion, PanelControl.Desktop)
+                    Else
+                        f.Alert("Productos NO cargados", f.Alert_NumberCritical, PanelControl.Desktop)
+                    End If
+
+                End If
+            Else
+                If MsgBox("¿Realizar venta directa por un total de: ".ToUpper + Total_Products.ToString + " " + My.Settings.moneda + " ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes And Total_Products > 0 Then
+                    If f.VTD_Cobrar(TxtListCodebar, My.Settings.id_publicoGeneral) Then
+                        Limpiar()
+                        f.Alert("Venta realizada con exito", f.Alert_NumberInformacion, PanelControl.Desktop)
+                    Else
+                        f.Alert("Venta no realizada", f.Alert_NumberCritical, PanelControl.Desktop)
+                    End If
+                End If
+            End If
+        Else
+            f.Alert("El total no puede ser cero".ToUpper, f.Alert_NumberCritical, PanelControl.Desktop)
         End If
     End Sub
 
@@ -292,7 +314,7 @@
         End If
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs)
         SearchProduct()
     End Sub
 
@@ -306,5 +328,4 @@
         f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services where codebar like '%" + TxtSearch.Text.ToUpper + "%' or nombre like '%" + TxtSearch.Text.ToUpper + "%' order by nombre asc")
         TxtSearch.Text = ""
     End Sub
-
 End Class
