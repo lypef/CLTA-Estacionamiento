@@ -68,5 +68,8 @@
     <Setting Name="button_color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Control</Value>
     </Setting>
+    <Setting Name="id_publicoGeneral" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

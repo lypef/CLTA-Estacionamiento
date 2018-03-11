@@ -22,6 +22,7 @@ Partial Class VentaDirecta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -36,9 +37,9 @@ Partial Class VentaDirecta
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TxtSearch = New System.Windows.Forms.TextBox()
+        Me.BtnTotal = New System.Windows.Forms.Button()
+        Me.TxtListCodebar = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Table = New System.Windows.Forms.DataGridView()
@@ -74,6 +75,9 @@ Partial Class VentaDirecta
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxtCodeBarEdit = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -86,6 +90,7 @@ Partial Class VentaDirecta
         Me.TabPage4.SuspendLayout()
         CType(Me.ImagenEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StockEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -189,9 +194,9 @@ Partial Class VentaDirecta
         '
         Me.Panel2.Controls.Add(Me.Button6)
         Me.Panel2.Controls.Add(Me.ComboBox1)
-        Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Controls.Add(Me.Button7)
-        Me.Panel2.Controls.Add(Me.TextBox2)
+        Me.Panel2.Controls.Add(Me.TxtSearch)
+        Me.Panel2.Controls.Add(Me.BtnTotal)
+        Me.Panel2.Controls.Add(Me.TxtListCodebar)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
@@ -201,7 +206,7 @@ Partial Class VentaDirecta
         'Button6
         '
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.Button6.Location = New System.Drawing.Point(160, 3)
+        Me.Button6.Location = New System.Drawing.Point(165, 3)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(110, 33)
         Me.Button6.TabIndex = 2
@@ -213,40 +218,40 @@ Partial Class VentaDirecta
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"MOSTRAR", "AMBOS", "PRODUCTOS", "SERVICIOS"})
-        Me.ComboBox1.Location = New System.Drawing.Point(276, 4)
+        Me.ComboBox1.Items.AddRange(New Object() {"MOSTRAR", "PRODUCTOS", "SERVICIOS"})
+        Me.ComboBox1.Location = New System.Drawing.Point(281, 4)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(160, 33)
         Me.ComboBox1.TabIndex = 5
         '
-        'TextBox1
+        'TxtSearch
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(9, 4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(145, 31)
-        Me.TextBox1.TabIndex = 1
+        Me.TxtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSearch.Location = New System.Drawing.Point(14, 4)
+        Me.TxtSearch.Name = "TxtSearch"
+        Me.TxtSearch.Size = New System.Drawing.Size(145, 31)
+        Me.TxtSearch.TabIndex = 1
         '
-        'Button7
+        'BtnTotal
         '
-        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
-        Me.Button7.Location = New System.Drawing.Point(717, 4)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(191, 33)
-        Me.Button7.TabIndex = 4
-        Me.Button7.Text = "Cobrar $ 0.0"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.BtnTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.BtnTotal.Location = New System.Drawing.Point(722, 4)
+        Me.BtnTotal.Name = "BtnTotal"
+        Me.BtnTotal.Size = New System.Drawing.Size(191, 33)
+        Me.BtnTotal.TabIndex = 4
+        Me.BtnTotal.Text = "Cobrar $ 0.0"
+        Me.BtnTotal.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'TxtListCodebar
         '
-        Me.TextBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.TxtListCodebar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(442, 4)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(269, 31)
-        Me.TextBox2.TabIndex = 3
+        Me.TxtListCodebar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtListCodebar.Location = New System.Drawing.Point(447, 4)
+        Me.TxtListCodebar.Name = "TxtListCodebar"
+        Me.TxtListCodebar.Size = New System.Drawing.Size(269, 31)
+        Me.TxtListCodebar.TabIndex = 3
         '
         'Panel1
         '
@@ -624,6 +629,26 @@ Partial Class VentaDirecta
         Me.Label9.TabIndex = 65
         Me.Label9.Text = "CODIGO"
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
+        '
+        'EditarToolStripMenuItem
+        '
+        Me.EditarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.edit_24
+        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
+        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EditarToolStripMenuItem.Text = "Editar"
+        '
+        'EliminarToolStripMenuItem
+        '
+        Me.EliminarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.delete_24
+        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        '
         'VentaDirecta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -649,6 +674,7 @@ Partial Class VentaDirecta
         Me.TabPage4.PerformLayout()
         CType(Me.ImagenEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StockEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -700,10 +726,13 @@ Partial Class VentaDirecta
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
     Friend WithEvents ToolStripTextBox2 As ToolStripTextBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button7 As Button
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TxtSearch As TextBox
+    Friend WithEvents BtnTotal As Button
+    Friend WithEvents TxtListCodebar As TextBox
     Friend WithEvents Button6 As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
 End Class

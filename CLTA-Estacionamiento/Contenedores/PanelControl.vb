@@ -230,4 +230,13 @@ Public Class PanelControl
         VentaDirecta.loader()
         f.AddForm_Desktop(VentaDirecta, Desktop)
     End Sub
+
+    Private Sub VerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerToolStripMenuItem.Click
+        If f.GetPermiso(f.Permiso_ventas_access) Then
+            Ventas.loader()
+            f.AddForm_Desktop(Ventas, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
 End Class

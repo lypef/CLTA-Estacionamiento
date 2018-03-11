@@ -34,6 +34,7 @@ Public Class properties
         BotonesXfila.Value = My.Settings.ItemsXFilas
         ColorButton.BackColor = My.Settings.button_color
         ColorButtonSelect.BackColor = My.Settings.button_colorSelect
+        idPublicoGeneral.Value = My.Settings.id_publicoGeneral
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -69,6 +70,7 @@ Public Class properties
         My.Settings.ItemsXFilas = BotonesXfila.Value
         My.Settings.button_color = ColorButton.BackColor
         My.Settings.button_colorSelect = ColorButtonSelect.BackColor
+        My.Settings.id_publicoGeneral = idPublicoGeneral.Value
         My.Settings.Save()
         Application.Restart()
     End Sub
@@ -115,14 +117,6 @@ Public Class properties
         FontDialog1.Font = LetraMenu.Font
         If FontDialog1.ShowDialog() = DialogResult.OK Then
             LetraMenu.Font = FontDialog1.Font
-        End If
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If (MsgBox("¿Borrar configuracion actual y poner una predeterminada ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
-            My.Settings.Reset()
-            My.Settings.Save()
-            Application.Restart()
         End If
     End Sub
 

@@ -45,29 +45,31 @@ Partial Class properties
         Me.LetraMenu = New System.Windows.Forms.Button()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Ventana = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.AltoBotones = New System.Windows.Forms.NumericUpDown()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.AnchoBotones = New System.Windows.Forms.NumericUpDown()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.SpacioEntreBotones = New System.Windows.Forms.NumericUpDown()
+        Me.ColorButtonSelect = New System.Windows.Forms.Button()
+        Me.ColorButton = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.BotonesXfila = New System.Windows.Forms.NumericUpDown()
-        Me.ColorButton = New System.Windows.Forms.Button()
-        Me.ColorButtonSelect = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.SpacioEntreBotones = New System.Windows.Forms.NumericUpDown()
+        Me.AnchoBotones = New System.Windows.Forms.NumericUpDown()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.AltoBotones = New System.Windows.Forms.NumericUpDown()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.idPublicoGeneral = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpacioEntreBotones, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BotonesXfila, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpacioEntreBotones, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.idPublicoGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -187,7 +189,7 @@ Partial Class properties
         '
         'TxtGuardar
         '
-        Me.TxtGuardar.Location = New System.Drawing.Point(507, 97)
+        Me.TxtGuardar.Location = New System.Drawing.Point(505, 49)
         Me.TxtGuardar.Name = "TxtGuardar"
         Me.TxtGuardar.Size = New System.Drawing.Size(93, 42)
         Me.TxtGuardar.TabIndex = 101
@@ -266,15 +268,6 @@ Partial Class properties
         Me.LetraMenu.Text = "Letra menu"
         Me.LetraMenu.UseVisualStyleBackColor = True
         '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(507, 49)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(93, 42)
-        Me.Button2.TabIndex = 110
-        Me.Button2.Text = "Restaurar"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -334,59 +327,23 @@ Partial Class properties
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "VEHICULOS - ENTRADAS & SALIDAS"
         '
-        'AltoBotones
+        'ColorButtonSelect
         '
-        Me.AltoBotones.Location = New System.Drawing.Point(12, 36)
-        Me.AltoBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.AltoBotones.Name = "AltoBotones"
-        Me.AltoBotones.Size = New System.Drawing.Size(120, 20)
-        Me.AltoBotones.TabIndex = 0
-        Me.AltoBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColorButtonSelect.Location = New System.Drawing.Point(327, 75)
+        Me.ColorButtonSelect.Name = "ColorButtonSelect"
+        Me.ColorButtonSelect.Size = New System.Drawing.Size(156, 33)
+        Me.ColorButtonSelect.TabIndex = 115
+        Me.ColorButtonSelect.Text = "Color boton selecionado"
+        Me.ColorButtonSelect.UseVisualStyleBackColor = True
         '
-        'Label6
+        'ColorButton
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(9, 20)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(67, 13)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Alto Botones"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(9, 67)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(80, 13)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "Ancho Botones"
-        '
-        'AnchoBotones
-        '
-        Me.AnchoBotones.Location = New System.Drawing.Point(12, 83)
-        Me.AnchoBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.AnchoBotones.Name = "AnchoBotones"
-        Me.AnchoBotones.Size = New System.Drawing.Size(120, 20)
-        Me.AnchoBotones.TabIndex = 4
-        Me.AnchoBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(174, 20)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(108, 13)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "Spacio entre botones"
-        '
-        'SpacioEntreBotones
-        '
-        Me.SpacioEntreBotones.Location = New System.Drawing.Point(177, 36)
-        Me.SpacioEntreBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-        Me.SpacioEntreBotones.Name = "SpacioEntreBotones"
-        Me.SpacioEntreBotones.Size = New System.Drawing.Size(120, 20)
-        Me.SpacioEntreBotones.TabIndex = 5
-        Me.SpacioEntreBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColorButton.Location = New System.Drawing.Point(327, 29)
+        Me.ColorButton.Name = "ColorButton"
+        Me.ColorButton.Size = New System.Drawing.Size(156, 33)
+        Me.ColorButton.TabIndex = 114
+        Me.ColorButton.Text = "Color de botones"
+        Me.ColorButton.UseVisualStyleBackColor = True
         '
         'Label10
         '
@@ -406,33 +363,88 @@ Partial Class properties
         Me.BotonesXfila.TabIndex = 7
         Me.BotonesXfila.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'ColorButton
+        'Label9
         '
-        Me.ColorButton.Location = New System.Drawing.Point(327, 29)
-        Me.ColorButton.Name = "ColorButton"
-        Me.ColorButton.Size = New System.Drawing.Size(156, 33)
-        Me.ColorButton.TabIndex = 114
-        Me.ColorButton.Text = "Color de botones"
-        Me.ColorButton.UseVisualStyleBackColor = True
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(174, 20)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(108, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Spacio entre botones"
         '
-        'ColorButtonSelect
+        'SpacioEntreBotones
         '
-        Me.ColorButtonSelect.Location = New System.Drawing.Point(327, 75)
-        Me.ColorButtonSelect.Name = "ColorButtonSelect"
-        Me.ColorButtonSelect.Size = New System.Drawing.Size(156, 33)
-        Me.ColorButtonSelect.TabIndex = 115
-        Me.ColorButtonSelect.Text = "Color boton selecionado"
-        Me.ColorButtonSelect.UseVisualStyleBackColor = True
+        Me.SpacioEntreBotones.Location = New System.Drawing.Point(177, 36)
+        Me.SpacioEntreBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.SpacioEntreBotones.Name = "SpacioEntreBotones"
+        Me.SpacioEntreBotones.Size = New System.Drawing.Size(120, 20)
+        Me.SpacioEntreBotones.TabIndex = 5
+        Me.SpacioEntreBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'AnchoBotones
+        '
+        Me.AnchoBotones.Location = New System.Drawing.Point(12, 83)
+        Me.AnchoBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.AnchoBotones.Name = "AnchoBotones"
+        Me.AnchoBotones.Size = New System.Drawing.Size(120, 20)
+        Me.AnchoBotones.TabIndex = 4
+        Me.AnchoBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(9, 67)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(80, 13)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "Ancho Botones"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(9, 20)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(67, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Alto Botones"
+        '
+        'AltoBotones
+        '
+        Me.AltoBotones.Location = New System.Drawing.Point(12, 36)
+        Me.AltoBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.AltoBotones.Name = "AltoBotones"
+        Me.AltoBotones.Size = New System.Drawing.Size(120, 20)
+        Me.AltoBotones.TabIndex = 0
+        Me.AltoBotones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(249, 287)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(98, 13)
+        Me.Label11.TabIndex = 116
+        Me.Label11.Text = "Publico en general:"
+        '
+        'idPublicoGeneral
+        '
+        Me.idPublicoGeneral.Location = New System.Drawing.Point(353, 287)
+        Me.idPublicoGeneral.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
+        Me.idPublicoGeneral.Name = "idPublicoGeneral"
+        Me.idPublicoGeneral.Size = New System.Drawing.Size(148, 20)
+        Me.idPublicoGeneral.TabIndex = 116
+        Me.idPublicoGeneral.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 442)
+        Me.Controls.Add(Me.idPublicoGeneral)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Ventana)
         Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.LetraMenu)
         Me.Controls.Add(Me.ColorMenu)
         Me.Controls.Add(Me.TipoLetra)
@@ -454,10 +466,11 @@ Partial Class properties
         Me.MenuStrip1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpacioEntreBotones, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BotonesXfila, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpacioEntreBotones, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.idPublicoGeneral, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -486,7 +499,6 @@ Partial Class properties
     Friend WithEvents LetraMenu As Button
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents FontDialog1 As FontDialog
-    Friend WithEvents Button2 As Button
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ComboBox1 As ComboBox
@@ -502,4 +514,6 @@ Partial Class properties
     Friend WithEvents BotonesXfila As NumericUpDown
     Friend WithEvents ColorButton As Button
     Friend WithEvents ColorButtonSelect As Button
+    Friend WithEvents Label11 As Label
+    Friend WithEvents idPublicoGeneral As NumericUpDown
 End Class

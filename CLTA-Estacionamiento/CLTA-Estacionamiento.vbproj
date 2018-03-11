@@ -212,6 +212,12 @@
     <Compile Include="Vistas\VentaDirecta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\Ventas.Designer.vb">
+      <DependentUpon>Ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Ventas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Contenedores\About.resx">
@@ -256,6 +262,9 @@
     <EmbeddedResource Include="Vistas\VentaDirecta.resx">
       <DependentUpon>VentaDirecta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Ventas.resx">
+      <DependentUpon>Ventas.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -272,6 +281,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\if_Money-Graph_379375.png" />
+    <None Include="Resources\if_Money-Increase_379473.png" />
+    <None Include="Resources\if_money_299107.png" />
+    <None Include="Resources\ventas.png" />
     <None Include="Resources\details_24.png" />
     <None Include="Resources\verify2_128.png" />
     <None Include="Resources\verify2_48.png" />

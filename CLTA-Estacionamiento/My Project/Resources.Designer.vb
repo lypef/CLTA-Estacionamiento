@@ -213,6 +213,36 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property if_money_299107() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("if_money_299107", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property if_Money_Graph_379375() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("if_Money-Graph_379375", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property if_Money_Increase_379473() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("if_Money-Increase_379473", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property information_128() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("information_128", resourceCulture)
@@ -326,6 +356,16 @@ Namespace My.Resources
         Friend ReadOnly Property users_i() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("users_i", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ventas() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ventas", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

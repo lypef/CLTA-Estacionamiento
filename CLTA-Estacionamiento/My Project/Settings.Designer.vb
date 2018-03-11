@@ -317,6 +317,18 @@ Namespace My
                 Me("button_color") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+        Public Property id_publicoGeneral() As Integer
+            Get
+                Return CType(Me("id_publicoGeneral"),Integer)
+            End Get
+            Set
+                Me("id_publicoGeneral") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

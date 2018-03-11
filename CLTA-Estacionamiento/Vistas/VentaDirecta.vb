@@ -3,6 +3,7 @@
     Dim urlImagen As String
     Dim urlimagenEdit As String
     Dim urlimagenEdit_Edit As String
+    Dim Total_Products As Decimal
 
     Private Sub VentaDirecta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         f.forms_setmodel(Me, FormBorderStyle.None)
@@ -216,6 +217,94 @@
     End Sub
 
     Public Sub addproduct(name As String)
-        TextBox2.Text = name
+        TxtListCodebar.Text += name
+        Total()
     End Sub
+
+    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtListCodebar.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Total()
+        End If
+    End Sub
+
+    Private Sub Total()
+        Total_Products = f.VTD_FormatString(TxtListCodebar)
+        BtnTotal.Text = "Cobrar $ " + Total_Products.ToString
+    End Sub
+
+    Private Sub Table_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Table.CellDoubleClick
+        If String.IsNullOrEmpty(Table.SelectedCells(0).Value) = False Then
+            Functions.VTD_Codebar = Table.SelectedCells(0).Value
+            ContextMenuStrip1.Show(MousePosition)
+        Else
+            f.Alert("Seleccione un cliente verdadero", f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub EditarToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem.Click
+        TabControl1.SelectedIndex = 3
+    End Sub
+
+    Private Sub EliminarToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
+        If f.GetPermiso(f.Permiso_Vtd_Delete) Then
+            If (MsgBox("¿Esta seguro de eliminar el producto ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                If Functions.VTD_Product_DELETE Then
+                    f.GetProducts("SELECT * FROM product_services", Table)
+                    f.Alert("Producto eliminado con exito", f.Alert_NumberInformacion, PanelControl.Desktop)
+                Else
+                    f.Alert("El Producto no se elimino", f.Alert_NumberCritical, PanelControl.Desktop)
+                End If
+            End If
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberExclamacion, PanelControl.Desktop)
+        End If
+    End Sub
+
+    Private Sub Button7_MouseDown(sender As Object, e As MouseEventArgs) Handles BtnTotal.MouseDown
+        If e.Button = MouseButtons.Right Then
+            Limpiar()
+        ElseIf e.Button = MouseButtons.Left Then
+            Cobrar()
+        End If
+    End Sub
+
+    Private Sub Cobrar()
+        If (MsgBox("¿Realizar venta por un total de: ".ToUpper + Total_Products.ToString + " " + My.Settings.moneda + " ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+            f.VTD_Cobrar(TxtListCodebar, My.Settings.id_publicoGeneral)
+            Limpiar()
+        End If
+    End Sub
+
+    Private Sub Limpiar()
+        TxtListCodebar.Text = ""
+        Total_Products = 0
+        BtnTotal.Text = "Cobrar $ 0"
+        loader()
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If ComboBox1.SelectedIndex = 0 Then
+            f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services order by nombre asc")
+        ElseIf ComboBox1.SelectedIndex = 1 Then
+            f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services WHERE service = 0 order by nombre asc")
+        ElseIf ComboBox1.SelectedIndex = 2 Then
+            f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services WHERE service = 1 order by nombre asc")
+        End If
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        SearchProduct()
+    End Sub
+
+    Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SearchProduct()
+        End If
+    End Sub
+
+    Private Sub SearchProduct()
+        f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services where codebar like '%" + TxtSearch.Text.ToUpper + "%' or nombre like '%" + TxtSearch.Text.ToUpper + "%' order by nombre asc")
+        TxtSearch.Text = ""
+    End Sub
+
 End Class

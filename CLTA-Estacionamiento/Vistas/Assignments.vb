@@ -122,7 +122,9 @@
                     If f.Vehicle_Update_dias(ComboBoxTarifas, f_exit) Then
                         Me.Dispose()
                         Vehicles.Loader()
-                        If f.AddVenta(Client, "Pago de membresia x dias: hasta " + f.GetDateString(f_exit), total, f.TickerID_Siguiente()) Then
+                        Dim ticket As Integer = f.Ticket_GenerateID()
+                        If f.AddVenta(Client, "Pago de membresia x dias: hasta " + f.GetDateString(f_exit), total, ticket) Then
+                            f.TicketGeneratePrint(ticket)
                             f.Alert("Cambios actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)
                         Else
                             f.Alert("Cambios NO actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)
@@ -136,7 +138,7 @@
                     If f.Vehicle_Update_Pension(ComboBoxTarifas, f_exit) Then
                         Me.Dispose()
                         Vehicles.Loader()
-                        If f.AddVenta(Client, "Pago de membresia x pension: hasta " + f.GetDateString(f_exit), total, f.TickerID_Siguiente()) Then
+                        If f.AddVenta(Client, "Pago de membresia x pension: hasta " + f.GetDateString(f_exit), total, f.Ticket_GenerateID()) Then
                             f.Alert("Cambios actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)
                         Else
                             f.Alert("Cambios NO actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)

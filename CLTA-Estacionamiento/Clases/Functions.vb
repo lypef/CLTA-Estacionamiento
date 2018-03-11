@@ -41,6 +41,7 @@ Public Class Functions
     Public ReadOnly Permiso_Vtd_Add As String = "vtd_add"
     Public ReadOnly Permiso_Vtd_Edit As String = "vtd_edit"
     Public ReadOnly Permiso_Vtd_Delete As String = "vtd_delete"
+    Public ReadOnly Permiso_ventas_access As String = "ventas_access"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -63,6 +64,7 @@ Public Class Functions
         AddForm_Desktop(EnterExitControl, desktop)
         AddForm_Desktop(Adeudos, desktop)
         AddForm_Desktop(VentaDirecta, desktop)
+        AddForm_Desktop(Ventas, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -121,7 +123,7 @@ Public Class Functions
     End Sub
 
     Public Function AddVenta(id_cliente As Integer, concepto As String, monto As Double, ticket As Integer) As Boolean
-        Return Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, cut_x, cut_z) VALUES ('" + id_cliente.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + concepto.ToUpper + "', '" + monto.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0');")
+        Return Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + id_cliente.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + concepto.ToUpper + "', '" + monto.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0', '1' , '0', '0');")
     End Function
 
     Public Function GetPermiso(ByVal campo As String) As Boolean
@@ -203,6 +205,39 @@ Public Class Functions
         If dato.HasRows Then
             Do While dato.Read()
                 t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
+            Loop
+        End If
+
+    End Sub
+
+    Public Sub GetVentas(ByVal sql As String, ByVal t As DataGridView, F_desde As DateTimePicker, f_hasta As DateTimePicker)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("client", "CLIENTE")
+        t.Columns.Add("id_usuario", "ATENDIO")
+        t.Columns.Add("ticket", "TICKET")
+        t.Columns.Add("concepto", "CONCEPTO")
+        t.Columns.Add("monto", "MONTO")
+        t.Columns.Add("date", "FECHA")
+
+        Dim tmp1 = New DateTime(F_desde.Value.Year, F_desde.Value.Month, F_desde.Value.Day, 0, 0, 0)
+        F_desde.Value = tmp1
+        Dim tmp2 = New DateTime(f_hasta.Value.Year, f_hasta.Value.Month, f_hasta.Value.Day, 23, 59, 59)
+        f_hasta.Value = tmp2
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                Dim FechaDB = New DateTime()
+                FechaDB = Convert.ToDateTime(dato.GetString(6))
+
+                If FechaDB.CompareTo(Convert.ToDateTime(F_desde.Value)) >= 0 And FechaDB.CompareTo(Convert.ToDateTime(f_hasta.Value)) <= 0 Then
+                    t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
+                End If
             Loop
         End If
 
@@ -637,7 +672,7 @@ Public Class Functions
         Return (d.Year.ToString + "-" + d.Month.ToString + "-" + d.Day.ToString + " " + d.Hour.ToString + ":" + d.Minute.ToString + ":" + d.Second.ToString).ToString
     End Function
 
-    Public Function TickerID_Siguiente() As Integer
+    Public Function Ticket_GenerateID() As Integer
         Dim r As Integer = 0
         Dim dato = Db.Consult("SELECT MAX(ID_TICKET) FROM ventas")
 
@@ -786,7 +821,7 @@ Public Class Functions
         If e.Button = MouseButtons.Right Then
             MsgBox(ReturnInfoProduct(sender.name), Alert_NumberInformacion)
         ElseIf e.Button = MouseButtons.Left Then
-            VentaDirecta.addproduct(sender.name)
+            VentaDirecta.addproduct(sender.name + "")
         End If
     End Sub
 
@@ -1017,4 +1052,87 @@ Public Class Functions
 
         Return r
     End Function
+
+    Public Function VTD_FormatString(txt As TextBox) As Decimal
+        Dim arr = txt.Text.Split("+")
+        Dim cadena As String = String.Empty
+
+        For Each item In arr
+            Dim tmp As String = String.Empty
+            For i = 1 To Len(item)
+                tmp += Mid(item, i, 1).Replace("+", "")
+            Next i
+
+            If String.IsNullOrEmpty(tmp) = False Then
+                cadena += tmp + "+"
+            End If
+        Next
+
+        txt.Text = cadena
+        txt.Select(txt.Text.Length, 0)
+
+        Dim total As Decimal
+
+        For Each item In txt.Text.Split("+")
+            total += Return_ProductPrice(item)
+        Next
+
+        Return total
+    End Function
+
+    Public Sub VTD_Cobrar(txt As TextBox, client As Integer)
+        Dim ticket As Integer = Ticket_GenerateID()
+
+        For Each item In txt.Text.Split("+")
+            Dim NameProduct As String = String.Empty
+            Dim PriceProduct As Decimal = 0
+            Dim IsService As Boolean = False
+            Product_NamePrice_Return(item, NameProduct, PriceProduct, IsService)
+
+            If String.IsNullOrEmpty(NameProduct) = False Then
+                Dim Add As Boolean
+                If IsService Then
+                    Add = Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + client.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + NameProduct + "', '" + PriceProduct.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '1', '0' , '0', '0')")
+                Else
+                    Add = Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + client.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + NameProduct + "', '" + PriceProduct.ToString + "', '" + GetDateString(DateTime.Now) + "', '1', '0', '0' , '0', '0')")
+                End If
+
+                If Add Then
+                    If IsService = False Then
+                        Db.Ejecutar("UPDATE product_services SET stock = stock - 1 WHERE codebar = '" + item.ToString + "' ")
+                    End If
+                End If
+            End If
+        Next
+        TicketGeneratePrint(ticket)
+    End Sub
+
+    Public Sub TicketGeneratePrint(ticket As Integer)
+        Console.WriteLine("se imrpime el ticket")
+    End Sub
+
+
+    Public Function Return_ProductPrice(codebar As String) As Decimal
+        Dim r = 0
+        Dim dato = Db.Consult("SELECT precio FROM product_services WHERE codebar = '" + codebar + "'")
+
+        If dato.Read() Then
+            r = dato.GetString(0)
+        Else
+            r = 0
+        End If
+
+        Return r
+    End Function
+
+    Public Sub Product_NamePrice_Return(codebar As String, ByRef name As String, ByRef price As Decimal, ByRef IsService As Boolean)
+        Dim r = 0
+        Dim dato = Db.Consult("SELECT nombre, precio, service FROM product_services WHERE codebar = '" + codebar + "'")
+
+        If dato.Read() Then
+            name = dato.GetString(0)
+            price = dato.GetString(1)
+            IsService = dato.GetBoolean(2)
+        End If
+    End Sub
 End Class
