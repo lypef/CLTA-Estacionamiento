@@ -7,6 +7,7 @@
         f.Vehicles_ProductsRealizarVenta(Matricula)
         f.Vehicle_ChangeStatus(Matricula, 0)
         EnterExitControl.Loader()
+        f.ActionBarr(My.Settings.rele_salida)
         Me.Dispose()
     End Sub
 

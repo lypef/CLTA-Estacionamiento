@@ -177,6 +177,7 @@ Public Class PanelControl
                     If hours Then
                         If (MsgBox("Ingresar vehiculo con matricula: ".ToUpper + TxtBox.Text + "Para cobro por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                             If f.VehiclesUpdate_StatusForHours(TxtBox.Text, 1) Then
+                                f.ActionBarr(My.Settings.rele_entrada)
                                 EnterExitControl.Loader()
                             Else
                                 f.Alert("Error desconocido", f.Alert_NumberCritical, Desktop)
@@ -186,6 +187,7 @@ Public Class PanelControl
                         'Ingresa por dia 
                         If f.VehicleValidateFecha_Salida(TxtBox) Then
                             f.Vehicle_ChangeStatus(TxtBox.Text, 1)
+                            f.ActionBarr(My.Settings.rele_entrada)
                             EnterExitControl.Loader()
                         Else
                             If (MsgBox("Dias vencidos. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
@@ -198,6 +200,7 @@ Public Class PanelControl
                         'Pension
                         If f.VehicleValidateFecha_Salida(TxtBox) Then
                             f.Vehicle_ChangeStatus(TxtBox.Text, 1)
+                            f.ActionBarr(My.Settings.rele_entrada)
                             EnterExitControl.Loader()
                         Else
                             If (MsgBox("Pension vencida. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
@@ -238,5 +241,20 @@ Public Class PanelControl
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
         End If
+    End Sub
+
+    Private Sub UsuariosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem1.Click
+        If f.GetPermiso(f.Permiso_User_access) Then
+            users.Loader()
+            f.AddForm_Desktop(users, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub AccionarBarraToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AccionarBarraToolStripMenuItem.Click
+        OpenBarrNum.NumericUpDown1.Value = My.Settings.rele_entrada
+        OpenBarrNum.NumericUpDown1.Select()
+        f.AddForm_Desktop(OpenBarrNum, Desktop)
     End Sub
 End Class

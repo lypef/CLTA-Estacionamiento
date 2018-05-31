@@ -83,4 +83,10 @@
         f.AddForm_Desktop(Adeudos, PanelControl.Desktop)
         Adeudos.WindowState = FormWindowState.Normal
     End Sub
+
+    Private Sub ProductosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductosToolStripMenuItem.Click
+        EditProducts.Loader(Functions.Select_VehiclesMatricula)
+        f.AddForm_Desktop(EditProducts, PanelControl.Desktop)
+        EditProducts.WindowState = FormWindowState.Normal
+    End Sub
 End Class

@@ -68,4 +68,9 @@
     Private Sub f_hasta_ValueChanged(sender As Object, e As EventArgs) Handles f_hasta.ValueChanged
         SelectLoader()
     End Sub
+
+    Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MenuStrip1.Font = My.Settings.Menu_font
+        MenuStrip1.BackColor = My.Settings.Menu_color
+    End Sub
 End Class

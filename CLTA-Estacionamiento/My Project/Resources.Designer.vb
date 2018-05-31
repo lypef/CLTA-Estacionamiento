@@ -83,6 +83,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property barr_acceso() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("barr_acceso", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property btn_exit() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("btn_exit", resourceCulture)
@@ -236,6 +246,16 @@ Namespace My.Resources
         Friend ReadOnly Property if_Money_Increase_379473() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("if_Money-Increase_379473", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property if_self1_62587() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("if_self1_62587", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

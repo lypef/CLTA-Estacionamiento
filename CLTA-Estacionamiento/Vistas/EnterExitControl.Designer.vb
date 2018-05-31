@@ -35,6 +35,7 @@ Partial Class EnterExitControl
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActualizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -82,9 +83,9 @@ Partial Class EnterExitControl
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoToolStripMenuItem, Me.ProductosToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(116, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(129, 48)
         '
         'SalirToolStripMenuItem
         '
@@ -132,8 +133,15 @@ Partial Class EnterExitControl
         '
         Me.InfoToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.details_24
         Me.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem"
-        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.InfoToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.InfoToolStripMenuItem.Text = "Detalles"
+        '
+        'ProductosToolStripMenuItem
+        '
+        Me.ProductosToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.if_self1_62587
+        Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'EnterExitControl
         '
@@ -163,4 +171,5 @@ Partial Class EnterExitControl
     Friend WithEvents TxtSearch As ToolStripTextBox
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents InfoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductosToolStripMenuItem As ToolStripMenuItem
 End Class

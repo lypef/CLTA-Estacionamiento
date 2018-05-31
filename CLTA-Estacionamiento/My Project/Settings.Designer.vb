@@ -329,6 +329,54 @@ Namespace My
                 Me("id_publicoGeneral") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("3X9XI")>  _
+        Public Property id_relevador() As String
+            Get
+                Return CType(Me("id_relevador"),String)
+            End Get
+            Set
+                Me("id_relevador") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1000")>  _
+        Public Property relevador_milisegundos() As Integer
+            Get
+                Return CType(Me("relevador_milisegundos"),Integer)
+            End Get
+            Set
+                Me("relevador_milisegundos") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property rele_entrada() As Integer
+            Get
+                Return CType(Me("rele_entrada"),Integer)
+            End Get
+            Set
+                Me("rele_entrada") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
+        Public Property rele_salida() As Integer
+            Get
+                Return CType(Me("rele_salida"),Integer)
+            End Get
+            Set
+                Me("rele_salida") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

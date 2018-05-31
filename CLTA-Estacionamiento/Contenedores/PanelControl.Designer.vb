@@ -25,13 +25,18 @@ Partial Class PanelControl
         Me.components = New System.ComponentModel.Container()
         Me.BarraMenu = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccionarBarraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.UsuariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TarifasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.CorteXGeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteZGeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TarifasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReimprimirTicketToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CorteXToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteZToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,9 +59,7 @@ Partial Class PanelControl
         Me.Footer = New System.Windows.Forms.Panel()
         Me.LabelHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReimprimirTicketToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.BarraMenu.SuspendLayout()
         Me.Footer.SuspendLayout()
         Me.SuspendLayout()
@@ -72,11 +75,23 @@ Partial Class PanelControl
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem1, Me.TarifasToolStripMenuItem1, Me.VentasToolStripMenuItem1, Me.ReportesToolStripMenuItem, Me.ToolStripSeparator1, Me.CorteXToolStripMenuItem, Me.CorteZToolStripMenuItem, Me.ToolStripSeparator2, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1})
+        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccionarBarraToolStripMenuItem, Me.ToolStripSeparator5, Me.UsuariosToolStripMenuItem1, Me.TarifasToolStripMenuItem1, Me.VentasToolStripMenuItem1, Me.ReportesToolStripMenuItem, Me.ToolStripSeparator1, Me.CorteXToolStripMenuItem, Me.CorteZToolStripMenuItem, Me.ToolStripSeparator2, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1, Me.ToolStripTextBox1})
         Me.ArchivoToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(105, 30)
         Me.ArchivoToolStripMenuItem.Text = "▼ Archivo"
+        '
+        'AccionarBarraToolStripMenuItem
+        '
+        Me.AccionarBarraToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.barr_acceso
+        Me.AccionarBarraToolStripMenuItem.Name = "AccionarBarraToolStripMenuItem"
+        Me.AccionarBarraToolStripMenuItem.Size = New System.Drawing.Size(213, 30)
+        Me.AccionarBarraToolStripMenuItem.Text = "Accionar barra"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(210, 6)
         '
         'UsuariosToolStripMenuItem1
         '
@@ -84,6 +99,13 @@ Partial Class PanelControl
         Me.UsuariosToolStripMenuItem1.Name = "UsuariosToolStripMenuItem1"
         Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
         Me.UsuariosToolStripMenuItem1.Text = "Usuarios"
+        '
+        'TarifasToolStripMenuItem1
+        '
+        Me.TarifasToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_128
+        Me.TarifasToolStripMenuItem1.Name = "TarifasToolStripMenuItem1"
+        Me.TarifasToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
+        Me.TarifasToolStripMenuItem1.Text = "Tarifas"
         '
         'VentasToolStripMenuItem1
         '
@@ -119,12 +141,24 @@ Partial Class PanelControl
         Me.CorteZGeneralToolStripMenuItem.Size = New System.Drawing.Size(206, 30)
         Me.CorteZGeneralToolStripMenuItem.Text = "Corte Z general"
         '
-        'TarifasToolStripMenuItem1
+        'ReportesToolStripMenuItem
         '
-        Me.TarifasToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_128
-        Me.TarifasToolStripMenuItem1.Name = "TarifasToolStripMenuItem1"
-        Me.TarifasToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
-        Me.TarifasToolStripMenuItem1.Text = "Tarifas"
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReimprimirTicketToolStripMenuItem, Me.ToolStripSeparator4})
+        Me.ReportesToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.update_48
+        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(213, 30)
+        Me.ReportesToolStripMenuItem.Text = "Reportes"
+        '
+        'ReimprimirTicketToolStripMenuItem
+        '
+        Me.ReimprimirTicketToolStripMenuItem.Name = "ReimprimirTicketToolStripMenuItem"
+        Me.ReimprimirTicketToolStripMenuItem.Size = New System.Drawing.Size(217, 30)
+        Me.ReimprimirTicketToolStripMenuItem.Text = "Reimprimir ticket"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(214, 6)
         '
         'ToolStripSeparator1
         '
@@ -289,24 +323,10 @@ Partial Class PanelControl
         'Timer1
         '
         '
-        'ReportesToolStripMenuItem
+        'ToolStripTextBox1
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReimprimirTicketToolStripMenuItem, Me.ToolStripSeparator4})
-        Me.ReportesToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.update_48
-        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(213, 30)
-        Me.ReportesToolStripMenuItem.Text = "Reportes"
-        '
-        'ReimprimirTicketToolStripMenuItem
-        '
-        Me.ReimprimirTicketToolStripMenuItem.Name = "ReimprimirTicketToolStripMenuItem"
-        Me.ReimprimirTicketToolStripMenuItem.Size = New System.Drawing.Size(217, 30)
-        Me.ReimprimirTicketToolStripMenuItem.Text = "Reimprimir ticket"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(214, 6)
+        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 23)
         '
         'PanelControl
         '
@@ -365,4 +385,7 @@ Partial Class PanelControl
     Friend WithEvents ReportesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReimprimirTicketToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents AccionarBarraToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
 End Class

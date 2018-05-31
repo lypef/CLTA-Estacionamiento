@@ -35,6 +35,11 @@ Public Class properties
         ColorButton.BackColor = My.Settings.button_color
         ColorButtonSelect.BackColor = My.Settings.button_colorSelect
         idPublicoGeneral.Value = My.Settings.id_publicoGeneral
+        TxtData.Text = My.Settings.data_url
+        id_relevador.Text = My.Settings.id_relevador
+        rele_milisegundos.Value = My.Settings.relevador_milisegundos
+        rele_entrada.Value = My.Settings.rele_entrada
+        rele_salida.Value = My.Settings.rele_salida
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -71,6 +76,11 @@ Public Class properties
         My.Settings.button_color = ColorButton.BackColor
         My.Settings.button_colorSelect = ColorButtonSelect.BackColor
         My.Settings.id_publicoGeneral = idPublicoGeneral.Value
+        My.Settings.data_url = TxtData.Text
+        My.Settings.id_relevador = id_relevador.Text
+        My.Settings.relevador_milisegundos = rele_milisegundos.Value
+        My.Settings.rele_entrada = rele_entrada.Value
+        My.Settings.rele_salida = rele_salida.Value
         My.Settings.Save()
         Application.Restart()
     End Sub
@@ -135,6 +145,12 @@ Public Class properties
         ColorDialog1.Color = ColorButtonSelect.BackColor
         If ColorDialog1.ShowDialog() = DialogResult.OK Then
             ColorButtonSelect.BackColor = ColorDialog1.Color
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
+            TxtData.Text = FolderBrowserDialog1.SelectedPath.Replace("\", "/")
         End If
     End Sub
 End Class

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 Imports System.Security.Cryptography
 
 Public Class Functions
@@ -23,6 +24,7 @@ Public Class Functions
     Public Shared VTD_Codebar As String
     Public Shared Tarifa As String
     Public Shared Select_VehiclesMatricula As String
+    Public Shared User As String
 
     'Variables permisos de usuario
     Public ReadOnly Permiso_Cliet_Access As String = "client_access"
@@ -43,6 +45,10 @@ Public Class Functions
     Public ReadOnly Permiso_Vtd_Edit As String = "vtd_edit"
     Public ReadOnly Permiso_Vtd_Delete As String = "vtd_delete"
     Public ReadOnly Permiso_ventas_access As String = "ventas_access"
+    Public ReadOnly Permiso_User_access As String = "user_access"
+    Public ReadOnly Permiso_User_Add As String = "user_add"
+    Public ReadOnly Permiso_User_Edit As String = "user_edit"
+    Public ReadOnly Permiso_User_Delete As String = "user_delete"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -56,6 +62,9 @@ Public Class Functions
     Public Shared username_id As String
     Public Shared username_username As String
 
+    'Var estaticas
+    Public NumeroRele As Integer = 0
+
     Public Sub loadforms(desktop As Panel)
         AddForm_Desktop(Clientes, desktop)
         AddForm_Desktop(properties, desktop)
@@ -66,6 +75,8 @@ Public Class Functions
         AddForm_Desktop(Adeudos, desktop)
         AddForm_Desktop(VentaDirecta, desktop)
         AddForm_Desktop(Ventas, desktop)
+        AddForm_Desktop(EditProducts, desktop)
+        AddForm_Desktop(OpenBarrNum, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -125,6 +136,175 @@ Public Class Functions
 
     Public Function AddVenta(id_cliente As Integer, concepto As String, monto As Double, ticket As Integer) As Boolean
         Return Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + id_cliente.ToString + "', '" + username_id.ToString + "', '" + ticket.ToString + "', '" + concepto.ToUpper + "', '" + monto.ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0', '1' , '0', '0');")
+    End Function
+
+    Public Sub LoadValuesUser(nombre As TextBox, username As TextBox, list As CheckedListBox)
+        Dim dato = Db.Consult("SELECT * from users u, permissions p where p.user = u.id and u.id = '" + User + "' ")
+
+        If dato.Read() Then
+            nombre.Text = dato.GetString(3)
+            username.Text = dato.GetString(1)
+            list.SetItemChecked(0, dato.GetBoolean(0 + 5))
+            list.SetItemChecked(1, dato.GetBoolean(1 + 5))
+            list.SetItemChecked(2, dato.GetBoolean(2 + 5))
+            list.SetItemChecked(3, dato.GetBoolean(3 + 5))
+            list.SetItemChecked(4, dato.GetBoolean(4 + 5))
+            list.SetItemChecked(5, dato.GetBoolean(5 + 5))
+            list.SetItemChecked(6, dato.GetBoolean(6 + 5))
+            list.SetItemChecked(7, dato.GetBoolean(7 + 5))
+            list.SetItemChecked(8, dato.GetBoolean(8 + 5))
+            list.SetItemChecked(9, dato.GetBoolean(9 + 5))
+            list.SetItemChecked(10, dato.GetBoolean(10 + 5))
+            list.SetItemChecked(11, dato.GetBoolean(11 + 5))
+            list.SetItemChecked(12, dato.GetBoolean(12 + 5))
+            list.SetItemChecked(13, dato.GetBoolean(13 + 5))
+            list.SetItemChecked(14, dato.GetBoolean(14 + 5))
+            list.SetItemChecked(15, dato.GetBoolean(15 + 5))
+            list.SetItemChecked(16, dato.GetBoolean(16 + 5))
+            list.SetItemChecked(17, dato.GetBoolean(17 + 5))
+            list.SetItemChecked(18, dato.GetBoolean(18 + 5))
+            list.SetItemChecked(19, dato.GetBoolean(19 + 5))
+            list.SetItemChecked(20, dato.GetBoolean(20 + 5))
+            list.SetItemChecked(21, dato.GetBoolean(21 + 5))
+        End If
+    End Sub
+
+    Public Function AddUser(nombre As TextBox, username As TextBox, password As TextBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO users (username, password, name) VALUES ('" + username.Text + "', '" + EncriptMD5(password.Text) + "', '" + nombre.Text + "')")
+    End Function
+
+    Public Function UpdateUser(nombre As TextBox, username As TextBox, password As TextBox) As Boolean
+        If String.IsNullOrEmpty(password.Text) Then
+            Return Db.Ejecutar("UPDATE users SET username = '" + username.Text + "', name = '" + nombre.Text + "' WHERE id = '" + User + "' ")
+        Else
+            Return Db.Ejecutar("UPDATE users SET username = '" + username.Text + "', name = '" + nombre.Text + "', password = '" + EncriptMD5(password.Text) + "' WHERE id = '" + User + "' ")
+        End If
+    End Function
+
+    Public Function AddUser_permisos(ByVal id As Integer, list As CheckedListBox) As Boolean
+        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21 As Boolean
+        For i As Integer = 0 To list.Items.Count - 1
+            If i = 0 Then
+                _0 = list.GetItemChecked(i)
+            ElseIf i = 1 Then
+                _1 = list.GetItemChecked(i)
+            ElseIf i = 2 Then
+                _2 = list.GetItemChecked(i)
+            ElseIf i = 3 Then
+                _3 = list.GetItemChecked(i)
+            ElseIf i = 4 Then
+                _4 = list.GetItemChecked(i)
+            ElseIf i = 5 Then
+                _5 = list.GetItemChecked(i)
+            ElseIf i = 6 Then
+                _6 = list.GetItemChecked(i)
+            ElseIf i = 7 Then
+                _7 = list.GetItemChecked(i)
+            ElseIf i = 8 Then
+                _8 = list.GetItemChecked(i)
+            ElseIf i = 9 Then
+                _9 = list.GetItemChecked(i)
+            ElseIf i = 10 Then
+                _10 = list.GetItemChecked(i)
+            ElseIf i = 11 Then
+                _11 = list.GetItemChecked(i)
+            ElseIf i = 12 Then
+                _12 = list.GetItemChecked(i)
+            ElseIf i = 13 Then
+                _13 = list.GetItemChecked(i)
+            ElseIf i = 14 Then
+                _14 = list.GetItemChecked(i)
+            ElseIf i = 15 Then
+                _15 = list.GetItemChecked(i)
+            ElseIf i = 16 Then
+                _16 = list.GetItemChecked(i)
+            ElseIf i = 17 Then
+                _17 = list.GetItemChecked(i)
+            ElseIf i = 18 Then
+                _18 = list.GetItemChecked(i)
+            ElseIf i = 19 Then
+                _19 = list.GetItemChecked(i)
+            ElseIf i = 20 Then
+                _20 = list.GetItemChecked(i)
+            ElseIf i = 21 Then
+                _21 = list.GetItemChecked(i)
+            End If
+        Next i
+        Return Db.Ejecutar("INSERT INTO permissions (user, client_access, client_add, client_edit, client_delete, vehicle_access, vehicle_add, vehicle_edit, vehicle_delete, rate_access, rate_add, rate_edit, rate_delete, assign_access, vtd_access, vtd_add, vtd_edit, vtd_delete, ventas_access, user_access, user_add, user_edit, user_delete) VALUES ('" + id.ToString + "', '" + ReturnBooleanINT_String(_0) + "', '" + ReturnBooleanINT_String(_1) + "', '" + ReturnBooleanINT_String(_2) + "', '" + ReturnBooleanINT_String(_3) + "', '" + ReturnBooleanINT_String(_4) + "', '" + ReturnBooleanINT_String(_5) + "', '" + ReturnBooleanINT_String(_6) + "', '" + ReturnBooleanINT_String(_7) + "', '" + ReturnBooleanINT_String(_8) + "', '" + ReturnBooleanINT_String(_9) + "', '" + ReturnBooleanINT_String(_10) + "', '" + ReturnBooleanINT_String(_11) + "', '" + ReturnBooleanINT_String(_12) + "', '" + ReturnBooleanINT_String(_13) + "', '" + ReturnBooleanINT_String(_14) + "', '" + ReturnBooleanINT_String(_15) + "', '" + ReturnBooleanINT_String(_16) + "', '" + ReturnBooleanINT_String(_17) + "', '" + ReturnBooleanINT_String(_18) + "', '" + ReturnBooleanINT_String(_19) + "', '" + ReturnBooleanINT_String(_20) + "', '" + ReturnBooleanINT_String(_21) + "')")
+        Return True
+    End Function
+
+    Public Function UpdateUser_permisos(list As CheckedListBox) As Boolean
+        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21 As Boolean
+
+        For i As Integer = 0 To list.Items.Count - 1
+            If i = 0 Then
+                _0 = list.GetItemChecked(i)
+            ElseIf i = 1 Then
+                _1 = list.GetItemChecked(i)
+            ElseIf i = 2 Then
+                _2 = list.GetItemChecked(i)
+            ElseIf i = 3 Then
+                _3 = list.GetItemChecked(i)
+            ElseIf i = 4 Then
+                _4 = list.GetItemChecked(i)
+            ElseIf i = 5 Then
+                _5 = list.GetItemChecked(i)
+            ElseIf i = 6 Then
+                _6 = list.GetItemChecked(i)
+            ElseIf i = 7 Then
+                _7 = list.GetItemChecked(i)
+            ElseIf i = 8 Then
+                _8 = list.GetItemChecked(i)
+            ElseIf i = 9 Then
+                _9 = list.GetItemChecked(i)
+            ElseIf i = 10 Then
+                _10 = list.GetItemChecked(i)
+            ElseIf i = 11 Then
+                _11 = list.GetItemChecked(i)
+            ElseIf i = 12 Then
+                _12 = list.GetItemChecked(i)
+            ElseIf i = 13 Then
+                _13 = list.GetItemChecked(i)
+            ElseIf i = 14 Then
+                _14 = list.GetItemChecked(i)
+            ElseIf i = 15 Then
+                _15 = list.GetItemChecked(i)
+            ElseIf i = 16 Then
+                _16 = list.GetItemChecked(i)
+            ElseIf i = 17 Then
+                _17 = list.GetItemChecked(i)
+            ElseIf i = 18 Then
+                _18 = list.GetItemChecked(i)
+            ElseIf i = 19 Then
+                _19 = list.GetItemChecked(i)
+            ElseIf i = 20 Then
+                _20 = list.GetItemChecked(i)
+            ElseIf i = 21 Then
+                _21 = list.GetItemChecked(i)
+            End If
+        Next i
+        Return Db.Ejecutar("UPDATE permissions SET client_access = '" + ReturnBooleanINT_String(_0) + "', client_add = '" + ReturnBooleanINT_String(_1) + "', client_edit = '" + ReturnBooleanINT_String(_2) + "', client_delete = '" + ReturnBooleanINT_String(_3) + "', vehicle_access = '" + ReturnBooleanINT_String(_4) + "', vehicle_add = '" + ReturnBooleanINT_String(_5) + "', vehicle_edit = '" + ReturnBooleanINT_String(_6) + "', vehicle_delete = '" + ReturnBooleanINT_String(_7) + "', rate_access = '" + ReturnBooleanINT_String(_8) + "', rate_add = '" + ReturnBooleanINT_String(_9) + "', rate_edit = '" + ReturnBooleanINT_String(_10) + "', rate_delete = '" + ReturnBooleanINT_String(_11) + "', assign_access = '" + ReturnBooleanINT_String(_12) + "', vtd_access = '" + ReturnBooleanINT_String(_13) + "', vtd_add = '" + ReturnBooleanINT_String(_14) + "', vtd_edit = '" + ReturnBooleanINT_String(_15) + "', vtd_delete = '" + ReturnBooleanINT_String(_16) + "', ventas_access = '" + ReturnBooleanINT_String(_17) + "', user_access = '" + ReturnBooleanINT_String(_18) + "', user_add = '" + ReturnBooleanINT_String(_19) + "', user_edit = '" + ReturnBooleanINT_String(_20) + "', user_delete = '" + ReturnBooleanINT_String(_21) + "' where user = '" + User + "' ")
+        Return True
+    End Function
+
+    Private Function ReturnBooleanINT_String(ByVal val As Boolean) As String
+        If val Then
+            Return 1
+        Else
+            Return 0
+        End If
+    End Function
+
+    Public Function GetLastUser() As Integer
+        Dim r = 0
+        Dim dato = Db.Consult("SELECT MAX(id) FROM users")
+
+        If dato.Read() Then
+            r = dato.GetString(0)
+        End If
+
+        Return r
     End Function
 
     Public Function GetPermiso(ByVal campo As String) As Boolean
@@ -321,6 +501,45 @@ Public Class Functions
 
     End Sub
 
+    Public Sub GetUsers(ByVal sql As String, ByVal t As DataGridView)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("nombre", "Nombre")
+        t.Columns.Add("username", "Username")
+        t.Columns.Add("password", "Contraseña")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                t.Rows.Add(dato.GetString(0), dato.GetString(3), dato.GetString(1), dato.GetString(2))
+            Loop
+        End If
+
+    End Sub
+
+    Public Sub GetVtdVehicles(ByVal sql As String, ByVal t As DataGridView)
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult(sql)
+
+        t.Columns.Add("id", "Id")
+        t.Columns.Add("nombre", "Articulo")
+        t.Columns.Add("price", "Precio")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                t.Rows.Add(dato.GetString(0), "(1) " + dato.GetString(1), dato.GetString(2) + " " + My.Settings.moneda)
+            Loop
+        End If
+
+    End Sub
+
     Public Function UpdateRate(txtNombreEdit As TextBox, txtMinToleEdit As TextBox, txtCostoMinEdit As TextBox, txtPrecioHoraEdit As TextBox, txtPrecioDiaEdit As TextBox, useFraccionesEdit As CheckBox, TxtPricePension As TextBox, DiasPension As TextBox, TxtHoursXDiaEdit As TextBox) As Boolean
         Return Db.Ejecutar("UPDATE tarifas SET name = '" + txtNombreEdit.Text.ToUpper + "', tolerance_minutes = '" + txtMinToleEdit.Text + "', costo_minimo = '" + txtCostoMinEdit.Text + "', price_hora = '" + txtPrecioHoraEdit.Text + "', price_dia = '" + txtPrecioDiaEdit.Text + "', use_fraccion = '" + ReturnCheckBox(useFraccionesEdit).ToString + "', price_pension = '" + TxtPricePension.Text + "', dias_pencion  = '" + DiasPension.Text + "', horas_dias   = '" + TxtHoursXDiaEdit.Text + "' WHERE id = '" + Tarifa + "' ")
     End Function
@@ -500,6 +719,10 @@ Public Class Functions
         Return Db_shared.Ejecutar("delete from clients where id = " + Client + " ")
     End Function
 
+    Public Shared Function User_DELETE() As Boolean
+        Return Db_shared.Ejecutar("delete from users where id = " + User + " ")
+    End Function
+
     Public Shared Function Rate_DELETE() As Boolean
         Return Db_shared.Ejecutar("delete from tarifas where id = " + Tarifa + " ")
     End Function
@@ -551,6 +774,10 @@ Public Class Functions
 
     Public Shared Function Vehicles_DELETE() As Boolean
         Return Db_shared.Ejecutar("delete from vehicles where matricula = '" + Matricula + "' ")
+    End Function
+
+    Public Shared Function Vtd_TmpVehicle(id As Integer) As Boolean
+        Return Db_shared.Ejecutar("delete from delivery_tmp where id = '" + id.ToString + "' ")
     End Function
 
     Public Shared Function VTD_Product_DELETE() As Boolean
@@ -860,6 +1087,7 @@ Public Class Functions
                     EnterExitControl.Adeudo(sender.name, VehicleReturnAdeudoConProducts(sender.name))
                 Else
                     Vehicle_ChangeStatus(sender.name, 0)
+                    ActionBarr(My.Settings.rele_salida)
                     EnterExitControl.Loader()
                 End If
             End If
@@ -904,6 +1132,9 @@ Public Class Functions
     End Function
 
     Public Function VehiclesUpdate_StatusForHours(ByRef Ma As String, status As Integer) As Boolean
+        'Estatus 0 sale el vehiculo
+        'Estatus 1 entra el vehiculo
+        ActionBarr(1)
         Return Db.Ejecutar("UPDATE vehicles SET status = '" + status.ToString + "', fecha_ingreso = '" + ReturnFechaString(DateTime.Now) + "' WHERE matricula = '" + Ma + "' ")
     End Function
 
@@ -1022,7 +1253,7 @@ Public Class Functions
             End If
 
         End If
-            Return r
+        Return r
     End Function
 
     Public Function ReturnInfoProduct(codebar As String) As String
@@ -1261,4 +1492,18 @@ Public Class Functions
         Return r
 
     End Function
+
+    Public Sub ActionBarr(NumRele As Integer)
+        NumeroRele = NumRele
+        Dim work As New BackgroundWorker
+        AddHandler work.DoWork, AddressOf ActionBarr_dowork
+        work.RunWorkerAsync()
+    End Sub
+
+    Private Sub ActionBarr_dowork(sender As Object, e As DoWorkEventArgs)
+        Dim a = NumeroRele.ToString
+        Process.Start("cmd", "/c " + My.Settings.data_url + "\CommandApp_USBRelay.exe " + My.Settings.id_relevador + " open " + a + " ")
+        System.Threading.Thread.Sleep(My.Settings.relevador_milisegundos)
+        Process.Start("cmd", "/c " + My.Settings.data_url + "\CommandApp_USBRelay.exe " + My.Settings.id_relevador + " close " + a + " ")
+    End Sub
 End Class

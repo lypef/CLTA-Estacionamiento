@@ -71,5 +71,17 @@
     <Setting Name="id_publicoGeneral" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="id_relevador" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3X9XI</Value>
+    </Setting>
+    <Setting Name="relevador_milisegundos" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="rele_entrada" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="rele_salida" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

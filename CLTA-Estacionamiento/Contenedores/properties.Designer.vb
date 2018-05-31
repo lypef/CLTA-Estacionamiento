@@ -62,6 +62,19 @@ Partial Class properties
         Me.AltoBotones = New System.Windows.Forms.NumericUpDown()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.idPublicoGeneral = New System.Windows.Forms.NumericUpDown()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TxtData = New System.Windows.Forms.TextBox()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.id_relevador = New System.Windows.Forms.TextBox()
+        Me.rele_milisegundos = New System.Windows.Forms.NumericUpDown()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.rele_entrada = New System.Windows.Forms.NumericUpDown()
+        Me.rele_salida = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -70,6 +83,10 @@ Partial Class properties
         CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.idPublicoGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rele_milisegundos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rele_salida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -189,7 +206,7 @@ Partial Class properties
         '
         'TxtGuardar
         '
-        Me.TxtGuardar.Location = New System.Drawing.Point(505, 49)
+        Me.TxtGuardar.Location = New System.Drawing.Point(681, 388)
         Me.TxtGuardar.Name = "TxtGuardar"
         Me.TxtGuardar.Size = New System.Drawing.Size(93, 42)
         Me.TxtGuardar.TabIndex = 101
@@ -198,11 +215,11 @@ Partial Class properties
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(201, 97)
+        Me.Button7.Location = New System.Drawing.Point(474, 49)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(300, 33)
+        Me.Button7.Size = New System.Drawing.Size(27, 42)
         Me.Button7.TabIndex = 102
-        Me.Button7.Text = "Seleccionar imagen"
+        Me.Button7.Text = "..."
         Me.Button7.UseVisualStyleBackColor = True
         '
         'Label7
@@ -220,12 +237,12 @@ Partial Class properties
         Me.TxtDesktopBackground.Location = New System.Drawing.Point(201, 49)
         Me.TxtDesktopBackground.Multiline = True
         Me.TxtDesktopBackground.Name = "TxtDesktopBackground"
-        Me.TxtDesktopBackground.Size = New System.Drawing.Size(300, 42)
+        Me.TxtDesktopBackground.Size = New System.Drawing.Size(267, 42)
         Me.TxtDesktopBackground.TabIndex = 104
         '
         'Tabla_ColorFondo
         '
-        Me.Tabla_ColorFondo.Location = New System.Drawing.Point(204, 136)
+        Me.Tabla_ColorFondo.Location = New System.Drawing.Point(204, 152)
         Me.Tabla_ColorFondo.Name = "Tabla_ColorFondo"
         Me.Tabla_ColorFondo.Size = New System.Drawing.Size(143, 33)
         Me.Tabla_ColorFondo.TabIndex = 105
@@ -234,7 +251,7 @@ Partial Class properties
         '
         'TablaColorSeleccion
         '
-        Me.TablaColorSeleccion.Location = New System.Drawing.Point(353, 136)
+        Me.TablaColorSeleccion.Location = New System.Drawing.Point(353, 152)
         Me.TablaColorSeleccion.Name = "TablaColorSeleccion"
         Me.TablaColorSeleccion.Size = New System.Drawing.Size(148, 33)
         Me.TablaColorSeleccion.TabIndex = 106
@@ -243,7 +260,7 @@ Partial Class properties
         '
         'TipoLetra
         '
-        Me.TipoLetra.Location = New System.Drawing.Point(204, 175)
+        Me.TipoLetra.Location = New System.Drawing.Point(204, 188)
         Me.TipoLetra.Name = "TipoLetra"
         Me.TipoLetra.Size = New System.Drawing.Size(143, 33)
         Me.TipoLetra.TabIndex = 107
@@ -252,7 +269,7 @@ Partial Class properties
         '
         'ColorMenu
         '
-        Me.ColorMenu.Location = New System.Drawing.Point(353, 175)
+        Me.ColorMenu.Location = New System.Drawing.Point(353, 188)
         Me.ColorMenu.Name = "ColorMenu"
         Me.ColorMenu.Size = New System.Drawing.Size(148, 33)
         Me.ColorMenu.TabIndex = 108
@@ -261,7 +278,7 @@ Partial Class properties
         '
         'LetraMenu
         '
-        Me.LetraMenu.Location = New System.Drawing.Point(204, 214)
+        Me.LetraMenu.Location = New System.Drawing.Point(204, 223)
         Me.LetraMenu.Name = "LetraMenu"
         Me.LetraMenu.Size = New System.Drawing.Size(297, 33)
         Me.LetraMenu.TabIndex = 109
@@ -274,7 +291,7 @@ Partial Class properties
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(610, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
         Me.MenuStrip1.TabIndex = 111
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -292,7 +309,7 @@ Partial Class properties
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.25!)
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"SELECCIONE UNA MONEDA", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "nenhum", "Nenhum", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAF", "XAF", "XAF", "XAF", "XCD", "XCD", "XCD", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XPF", "XPF", "YER", "ZAR", "ZMK", "ZWL"})
-        Me.ComboBox1.Location = New System.Drawing.Point(204, 252)
+        Me.ComboBox1.Location = New System.Drawing.Point(204, 260)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(143, 30)
         Me.ComboBox1.TabIndex = 112
@@ -303,7 +320,7 @@ Partial Class properties
         Me.Ventana.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.25!)
         Me.Ventana.FormattingEnabled = True
         Me.Ventana.Items.AddRange(New Object() {"VENTANAS", "NORMAL", "MAXIMIZADAS"})
-        Me.Ventana.Location = New System.Drawing.Point(353, 253)
+        Me.Ventana.Location = New System.Drawing.Point(353, 260)
         Me.Ventana.Name = "Ventana"
         Me.Ventana.Size = New System.Drawing.Size(148, 30)
         Me.Ventana.TabIndex = 113
@@ -320,9 +337,9 @@ Partial Class properties
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.AltoBotones)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 303)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 313)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(489, 127)
+        Me.GroupBox2.Size = New System.Drawing.Size(489, 117)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "VEHICULOS - ENTRADAS & SALIDAS"
@@ -338,7 +355,7 @@ Partial Class properties
         '
         'ColorButton
         '
-        Me.ColorButton.Location = New System.Drawing.Point(327, 29)
+        Me.ColorButton.Location = New System.Drawing.Point(327, 35)
         Me.ColorButton.Name = "ColorButton"
         Me.ColorButton.Size = New System.Drawing.Size(156, 33)
         Me.ColorButton.TabIndex = 114
@@ -366,7 +383,7 @@ Partial Class properties
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(174, 20)
+        Me.Label9.Location = New System.Drawing.Point(174, 26)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(108, 13)
         Me.Label9.TabIndex = 6
@@ -374,7 +391,7 @@ Partial Class properties
         '
         'SpacioEntreBotones
         '
-        Me.SpacioEntreBotones.Location = New System.Drawing.Point(177, 36)
+        Me.SpacioEntreBotones.Location = New System.Drawing.Point(177, 42)
         Me.SpacioEntreBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.SpacioEntreBotones.Name = "SpacioEntreBotones"
         Me.SpacioEntreBotones.Size = New System.Drawing.Size(120, 20)
@@ -402,7 +419,7 @@ Partial Class properties
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(9, 20)
+        Me.Label6.Location = New System.Drawing.Point(9, 26)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(67, 13)
         Me.Label6.TabIndex = 1
@@ -410,7 +427,7 @@ Partial Class properties
         '
         'AltoBotones
         '
-        Me.AltoBotones.Location = New System.Drawing.Point(12, 36)
+        Me.AltoBotones.Location = New System.Drawing.Point(12, 42)
         Me.AltoBotones.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.AltoBotones.Name = "AltoBotones"
         Me.AltoBotones.Size = New System.Drawing.Size(120, 20)
@@ -420,7 +437,7 @@ Partial Class properties
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(249, 287)
+        Me.Label11.Location = New System.Drawing.Point(249, 295)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(98, 13)
         Me.Label11.TabIndex = 116
@@ -428,18 +445,142 @@ Partial Class properties
         '
         'idPublicoGeneral
         '
-        Me.idPublicoGeneral.Location = New System.Drawing.Point(353, 287)
+        Me.idPublicoGeneral.Location = New System.Drawing.Point(353, 294)
         Me.idPublicoGeneral.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
         Me.idPublicoGeneral.Name = "idPublicoGeneral"
         Me.idPublicoGeneral.Size = New System.Drawing.Size(148, 20)
         Me.idPublicoGeneral.TabIndex = 116
         Me.idPublicoGeneral.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(474, 109)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(27, 42)
+        Me.Button2.TabIndex = 117
+        Me.Button2.Text = "..."
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(201, 94)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(30, 13)
+        Me.Label12.TabIndex = 118
+        Me.Label12.Text = "Data"
+        '
+        'TxtData
+        '
+        Me.TxtData.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtData.Location = New System.Drawing.Point(201, 109)
+        Me.TxtData.Multiline = True
+        Me.TxtData.Name = "TxtData"
+        Me.TxtData.Size = New System.Drawing.Size(267, 42)
+        Me.TxtData.TabIndex = 119
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(6, 24)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(87, 13)
+        Me.Label13.TabIndex = 9
+        Me.Label13.Text = "ID RELEVADOR"
+        '
+        'id_relevador
+        '
+        Me.id_relevador.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.id_relevador.Location = New System.Drawing.Point(9, 40)
+        Me.id_relevador.Multiline = True
+        Me.id_relevador.Name = "id_relevador"
+        Me.id_relevador.Size = New System.Drawing.Size(252, 42)
+        Me.id_relevador.TabIndex = 120
+        '
+        'rele_milisegundos
+        '
+        Me.rele_milisegundos.Location = New System.Drawing.Point(139, 88)
+        Me.rele_milisegundos.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
+        Me.rele_milisegundos.Name = "rele_milisegundos"
+        Me.rele_milisegundos.Size = New System.Drawing.Size(122, 20)
+        Me.rele_milisegundos.TabIndex = 121
+        Me.rele_milisegundos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(23, 91)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(113, 13)
+        Me.Label14.TabIndex = 122
+        Me.Label14.Text = "TIEMPO APERTURA:"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.rele_salida)
+        Me.GroupBox3.Controls.Add(Me.rele_entrada)
+        Me.GroupBox3.Controls.Add(Me.Label16)
+        Me.GroupBox3.Controls.Add(Me.Label15)
+        Me.GroupBox3.Controls.Add(Me.Label13)
+        Me.GroupBox3.Controls.Add(Me.rele_milisegundos)
+        Me.GroupBox3.Controls.Add(Me.id_relevador)
+        Me.GroupBox3.Controls.Add(Me.Label14)
+        Me.GroupBox3.Location = New System.Drawing.Point(507, 35)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(267, 173)
+        Me.GroupBox3.TabIndex = 123
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "RELEVADOR"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(23, 146)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(113, 13)
+        Me.Label16.TabIndex = 124
+        Me.Label16.Text = "PUERTA DE SALIDA:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(9, 118)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(127, 13)
+        Me.Label15.TabIndex = 123
+        Me.Label15.Text = "PUERTA DE ENTRADA:"
+        '
+        'rele_entrada
+        '
+        Me.rele_entrada.Location = New System.Drawing.Point(139, 116)
+        Me.rele_entrada.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
+        Me.rele_entrada.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.rele_entrada.Name = "rele_entrada"
+        Me.rele_entrada.Size = New System.Drawing.Size(122, 20)
+        Me.rele_entrada.TabIndex = 125
+        Me.rele_entrada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.rele_entrada.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'rele_salida
+        '
+        Me.rele_salida.Location = New System.Drawing.Point(139, 142)
+        Me.rele_salida.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
+        Me.rele_salida.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.rele_salida.Name = "rele_salida"
+        Me.rele_salida.Size = New System.Drawing.Size(122, 20)
+        Me.rele_salida.TabIndex = 126
+        Me.rele_salida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.rele_salida.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(610, 442)
+        Me.ClientSize = New System.Drawing.Size(784, 442)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.TxtData)
         Me.Controls.Add(Me.idPublicoGeneral)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.GroupBox2)
@@ -471,6 +612,11 @@ Partial Class properties
         CType(Me.AnchoBotones, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AltoBotones, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.idPublicoGeneral, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rele_milisegundos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rele_salida, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -516,4 +662,17 @@ Partial Class properties
     Friend WithEvents ColorButtonSelect As Button
     Friend WithEvents Label11 As Label
     Friend WithEvents idPublicoGeneral As NumericUpDown
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Label12 As Label
+    Friend WithEvents TxtData As TextBox
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents Label13 As Label
+    Friend WithEvents id_relevador As TextBox
+    Friend WithEvents rele_milisegundos As NumericUpDown
+    Friend WithEvents Label14 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents rele_salida As NumericUpDown
+    Friend WithEvents rele_entrada As NumericUpDown
 End Class

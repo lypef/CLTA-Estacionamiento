@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>43</ApplicationRevision>
+    <ApplicationRevision>46</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -188,16 +188,34 @@
     <Compile Include="Vistas\Clientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\EditProducts.Designer.vb">
+      <DependentUpon>EditProducts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EditProducts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\EnterExitControl.Designer.vb">
       <DependentUpon>EnterExitControl.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EnterExitControl.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\OpenBarrNum.Designer.vb">
+      <DependentUpon>OpenBarrNum.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\OpenBarrNum.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\Rate.Designer.vb">
       <DependentUpon>Rate.vb</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Rate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\users.Designer.vb">
+      <DependentUpon>users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\users.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\Vehicles.Designer.vb">
@@ -250,11 +268,20 @@
     <EmbeddedResource Include="Vistas\Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\EditProducts.resx">
+      <DependentUpon>EditProducts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\EnterExitControl.resx">
       <DependentUpon>EnterExitControl.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\OpenBarrNum.resx">
+      <DependentUpon>OpenBarrNum.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Rate.resx">
       <DependentUpon>Rate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\users.resx">
+      <DependentUpon>users.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Vehicles.resx">
       <DependentUpon>Vehicles.vb</DependentUpon>
@@ -281,6 +308,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\barr_acceso.png" />
+    <None Include="Resources\if_self1_62587.png" />
     <None Include="Resources\if_Money-Graph_379375.png" />
     <None Include="Resources\if_Money-Increase_379473.png" />
     <None Include="Resources\if_money_299107.png" />
