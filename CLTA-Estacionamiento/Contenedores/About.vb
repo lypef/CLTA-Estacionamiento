@@ -17,7 +17,7 @@
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description
-        'Me.TextBoxDescription.Text = My.Application.Info.Description.Replace("%name_enterprise%", f.ReturnEmpresa_Parametros(f.Empresa_Nombre)).Replace("%direccion%", f.ReturnEmpresa_Parametros(f.Empresa_Direccion)).Replace("%rfc%", f.ReturnEmpresa_Parametros(f.Empresa_Rfc))}
+        Me.TextBoxDescription.Text = My.Application.Info.Description.Replace("%name_enterprise%", My.Settings.local_nombre).Replace("%direccion%", My.Settings.local_direccion).Replace("%rfc%", My.Settings.local_rfc)
         MenuStrip1.Font = My.Settings.Menu_font
         MenuStrip1.BackColor = My.Settings.Menu_color
         Panel1.Height = My.Settings.Menu_font.Height + 10

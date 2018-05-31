@@ -44,6 +44,7 @@ Partial Class PanelControl
         Me.CambiarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,7 +60,6 @@ Partial Class PanelControl
         Me.Footer = New System.Windows.Forms.Panel()
         Me.LabelHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.BarraMenu.SuspendLayout()
         Me.Footer.SuspendLayout()
         Me.SuspendLayout()
@@ -205,6 +205,11 @@ Partial Class PanelControl
         Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(213, 30)
         Me.SalirToolStripMenuItem1.Text = "Salir"
         '
+        'ToolStripTextBox1
+        '
+        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 23)
+        '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
@@ -322,11 +327,6 @@ Partial Class PanelControl
         '
         'Timer1
         '
-        '
-        'ToolStripTextBox1
-        '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 23)
         '
         'PanelControl
         '

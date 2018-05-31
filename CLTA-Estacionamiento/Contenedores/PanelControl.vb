@@ -257,4 +257,9 @@ Public Class PanelControl
         OpenBarrNum.NumericUpDown1.Select()
         f.AddForm_Desktop(OpenBarrNum, Desktop)
     End Sub
+
+    Private Sub ReimprimirTicketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReimprimirTicketToolStripMenuItem.Click
+        R_ticket.NumericUpDown1.Select()
+        f.AddForm_Desktop(R_ticket, Desktop)
+    End Sub
 End Class

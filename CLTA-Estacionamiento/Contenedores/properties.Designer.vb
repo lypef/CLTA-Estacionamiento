@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class properties
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class properties
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -71,10 +71,29 @@ Partial Class properties
         Me.rele_milisegundos = New System.Windows.Forms.NumericUpDown()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.rele_salida = New System.Windows.Forms.NumericUpDown()
+        Me.rele_entrada = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.rele_entrada = New System.Windows.Forms.NumericUpDown()
-        Me.rele_salida = New System.Windows.Forms.NumericUpDown()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.LocalRfc = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.LocalTelefono = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.LocalDireccion = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.LocalNombre = New System.Windows.Forms.TextBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.ticket_mostrarpie = New System.Windows.Forms.CheckBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.ticker_piedepagina = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.ticker_horaimpresion = New System.Windows.Forms.CheckBox()
+        Me.ticket_impresora = New System.Windows.Forms.TextBox()
+        Me.ticket_vendedor = New System.Windows.Forms.CheckBox()
+        Me.ticket_cliente = New System.Windows.Forms.CheckBox()
+        Me.LetraTicket = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -85,8 +104,10 @@ Partial Class properties
         CType(Me.idPublicoGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rele_milisegundos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rele_salida, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -206,9 +227,9 @@ Partial Class properties
         '
         'TxtGuardar
         '
-        Me.TxtGuardar.Location = New System.Drawing.Point(681, 388)
+        Me.TxtGuardar.Location = New System.Drawing.Point(780, 396)
         Me.TxtGuardar.Name = "TxtGuardar"
-        Me.TxtGuardar.Size = New System.Drawing.Size(93, 42)
+        Me.TxtGuardar.Size = New System.Drawing.Size(212, 34)
         Me.TxtGuardar.TabIndex = 101
         Me.TxtGuardar.Text = "Guardar"
         Me.TxtGuardar.UseVisualStyleBackColor = True
@@ -291,7 +312,7 @@ Partial Class properties
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1004, 24)
         Me.MenuStrip1.TabIndex = 111
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -532,6 +553,28 @@ Partial Class properties
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "RELEVADOR"
         '
+        'rele_salida
+        '
+        Me.rele_salida.Location = New System.Drawing.Point(139, 142)
+        Me.rele_salida.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
+        Me.rele_salida.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.rele_salida.Name = "rele_salida"
+        Me.rele_salida.Size = New System.Drawing.Size(122, 20)
+        Me.rele_salida.TabIndex = 126
+        Me.rele_salida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.rele_salida.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'rele_entrada
+        '
+        Me.rele_entrada.Location = New System.Drawing.Point(139, 116)
+        Me.rele_entrada.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
+        Me.rele_entrada.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.rele_entrada.Name = "rele_entrada"
+        Me.rele_entrada.Size = New System.Drawing.Size(122, 20)
+        Me.rele_entrada.TabIndex = 125
+        Me.rele_entrada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.rele_entrada.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
         'Label16
         '
         Me.Label16.AutoSize = True
@@ -550,33 +593,199 @@ Partial Class properties
         Me.Label15.TabIndex = 123
         Me.Label15.Text = "PUERTA DE ENTRADA:"
         '
-        'rele_entrada
+        'GroupBox4
         '
-        Me.rele_entrada.Location = New System.Drawing.Point(139, 116)
-        Me.rele_entrada.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
-        Me.rele_entrada.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.rele_entrada.Name = "rele_entrada"
-        Me.rele_entrada.Size = New System.Drawing.Size(122, 20)
-        Me.rele_entrada.TabIndex = 125
-        Me.rele_entrada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.rele_entrada.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.GroupBox4.Controls.Add(Me.Label20)
+        Me.GroupBox4.Controls.Add(Me.LocalRfc)
+        Me.GroupBox4.Controls.Add(Me.Label19)
+        Me.GroupBox4.Controls.Add(Me.LocalTelefono)
+        Me.GroupBox4.Controls.Add(Me.Label18)
+        Me.GroupBox4.Controls.Add(Me.LocalDireccion)
+        Me.GroupBox4.Controls.Add(Me.Label17)
+        Me.GroupBox4.Controls.Add(Me.LocalNombre)
+        Me.GroupBox4.Location = New System.Drawing.Point(507, 215)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(267, 215)
+        Me.GroupBox4.TabIndex = 124
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "DATOS DE EMPRESA"
         '
-        'rele_salida
+        'Label20
         '
-        Me.rele_salida.Location = New System.Drawing.Point(139, 142)
-        Me.rele_salida.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
-        Me.rele_salida.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.rele_salida.Name = "rele_salida"
-        Me.rele_salida.Size = New System.Drawing.Size(122, 20)
-        Me.rele_salida.TabIndex = 126
-        Me.rele_salida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.rele_salida.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(9, 153)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(24, 13)
+        Me.Label20.TabIndex = 15
+        Me.Label20.Text = "Rfc"
+        '
+        'LocalRfc
+        '
+        Me.LocalRfc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LocalRfc.Location = New System.Drawing.Point(6, 169)
+        Me.LocalRfc.Name = "LocalRfc"
+        Me.LocalRfc.Size = New System.Drawing.Size(255, 22)
+        Me.LocalRfc.TabIndex = 16
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(6, 109)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(49, 13)
+        Me.Label19.TabIndex = 13
+        Me.Label19.Text = "Telefono"
+        '
+        'LocalTelefono
+        '
+        Me.LocalTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LocalTelefono.Location = New System.Drawing.Point(6, 124)
+        Me.LocalTelefono.Name = "LocalTelefono"
+        Me.LocalTelefono.Size = New System.Drawing.Size(255, 22)
+        Me.LocalTelefono.TabIndex = 14
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(6, 65)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(52, 13)
+        Me.Label18.TabIndex = 11
+        Me.Label18.Text = "Direccion"
+        '
+        'LocalDireccion
+        '
+        Me.LocalDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LocalDireccion.Location = New System.Drawing.Point(6, 80)
+        Me.LocalDireccion.Name = "LocalDireccion"
+        Me.LocalDireccion.Size = New System.Drawing.Size(255, 22)
+        Me.LocalDireccion.TabIndex = 12
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(6, 22)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(44, 13)
+        Me.Label17.TabIndex = 9
+        Me.Label17.Text = "Nombre"
+        '
+        'LocalNombre
+        '
+        Me.LocalNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LocalNombre.Location = New System.Drawing.Point(6, 37)
+        Me.LocalNombre.Name = "LocalNombre"
+        Me.LocalNombre.Size = New System.Drawing.Size(255, 22)
+        Me.LocalNombre.TabIndex = 10
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.LetraTicket)
+        Me.GroupBox5.Controls.Add(Me.ticket_mostrarpie)
+        Me.GroupBox5.Controls.Add(Me.Label22)
+        Me.GroupBox5.Controls.Add(Me.ticker_piedepagina)
+        Me.GroupBox5.Controls.Add(Me.Label21)
+        Me.GroupBox5.Controls.Add(Me.ticker_horaimpresion)
+        Me.GroupBox5.Controls.Add(Me.ticket_impresora)
+        Me.GroupBox5.Controls.Add(Me.ticket_vendedor)
+        Me.GroupBox5.Controls.Add(Me.ticket_cliente)
+        Me.GroupBox5.Location = New System.Drawing.Point(780, 35)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(212, 355)
+        Me.GroupBox5.TabIndex = 125
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "TICKETS"
+        '
+        'ticket_mostrarpie
+        '
+        Me.ticket_mostrarpie.AutoSize = True
+        Me.ticket_mostrarpie.Location = New System.Drawing.Point(10, 137)
+        Me.ticket_mostrarpie.Name = "ticket_mostrarpie"
+        Me.ticket_mostrarpie.Size = New System.Drawing.Size(128, 17)
+        Me.ticket_mostrarpie.TabIndex = 21
+        Me.ticket_mostrarpie.Text = "Mostrar pie de pagina"
+        Me.ticket_mostrarpie.UseVisualStyleBackColor = True
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(7, 163)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(72, 13)
+        Me.Label22.TabIndex = 19
+        Me.Label22.Text = "Pie de pagina"
+        '
+        'ticker_piedepagina
+        '
+        Me.ticker_piedepagina.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ticker_piedepagina.Location = New System.Drawing.Point(7, 178)
+        Me.ticker_piedepagina.Name = "ticker_piedepagina"
+        Me.ticker_piedepagina.Size = New System.Drawing.Size(199, 22)
+        Me.ticker_piedepagina.TabIndex = 20
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(7, 19)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(107, 13)
+        Me.Label21.TabIndex = 17
+        Me.Label21.Text = "Nombre de impresora"
+        '
+        'ticker_horaimpresion
+        '
+        Me.ticker_horaimpresion.AutoSize = True
+        Me.ticker_horaimpresion.Location = New System.Drawing.Point(10, 114)
+        Me.ticker_horaimpresion.Name = "ticker_horaimpresion"
+        Me.ticker_horaimpresion.Size = New System.Drawing.Size(147, 17)
+        Me.ticker_horaimpresion.TabIndex = 2
+        Me.ticker_horaimpresion.Text = "Mostrar hora de impresion"
+        Me.ticker_horaimpresion.UseVisualStyleBackColor = True
+        '
+        'ticket_impresora
+        '
+        Me.ticket_impresora.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ticket_impresora.Location = New System.Drawing.Point(7, 34)
+        Me.ticket_impresora.Name = "ticket_impresora"
+        Me.ticket_impresora.Size = New System.Drawing.Size(199, 22)
+        Me.ticket_impresora.TabIndex = 18
+        '
+        'ticket_vendedor
+        '
+        Me.ticket_vendedor.AutoSize = True
+        Me.ticket_vendedor.Location = New System.Drawing.Point(10, 88)
+        Me.ticket_vendedor.Name = "ticket_vendedor"
+        Me.ticket_vendedor.Size = New System.Drawing.Size(109, 17)
+        Me.ticket_vendedor.TabIndex = 1
+        Me.ticket_vendedor.Text = "Mostrar vendedor"
+        Me.ticket_vendedor.UseVisualStyleBackColor = True
+        '
+        'ticket_cliente
+        '
+        Me.ticket_cliente.AutoSize = True
+        Me.ticket_cliente.Location = New System.Drawing.Point(10, 62)
+        Me.ticket_cliente.Name = "ticket_cliente"
+        Me.ticket_cliente.Size = New System.Drawing.Size(95, 17)
+        Me.ticket_cliente.TabIndex = 0
+        Me.ticket_cliente.Text = "Mostrar cliente"
+        Me.ticket_cliente.UseVisualStyleBackColor = True
+        '
+        'LetraTicket
+        '
+        Me.LetraTicket.Location = New System.Drawing.Point(6, 206)
+        Me.LetraTicket.Name = "LetraTicket"
+        Me.LetraTicket.Size = New System.Drawing.Size(200, 33)
+        Me.LetraTicket.TabIndex = 126
+        Me.LetraTicket.Text = "Tipo de letra"
+        Me.LetraTicket.UseVisualStyleBackColor = True
         '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 442)
+        Me.ClientSize = New System.Drawing.Size(1004, 442)
+        Me.Controls.Add(Me.GroupBox5)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label12)
@@ -584,6 +793,7 @@ Partial Class properties
         Me.Controls.Add(Me.idPublicoGeneral)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.TxtGuardar)
         Me.Controls.Add(Me.Ventana)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.LetraMenu)
@@ -594,7 +804,6 @@ Partial Class properties
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TxtDesktopBackground)
-        Me.Controls.Add(Me.TxtGuardar)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -615,8 +824,12 @@ Partial Class properties
         CType(Me.rele_milisegundos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rele_salida, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rele_entrada, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -675,4 +888,23 @@ Partial Class properties
     Friend WithEvents Label15 As Label
     Friend WithEvents rele_salida As NumericUpDown
     Friend WithEvents rele_entrada As NumericUpDown
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents LocalRfc As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents LocalTelefono As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents LocalDireccion As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents LocalNombre As TextBox
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents ticket_mostrarpie As CheckBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents ticker_piedepagina As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents ticker_horaimpresion As CheckBox
+    Friend WithEvents ticket_impresora As TextBox
+    Friend WithEvents ticket_vendedor As CheckBox
+    Friend WithEvents ticket_cliente As CheckBox
+    Friend WithEvents LetraTicket As Button
 End Class

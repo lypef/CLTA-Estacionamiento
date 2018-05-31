@@ -40,6 +40,17 @@ Public Class properties
         rele_milisegundos.Value = My.Settings.relevador_milisegundos
         rele_entrada.Value = My.Settings.rele_entrada
         rele_salida.Value = My.Settings.rele_salida
+        LocalNombre.Text = My.Settings.local_nombre
+        LocalDireccion.Text = My.Settings.local_direccion
+        LocalTelefono.Text = My.Settings.local_telefono
+        LocalRfc.Text = My.Settings.local_rfc
+        ticket_impresora.Text = My.Settings.ticket_impresora
+        ticket_cliente.Checked = My.Settings.ticket_mostrar_cliente
+        ticket_vendedor.Checked = My.Settings.ticke_mostar_venderor
+        ticker_horaimpresion.Checked = My.Settings.ticket_mostrar_hote_impresion
+        ticket_mostrarpie.Checked = My.Settings.ticket_mostrar_pie_depagina
+        ticker_piedepagina.Text = My.Settings.ticket_pie_de_pagina
+        LetraTicket.Font = My.Settings.ticket_font
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -81,6 +92,17 @@ Public Class properties
         My.Settings.relevador_milisegundos = rele_milisegundos.Value
         My.Settings.rele_entrada = rele_entrada.Value
         My.Settings.rele_salida = rele_salida.Value
+        My.Settings.local_nombre = LocalNombre.Text
+        My.Settings.local_direccion = LocalDireccion.Text
+        My.Settings.local_telefono = LocalTelefono.Text
+        My.Settings.local_rfc = LocalRfc.Text
+        My.Settings.ticket_impresora = ticket_impresora.Text
+        My.Settings.ticket_mostrar_cliente = ticket_cliente.Checked
+        My.Settings.ticke_mostar_venderor = ticket_vendedor.Checked
+        My.Settings.ticket_mostrar_hote_impresion = ticker_horaimpresion.Checked
+        My.Settings.ticket_mostrar_pie_depagina = ticket_mostrarpie.Checked
+        My.Settings.ticket_pie_de_pagina = ticker_piedepagina.Text
+        My.Settings.ticket_font = LetraTicket.Font
         My.Settings.Save()
         Application.Restart()
     End Sub
@@ -151,6 +173,13 @@ Public Class properties
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
             TxtData.Text = FolderBrowserDialog1.SelectedPath.Replace("\", "/")
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles LetraTicket.Click
+        FontDialog1.Font = LetraTicket.Font
+        If FontDialog1.ShowDialog() = DialogResult.OK Then
+            LetraTicket.Font = FontDialog1.Font
         End If
     End Sub
 End Class

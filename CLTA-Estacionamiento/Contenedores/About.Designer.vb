@@ -39,11 +39,11 @@ Partial Class About
         Me.LabelCopyright = New System.Windows.Forms.Label()
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
+        Me.OKButton = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.Salir = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.OKButton = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,6 +151,16 @@ Partial Class About
         Me.TextBoxDescription.TabStop = False
         Me.TextBoxDescription.Text = resources.GetString("TextBoxDescription.Text")
         '
+        'OKButton
+        '
+        Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OKButton.Location = New System.Drawing.Point(318, 232)
+        Me.OKButton.Name = "OKButton"
+        Me.OKButton.Size = New System.Drawing.Size(75, 23)
+        Me.OKButton.TabIndex = 0
+        Me.OKButton.Text = "&Aceptar"
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -167,7 +177,7 @@ Partial Class About
         Me.Salir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.Salir.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
         Me.Salir.Name = "Salir"
-        Me.Salir.Size = New System.Drawing.Size(57, 20)
+        Me.Salir.Size = New System.Drawing.Size(57, 26)
         Me.Salir.Text = "Salir"
         '
         'ContextMenuStrip1
@@ -179,16 +189,6 @@ Partial Class About
         '
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
         Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
-        '
-        'OKButton
-        '
-        Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.OKButton.Location = New System.Drawing.Point(318, 232)
-        Me.OKButton.Name = "OKButton"
-        Me.OKButton.Size = New System.Drawing.Size(75, 23)
-        Me.OKButton.TabIndex = 0
-        Me.OKButton.Text = "&Aceptar"
         '
         'Panel1
         '

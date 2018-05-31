@@ -83,5 +83,38 @@
     <Setting Name="rele_salida" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="local_nombre" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EMPRESA INVALIDA</Value>
+    </Setting>
+    <Setting Name="local_direccion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DIRECCION FICTICIA</Value>
+    </Setting>
+    <Setting Name="local_telefono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0180000000</Value>
+    </Setting>
+    <Setting Name="local_rfc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">XXOXXXOA</Value>
+    </Setting>
+    <Setting Name="ticket_impresora" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PDFCreator</Value>
+    </Setting>
+    <Setting Name="ticket_mostrar_cliente" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ticke_mostar_venderor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ticket_mostrar_hote_impresion" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ticket_mostrar_pie_depagina" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ticket_pie_de_pagina" Type="System.String" Scope="User">
+      <Value Profile="(Default)">www.cyberchoapas.com</Value>
+    </Setting>
+    <Setting Name="ticket_font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Lucida Console, 8.25pt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

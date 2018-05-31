@@ -377,6 +377,138 @@ Namespace My
                 Me("rele_salida") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("EMPRESA INVALIDA")>  _
+        Public Property local_nombre() As String
+            Get
+                Return CType(Me("local_nombre"),String)
+            End Get
+            Set
+                Me("local_nombre") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("DIRECCION FICTICIA")>  _
+        Public Property local_direccion() As String
+            Get
+                Return CType(Me("local_direccion"),String)
+            End Get
+            Set
+                Me("local_direccion") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0180000000")>  _
+        Public Property local_telefono() As String
+            Get
+                Return CType(Me("local_telefono"),String)
+            End Get
+            Set
+                Me("local_telefono") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("XXOXXXOA")>  _
+        Public Property local_rfc() As String
+            Get
+                Return CType(Me("local_rfc"),String)
+            End Get
+            Set
+                Me("local_rfc") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("PDFCreator")>  _
+        Public Property ticket_impresora() As String
+            Get
+                Return CType(Me("ticket_impresora"),String)
+            End Get
+            Set
+                Me("ticket_impresora") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ticket_mostrar_cliente() As Boolean
+            Get
+                Return CType(Me("ticket_mostrar_cliente"),Boolean)
+            End Get
+            Set
+                Me("ticket_mostrar_cliente") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ticke_mostar_venderor() As Boolean
+            Get
+                Return CType(Me("ticke_mostar_venderor"),Boolean)
+            End Get
+            Set
+                Me("ticke_mostar_venderor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ticket_mostrar_hote_impresion() As Boolean
+            Get
+                Return CType(Me("ticket_mostrar_hote_impresion"),Boolean)
+            End Get
+            Set
+                Me("ticket_mostrar_hote_impresion") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ticket_mostrar_pie_depagina() As Boolean
+            Get
+                Return CType(Me("ticket_mostrar_pie_depagina"),Boolean)
+            End Get
+            Set
+                Me("ticket_mostrar_pie_depagina") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("www.cyberchoapas.com")>  _
+        Public Property ticket_pie_de_pagina() As String
+            Get
+                Return CType(Me("ticket_pie_de_pagina"),String)
+            End Get
+            Set
+                Me("ticket_pie_de_pagina") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Lucida Console, 8.25pt")>  _
+        Public Property ticket_font() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("ticket_font"),Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("ticket_font") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

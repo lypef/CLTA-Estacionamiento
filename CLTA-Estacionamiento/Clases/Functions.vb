@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Drawing.Printing
 Imports System.IO
 Imports System.Security.Cryptography
 
@@ -77,6 +78,7 @@ Public Class Functions
         AddForm_Desktop(Ventas, desktop)
         AddForm_Desktop(EditProducts, desktop)
         AddForm_Desktop(OpenBarrNum, desktop)
+        AddForm_Desktop(R_ticket, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -915,6 +917,11 @@ Public Class Functions
 
     Public Function GetDateString(d As DateTime) As String
         Return (d.Year.ToString + "-" + d.Month.ToString + "-" + d.Day.ToString + " " + d.Hour.ToString + ":" + d.Minute.ToString + ":" + d.Second.ToString).ToString
+
+    End Function
+
+    Public Function GetDateStringEqualDB(d As DateTime) As String
+        Return (d.Day.ToString + "/" + d.Month.ToString + "/" + d.Year.ToString + " " + d.Hour.ToString + ":" + d.Minute.ToString + ":" + d.Second.ToString).ToString
     End Function
 
     Public Function Ticket_GenerateID() As Integer
@@ -1453,9 +1460,84 @@ Public Class Functions
     End Function
 
     Public Sub TicketGeneratePrint(ticket As Integer)
-        Console.WriteLine("se imrpime el ticket")
-    End Sub
+        Dim membrete As String = ""
+        Dim body As String = ""
+        Dim cliente As String = ""
+        Dim vendedor As String = ""
+        Dim fecha_compra As String = ""
+        Dim total As Decimal = 0
+        Dim total_compras As Int32 = 0
 
+        membrete += My.Settings.local_nombre
+        membrete += vbLf + "DIRECCION:"
+        membrete += vbLf + My.Settings.local_direccion
+        membrete += vbLf + "RFC: " + My.Settings.local_rfc
+        membrete += vbLf + "TELEFONO: " + My.Settings.local_telefono
+        membrete += vbLf + "FOLIO: #" + ticket.ToString
+        membrete += vbLf + "--------------------------"
+
+        Dim dato = Db.Consult("SELECT c.name, u.name, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and id_ticket = '" + ticket.ToString + "'")
+        Do While dato.Read()
+            cliente = dato.GetString(0)
+            vendedor = dato.GetString(1)
+            fecha_compra = dato.GetString(4)
+            body += vbLf + "(1) " + dato.GetString(2) + " $ " + dato.GetString(3)
+            total += Decimal.Parse(dato.GetString(3))
+            total_compras += 1
+        Loop
+        membrete += vbLf + "FECHA DE COMPRA"
+        membrete += vbLf + fecha_compra
+        If My.Settings.ticket_mostrar_hote_impresion Then
+            membrete += vbLf + "FECHA DE IMPRESION"
+            membrete += vbLf + GetDateStringEqualDB(DateTime.Now)
+        End If
+
+        If My.Settings.ticket_mostrar_cliente Then
+            membrete += vbLf + "CLIENTE:"
+            membrete += vbLf + cliente
+        End If
+
+        If My.Settings.ticke_mostar_venderor Then
+            membrete += vbLf + "ATENDIO"
+            membrete += vbLf + vendedor
+        End If
+
+        membrete += vbLf + "--------------------------"
+        body += vbLf + "--------------------------"
+        body += vbLf + "MONTO TOTAL: $" + total.ToString
+        body += vbLf + "TOTAL COMPRAS: " + total_compras.ToString
+
+        If My.Settings.ticket_mostrar_pie_depagina Then
+            body += vbLf + "--------------------------"
+            body += vbLf + My.Settings.ticket_pie_de_pagina
+        End If
+
+        BodyTicket = membrete + body
+        Dim pd As New PrintDocument
+        pd.PrinterSettings.PrinterName = My.Settings.ticket_impresora
+        pd.DefaultPageSettings.Margins.Left = 0
+        pd.DefaultPageSettings.Margins.Right = 0
+        pd.DefaultPageSettings.Margins.Top = 0
+        pd.DefaultPageSettings.Margins.Bottom = 0
+        AddHandler pd.PrintPage, AddressOf print_PrintPage
+
+        If pd.PrinterSettings.IsValid Then
+            pd.Print()
+        Else
+            MsgBox("Error en la impresion", MsgBoxStyle.Critical)
+        End If
+
+    End Sub
+    Dim BodyTicket As String
+
+    Private Sub print_PrintPage(sender As Object, e As PrintPageEventArgs)
+        Dim xPos As Single = e.MarginBounds.Left
+        Dim prFont As New Font("Lucida Console", 8, FontStyle.Regular)
+        prFont = My.Settings.ticket_font
+        Dim yPos As Single = prFont.GetHeight(e.Graphics)
+        e.Graphics.DrawString(BodyTicket, prFont, Brushes.Black, xPos, yPos)
+        e.HasMorePages = False
+    End Sub
 
     Public Function Return_ProductPrice(codebar As String) As Decimal
         Dim r = 0
