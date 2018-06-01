@@ -138,7 +138,9 @@
                     If f.Vehicle_Update_Pension(ComboBoxTarifas, f_exit) Then
                         Me.Dispose()
                         Vehicles.Loader()
+                        Dim ticket As Integer = f.Ticket_GenerateID()
                         If f.AddVenta(Client, "Pago de membresia x pension: hasta " + f.GetDateString(f_exit), total, f.Ticket_GenerateID()) Then
+                            f.TicketGeneratePrint(ticket)
                             f.Alert("Cambios actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)
                         Else
                             f.Alert("Cambios NO actualizados", f.Alert_NumberInformacion, PanelControl.Desktop)

@@ -178,6 +178,9 @@ Public Class PanelControl
                         If (MsgBox("Ingresar vehiculo con matricula: ".ToUpper + TxtBox.Text + "Para cobro por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                             If f.VehiclesUpdate_StatusForHours(TxtBox.Text, 1) Then
                                 f.ActionBarr(My.Settings.rele_entrada)
+                                If My.Settings.ticket_imprimir_xhora Then
+                                    f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                End If
                                 EnterExitControl.Loader()
                             Else
                                 f.Alert("Error desconocido", f.Alert_NumberCritical, Desktop)
@@ -192,6 +195,10 @@ Public Class PanelControl
                         Else
                             If (MsgBox("Dias vencidos. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                                 If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
+                                    f.ActionBarr(My.Settings.rele_entrada)
+                                    If My.Settings.ticket_imprimir_xhora Then
+                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                    End If
                                     EnterExitControl.Loader()
                                 End If
                             End If
@@ -205,13 +212,17 @@ Public Class PanelControl
                         Else
                             If (MsgBox("Pension vencida. matricula: ".ToUpper + TxtBox.Text + " arrendar por hora ?".ToUpper, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
                                 If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
+                                    f.ActionBarr(My.Settings.rele_entrada)
+                                    If My.Settings.ticket_imprimir_xhora Then
+                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                    End If
                                     EnterExitControl.Loader()
                                 End If
                             End If
                         End If
                     End If
                 Else
-                    f.Alert("El vehiculo ya se encuentra adento", f.Alert_NumberExclamacion, Desktop)
+                    f.Alert("El vehiculo ya se encuentra adentro o el vehiculo no existe", f.Alert_NumberCritical, Desktop)
                 End If
             Else
                 f.Alert("La matricula no existe", f.Alert_NumberCritical, Desktop)
@@ -261,5 +272,10 @@ Public Class PanelControl
     Private Sub ReimprimirTicketToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReimprimirTicketToolStripMenuItem.Click
         R_ticket.NumericUpDown1.Select()
         f.AddForm_Desktop(R_ticket, Desktop)
+    End Sub
+
+    Private Sub EntradaVehiculoGenericoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntradaVehiculoGenericoToolStripMenuItem.Click
+        EntradaVehiculoGenerico.loadvalues()
+        f.AddForm_Desktop(EntradaVehiculoGenerico, Desktop)
     End Sub
 End Class

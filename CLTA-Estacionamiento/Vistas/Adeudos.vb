@@ -6,6 +6,12 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         f.Vehicles_ProductsRealizarVenta(Matricula)
         f.Vehicle_ChangeStatus(Matricula, 0)
+        If My.Settings.vehicles_generics Then
+            If f.Return_Cliente_Vehicle(Matricula) = My.Settings.id_publicoGeneral Then
+                Functions.Matricula = Matricula
+                Functions.Vehicles_DELETE()
+            End If
+        End If
         EnterExitControl.Loader()
         f.ActionBarr(My.Settings.rele_salida)
         Me.Dispose()

@@ -79,6 +79,7 @@ Public Class Functions
         AddForm_Desktop(EditProducts, desktop)
         AddForm_Desktop(OpenBarrNum, desktop)
         AddForm_Desktop(R_ticket, desktop)
+        AddForm_Desktop(EntradaVehiculoGenerico, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -627,6 +628,10 @@ Public Class Functions
 
     Public Function AddVehicle(c As ComboBox, matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox, Rfid As TextBox) As Boolean
         Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, tarifa_hora, fecha_ingreso, fecha_salida) VALUES ('" + ListClients.Item(c.SelectedIndex).ToString() + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "', '" + estado_Textbox.Text.ToUpper() + "', '" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '" + Rfid.Text.ToString + "', '1', '" + GetDateString(DateTime.Now.AddDays(-1)) + "', '" + GetDateString(DateTime.Now.AddDays(-1)) + "')")
+    End Function
+
+    Public Function AddVehicle_Generico(matricula_Textbox As TextBox, modeloTextBox As TextBox, color_Textbox As TextBox, estado_Textbox As TextBox, ComboTarifa As ComboBox) As Boolean
+        Return Db.Ejecutar("INSERT INTO vehicles (client, matricula, modelo, color, estado, tarifa, rfid, status, tarifa_hora, fecha_ingreso, fecha_salida) VALUES ('" + My.Settings.id_publicoGeneral.ToString + "', '" + matricula_Textbox.Text.ToUpper() + "', '" + modeloTextBox.Text.ToUpper() + "', '" + color_Textbox.Text.ToUpper() + "','" + estado_Textbox.Text.ToUpper() + "','" + ListTarifas.Item(ComboTarifa.SelectedIndex).ToString() + "', '0','1', '1', '" + GetDateString(DateTime.Now) + "', '" + GetDateString(DateTime.Now.AddDays(-1)) + "')")
     End Function
 
     Private Function ReturnRadioButon(r As RadioButton) As Integer
@@ -1481,7 +1486,22 @@ Public Class Functions
             cliente = dato.GetString(0)
             vendedor = dato.GetString(1)
             fecha_compra = dato.GetString(4)
-            body += vbLf + "(1) " + dato.GetString(2) + " $ " + dato.GetString(3)
+            Dim tmp0 = vbLf + "(1) " + dato.GetString(2) + " $ " + dato.GetString(3)
+            Dim var = ""
+            If tmp0.ToString.Length > 25 Then
+                var = tmp0.ToString.Substring(0, 25) + vbLf
+                If tmp0.ToString.Length > 50 Then
+                    var += tmp0.ToString.Substring(25, 25) + vbLf
+                    If tmp0.ToString.Length > 52 Then
+                        var += tmp0.ToString.Substring(50, tmp0.ToString.Length - 50)
+                    End If
+                Else
+                    var += tmp0.ToString.Substring(25, tmp0.ToString.Length - 25)
+                End If
+
+                tmp0 = var
+            End If
+            body += tmp0
             total += Decimal.Parse(dato.GetString(3))
             total_compras += 1
         Loop
@@ -1528,6 +1548,62 @@ Public Class Functions
         End If
 
     End Sub
+
+    Public Sub TicketGeneratePrint_Cadena(cadena As String)
+        cadena = vbLf + "ENTRADA: " + DateTime.Now.ToString + " " + cadena
+        Dim membrete As String = ""
+        Dim body As String = ""
+        Dim total As Decimal = 0
+        Dim total_compras As Int32 = 0
+
+        membrete += My.Settings.local_nombre
+        membrete += vbLf + "DIRECCION:"
+        membrete += vbLf + My.Settings.local_direccion
+        membrete += vbLf + "RFC: " + My.Settings.local_rfc
+        membrete += vbLf + "TELEFONO: " + My.Settings.local_telefono
+        membrete += vbLf + "FOLIO: # N/A"
+
+        Dim tmp0 = cadena
+        Dim var = ""
+        If tmp0.ToString.Length > 25 Then
+            var = tmp0.ToString.Substring(0, 25) + vbLf
+            If tmp0.ToString.Length > 50 Then
+                var += tmp0.ToString.Substring(25, 25) + vbLf
+                If tmp0.ToString.Length > 52 Then
+                    var += tmp0.ToString.Substring(50, tmp0.ToString.Length - 50)
+                End If
+            Else
+                var += tmp0.ToString.Substring(25, tmp0.ToString.Length - 25)
+            End If
+
+            tmp0 = var
+        End If
+        body += tmp0
+        total_compras = 1
+
+        membrete += vbLf + "--------------------------"
+
+        If My.Settings.ticket_mostrar_pie_depagina Then
+            body += vbLf + "--------------------------"
+            body += vbLf + My.Settings.ticket_pie_de_pagina
+        End If
+
+        BodyTicket = membrete + body
+        Dim pd As New PrintDocument
+        pd.PrinterSettings.PrinterName = My.Settings.ticket_impresora
+        pd.DefaultPageSettings.Margins.Left = 0
+        pd.DefaultPageSettings.Margins.Right = 0
+        pd.DefaultPageSettings.Margins.Top = 0
+        pd.DefaultPageSettings.Margins.Bottom = 0
+        AddHandler pd.PrintPage, AddressOf print_PrintPage
+
+        If pd.PrinterSettings.IsValid Then
+            pd.Print()
+        Else
+            MsgBox("Error en la impresion", MsgBoxStyle.Critical)
+        End If
+
+    End Sub
     Dim BodyTicket As String
 
     Private Sub print_PrintPage(sender As Object, e As PrintPageEventArgs)
@@ -1542,6 +1618,19 @@ Public Class Functions
     Public Function Return_ProductPrice(codebar As String) As Decimal
         Dim r = 0
         Dim dato = Db.Consult("SELECT precio FROM product_services WHERE codebar = '" + codebar + "'")
+
+        If dato.Read() Then
+            r = dato.GetString(0)
+        Else
+            r = 0
+        End If
+
+        Return r
+    End Function
+
+    Public Function Return_Cliente_Vehicle(matricula As String) As Int32
+        Dim r = 0
+        Dim dato = Db.Consult("SELECT client FROM `vehicles` WHERE matricula = '" + matricula + "'")
 
         If dato.Read() Then
             r = dato.GetString(0)

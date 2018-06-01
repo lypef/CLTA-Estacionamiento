@@ -51,6 +51,8 @@ Public Class properties
         ticket_mostrarpie.Checked = My.Settings.ticket_mostrar_pie_depagina
         ticker_piedepagina.Text = My.Settings.ticket_pie_de_pagina
         LetraTicket.Font = My.Settings.ticket_font
+        Ticket_entrada_Hora.Checked = My.Settings.ticket_imprimir_xhora
+        Vehicles_generics.Checked = My.Settings.vehicles_generics
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -103,6 +105,8 @@ Public Class properties
         My.Settings.ticket_mostrar_pie_depagina = ticket_mostrarpie.Checked
         My.Settings.ticket_pie_de_pagina = ticker_piedepagina.Text
         My.Settings.ticket_font = LetraTicket.Font
+        My.Settings.ticket_imprimir_xhora = Ticket_entrada_Hora.Checked
+        My.Settings.vehicles_generics = Vehicles_generics.Checked
         My.Settings.Save()
         Application.Restart()
     End Sub

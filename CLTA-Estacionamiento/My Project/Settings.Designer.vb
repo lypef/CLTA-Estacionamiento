@@ -509,6 +509,30 @@ Namespace My
                 Me("ticket_font") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ticket_imprimir_xhora() As Boolean
+            Get
+                Return CType(Me("ticket_imprimir_xhora"),Boolean)
+            End Get
+            Set
+                Me("ticket_imprimir_xhora") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property vehicles_generics() As Boolean
+            Get
+                Return CType(Me("vehicles_generics"),Boolean)
+            End Get
+            Set
+                Me("vehicles_generics") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

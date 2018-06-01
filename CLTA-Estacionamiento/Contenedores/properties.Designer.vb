@@ -85,6 +85,7 @@ Partial Class properties
         Me.Label17 = New System.Windows.Forms.Label()
         Me.LocalNombre = New System.Windows.Forms.TextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.LetraTicket = New System.Windows.Forms.Button()
         Me.ticket_mostrarpie = New System.Windows.Forms.CheckBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.ticker_piedepagina = New System.Windows.Forms.TextBox()
@@ -93,7 +94,8 @@ Partial Class properties
         Me.ticket_impresora = New System.Windows.Forms.TextBox()
         Me.ticket_vendedor = New System.Windows.Forms.CheckBox()
         Me.ticket_cliente = New System.Windows.Forms.CheckBox()
-        Me.LetraTicket = New System.Windows.Forms.Button()
+        Me.Ticket_entrada_Hora = New System.Windows.Forms.CheckBox()
+        Me.Vehicles_generics = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -691,10 +693,19 @@ Partial Class properties
         Me.GroupBox5.Controls.Add(Me.ticket_cliente)
         Me.GroupBox5.Location = New System.Drawing.Point(780, 35)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(212, 355)
+        Me.GroupBox5.Size = New System.Drawing.Size(212, 250)
         Me.GroupBox5.TabIndex = 125
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "TICKETS"
+        '
+        'LetraTicket
+        '
+        Me.LetraTicket.Location = New System.Drawing.Point(6, 206)
+        Me.LetraTicket.Name = "LetraTicket"
+        Me.LetraTicket.Size = New System.Drawing.Size(200, 33)
+        Me.LetraTicket.TabIndex = 126
+        Me.LetraTicket.Text = "Tipo de letra"
+        Me.LetraTicket.UseVisualStyleBackColor = True
         '
         'ticket_mostrarpie
         '
@@ -770,20 +781,33 @@ Partial Class properties
         Me.ticket_cliente.Text = "Mostrar cliente"
         Me.ticket_cliente.UseVisualStyleBackColor = True
         '
-        'LetraTicket
+        'Ticket_entrada_Hora
         '
-        Me.LetraTicket.Location = New System.Drawing.Point(6, 206)
-        Me.LetraTicket.Name = "LetraTicket"
-        Me.LetraTicket.Size = New System.Drawing.Size(200, 33)
-        Me.LetraTicket.TabIndex = 126
-        Me.LetraTicket.Text = "Tipo de letra"
-        Me.LetraTicket.UseVisualStyleBackColor = True
+        Me.Ticket_entrada_Hora.AutoSize = True
+        Me.Ticket_entrada_Hora.Location = New System.Drawing.Point(780, 291)
+        Me.Ticket_entrada_Hora.Name = "Ticket_entrada_Hora"
+        Me.Ticket_entrada_Hora.Size = New System.Drawing.Size(188, 17)
+        Me.Ticket_entrada_Hora.TabIndex = 127
+        Me.Ticket_entrada_Hora.Text = "Imprimir ticket de entrada en horas"
+        Me.Ticket_entrada_Hora.UseVisualStyleBackColor = True
+        '
+        'Vehicles_generics
+        '
+        Me.Vehicles_generics.AutoSize = True
+        Me.Vehicles_generics.Location = New System.Drawing.Point(780, 313)
+        Me.Vehicles_generics.Name = "Vehicles_generics"
+        Me.Vehicles_generics.Size = New System.Drawing.Size(159, 17)
+        Me.Vehicles_generics.TabIndex = 128
+        Me.Vehicles_generics.Text = "Eliminar vehiculos genericos"
+        Me.Vehicles_generics.UseVisualStyleBackColor = True
         '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1004, 442)
+        Me.Controls.Add(Me.Vehicles_generics)
+        Me.Controls.Add(Me.Ticket_entrada_Hora)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -907,4 +931,6 @@ Partial Class properties
     Friend WithEvents ticket_vendedor As CheckBox
     Friend WithEvents ticket_cliente As CheckBox
     Friend WithEvents LetraTicket As Button
+    Friend WithEvents Ticket_entrada_Hora As CheckBox
+    Friend WithEvents Vehicles_generics As CheckBox
 End Class

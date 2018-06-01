@@ -200,6 +200,12 @@
     <Compile Include="Vistas\EnterExitControl.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\EntradaVehiculoGenerico.Designer.vb">
+      <DependentUpon>EntradaVehiculoGenerico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EntradaVehiculoGenerico.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\OpenBarrNum.Designer.vb">
       <DependentUpon>OpenBarrNum.vb</DependentUpon>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\EnterExitControl.resx">
       <DependentUpon>EnterExitControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\EntradaVehiculoGenerico.resx">
+      <DependentUpon>EntradaVehiculoGenerico.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\OpenBarrNum.resx">
       <DependentUpon>OpenBarrNum.vb</DependentUpon>
