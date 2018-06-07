@@ -24,6 +24,10 @@ Partial Class Clientes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtSearch = New System.Windows.Forms.ToolStripTextBox()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarReporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,6 +49,7 @@ Partial Class Clientes
         Me.Label1Edit = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.FotoEdit = New System.Windows.Forms.PictureBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TxtRazonSocial = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -60,13 +65,8 @@ Partial Class Clientes
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Add = New System.Windows.Forms.Button()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.FotoEdit = New System.Windows.Forms.PictureBox()
         Me.Foto = New System.Windows.Forms.PictureBox()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
@@ -74,10 +74,10 @@ Partial Class Clientes
         Me.TabPage1.SuspendLayout()
         CType(Me.Table, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.FotoEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage3.SuspendLayout()
         CType(Me.Foto, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -90,6 +90,40 @@ Partial Class Clientes
         Me.MenuStrip1.Size = New System.Drawing.Size(957, 29)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'SalirToolStripMenuItem
+        '
+        Me.SalirToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.SalirToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
+        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        Me.SalirToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(69, 25)
+        Me.SalirToolStripMenuItem.Text = "Salir"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripMenuItem2.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(105, 25)
+        Me.ToolStripMenuItem2.Text = "Restaurar"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripMenuItem3.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.maximize_48_
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(110, 25)
+        Me.ToolStripMenuItem3.Text = "Maximizar"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ToolStripMenuItem4.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(108, 25)
+        Me.ToolStripMenuItem4.Text = "Minimizar"
         '
         'TxtSearch
         '
@@ -301,6 +335,16 @@ Partial Class Clientes
         Me.Button3.Text = "Actualizar"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'FotoEdit
+        '
+        Me.FotoEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FotoEdit.BackColor = System.Drawing.SystemColors.Control
+        Me.FotoEdit.Location = New System.Drawing.Point(560, 40)
+        Me.FotoEdit.Name = "FotoEdit"
+        Me.FotoEdit.Size = New System.Drawing.Size(357, 146)
+        Me.FotoEdit.TabIndex = 27
+        Me.FotoEdit.TabStop = False
+        '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
@@ -454,22 +498,6 @@ Partial Class Clientes
         Me.Add.Text = "Agregar"
         Me.Add.UseVisualStyleBackColor = True
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
-        '
-        'FotoEdit
-        '
-        Me.FotoEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FotoEdit.BackColor = System.Drawing.SystemColors.Control
-        Me.FotoEdit.Location = New System.Drawing.Point(560, 40)
-        Me.FotoEdit.Name = "FotoEdit"
-        Me.FotoEdit.Size = New System.Drawing.Size(357, 146)
-        Me.FotoEdit.TabIndex = 27
-        Me.FotoEdit.TabStop = False
-        '
         'Foto
         '
         Me.Foto.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -480,39 +508,11 @@ Partial Class Clientes
         Me.Foto.TabIndex = 12
         Me.Foto.TabStop = False
         '
-        'SalirToolStripMenuItem
+        'ContextMenuStrip1
         '
-        Me.SalirToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.SalirToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
-        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(94, 25)
-        Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripMenuItem2.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(105, 25)
-        Me.ToolStripMenuItem2.Text = "Restaurar"
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripMenuItem3.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.maximize_48_
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(110, 25)
-        Me.ToolStripMenuItem3.Text = "Maximizar"
-        '
-        'ToolStripMenuItem4
-        '
-        Me.ToolStripMenuItem4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ToolStripMenuItem4.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(108, 25)
-        Me.ToolStripMenuItem4.Text = "Minimizar"
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
         '
         'EditarToolStripMenuItem
         '
@@ -546,11 +546,11 @@ Partial Class Clientes
         CType(Me.Table, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        CType(Me.FotoEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
-        CType(Me.FotoEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Foto, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

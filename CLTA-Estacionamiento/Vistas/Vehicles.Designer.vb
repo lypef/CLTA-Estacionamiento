@@ -496,7 +496,7 @@ Partial Class Vehicles
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem, Me.AsignacionesToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 92)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(145, 70)
         '
         'EditarToolStripMenuItem
         '
@@ -516,7 +516,7 @@ Partial Class Vehicles
         '
         Me.AsignacionesToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.hours
         Me.AsignacionesToolStripMenuItem.Name = "AsignacionesToolStripMenuItem"
-        Me.AsignacionesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AsignacionesToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.AsignacionesToolStripMenuItem.Text = "Asignaciones"
         '
         'Vehicles

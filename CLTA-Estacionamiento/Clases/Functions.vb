@@ -2,6 +2,7 @@
 Imports System.Drawing.Printing
 Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Windows.Documents
 
 Public Class Functions
     Dim Db As New Conexion
@@ -50,6 +51,8 @@ Public Class Functions
     Public ReadOnly Permiso_User_Add As String = "user_add"
     Public ReadOnly Permiso_User_Edit As String = "user_edit"
     Public ReadOnly Permiso_User_Delete As String = "user_delete"
+    Public ReadOnly Permiso_cutX As String = "cut_x"
+    Public ReadOnly Permiso_cutZ As String = "cut_z"
 
     'Numeros de alerta
     Public ReadOnly Alert_NumberInformacion As Integer = 64
@@ -80,6 +83,7 @@ Public Class Functions
         AddForm_Desktop(OpenBarrNum, desktop)
         AddForm_Desktop(R_ticket, desktop)
         AddForm_Desktop(EntradaVehiculoGenerico, desktop)
+        AddForm_Desktop(ReaderPdf, desktop)
         desktop.Controls.Clear()
     End Sub
 
@@ -169,6 +173,8 @@ Public Class Functions
             list.SetItemChecked(19, dato.GetBoolean(19 + 5))
             list.SetItemChecked(20, dato.GetBoolean(20 + 5))
             list.SetItemChecked(21, dato.GetBoolean(21 + 5))
+            list.SetItemChecked(22, dato.GetBoolean(22 + 5))
+            list.SetItemChecked(23, dato.GetBoolean(23 + 5))
         End If
     End Sub
 
@@ -185,7 +191,7 @@ Public Class Functions
     End Function
 
     Public Function AddUser_permisos(ByVal id As Integer, list As CheckedListBox) As Boolean
-        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21 As Boolean
+        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23 As Boolean
         For i As Integer = 0 To list.Items.Count - 1
             If i = 0 Then
                 _0 = list.GetItemChecked(i)
@@ -231,14 +237,18 @@ Public Class Functions
                 _20 = list.GetItemChecked(i)
             ElseIf i = 21 Then
                 _21 = list.GetItemChecked(i)
+            ElseIf i = 22 Then
+                _22 = list.GetItemChecked(i)
+            ElseIf i = 23 Then
+                _23 = list.GetItemChecked(i)
             End If
         Next i
-        Return Db.Ejecutar("INSERT INTO permissions (user, client_access, client_add, client_edit, client_delete, vehicle_access, vehicle_add, vehicle_edit, vehicle_delete, rate_access, rate_add, rate_edit, rate_delete, assign_access, vtd_access, vtd_add, vtd_edit, vtd_delete, ventas_access, user_access, user_add, user_edit, user_delete) VALUES ('" + id.ToString + "', '" + ReturnBooleanINT_String(_0) + "', '" + ReturnBooleanINT_String(_1) + "', '" + ReturnBooleanINT_String(_2) + "', '" + ReturnBooleanINT_String(_3) + "', '" + ReturnBooleanINT_String(_4) + "', '" + ReturnBooleanINT_String(_5) + "', '" + ReturnBooleanINT_String(_6) + "', '" + ReturnBooleanINT_String(_7) + "', '" + ReturnBooleanINT_String(_8) + "', '" + ReturnBooleanINT_String(_9) + "', '" + ReturnBooleanINT_String(_10) + "', '" + ReturnBooleanINT_String(_11) + "', '" + ReturnBooleanINT_String(_12) + "', '" + ReturnBooleanINT_String(_13) + "', '" + ReturnBooleanINT_String(_14) + "', '" + ReturnBooleanINT_String(_15) + "', '" + ReturnBooleanINT_String(_16) + "', '" + ReturnBooleanINT_String(_17) + "', '" + ReturnBooleanINT_String(_18) + "', '" + ReturnBooleanINT_String(_19) + "', '" + ReturnBooleanINT_String(_20) + "', '" + ReturnBooleanINT_String(_21) + "')")
+        Return Db.Ejecutar("INSERT INTO permissions (user, client_access, client_add, client_edit, client_delete, vehicle_access, vehicle_add, vehicle_edit, vehicle_delete, rate_access, rate_add, rate_edit, rate_delete, assign_access, vtd_access, vtd_add, vtd_edit, vtd_delete, ventas_access, user_access, user_add, user_edit, user_delete, cut_x, cut_z) VALUES ('" + id.ToString + "', '" + ReturnBooleanINT_String(_0) + "', '" + ReturnBooleanINT_String(_1) + "', '" + ReturnBooleanINT_String(_2) + "', '" + ReturnBooleanINT_String(_3) + "', '" + ReturnBooleanINT_String(_4) + "', '" + ReturnBooleanINT_String(_5) + "', '" + ReturnBooleanINT_String(_6) + "', '" + ReturnBooleanINT_String(_7) + "', '" + ReturnBooleanINT_String(_8) + "', '" + ReturnBooleanINT_String(_9) + "', '" + ReturnBooleanINT_String(_10) + "', '" + ReturnBooleanINT_String(_11) + "', '" + ReturnBooleanINT_String(_12) + "', '" + ReturnBooleanINT_String(_13) + "', '" + ReturnBooleanINT_String(_14) + "', '" + ReturnBooleanINT_String(_15) + "', '" + ReturnBooleanINT_String(_16) + "', '" + ReturnBooleanINT_String(_17) + "', '" + ReturnBooleanINT_String(_18) + "', '" + ReturnBooleanINT_String(_19) + "', '" + ReturnBooleanINT_String(_20) + "', '" + ReturnBooleanINT_String(_21) + "', '" + ReturnBooleanINT_String(_22) + "', '" + ReturnBooleanINT_String(_23) + "')")
         Return True
     End Function
 
     Public Function UpdateUser_permisos(list As CheckedListBox) As Boolean
-        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21 As Boolean
+        Dim _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23 As Boolean
 
         For i As Integer = 0 To list.Items.Count - 1
             If i = 0 Then
@@ -285,9 +295,13 @@ Public Class Functions
                 _20 = list.GetItemChecked(i)
             ElseIf i = 21 Then
                 _21 = list.GetItemChecked(i)
+            ElseIf i = 22 Then
+                _22 = list.GetItemChecked(i)
+            ElseIf i = 23 Then
+                _23 = list.GetItemChecked(i)
             End If
         Next i
-        Return Db.Ejecutar("UPDATE permissions SET client_access = '" + ReturnBooleanINT_String(_0) + "', client_add = '" + ReturnBooleanINT_String(_1) + "', client_edit = '" + ReturnBooleanINT_String(_2) + "', client_delete = '" + ReturnBooleanINT_String(_3) + "', vehicle_access = '" + ReturnBooleanINT_String(_4) + "', vehicle_add = '" + ReturnBooleanINT_String(_5) + "', vehicle_edit = '" + ReturnBooleanINT_String(_6) + "', vehicle_delete = '" + ReturnBooleanINT_String(_7) + "', rate_access = '" + ReturnBooleanINT_String(_8) + "', rate_add = '" + ReturnBooleanINT_String(_9) + "', rate_edit = '" + ReturnBooleanINT_String(_10) + "', rate_delete = '" + ReturnBooleanINT_String(_11) + "', assign_access = '" + ReturnBooleanINT_String(_12) + "', vtd_access = '" + ReturnBooleanINT_String(_13) + "', vtd_add = '" + ReturnBooleanINT_String(_14) + "', vtd_edit = '" + ReturnBooleanINT_String(_15) + "', vtd_delete = '" + ReturnBooleanINT_String(_16) + "', ventas_access = '" + ReturnBooleanINT_String(_17) + "', user_access = '" + ReturnBooleanINT_String(_18) + "', user_add = '" + ReturnBooleanINT_String(_19) + "', user_edit = '" + ReturnBooleanINT_String(_20) + "', user_delete = '" + ReturnBooleanINT_String(_21) + "' where user = '" + User + "' ")
+        Return Db.Ejecutar("UPDATE permissions SET client_access = '" + ReturnBooleanINT_String(_0) + "', client_add = '" + ReturnBooleanINT_String(_1) + "', client_edit = '" + ReturnBooleanINT_String(_2) + "', client_delete = '" + ReturnBooleanINT_String(_3) + "', vehicle_access = '" + ReturnBooleanINT_String(_4) + "', vehicle_add = '" + ReturnBooleanINT_String(_5) + "', vehicle_edit = '" + ReturnBooleanINT_String(_6) + "', vehicle_delete = '" + ReturnBooleanINT_String(_7) + "', rate_access = '" + ReturnBooleanINT_String(_8) + "', rate_add = '" + ReturnBooleanINT_String(_9) + "', rate_edit = '" + ReturnBooleanINT_String(_10) + "', rate_delete = '" + ReturnBooleanINT_String(_11) + "', assign_access = '" + ReturnBooleanINT_String(_12) + "', vtd_access = '" + ReturnBooleanINT_String(_13) + "', vtd_add = '" + ReturnBooleanINT_String(_14) + "', vtd_edit = '" + ReturnBooleanINT_String(_15) + "', vtd_delete = '" + ReturnBooleanINT_String(_16) + "', ventas_access = '" + ReturnBooleanINT_String(_17) + "', user_access = '" + ReturnBooleanINT_String(_18) + "', user_add = '" + ReturnBooleanINT_String(_19) + "', user_edit = '" + ReturnBooleanINT_String(_20) + "', user_delete = '" + ReturnBooleanINT_String(_21) + "', cut_x = '" + ReturnBooleanINT_String(_22) + "', cut_z = '" + ReturnBooleanINT_String(_23) + "' where user = '" + User + "' ")
         Return True
     End Function
 
@@ -394,7 +408,8 @@ Public Class Functions
 
     End Sub
 
-    Public Sub GetVentas(ByVal sql As String, ByVal t As DataGridView, F_desde As DateTimePicker, f_hasta As DateTimePicker)
+    Public Function GetVentas(ByVal sql As String, ByVal t As DataGridView, F_desde As DateTimePicker, f_hasta As DateTimePicker) As Decimal
+        Dim total As Decimal
         t.Columns.Clear()
         t.Rows.Clear()
         DataGridView_Model(t)
@@ -420,12 +435,71 @@ Public Class Functions
                 FechaDB = Convert.ToDateTime(dato.GetString(6))
 
                 If FechaDB.CompareTo(Convert.ToDateTime(F_desde.Value)) >= 0 And FechaDB.CompareTo(Convert.ToDateTime(f_hasta.Value)) <= 0 Then
+                    total += Decimal.Parse(dato.GetString(5))
                     t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
                 End If
             Loop
         End If
+        Return total
+    End Function
 
-    End Sub
+    Public Function UpdateCutX() As Boolean
+        Return Db.Ejecutar("UPDATE ventas SET cut_x = '1' WHERE id_usuario = '" + username_id.ToString + "' ")
+    End Function
+
+    Public Function UpdateCutZGeneral() As Boolean
+        Return Db.Ejecutar("UPDATE ventas SET cut_z = '1' ")
+    End Function
+
+    Public Function GetCut(ByVal t As DataGridView) As Decimal
+        Dim total As Decimal
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.cut_x = 0 and v.id_usuario = '" + username_id.ToString + "' ")
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("client", "CLIENTE")
+        t.Columns.Add("id_usuario", "ATENDIO")
+        t.Columns.Add("ticket", "TICKET")
+        t.Columns.Add("concepto", "CONCEPTO")
+        t.Columns.Add("monto", "MONTO")
+        t.Columns.Add("date", "FECHA")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                total += Decimal.Parse(dato.GetString(5))
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
+            Loop
+        End If
+        Return total
+    End Function
+
+    Public Function GetCutGeneral(ByVal t As DataGridView) As Decimal
+        Dim total As Decimal
+        t.Columns.Clear()
+        t.Rows.Clear()
+        DataGridView_Model(t)
+
+        Dim dato = Db.Consult("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.cut_z = 0 ")
+
+        t.Columns.Add("id", "ID")
+        t.Columns.Add("client", "CLIENTE")
+        t.Columns.Add("id_usuario", "ATENDIO")
+        t.Columns.Add("ticket", "TICKET")
+        t.Columns.Add("concepto", "CONCEPTO")
+        t.Columns.Add("monto", "MONTO")
+        t.Columns.Add("date", "FECHA")
+
+        If dato.HasRows Then
+            Do While dato.Read()
+                total += Decimal.Parse(dato.GetString(5))
+                t.Rows.Add(dato.GetString(0), dato.GetString(1), dato.GetString(2), dato.GetString(3), dato.GetString(4), dato.GetString(5), dato.GetString(6))
+            Loop
+        End If
+        Return total
+    End Function
 
     Public Sub GetProducts(ByVal sql As String, ByVal t As DataGridView)
         t.Columns.Clear()
@@ -1677,4 +1751,77 @@ Public Class Functions
         System.Threading.Thread.Sleep(My.Settings.relevador_milisegundos)
         Process.Start("cmd", "/c " + My.Settings.data_url + "\CommandApp_USBRelay.exe " + My.Settings.id_relevador + " close " + a + " ")
     End Sub
+
+    Public Function GeneratePDF_Table(t As DataGridView, concepto As String, footer As String, rotate As Boolean) As String
+        Dim filename = "C:\clta_estacionamiento_data\report_tmp.pdf"
+
+        Dim doc = New iTextSharp.text.Document(iTextSharp.text.PageSize.LETTER)
+        If rotate Then
+            doc = New iTextSharp.text.Document(iTextSharp.text.PageSize.LETTER.Rotate)
+        End If
+
+        Dim writer = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, New FileStream(filename, FileMode.Create))
+        doc.AddTitle("REPORTE CLTA - ESTACIONAMIENTO")
+        doc.AddCreator("clta")
+        doc.Open()
+
+        If File.Exists(My.Settings.url_logo) Then
+            Dim fs = New FileStream(My.Settings.url_logo, FileMode.Open, FileAccess.Read)
+            Dim imagen = iTextSharp.text.Image.GetInstance(System.Drawing.Image.FromStream(fs), iTextSharp.text.BaseColor.WHITE)
+            imagen.ScaleToFit(140, 140)
+            imagen.Alignment = iTextSharp.text.Element.ALIGN_RIGHT
+            Dim logo = New iTextSharp.text.Chunk(imagen, 375, -132)
+            If rotate Then
+                logo = New iTextSharp.text.Chunk(imagen, 500, -132)
+            End If
+            doc.Add(logo)
+        End If
+
+        Dim _standardFont = New iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK)
+        doc.Add(New iTextSharp.text.Paragraph(My.Settings.local_nombre))
+        doc.Add(New iTextSharp.text.Paragraph("DIRECCION: " + My.Settings.local_direccion))
+        doc.Add(New iTextSharp.text.Paragraph("RFC: " + My.Settings.local_rfc))
+        doc.Add(New iTextSharp.text.Paragraph("TELEFONO: " + My.Settings.local_telefono))
+        doc.Add(New iTextSharp.text.Paragraph("USUARIO QUE GENERO: " + username_name))
+        doc.Add(New iTextSharp.text.Paragraph("FECHA Y HORA DE GENERACION: " + GetDateString(DateTime.Now)))
+        doc.Add(New iTextSharp.text.Paragraph(concepto.ToUpper))
+        doc.Add(iTextSharp.text.Chunk.NEWLINE)
+
+        Dim tabla = New iTextSharp.text.pdf.PdfPTable(t.ColumnCount)
+        tabla.WidthPercentage = 100
+
+        'Adding Header row
+        For Each column As DataGridViewColumn In t.Columns
+            Dim cell As New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase(column.HeaderText))
+            tabla.AddCell(cell)
+        Next
+
+        'Adding DataRow
+        For Each row As DataGridViewRow In t.Rows
+            For Each cell As DataGridViewCell In row.Cells
+                If String.IsNullOrEmpty(cell.Value) = False Then
+                    tabla.AddCell(cell.Value.ToString())
+                End If
+            Next
+        Next
+
+        Dim ClId = New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase("CONCEPTO", _standardFont))
+        ClId.BorderWidth = 0
+        ClId.BorderWidthBottom = 0.75F
+
+
+        tabla.AddCell(ClId)
+
+        ClId = New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase("ssssss", _standardFont))
+        ClId.BorderWidth = 0
+        tabla.AddCell(ClId)
+
+        doc.Add(tabla)
+        doc.Add(New iTextSharp.text.Paragraph(footer.ToString.ToUpper))
+        doc.Add(New iTextSharp.text.Paragraph("SOFTWARE Y MAS - WWW.CYBERCHOAPAS.COM !"))
+        doc.Close()
+        writer.Close()
+
+        Return filename
+    End Function
 End Class

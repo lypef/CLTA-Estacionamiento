@@ -214,6 +214,7 @@
 
     Public Sub loader()
         f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services order by nombre asc")
+        f.GetProducts("SELECT * FROM product_services", Table)
         f.ComboboxSetVehiclesActivos(ComboVehiculos)
     End Sub
 
@@ -327,5 +328,13 @@
     Private Sub SearchProduct()
         f.Vtd_LoadProducts(Panel1, "SELECT codebar, nombre, image FROM product_services where codebar like '%" + TxtSearch.Text.ToUpper + "%' or nombre like '%" + TxtSearch.Text.ToUpper + "%' order by nombre asc")
         TxtSearch.Text = ""
+    End Sub
+
+    Private Sub GenerarReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarReporteToolStripMenuItem.Click
+        Dim concepto As String = "CONCEPTO: REPORTE productos y servicios para venta directa"
+        Dim footer As String = ""
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, PanelControl.Desktop)
+        ReaderPdf.OpenPdf()
     End Sub
 End Class

@@ -53,6 +53,7 @@ Public Class properties
         LetraTicket.Font = My.Settings.ticket_font
         Ticket_entrada_Hora.Checked = My.Settings.ticket_imprimir_xhora
         Vehicles_generics.Checked = My.Settings.vehicles_generics
+        TxtLogo.Text = My.Settings.url_logo
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -107,6 +108,7 @@ Public Class properties
         My.Settings.ticket_font = LetraTicket.Font
         My.Settings.ticket_imprimir_xhora = Ticket_entrada_Hora.Checked
         My.Settings.vehicles_generics = Vehicles_generics.Checked
+        My.Settings.url_logo = TxtLogo.Text
         My.Settings.Save()
         Application.Restart()
     End Sub
@@ -184,6 +186,16 @@ Public Class properties
         FontDialog1.Font = LetraTicket.Font
         If FontDialog1.ShowDialog() = DialogResult.OK Then
             LetraTicket.Font = FontDialog1.Font
+        End If
+    End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim file As New OpenFileDialog()
+        file.Filter = "Logo |*.jpg;*.jpeg;*.png;*.gif;*.tif;"
+        If file.ShowDialog() = DialogResult.OK Then
+            Dim fs As FileStream = New System.IO.FileStream(file.FileName, FileMode.Open, FileAccess.Read)
+            TxtLogo.Text = file.FileName.Replace("\", "/")
+            fs.Close()
         End If
     End Sub
 End Class

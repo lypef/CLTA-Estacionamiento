@@ -1,5 +1,6 @@
 ﻿Public Class Ventas
     Dim f As New Functions
+    Dim total As Decimal
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
         Me.WindowState = FormWindowState.Minimized
@@ -26,13 +27,13 @@
 
     Private Sub SelectLoader()
         If RbTodos.Checked Then
-            f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id", Table, f_desde, f_hasta)
+            total = f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id", Table, f_desde, f_hasta)
         ElseIf RbProductos.Checked Then
-            f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.producto = 1", Table, f_desde, f_hasta)
+            total = f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.producto = 1", Table, f_desde, f_hasta)
         ElseIf RbServicios.Checked Then
-            f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.service = 1", Table, f_desde, f_hasta)
+            total = f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.service = 1", Table, f_desde, f_hasta)
         ElseIf RbAsignaciones.Checked Then
-            f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.membresia = 1", Table, f_desde, f_hasta)
+            total = f.GetVentas("SELECT v.id, c.name, u.name, v.id_ticket, v.concepto, v.monto, v.date FROM ventas v, clients c, users u WHERE v.id_cliente = c.id and v.id_usuario = u.id and v.membresia = 1", Table, f_desde, f_hasta)
         End If
 
     End Sub
@@ -72,5 +73,28 @@
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MenuStrip1.Font = My.Settings.Menu_font
         MenuStrip1.BackColor = My.Settings.Menu_color
+    End Sub
+
+    Private Sub GenerarReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarReporteToolStripMenuItem.Click
+        Dim concepto As String = "CONCEPTO: VENTAS Y COBROS DE: " + f_desde.Value.ToShortDateString + " HASTA: " + f_hasta.Value.ToShortDateString
+
+        If RbProductos.Checked Then
+            concepto = "CONCEPTO: VENTAS DE PRODUCTOS DE: " + f_desde.Value.ToShortDateString + " HASTA: " + f_hasta.Value.ToShortDateString
+        End If
+
+        If RbServicios.Checked Then
+            concepto = "CONCEPTO: COBROS DE SERVICIOS DE: " + f_desde.Value.ToShortDateString + " HASTA: " + f_hasta.Value.ToShortDateString
+        End If
+
+        If RbAsignaciones.Checked Then
+            concepto = "CONCEPTO: COBROS DE ASIGNACIONES DE: " + f_desde.Value.ToShortDateString + " HASTA: " + f_hasta.Value.ToShortDateString
+        End If
+
+        Dim footer As String = ""
+        footer += "TOTAL: $ " + total.ToString
+
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, PanelControl.Desktop)
+        ReaderPdf.OpenPdf()
     End Sub
 End Class

@@ -533,6 +533,18 @@ Namespace My
                 Me("vehicles_generics") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:/clta_estacionamiento_data/logo.jpg")>  _
+        Public Property url_logo() As String
+            Get
+                Return CType(Me("url_logo"),String)
+            End Get
+            Set
+                Me("url_logo") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

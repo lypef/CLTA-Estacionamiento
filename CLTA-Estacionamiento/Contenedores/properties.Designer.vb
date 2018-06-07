@@ -96,6 +96,9 @@ Partial Class properties
         Me.ticket_cliente = New System.Windows.Forms.CheckBox()
         Me.Ticket_entrada_Hora = New System.Windows.Forms.CheckBox()
         Me.Vehicles_generics = New System.Windows.Forms.CheckBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TxtLogo = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -682,6 +685,8 @@ Partial Class properties
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Vehicles_generics)
+        Me.GroupBox5.Controls.Add(Me.Ticket_entrada_Hora)
         Me.GroupBox5.Controls.Add(Me.LetraTicket)
         Me.GroupBox5.Controls.Add(Me.ticket_mostrarpie)
         Me.GroupBox5.Controls.Add(Me.Label22)
@@ -693,7 +698,7 @@ Partial Class properties
         Me.GroupBox5.Controls.Add(Me.ticket_cliente)
         Me.GroupBox5.Location = New System.Drawing.Point(780, 35)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(212, 250)
+        Me.GroupBox5.Size = New System.Drawing.Size(212, 292)
         Me.GroupBox5.TabIndex = 125
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "TICKETS"
@@ -784,7 +789,7 @@ Partial Class properties
         'Ticket_entrada_Hora
         '
         Me.Ticket_entrada_Hora.AutoSize = True
-        Me.Ticket_entrada_Hora.Location = New System.Drawing.Point(780, 291)
+        Me.Ticket_entrada_Hora.Location = New System.Drawing.Point(7, 243)
         Me.Ticket_entrada_Hora.Name = "Ticket_entrada_Hora"
         Me.Ticket_entrada_Hora.Size = New System.Drawing.Size(188, 17)
         Me.Ticket_entrada_Hora.TabIndex = 127
@@ -794,20 +799,48 @@ Partial Class properties
         'Vehicles_generics
         '
         Me.Vehicles_generics.AutoSize = True
-        Me.Vehicles_generics.Location = New System.Drawing.Point(780, 313)
+        Me.Vehicles_generics.Location = New System.Drawing.Point(7, 265)
         Me.Vehicles_generics.Name = "Vehicles_generics"
         Me.Vehicles_generics.Size = New System.Drawing.Size(159, 17)
         Me.Vehicles_generics.TabIndex = 128
         Me.Vehicles_generics.Text = "Eliminar vehiculos genericos"
         Me.Vehicles_generics.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(965, 348)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(27, 42)
+        Me.Button3.TabIndex = 126
+        Me.Button3.Text = "..."
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(780, 330)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(72, 13)
+        Me.Label23.TabIndex = 127
+        Me.Label23.Text = "Logo reportes"
+        '
+        'TxtLogo
+        '
+        Me.TxtLogo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLogo.Location = New System.Drawing.Point(780, 349)
+        Me.TxtLogo.Multiline = True
+        Me.TxtLogo.Name = "TxtLogo"
+        Me.TxtLogo.Size = New System.Drawing.Size(179, 42)
+        Me.TxtLogo.TabIndex = 128
+        '
         'properties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1004, 442)
-        Me.Controls.Add(Me.Vehicles_generics)
-        Me.Controls.Add(Me.Ticket_entrada_Hora)
+        Me.Controls.Add(Me.TxtLogo)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -933,4 +966,7 @@ Partial Class properties
     Friend WithEvents LetraTicket As Button
     Friend WithEvents Ticket_entrada_Hora As CheckBox
     Friend WithEvents Vehicles_generics As CheckBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label23 As Label
+    Friend WithEvents TxtLogo As TextBox
 End Class

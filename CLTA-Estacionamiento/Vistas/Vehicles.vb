@@ -243,6 +243,14 @@
         End If
     End Sub
 
+    Private Sub GenerarReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarReporteToolStripMenuItem.Click
+        Dim concepto As String = "CONCEPTO: REPORTE vehiculos"
+        Dim footer As String = ""
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, PanelControl.Desktop)
+        ReaderPdf.OpenPdf()
+    End Sub
+
     Private Sub Vehicles_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp
         Arrastre = False
     End Sub

@@ -219,6 +219,14 @@
         End If
     End Sub
 
+    Private Sub GenerarReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarReporteToolStripMenuItem.Click
+        Dim concepto As String = "CONCEPTO: REPORTE CLIENTES"
+        Dim footer As String = ""
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, PanelControl.Desktop)
+        ReaderPdf.OpenPdf()
+    End Sub
+
     Public Sub Loader()
         f.GetClients("SELECT * FROM clients ORDER by name asc", Table)
         Functions.Client = ""

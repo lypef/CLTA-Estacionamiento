@@ -148,8 +148,8 @@ Partial Class VentaDirecta
         'GenerarReporteToolStripMenuItem
         '
         Me.GenerarReporteToolStripMenuItem.Name = "GenerarReporteToolStripMenuItem"
-        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(220, 26)
-        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte"
+        Me.GenerarReporteToolStripMenuItem.Size = New System.Drawing.Size(265, 26)
+        Me.GenerarReporteToolStripMenuItem.Text = "Generar reporte productos"
         '
         'ToolStripTextBox2
         '

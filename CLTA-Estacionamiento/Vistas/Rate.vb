@@ -240,6 +240,14 @@
         UseFraccionesEdit.Checked = False
     End Sub
 
+    Private Sub GenerarReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarReporteToolStripMenuItem.Click
+        Dim concepto As String = "CONCEPTO: REPORTE tarifas"
+        Dim footer As String = ""
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, PanelControl.Desktop)
+        ReaderPdf.OpenPdf()
+    End Sub
+
     Public Sub Loader()
         f.GetTarifas("SELECT * FROM tarifas ORDER by name asc", Table)
         Functions.Tarifa = ""

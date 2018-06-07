@@ -245,7 +245,7 @@ Public Class PanelControl
         f.AddForm_Desktop(VentaDirecta, Desktop)
     End Sub
 
-    Private Sub VerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerToolStripMenuItem.Click
+    Private Sub VerToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If f.GetPermiso(f.Permiso_ventas_access) Then
             Ventas.loader()
             f.AddForm_Desktop(Ventas, Desktop)
@@ -277,5 +277,76 @@ Public Class PanelControl
     Private Sub EntradaVehiculoGenericoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntradaVehiculoGenericoToolStripMenuItem.Click
         EntradaVehiculoGenerico.loadvalues()
         f.AddForm_Desktop(EntradaVehiculoGenerico, Desktop)
+    End Sub
+
+    Private Sub CorteXToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteXToolStripMenuItem.Click
+        Dim Table As New DataGridView
+        Dim total As Decimal = f.GetCut(Table)
+        Dim concepto As String = "CONCEPTO: corte x"
+        Dim footer As String = "total recaudado $: " + total.ToString
+        ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+        f.AddForm_Desktop(ReaderPdf, Desktop)
+        ReaderPdf.OpenPdf()
+    End Sub
+
+    Private Sub CorteZToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteZToolStripMenuItem.Click
+        If (MsgBox("¿ REALIZAR CORTE Z Y REGRESAR A CERO LA CAJA ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+            Dim Table As New DataGridView
+            Dim total As Decimal = f.GetCut(Table)
+            Dim concepto As String = "CONCEPTO: corte Z"
+            Dim footer As String = "total recaudado $: " + total.ToString
+            ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+            f.AddForm_Desktop(ReaderPdf, Desktop)
+            ReaderPdf.OpenPdf()
+            If f.UpdateCutX() = False Then
+                f.Alert("No se realizo el corte Z", f.Alert_NumberInformacion, Desktop)
+            End If
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click_1(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        If f.GetPermiso(f.Permiso_cutX) Then
+            Dim Table As New DataGridView
+            Dim total As Decimal = f.GetCutGeneral(Table)
+            Dim concepto As String = "CONCEPTO: corte x general"
+            Dim footer As String = "total recaudado $: " + total.ToString
+            ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+            f.AddForm_Desktop(ReaderPdf, Desktop)
+            ReaderPdf.OpenPdf()
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        If f.GetPermiso(f.Permiso_cutZ) Then
+            If (MsgBox("¿ REALIZAR CORTE Z GENERAL Y REGRESAR A CERO LA CAJA ?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                Dim Table As New DataGridView
+                Dim total As Decimal = f.GetCutGeneral(Table)
+                Dim concepto As String = "CONCEPTO: corte Z GENERAL"
+                Dim footer As String = "total recaudado $: " + total.ToString
+                ReaderPdf.url = f.GeneratePDF_Table(Table, concepto, footer, True)
+                f.AddForm_Desktop(ReaderPdf, Desktop)
+                ReaderPdf.OpenPdf()
+                If f.UpdateCutZGeneral() = False Then
+                    f.Alert("No se realizo el corte Z general", f.Alert_NumberExclamacion, Desktop)
+                End If
+            End If
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub VentasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem1.Click
+        If f.GetPermiso(f.Permiso_ventas_access) Then
+            Ventas.loader()
+            f.AddForm_Desktop(Ventas, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
     End Sub
 End Class

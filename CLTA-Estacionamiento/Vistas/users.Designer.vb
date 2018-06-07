@@ -188,7 +188,7 @@ Partial Class users
         '
         Me.ListPermisos.Dock = System.Windows.Forms.DockStyle.Right
         Me.ListPermisos.FormattingEnabled = True
-        Me.ListPermisos.Items.AddRange(New Object() {"Acceso a clientes", "Agregar cliente", "Editar cliente", "Eliminar cliente", "Acceso modulo vehiculos", "Agregar vehiculo", "Editar vehiculo", "Eliminar vehiculo", "Acceso a modulo tarifas", "Agregar tarifa", "Editar tarifa", "Eliminar tarifa", "Acceso modulo asigaciones", "Acceso modulo venta directa", "Agregar producto o servicio", "Editar  producto o servicio", "Eliminar producto o servicio", "Acceso a Ventas financieras", "Acceso a modulo usuarios", "Agregar usuario", "Editar usuario", "Eliminar usuario"})
+        Me.ListPermisos.Items.AddRange(New Object() {"Acceso a clientes", "Agregar cliente", "Editar cliente", "Eliminar cliente", "Acceso modulo vehiculos", "Agregar vehiculo", "Editar vehiculo", "Eliminar vehiculo", "Acceso a modulo tarifas", "Agregar tarifa", "Editar tarifa", "Eliminar tarifa", "Acceso modulo asigaciones", "Acceso modulo venta directa", "Agregar producto o servicio", "Editar  producto o servicio", "Eliminar producto o servicio", "Acceso a Ventas financieras", "Acceso a modulo usuarios", "Agregar usuario", "Editar usuario", "Eliminar usuario", "Permitir realizar corte X general", "Permitir realizar corte Z general"})
         Me.ListPermisos.Location = New System.Drawing.Point(456, 3)
         Me.ListPermisos.Name = "ListPermisos"
         Me.ListPermisos.Size = New System.Drawing.Size(474, 350)
@@ -347,7 +347,7 @@ Partial Class users
         '
         Me.ListPermisosEdit.Dock = System.Windows.Forms.DockStyle.Right
         Me.ListPermisosEdit.FormattingEnabled = True
-        Me.ListPermisosEdit.Items.AddRange(New Object() {"Acceso a clientes", "Agregar cliente", "Editar cliente", "Eliminar cliente", "Acceso modulo vehiculos", "Agregar vehiculo", "Editar vehiculo", "Eliminar vehiculo", "Acceso a modulo tarifas", "Agregar tarifa", "Editar tarifa", "Eliminar tarifa", "Acceso modulo asigaciones", "Acceso modulo venta directa", "Agregar producto o servicio", "Editar  producto o servicio", "Eliminar producto o servicio", "Acceso a Ventas financieras", "Acceso a modulo usuarios", "Agregar usuario", "Editar usuario", "Eliminar usuario"})
+        Me.ListPermisosEdit.Items.AddRange(New Object() {"Acceso a clientes", "Agregar cliente", "Editar cliente", "Eliminar cliente", "Acceso modulo vehiculos", "Agregar vehiculo", "Editar vehiculo", "Eliminar vehiculo", "Acceso a modulo tarifas", "Agregar tarifa", "Editar tarifa", "Eliminar tarifa", "Acceso modulo asigaciones", "Acceso modulo venta directa", "Agregar producto o servicio", "Editar  producto o servicio", "Eliminar producto o servicio", "Acceso a Ventas financieras", "Acceso a modulo usuarios", "Agregar usuario", "Editar usuario", "Eliminar usuario", "Permitir realizar corte X general", "Permitir realizar corte Z general"})
         Me.ListPermisosEdit.Location = New System.Drawing.Point(459, 0)
         Me.ListPermisosEdit.Name = "ListPermisosEdit"
         Me.ListPermisosEdit.Size = New System.Drawing.Size(474, 356)
