@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="Clases\Conexion.vb" />
     <Compile Include="Clases\Functions.vb" />
+    <Compile Include="Clases\ValidateLicence.vb" />
     <Compile Include="Contenedores\About.Designer.vb">
       <DependentUpon>About.vb</DependentUpon>
     </Compile>
@@ -157,6 +158,12 @@
       <DependentUpon>properties.vb</DependentUpon>
     </Compile>
     <Compile Include="Contenedores\properties.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contenedores\validate.Designer.vb">
+      <DependentUpon>validate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contenedores\validate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -275,6 +282,9 @@
     <EmbeddedResource Include="Contenedores\properties.resx">
       <DependentUpon>properties.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contenedores\validate.resx">
+      <DependentUpon>validate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -339,6 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icon_acerca_de.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\logo.jpg" />
     <None Include="Resources\ticket.png" />
     <None Include="Resources\barr_acceso.png" />
     <None Include="Resources\if_self1_62587.png" />

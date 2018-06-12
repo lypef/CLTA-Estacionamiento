@@ -125,5 +125,8 @@
     <Setting Name="url_logo" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:/clta_estacionamiento_data/logo.jpg</Value>
     </Setting>
+    <Setting Name="validate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -545,6 +545,18 @@ Namespace My
                 Me("url_logo") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property validate() As Boolean
+            Get
+                Return CType(Me("validate"),Boolean)
+            End Get
+            Set
+                Me("validate") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

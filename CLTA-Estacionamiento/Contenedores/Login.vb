@@ -1,16 +1,22 @@
 ﻿Public Class Login
     Dim f As New Functions
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If (f.Login(Username, Password)) Then
+        If My.Settings.validate Then
+            If (f.Login(Username, Password)) Then
 
-            If CheckBoxCred.Checked Then
-                My.Settings.login_username = Username.Text
-                My.Settings.login_password = Password.Text
+                If CheckBoxCred.Checked Then
+                    My.Settings.login_username = Username.Text
+                    My.Settings.login_password = Password.Text
+                End If
+                PanelControl.Show()
+                Me.Visible = False
+            Else
+                MsgBox("Acceso no valido", MsgBoxStyle.Critical)
             End If
-            PanelControl.Show()
-            Me.Visible = False
         Else
-            MsgBox("Acceso no valido", MsgBoxStyle.Critical)
+            Me.Visible = False
+            Dim form As New validate
+            form.Show()
         End If
     End Sub
 
@@ -37,8 +43,14 @@
     End Sub
 
     Private Sub OpenConfig()
-        Me.Visible = False
-        properties.Show()
+        If My.Settings.validate Then
+            Me.Visible = False
+            properties.Show()
+        Else
+            Me.Visible = False
+            Dim form As New validate
+            form.Show()
+        End If
     End Sub
 
     Private Sub Password_KeyDown(sender As Object, e As KeyEventArgs) Handles Password.KeyDown

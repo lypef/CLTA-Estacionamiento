@@ -7,6 +7,7 @@ Imports System.Windows.Documents
 Public Class Functions
     Dim Db As New Conexion
     Shared Db_shared As New Conexion
+    Dim Licence As New validateLicence
 
     'Listas
     Dim ListClients As New List(Of Integer)
@@ -1824,4 +1825,15 @@ Public Class Functions
 
         Return filename
     End Function
+
+    Public Function ValidarLicence(ByVal code As TextBox) As Boolean
+        Dim resultado As New Boolean
+        resultado = False
+        Dim r = Licence.Consult("SELECT status FROM licence where licence = '" + code.Text + "' and status = 0")
+        If r.Read() Then
+            resultado = Licence.Ejecutar("update licence set status = 1 where licence = '" + code.Text + "' ")
+        End If
+        Return resultado
+    End Function
+
 End Class
