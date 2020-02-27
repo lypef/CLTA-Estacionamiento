@@ -96,7 +96,7 @@
       <Value Profile="(Default)">XXOXXXOA</Value>
     </Setting>
     <Setting Name="ticket_impresora" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PDFCreator</Value>
+      <Value Profile="(Default)">PDF</Value>
     </Setting>
     <Setting Name="ticket_mostrar_cliente" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -127,6 +127,15 @@
     </Setting>
     <Setting Name="validate" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="licencia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">00000</Value>
+    </Setting>
+    <Setting Name="lastMatricula" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ImpTicket" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

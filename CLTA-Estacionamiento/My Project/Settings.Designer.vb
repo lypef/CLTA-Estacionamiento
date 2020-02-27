@@ -428,7 +428,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("PDFCreator")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("PDF")>  _
         Public Property ticket_impresora() As String
             Get
                 Return CType(Me("ticket_impresora"),String)
@@ -555,6 +555,42 @@ Namespace My
             End Get
             Set
                 Me("validate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("00000")>  _
+        Public Property licencia() As String
+            Get
+                Return CType(Me("licencia"),String)
+            End Get
+            Set
+                Me("licencia") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property lastMatricula() As Double
+            Get
+                Return CType(Me("lastMatricula"),Double)
+            End Get
+            Set
+                Me("lastMatricula") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ImpTicket() As Boolean
+            Get
+                Return CType(Me("ImpTicket"),Boolean)
+            End Get
+            Set
+                Me("ImpTicket") = value
             End Set
         End Property
     End Class

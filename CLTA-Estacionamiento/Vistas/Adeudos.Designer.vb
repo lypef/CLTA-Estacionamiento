@@ -25,11 +25,12 @@ Partial Class Adeudos
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Detalles = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ImpTicket = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 213)
+        Me.Button1.Location = New System.Drawing.Point(12, 224)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(260, 45)
         Me.Button1.TabIndex = 0
@@ -43,24 +44,36 @@ Partial Class Adeudos
         Me.Detalles.Name = "Detalles"
         Me.Detalles.ReadOnly = True
         Me.Detalles.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.Detalles.Size = New System.Drawing.Size(260, 149)
+        Me.Detalles.Size = New System.Drawing.Size(260, 171)
         Me.Detalles.TabIndex = 1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 168)
+        Me.Button2.Location = New System.Drawing.Point(12, 190)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(260, 45)
+        Me.Button2.Size = New System.Drawing.Size(160, 28)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "CANCELAR"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'ImpTicket
+        '
+        Me.ImpTicket.AutoSize = True
+        Me.ImpTicket.Font = New System.Drawing.Font("Segoe UI", 7.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ImpTicket.Location = New System.Drawing.Point(178, 197)
+        Me.ImpTicket.Name = "ImpTicket"
+        Me.ImpTicket.Size = New System.Drawing.Size(101, 17)
+        Me.ImpTicket.TabIndex = 3
+        Me.ImpTicket.Text = "Imprimir Ticket"
+        Me.ImpTicket.UseVisualStyleBackColor = True
         '
         'Adeudos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(284, 281)
+        Me.Controls.Add(Me.ImpTicket)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Detalles)
         Me.Controls.Add(Me.Button1)
@@ -73,4 +86,5 @@ Partial Class Adeudos
     Public WithEvents Detalles As TextBox
     Public WithEvents Button1 As Button
     Public WithEvents Button2 As Button
+    Public WithEvents ImpTicket As CheckBox
 End Class

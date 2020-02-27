@@ -85,6 +85,8 @@ Partial Class properties
         Me.Label17 = New System.Windows.Forms.Label()
         Me.LocalNombre = New System.Windows.Forms.TextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Vehicles_generics = New System.Windows.Forms.CheckBox()
+        Me.Ticket_entrada_Hora = New System.Windows.Forms.CheckBox()
         Me.LetraTicket = New System.Windows.Forms.Button()
         Me.ticket_mostrarpie = New System.Windows.Forms.CheckBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -94,11 +96,10 @@ Partial Class properties
         Me.ticket_impresora = New System.Windows.Forms.TextBox()
         Me.ticket_vendedor = New System.Windows.Forms.CheckBox()
         Me.ticket_cliente = New System.Windows.Forms.CheckBox()
-        Me.Ticket_entrada_Hora = New System.Windows.Forms.CheckBox()
-        Me.Vehicles_generics = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TxtLogo = New System.Windows.Forms.TextBox()
+        Me.Imp_Ticket = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -158,7 +159,7 @@ Partial Class properties
         Me.Txt_DB_Puerto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.Txt_DB_Puerto.Location = New System.Drawing.Point(6, 191)
         Me.Txt_DB_Puerto.Name = "Txt_DB_Puerto"
-        Me.Txt_DB_Puerto.Size = New System.Drawing.Size(168, 22)
+        Me.Txt_DB_Puerto.Size = New System.Drawing.Size(168, 24)
         Me.Txt_DB_Puerto.TabIndex = 5
         '
         'Label4
@@ -175,7 +176,7 @@ Partial Class properties
         Me.Txt_DB_DB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.Txt_DB_DB.Location = New System.Drawing.Point(6, 152)
         Me.Txt_DB_DB.Name = "Txt_DB_DB"
-        Me.Txt_DB_DB.Size = New System.Drawing.Size(168, 22)
+        Me.Txt_DB_DB.Size = New System.Drawing.Size(168, 24)
         Me.Txt_DB_DB.TabIndex = 4
         '
         'Label3
@@ -193,7 +194,7 @@ Partial Class properties
         Me.Txt_DB_Password.Location = New System.Drawing.Point(6, 113)
         Me.Txt_DB_Password.Name = "Txt_DB_Password"
         Me.Txt_DB_Password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9632)
-        Me.Txt_DB_Password.Size = New System.Drawing.Size(168, 22)
+        Me.Txt_DB_Password.Size = New System.Drawing.Size(168, 24)
         Me.Txt_DB_Password.TabIndex = 3
         '
         'Label2
@@ -210,7 +211,7 @@ Partial Class properties
         Me.Txt_DB_Username.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.Txt_DB_Username.Location = New System.Drawing.Point(6, 74)
         Me.Txt_DB_Username.Name = "Txt_DB_Username"
-        Me.Txt_DB_Username.Size = New System.Drawing.Size(168, 22)
+        Me.Txt_DB_Username.Size = New System.Drawing.Size(168, 24)
         Me.Txt_DB_Username.TabIndex = 2
         '
         'Label1
@@ -227,7 +228,7 @@ Partial Class properties
         Me.Txt_DB_Servidor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Txt_DB_Servidor.Location = New System.Drawing.Point(6, 35)
         Me.Txt_DB_Servidor.Name = "Txt_DB_Servidor"
-        Me.Txt_DB_Servidor.Size = New System.Drawing.Size(168, 22)
+        Me.Txt_DB_Servidor.Size = New System.Drawing.Size(168, 24)
         Me.Txt_DB_Servidor.TabIndex = 1
         '
         'TxtGuardar
@@ -314,10 +315,11 @@ Partial Class properties
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1004, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1004, 27)
         Me.MenuStrip1.TabIndex = 111
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -326,7 +328,7 @@ Partial Class properties
         Me.SalirToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.SalirToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(64, 23)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'ComboBox1
@@ -337,7 +339,7 @@ Partial Class properties
         Me.ComboBox1.Items.AddRange(New Object() {"SELECCIONE UNA MONEDA", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "nenhum", "Nenhum", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAF", "XAF", "XAF", "XAF", "XCD", "XCD", "XCD", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XOF", "XPF", "XPF", "YER", "ZAR", "ZMK", "ZWL"})
         Me.ComboBox1.Location = New System.Drawing.Point(204, 260)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(143, 30)
+        Me.ComboBox1.Size = New System.Drawing.Size(143, 33)
         Me.ComboBox1.TabIndex = 112
         '
         'Ventana
@@ -348,7 +350,7 @@ Partial Class properties
         Me.Ventana.Items.AddRange(New Object() {"VENTANAS", "NORMAL", "MAXIMIZADAS"})
         Me.Ventana.Location = New System.Drawing.Point(353, 260)
         Me.Ventana.Name = "Ventana"
-        Me.Ventana.Size = New System.Drawing.Size(148, 30)
+        Me.Ventana.Size = New System.Drawing.Size(148, 33)
         Me.Ventana.TabIndex = 113
         '
         'GroupBox2
@@ -629,7 +631,7 @@ Partial Class properties
         Me.LocalRfc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LocalRfc.Location = New System.Drawing.Point(6, 169)
         Me.LocalRfc.Name = "LocalRfc"
-        Me.LocalRfc.Size = New System.Drawing.Size(255, 22)
+        Me.LocalRfc.Size = New System.Drawing.Size(255, 24)
         Me.LocalRfc.TabIndex = 16
         '
         'Label19
@@ -646,7 +648,7 @@ Partial Class properties
         Me.LocalTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LocalTelefono.Location = New System.Drawing.Point(6, 124)
         Me.LocalTelefono.Name = "LocalTelefono"
-        Me.LocalTelefono.Size = New System.Drawing.Size(255, 22)
+        Me.LocalTelefono.Size = New System.Drawing.Size(255, 24)
         Me.LocalTelefono.TabIndex = 14
         '
         'Label18
@@ -663,7 +665,7 @@ Partial Class properties
         Me.LocalDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LocalDireccion.Location = New System.Drawing.Point(6, 80)
         Me.LocalDireccion.Name = "LocalDireccion"
-        Me.LocalDireccion.Size = New System.Drawing.Size(255, 22)
+        Me.LocalDireccion.Size = New System.Drawing.Size(255, 24)
         Me.LocalDireccion.TabIndex = 12
         '
         'Label17
@@ -680,11 +682,12 @@ Partial Class properties
         Me.LocalNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LocalNombre.Location = New System.Drawing.Point(6, 37)
         Me.LocalNombre.Name = "LocalNombre"
-        Me.LocalNombre.Size = New System.Drawing.Size(255, 22)
+        Me.LocalNombre.Size = New System.Drawing.Size(255, 24)
         Me.LocalNombre.TabIndex = 10
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Imp_Ticket)
         Me.GroupBox5.Controls.Add(Me.Vehicles_generics)
         Me.GroupBox5.Controls.Add(Me.Ticket_entrada_Hora)
         Me.GroupBox5.Controls.Add(Me.LetraTicket)
@@ -703,6 +706,26 @@ Partial Class properties
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "TICKETS"
         '
+        'Vehicles_generics
+        '
+        Me.Vehicles_generics.AutoSize = True
+        Me.Vehicles_generics.Location = New System.Drawing.Point(7, 265)
+        Me.Vehicles_generics.Name = "Vehicles_generics"
+        Me.Vehicles_generics.Size = New System.Drawing.Size(159, 17)
+        Me.Vehicles_generics.TabIndex = 128
+        Me.Vehicles_generics.Text = "Eliminar vehiculos genericos"
+        Me.Vehicles_generics.UseVisualStyleBackColor = True
+        '
+        'Ticket_entrada_Hora
+        '
+        Me.Ticket_entrada_Hora.AutoSize = True
+        Me.Ticket_entrada_Hora.Location = New System.Drawing.Point(7, 243)
+        Me.Ticket_entrada_Hora.Name = "Ticket_entrada_Hora"
+        Me.Ticket_entrada_Hora.Size = New System.Drawing.Size(188, 17)
+        Me.Ticket_entrada_Hora.TabIndex = 127
+        Me.Ticket_entrada_Hora.Text = "Imprimir ticket de entrada en horas"
+        Me.Ticket_entrada_Hora.UseVisualStyleBackColor = True
+        '
         'LetraTicket
         '
         Me.LetraTicket.Location = New System.Drawing.Point(6, 206)
@@ -715,7 +738,7 @@ Partial Class properties
         'ticket_mostrarpie
         '
         Me.ticket_mostrarpie.AutoSize = True
-        Me.ticket_mostrarpie.Location = New System.Drawing.Point(10, 137)
+        Me.ticket_mostrarpie.Location = New System.Drawing.Point(10, 126)
         Me.ticket_mostrarpie.Name = "ticket_mostrarpie"
         Me.ticket_mostrarpie.Size = New System.Drawing.Size(128, 17)
         Me.ticket_mostrarpie.TabIndex = 21
@@ -736,7 +759,7 @@ Partial Class properties
         Me.ticker_piedepagina.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ticker_piedepagina.Location = New System.Drawing.Point(7, 178)
         Me.ticker_piedepagina.Name = "ticker_piedepagina"
-        Me.ticker_piedepagina.Size = New System.Drawing.Size(199, 22)
+        Me.ticker_piedepagina.Size = New System.Drawing.Size(199, 24)
         Me.ticker_piedepagina.TabIndex = 20
         '
         'Label21
@@ -751,7 +774,7 @@ Partial Class properties
         'ticker_horaimpresion
         '
         Me.ticker_horaimpresion.AutoSize = True
-        Me.ticker_horaimpresion.Location = New System.Drawing.Point(10, 114)
+        Me.ticker_horaimpresion.Location = New System.Drawing.Point(10, 106)
         Me.ticker_horaimpresion.Name = "ticker_horaimpresion"
         Me.ticker_horaimpresion.Size = New System.Drawing.Size(147, 17)
         Me.ticker_horaimpresion.TabIndex = 2
@@ -763,13 +786,13 @@ Partial Class properties
         Me.ticket_impresora.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ticket_impresora.Location = New System.Drawing.Point(7, 34)
         Me.ticket_impresora.Name = "ticket_impresora"
-        Me.ticket_impresora.Size = New System.Drawing.Size(199, 22)
+        Me.ticket_impresora.Size = New System.Drawing.Size(199, 24)
         Me.ticket_impresora.TabIndex = 18
         '
         'ticket_vendedor
         '
         Me.ticket_vendedor.AutoSize = True
-        Me.ticket_vendedor.Location = New System.Drawing.Point(10, 88)
+        Me.ticket_vendedor.Location = New System.Drawing.Point(10, 83)
         Me.ticket_vendedor.Name = "ticket_vendedor"
         Me.ticket_vendedor.Size = New System.Drawing.Size(109, 17)
         Me.ticket_vendedor.TabIndex = 1
@@ -785,26 +808,6 @@ Partial Class properties
         Me.ticket_cliente.TabIndex = 0
         Me.ticket_cliente.Text = "Mostrar cliente"
         Me.ticket_cliente.UseVisualStyleBackColor = True
-        '
-        'Ticket_entrada_Hora
-        '
-        Me.Ticket_entrada_Hora.AutoSize = True
-        Me.Ticket_entrada_Hora.Location = New System.Drawing.Point(7, 243)
-        Me.Ticket_entrada_Hora.Name = "Ticket_entrada_Hora"
-        Me.Ticket_entrada_Hora.Size = New System.Drawing.Size(188, 17)
-        Me.Ticket_entrada_Hora.TabIndex = 127
-        Me.Ticket_entrada_Hora.Text = "Imprimir ticket de entrada en horas"
-        Me.Ticket_entrada_Hora.UseVisualStyleBackColor = True
-        '
-        'Vehicles_generics
-        '
-        Me.Vehicles_generics.AutoSize = True
-        Me.Vehicles_generics.Location = New System.Drawing.Point(7, 265)
-        Me.Vehicles_generics.Name = "Vehicles_generics"
-        Me.Vehicles_generics.Size = New System.Drawing.Size(159, 17)
-        Me.Vehicles_generics.TabIndex = 128
-        Me.Vehicles_generics.Text = "Eliminar vehiculos genericos"
-        Me.Vehicles_generics.UseVisualStyleBackColor = True
         '
         'Button3
         '
@@ -832,6 +835,16 @@ Partial Class properties
         Me.TxtLogo.Name = "TxtLogo"
         Me.TxtLogo.Size = New System.Drawing.Size(179, 42)
         Me.TxtLogo.TabIndex = 128
+        '
+        'Imp_Ticket
+        '
+        Me.Imp_Ticket.AutoSize = True
+        Me.Imp_Ticket.Location = New System.Drawing.Point(10, 145)
+        Me.Imp_Ticket.Name = "Imp_Ticket"
+        Me.Imp_Ticket.Size = New System.Drawing.Size(124, 17)
+        Me.Imp_Ticket.TabIndex = 129
+        Me.Imp_Ticket.Text = "Imp. Ticket de salida"
+        Me.Imp_Ticket.UseVisualStyleBackColor = True
         '
         'properties
         '
@@ -969,4 +982,5 @@ Partial Class properties
     Friend WithEvents Button3 As Button
     Friend WithEvents Label23 As Label
     Friend WithEvents TxtLogo As TextBox
+    Friend WithEvents Imp_Ticket As CheckBox
 End Class

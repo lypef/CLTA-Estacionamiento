@@ -776,7 +776,13 @@ Public Class Functions
                 c.Items.Add(dato.GetString(1) + " - | X HORA " + dato.GetString(2) + " " + My.Settings.moneda + " | X DIA " + dato.GetString(3) + " " + My.Settings.moneda + " (" + dato.GetString(6) + " HORAS) | PENSION " + dato.GetString(4) + " " + My.Settings.moneda + " (" + dato.GetString(5) + " DIAS)")
             Loop
         End If
-        c.SelectedIndex = 0
+
+        If c.Items.Count > 0 Then
+            c.SelectedIndex = 1
+        Else
+            c.SelectedIndex = 0
+        End If
+
         c.Font = My.Settings.text_font
     End Sub
 
@@ -1287,7 +1293,7 @@ Public Class Functions
             r += "ESTADO: " + dato.GetString(15) + vbCrLf + vbCrLf
 
             r += "TARIFA: " + dato.GetString(3) + vbCrLf
-            r += "PRECIO X HORA: $ " + dato.GetString(9) + " | 1 HORA" + vbCrLf
+            r += "PRECIO X HORA: $ 20.00 | 1 HORA, Adicionales $ 5.00" + vbCrLf
             r += "PRECIO X DIA: $ " + dato.GetString(10) + " | " + dato.GetString(12) + " HORAS" + vbCrLf
             r += "PRECIO X PENSION: $ " + dato.GetString(11) + " | " + dato.GetString(13) + " DIAS" + vbCrLf
             r += "COBRO MINIMO: $ " + dato.GetString(14) + vbCrLf + vbCrLf
@@ -1378,7 +1384,7 @@ Public Class Functions
         Return r
     End Function
 
-    Public Function Vehicles_ProductsRealizarVenta(vehiculo As String) As Boolean
+    Public Function Vehicles_ProductsRealizarVenta(vehiculo As String, ImptTicket As Boolean) As Boolean
         Dim r As Boolean = True
         Dim clientTmp As String = VehiclesPropietarioID(vehiculo).ToString
 
@@ -1421,7 +1427,9 @@ Public Class Functions
                 Db.Ejecutar("INSERT INTO ventas (id_cliente, id_usuario, id_ticket, concepto, monto, date, producto, service, membresia, cut_x, cut_z) VALUES ('" + clientTmp + "', '" + username_id.ToString + "', '" + ticket.ToString + "', 'COBRO TIEMPO', '" + VehicleReturnAdeudoMembresia(vehiculo).ToString + "', '" + GetDateString(DateTime.Now) + "', '0', '0', '1' , '0', '0')")
             End If
 
-            TicketGeneratePrint(ticket)
+            If ImptTicket Then
+                TicketGeneratePrint(ticket)
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -1435,7 +1443,41 @@ Public Class Functions
         If r < Costo_Minimo Then
             r = Costo_Minimo
         End If
+
+        'Dim r = 0
+        'Dim min As Long = DateDiff(DateInterval.Minute, Entrada, DateTime.Now)
+
+
+        'If min <= 60 Then '1
+        'r = 20
+        'ElseIf min > 60 And min <= 120 Then '1
+        'r = 25
+        'ElseIf min > 120 And min <= 180 Then '2
+        'r = 30
+        'ElseIf min > 180 And min <= 240 Then '3
+        'r = 35
+        'ElseIf min > 240 And min <= 300 Then '4
+        'r = 40
+        'ElseIf min > 300 And min <= 360 Then '5
+        'r = 45
+        'ElseIf min > 360 And min <= 420 Then '6
+        'r = 50
+        'ElseIf min > 420 And min <= 480 Then '7
+        'r = 55
+        'ElseIf min > 480 And min <= 540 Then '8
+        'r = 60
+        'ElseIf min > 540 And min <= 600 Then '9
+        'r = 65
+        'ElseIf min > 600 And min <= 660 Then '10
+        'r = 70
+        'ElseIf min > 660 And min <= 720 Then '11
+        'r = 75
+        'ElseIf min > 720 Then '12
+        'r = 120
+        'End If
+
         Return r
+
     End Function
 
     Public Function CalculateAdeudoXDia(Salida As DateTime, Costo As Double, Costo_Minimo As Double) As Double
@@ -1604,7 +1646,7 @@ Public Class Functions
 
         If My.Settings.ticket_mostrar_pie_depagina Then
             body += vbLf + "--------------------------"
-            body += vbLf + My.Settings.ticket_pie_de_pagina
+            body += vbLf + My.Settings.ticket_pie_de_pagina.Replace("\n", vbLf)
         End If
 
         BodyTicket = membrete + body
@@ -1624,7 +1666,20 @@ Public Class Functions
 
     End Sub
 
-    Public Sub TicketGeneratePrint_Cadena(cadena As String)
+    Public Sub GenCodeBarr(cadena As String)
+        Dim barcode As New iTextSharp.text.pdf.Barcode128
+        barcode.StartStopText = True
+
+        barcode.Code = cadena
+
+        Dim bm As New System.Drawing.Bitmap(barcode.CreateDrawingImage(Color.Black, Color.White))
+        bm.Save(My.Settings.data_url + "\CodeBar.jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
+    End Sub
+
+    Public Sub TicketGeneratePrint_Cadena(cadena As String, matricula As String, ShowCodeBar As Boolean)
+        ViewCodeBar = ShowCodeBar
+        GenCodeBarr(matricula)
+        cadena += matricula
         cadena = vbLf + "ENTRADA: " + DateTime.Now.ToString + " " + cadena
         Dim membrete As String = ""
         Dim body As String = ""
@@ -1660,7 +1715,7 @@ Public Class Functions
 
         If My.Settings.ticket_mostrar_pie_depagina Then
             body += vbLf + "--------------------------"
-            body += vbLf + My.Settings.ticket_pie_de_pagina
+            body += vbLf + My.Settings.ticket_pie_de_pagina.Replace("\n", vbLf)
         End If
 
         BodyTicket = membrete + body
@@ -1679,14 +1734,25 @@ Public Class Functions
         End If
 
     End Sub
+
     Dim BodyTicket As String
+    Dim ViewCodeBar As Boolean = False
 
     Private Sub print_PrintPage(sender As Object, e As PrintPageEventArgs)
         Dim xPos As Single = e.MarginBounds.Left
         Dim prFont As New Font("Lucida Console", 8, FontStyle.Regular)
         prFont = My.Settings.ticket_font
         Dim yPos As Single = prFont.GetHeight(e.Graphics)
-        e.Graphics.DrawString(BodyTicket, prFont, Brushes.Black, xPos, yPos)
+
+        Dim saltos = vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf
+        e.Graphics.DrawImage(Image.FromFile(My.Settings.url_logo), 0, 0, 180, 180)
+
+        If ViewCodeBar Then
+            e.Graphics.DrawImage(Image.FromFile(My.Settings.data_url + "\CodeBar.jpg"), 1, 181, 179, 80)
+            saltos += vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf + vbLf
+        End If
+
+        e.Graphics.DrawString(saltos + BodyTicket, prFont, Brushes.Black, xPos, yPos)
         e.HasMorePages = False
     End Sub
 
@@ -1835,5 +1901,28 @@ Public Class Functions
         End If
         Return resultado
     End Function
+
+    Public Function ComprobarLicence()
+        Dim work As New BackgroundWorker
+        AddHandler work.DoWork, AddressOf validar_dowork
+        work.RunWorkerAsync()
+    End Function
+
+    Private Sub validar_dowork(sender As Object, e As DoWorkEventArgs)
+        Dim r = Licence.Consult("SELECT status FROM licence where licence = '" + My.Settings.licencia + "' ")
+        If r.Read() Then
+            If r.GetString(0) = "0" Then
+                My.Settings.licencia = "No PAGO"
+                My.Settings.validate = False
+                My.Settings.Save()
+                MsgBox("Licencia no valida")
+            End If
+        Else
+            My.Settings.licencia = "Licencia no valida"
+            My.Settings.validate = False
+            My.Settings.Save()
+            MsgBox("Licencia no valida")
+        End If
+    End Sub
 
 End Class

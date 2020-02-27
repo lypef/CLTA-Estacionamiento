@@ -26,6 +26,7 @@
         Password.ForeColor = Color.FromArgb(36, 59, 121)
         Username.Text = My.Settings.login_username
         Password.Text = My.Settings.login_password
+        f.ComprobarLicence()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

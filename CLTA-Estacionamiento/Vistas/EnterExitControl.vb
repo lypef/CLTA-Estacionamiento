@@ -79,6 +79,7 @@
         Adeudos.MontoTotal = monto
         Adeudos.Detalles.Text = f.ReturnInfoVehicle()
         Adeudos.LoadTotalButton()
+        Adeudos.ImpTicket.Checked = My.Settings.ImpTicket
         Functions.Select_VehiclesMatricula = ""
         f.AddForm_Desktop(Adeudos, PanelControl.Desktop)
         Adeudos.WindowState = FormWindowState.Normal

@@ -25,10 +25,17 @@ Partial Class PanelControl
         Me.components = New System.ComponentModel.Container()
         Me.BarraMenu = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LimpiarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.EntradaVehiculoGenericoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ClientesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VehiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.AccionarBarraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.VentaDirectaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.UsuariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TarifasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -41,19 +48,14 @@ Partial Class PanelControl
         Me.CorteXToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteZToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AjustesToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.CambiarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LimpiarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AJUSTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AjustesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TxtBox = New System.Windows.Forms.ToolStripTextBox()
         Me.Desktop = New System.Windows.Forms.Panel()
         Me.Footer = New System.Windows.Forms.Panel()
@@ -66,63 +68,107 @@ Partial Class PanelControl
         'BarraMenu
         '
         Me.BarraMenu.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.SalirToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.LimpiarToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.VentasToolStripMenuItem, Me.AJUSTESToolStripMenuItem, Me.TxtBox})
+        Me.BarraMenu.ImageScalingSize = New System.Drawing.Size(18, 18)
+        Me.BarraMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.AboutToolStripMenuItem, Me.MinimizarToolStripMenuItem, Me.ToolStripMenuItem2, Me.TxtBox})
         Me.BarraMenu.Location = New System.Drawing.Point(0, 0)
         Me.BarraMenu.Name = "BarraMenu"
-        Me.BarraMenu.Size = New System.Drawing.Size(1164, 34)
+        Me.BarraMenu.Size = New System.Drawing.Size(1164, 36)
         Me.BarraMenu.TabIndex = 2
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EntradaVehiculoGenericoToolStripMenuItem, Me.ToolStripSeparator6, Me.AccionarBarraToolStripMenuItem, Me.ToolStripSeparator5, Me.UsuariosToolStripMenuItem1, Me.TarifasToolStripMenuItem1, Me.VentasToolStripMenuItem1, Me.ReportesToolStripMenuItem, Me.ToolStripSeparator1, Me.CorteXToolStripMenuItem, Me.CorteZToolStripMenuItem, Me.ToolStripSeparator2, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1})
+        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LimpiarToolStripMenuItem1, Me.ToolStripSeparator9, Me.EntradaVehiculoGenericoToolStripMenuItem, Me.ToolStripSeparator8, Me.ClientesToolStripMenuItem1, Me.VehiculosToolStripMenuItem, Me.ToolStripSeparator6, Me.AccionarBarraToolStripMenuItem, Me.ToolStripSeparator5, Me.VentaDirectaToolStripMenuItem, Me.ToolStripSeparator3, Me.UsuariosToolStripMenuItem1, Me.TarifasToolStripMenuItem1, Me.VentasToolStripMenuItem1, Me.ReportesToolStripMenuItem, Me.ToolStripSeparator1, Me.CorteXToolStripMenuItem, Me.CorteZToolStripMenuItem, Me.ToolStripSeparator2, Me.AjustesToolStripMenuItem2, Me.ToolStripSeparator7, Me.CambiarUsuarioToolStripMenuItem, Me.MinimizarToolStripMenuItem1, Me.SalirToolStripMenuItem1})
         Me.ArchivoToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
-        Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(105, 30)
+        Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(113, 32)
         Me.ArchivoToolStripMenuItem.Text = "▼ Archivo"
+        '
+        'LimpiarToolStripMenuItem1
+        '
+        Me.LimpiarToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.clean
+        Me.LimpiarToolStripMenuItem1.Name = "LimpiarToolStripMenuItem1"
+        Me.LimpiarToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
+        Me.LimpiarToolStripMenuItem1.Text = "Limpiar"
+        '
+        'ToolStripSeparator9
+        '
+        Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(311, 6)
         '
         'EntradaVehiculoGenericoToolStripMenuItem
         '
         Me.EntradaVehiculoGenericoToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_48
         Me.EntradaVehiculoGenericoToolStripMenuItem.Name = "EntradaVehiculoGenericoToolStripMenuItem"
-        Me.EntradaVehiculoGenericoToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.EntradaVehiculoGenericoToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.EntradaVehiculoGenericoToolStripMenuItem.Text = "Entrada vehiculo generico"
+        '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(311, 6)
+        '
+        'ClientesToolStripMenuItem1
+        '
+        Me.ClientesToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.users_48
+        Me.ClientesToolStripMenuItem1.Name = "ClientesToolStripMenuItem1"
+        Me.ClientesToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
+        Me.ClientesToolStripMenuItem1.Text = "Clientes"
+        '
+        'VehiculosToolStripMenuItem
+        '
+        Me.VehiculosToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_48
+        Me.VehiculosToolStripMenuItem.Name = "VehiculosToolStripMenuItem"
+        Me.VehiculosToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
+        Me.VehiculosToolStripMenuItem.Text = "Vehiculos"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(284, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(311, 6)
         '
         'AccionarBarraToolStripMenuItem
         '
         Me.AccionarBarraToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.barr_acceso
         Me.AccionarBarraToolStripMenuItem.Name = "AccionarBarraToolStripMenuItem"
-        Me.AccionarBarraToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.AccionarBarraToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.AccionarBarraToolStripMenuItem.Text = "Accionar barra"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(284, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(311, 6)
+        '
+        'VentaDirectaToolStripMenuItem
+        '
+        Me.VentaDirectaToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.details_24
+        Me.VentaDirectaToolStripMenuItem.Name = "VentaDirectaToolStripMenuItem"
+        Me.VentaDirectaToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
+        Me.VentaDirectaToolStripMenuItem.Text = "Venta Directa"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(311, 6)
         '
         'UsuariosToolStripMenuItem1
         '
         Me.UsuariosToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.users_i
         Me.UsuariosToolStripMenuItem1.Name = "UsuariosToolStripMenuItem1"
-        Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(287, 30)
+        Me.UsuariosToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
         Me.UsuariosToolStripMenuItem1.Text = "Usuarios"
         '
         'TarifasToolStripMenuItem1
         '
         Me.TarifasToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.verify2_128
         Me.TarifasToolStripMenuItem1.Name = "TarifasToolStripMenuItem1"
-        Me.TarifasToolStripMenuItem1.Size = New System.Drawing.Size(287, 30)
+        Me.TarifasToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
         Me.TarifasToolStripMenuItem1.Text = "Tarifas"
         '
         'VentasToolStripMenuItem1
         '
         Me.VentasToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.ventas
         Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(287, 30)
+        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
         Me.VentasToolStripMenuItem1.Text = "Ventas"
         '
         'ReportesToolStripMenuItem
@@ -130,78 +176,90 @@ Partial Class PanelControl
         Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReimprimirTicketToolStripMenuItem, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripSeparator4})
         Me.ReportesToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.update_48
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
         '
         'ReimprimirTicketToolStripMenuItem
         '
         Me.ReimprimirTicketToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.ticket
         Me.ReimprimirTicketToolStripMenuItem.Name = "ReimprimirTicketToolStripMenuItem"
-        Me.ReimprimirTicketToolStripMenuItem.Size = New System.Drawing.Size(217, 30)
+        Me.ReimprimirTicketToolStripMenuItem.Size = New System.Drawing.Size(237, 32)
         Me.ReimprimirTicketToolStripMenuItem.Text = "Reimprimir ticket"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.if_money_299107
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(217, 30)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(237, 32)
         Me.ToolStripMenuItem3.Text = "Corte X general"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.if_money_299107
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(217, 30)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(237, 32)
         Me.ToolStripMenuItem4.Text = "Corte Z general"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(214, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(234, 6)
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(284, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(311, 6)
         '
         'CorteXToolStripMenuItem
         '
         Me.CorteXToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.if_money_299107
         Me.CorteXToolStripMenuItem.Name = "CorteXToolStripMenuItem"
-        Me.CorteXToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.CorteXToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.CorteXToolStripMenuItem.Text = "Corte X"
         '
         'CorteZToolStripMenuItem
         '
         Me.CorteZToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.if_money_299107
         Me.CorteZToolStripMenuItem.Name = "CorteZToolStripMenuItem"
-        Me.CorteZToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.CorteZToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.CorteZToolStripMenuItem.Text = "Corte Z"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(284, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(311, 6)
+        '
+        'AjustesToolStripMenuItem2
+        '
+        Me.AjustesToolStripMenuItem2.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.AJUSTES
+        Me.AjustesToolStripMenuItem2.Name = "AjustesToolStripMenuItem2"
+        Me.AjustesToolStripMenuItem2.Size = New System.Drawing.Size(314, 32)
+        Me.AjustesToolStripMenuItem2.Text = "Ajustes"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(311, 6)
         '
         'CambiarUsuarioToolStripMenuItem
         '
         Me.CambiarUsuarioToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.users_black_48
         Me.CambiarUsuarioToolStripMenuItem.Name = "CambiarUsuarioToolStripMenuItem"
-        Me.CambiarUsuarioToolStripMenuItem.Size = New System.Drawing.Size(287, 30)
+        Me.CambiarUsuarioToolStripMenuItem.Size = New System.Drawing.Size(314, 32)
         Me.CambiarUsuarioToolStripMenuItem.Text = "Cambiar usuario"
         '
         'MinimizarToolStripMenuItem1
         '
         Me.MinimizarToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
         Me.MinimizarToolStripMenuItem1.Name = "MinimizarToolStripMenuItem1"
-        Me.MinimizarToolStripMenuItem1.Size = New System.Drawing.Size(287, 30)
+        Me.MinimizarToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
         Me.MinimizarToolStripMenuItem1.Text = "Minimizar"
         '
         'SalirToolStripMenuItem1
         '
         Me.SalirToolStripMenuItem1.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
         Me.SalirToolStripMenuItem1.Name = "SalirToolStripMenuItem1"
-        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(287, 30)
+        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(314, 32)
         Me.SalirToolStripMenuItem1.Text = "Salir"
         '
         'AboutToolStripMenuItem
@@ -211,16 +269,7 @@ Partial Class PanelControl
         Me.AboutToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.about
         Me.AboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(38, 30)
-        '
-        'SalirToolStripMenuItem
-        '
-        Me.SalirToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.SalirToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_exit
-        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(73, 30)
-        Me.SalirToolStripMenuItem.Text = "Salir"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(38, 32)
         '
         'MinimizarToolStripMenuItem
         '
@@ -228,72 +277,27 @@ Partial Class PanelControl
         Me.MinimizarToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
         Me.MinimizarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.btn_minimizar
         Me.MinimizarToolStripMenuItem.Name = "MinimizarToolStripMenuItem"
-        Me.MinimizarToolStripMenuItem.Size = New System.Drawing.Size(117, 30)
+        Me.MinimizarToolStripMenuItem.Size = New System.Drawing.Size(129, 32)
         Me.MinimizarToolStripMenuItem.Text = "Minimizar"
-        '
-        'LimpiarToolStripMenuItem
-        '
-        Me.LimpiarToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.LimpiarToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.LimpiarToolStripMenuItem.Image = Global.CLTA_Estacionamiento.My.Resources.Resources.clean
-        Me.LimpiarToolStripMenuItem.Name = "LimpiarToolStripMenuItem"
-        Me.LimpiarToolStripMenuItem.Size = New System.Drawing.Size(98, 30)
-        Me.LimpiarToolStripMenuItem.Text = "Limpiar"
-        Me.LimpiarToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
-        '
-        'ClientesToolStripMenuItem
-        '
-        Me.ClientesToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(85, 30)
-        Me.ClientesToolStripMenuItem.Text = "Clientes"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(98, 30)
-        Me.ToolStripMenuItem1.Text = "Vehiculos"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 13.0!)
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(114, 30)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(124, 32)
         Me.ToolStripMenuItem2.Text = "Control E/S"
-        '
-        'VentasToolStripMenuItem
-        '
-        Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(128, 30)
-        Me.VentasToolStripMenuItem.Text = "Venta Directa"
-        '
-        'AJUSTESToolStripMenuItem
-        '
-        Me.AJUSTESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AjustesToolStripMenuItem1})
-        Me.AJUSTESToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 13.0!)
-        Me.AJUSTESToolStripMenuItem.Name = "AJUSTESToolStripMenuItem"
-        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(90, 30)
-        Me.AJUSTESToolStripMenuItem.Text = "▼ Otros"
-        '
-        'AjustesToolStripMenuItem1
-        '
-        Me.AjustesToolStripMenuItem1.Name = "AjustesToolStripMenuItem1"
-        Me.AjustesToolStripMenuItem1.Size = New System.Drawing.Size(141, 30)
-        Me.AjustesToolStripMenuItem1.Text = "Ajustes"
         '
         'TxtBox
         '
         Me.TxtBox.Name = "TxtBox"
-        Me.TxtBox.Size = New System.Drawing.Size(200, 30)
+        Me.TxtBox.Size = New System.Drawing.Size(200, 32)
         Me.TxtBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Desktop
         '
         Me.Desktop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Desktop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Desktop.Location = New System.Drawing.Point(0, 34)
+        Me.Desktop.Location = New System.Drawing.Point(0, 36)
         Me.Desktop.Name = "Desktop"
         Me.Desktop.Size = New System.Drawing.Size(1164, 359)
         Me.Desktop.TabIndex = 4
@@ -315,7 +319,7 @@ Partial Class PanelControl
         Me.LabelHora.ForeColor = System.Drawing.Color.Maroon
         Me.LabelHora.Location = New System.Drawing.Point(5, 4)
         Me.LabelHora.Name = "LabelHora"
-        Me.LabelHora.Size = New System.Drawing.Size(93, 22)
+        Me.LabelHora.Size = New System.Drawing.Size(111, 25)
         Me.LabelHora.TabIndex = 0
         Me.LabelHora.Text = "LabelHora"
         '
@@ -348,13 +352,7 @@ Partial Class PanelControl
     Friend WithEvents BarraMenu As MenuStrip
     Friend WithEvents ArchivoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MinimizarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LimpiarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AJUSTESToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents AjustesToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents MinimizarToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
@@ -366,7 +364,6 @@ Partial Class PanelControl
     Friend WithEvents UsuariosToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents TxtBox As ToolStripTextBox
-    Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TarifasToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents VentasToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CorteXToolStripMenuItem As ToolStripMenuItem
@@ -381,4 +378,13 @@ Partial Class PanelControl
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents VentaDirectaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents AjustesToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents ClientesToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents VehiculosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
+    Friend WithEvents LimpiarToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
 End Class

@@ -9,6 +9,8 @@
         Button1.Enabled = False
         If f.ValidarLicence(TextBox1) Then
             My.Settings.validate = True
+            My.Settings.licencia = TextBox1.Text
+            My.Settings.Save()
             MsgBox("Licencia activada con exito.", MsgBoxStyle.Information)
             Login.Visible = True
             Me.Dispose()

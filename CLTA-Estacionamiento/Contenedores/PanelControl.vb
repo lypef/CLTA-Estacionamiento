@@ -18,13 +18,7 @@ Public Class PanelControl
         BarraMenu.BackColor = My.Settings.Menu_color
         BarraMenu.Font = My.Settings.Menu_font
         ArchivoToolStripMenuItem.Font = My.Settings.Menu_font
-        ClientesToolStripMenuItem.Font = My.Settings.Menu_font
-        VentasToolStripMenuItem.Font = My.Settings.Menu_font
-        ToolStripMenuItem1.Font = My.Settings.Menu_font
-        AJUSTESToolStripMenuItem.Font = My.Settings.Menu_font
-        LimpiarToolStripMenuItem.Font = My.Settings.Menu_font
         MinimizarToolStripMenuItem.Font = My.Settings.Menu_font
-        SalirToolStripMenuItem.Font = My.Settings.Menu_font
         ToolStripMenuItem2.Font = My.Settings.Menu_font
         ToolStripMenuItem2.BackColor = My.Settings.Menu_color
         TxtBox.Font = My.Settings.Menu_font
@@ -37,7 +31,7 @@ Public Class PanelControl
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If (MsgBox("¿Desea salir?", f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
             Application.Exit()
         End If
@@ -48,8 +42,8 @@ Public Class PanelControl
         About.WindowState = FormWindowState.Normal
     End Sub
 
-    Private Sub LimpiarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LimpiarToolStripMenuItem.Click
-        Desktop.Controls.Clear()
+    Private Sub LimpiarToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub LimpiarToolStripMenuItem1_Click(sender As Object, e As EventArgs)
@@ -66,13 +60,8 @@ Public Class PanelControl
         End If
     End Sub
 
-    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
-        If f.GetPermiso(f.Permiso_Cliet_Access) Then
-            Clientes.Loader()
-            f.AddForm_Desktop(Clientes, Desktop)
-        Else
-            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
-        End If
+    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -133,18 +122,12 @@ Public Class PanelControl
         Application.Restart()
     End Sub
 
-    Private Sub AjustesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AjustesToolStripMenuItem1.Click
-        f.AddForm_Desktop(properties, Desktop)
-        properties.WindowState = FormWindowState.Normal
+    Private Sub AjustesToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        If f.GetPermiso(f.Permiso_Vehicle_Access) Or f.GetPermiso(f.Permiso_Assign_Access) Then
-            Vehicles.Loader()
-            f.AddForm_Desktop(Vehicles, Desktop)
-        Else
-            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
-        End If
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub TarifasToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -179,7 +162,7 @@ Public Class PanelControl
                             If f.VehiclesUpdate_StatusForHours(TxtBox.Text, 1) Then
                                 f.ActionBarr(My.Settings.rele_entrada)
                                 If My.Settings.ticket_imprimir_xhora Then
-                                    f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                    f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:", TxtBox.Text.ToUpper, False)
                                 End If
                                 EnterExitControl.Loader()
                             Else
@@ -197,7 +180,7 @@ Public Class PanelControl
                                 If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
                                     f.ActionBarr(My.Settings.rele_entrada)
                                     If My.Settings.ticket_imprimir_xhora Then
-                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:", TxtBox.Text.ToUpper, False)
                                     End If
                                     EnterExitControl.Loader()
                                 End If
@@ -214,7 +197,7 @@ Public Class PanelControl
                                 If f.VehiclesUpdate_DiasVencidosForHours(TxtBox.Text, 1) Then
                                     f.ActionBarr(My.Settings.rele_entrada)
                                     If My.Settings.ticket_imprimir_xhora Then
-                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:" + TxtBox.Text.ToUpper)
+                                        f.TicketGeneratePrint_Cadena("INGRESO VEHICULO CON MATRICULA:", TxtBox.Text.ToUpper, False)
                                     End If
                                     EnterExitControl.Loader()
                                 End If
@@ -222,7 +205,17 @@ Public Class PanelControl
                         End If
                     End If
                 Else
-                    f.Alert("El vehiculo ya se encuentra adentro o el vehiculo no existe", f.Alert_NumberCritical, Desktop)
+                    'f.Alert("El vehiculo ya se encuentra adentro", f.Alert_NumberCritical, Desktop)
+                    If (MsgBox("VEHICULO YA SE ENCUENTRA ADENTRO, DESEA DAR SALIDA A: " + TxtBox.Text, f.Alert_NumberExclamacion + vbYesNo) = vbYes) Then
+                        If f.VehicleReturnAdeudoConProducts(TxtBox.Text) > 0 Then
+                            EnterExitControl.Adeudo(TxtBox.Text, f.VehicleReturnAdeudoConProducts(TxtBox.Text))
+                        Else
+                            f.Vehicle_ChangeStatus(TxtBox.Text, 0)
+                            f.ActionBarr(My.Settings.rele_salida)
+                            EnterExitControl.Loader()
+                        End If
+                    End If
+                    'Finaliza
                 End If
             Else
                 f.Alert("La matricula no existe", f.Alert_NumberCritical, Desktop)
@@ -240,9 +233,8 @@ Public Class PanelControl
         End If
     End Sub
 
-    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
-        VentaDirecta.loader()
-        f.AddForm_Desktop(VentaDirecta, Desktop)
+    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub VerToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -348,5 +340,37 @@ Public Class PanelControl
         Else
             f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
         End If
+    End Sub
+
+    Private Sub VentaDirectaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentaDirectaToolStripMenuItem.Click
+        VentaDirecta.loader()
+        f.AddForm_Desktop(VentaDirecta, Desktop)
+    End Sub
+
+    Private Sub AjustesToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AjustesToolStripMenuItem2.Click
+        f.AddForm_Desktop(properties, Desktop)
+        properties.WindowState = FormWindowState.Normal
+    End Sub
+
+    Private Sub ClientesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem1.Click
+        If f.GetPermiso(f.Permiso_Cliet_Access) Then
+            Clientes.Loader()
+            f.AddForm_Desktop(Clientes, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub VehiculosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VehiculosToolStripMenuItem.Click
+        If f.GetPermiso(f.Permiso_Vehicle_Access) Or f.GetPermiso(f.Permiso_Assign_Access) Then
+            Vehicles.Loader()
+            f.AddForm_Desktop(Vehicles, Desktop)
+        Else
+            f.Alert(f.Alert_PermisoNOAutorizado, f.Alert_NumberCritical, Desktop)
+        End If
+    End Sub
+
+    Private Sub LimpiarToolStripMenuItem1_Click_1(sender As Object, e As EventArgs) Handles LimpiarToolStripMenuItem1.Click
+        Desktop.Controls.Clear()
     End Sub
 End Class

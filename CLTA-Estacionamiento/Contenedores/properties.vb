@@ -54,6 +54,7 @@ Public Class properties
         Ticket_entrada_Hora.Checked = My.Settings.ticket_imprimir_xhora
         Vehicles_generics.Checked = My.Settings.vehicles_generics
         TxtLogo.Text = My.Settings.url_logo
+        Imp_Ticket.Checked = My.Settings.ImpTicket
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -109,6 +110,7 @@ Public Class properties
         My.Settings.ticket_imprimir_xhora = Ticket_entrada_Hora.Checked
         My.Settings.vehicles_generics = Vehicles_generics.Checked
         My.Settings.url_logo = TxtLogo.Text
+        My.Settings.ImpTicket = Imp_Ticket.Checked
         My.Settings.Save()
         Application.Restart()
     End Sub
