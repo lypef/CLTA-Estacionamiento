@@ -1203,11 +1203,11 @@ Public Class Functions
 
     Public Function VehicleReturnTarifa(ByRef hours As Boolean, ByRef day As Boolean, ByRef pension As Boolean, Mat As ToolStripTextBox) As Boolean
         Dim r = True
+
         If IsNumber(Mat.Text) Then
             Mat.Text = (Convert.ToInt32(Mat.Text)).ToString
         End If
-
-        Dim dato = Db.Consult("SELECT tarifa_hora, tarifa_dia, tarifa_pension, matricula FROM vehicles WHERE matricula = '" + Mat.Text + "' or rfid = '" + Mat.Text + "' ")
+        Dim dato = Db.Consult("SELECT tarifa_hora, tarifa_dia, tarifa_pension, matricula FROM vehicles WHERE matricula like '%" + Mat.Text + "%' or rfid like '%" + Mat.Text + "%' ;")
 
         If dato.Read() Then
             hours = dato.GetBoolean(0)
@@ -1217,6 +1217,7 @@ Public Class Functions
         Else
             r = False
         End If
+
         Return r
     End Function
 

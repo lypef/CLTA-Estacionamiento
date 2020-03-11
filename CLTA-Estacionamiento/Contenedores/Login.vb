@@ -1,23 +1,26 @@
 ﻿Public Class Login
     Dim f As New Functions
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If My.Settings.validate Then
-            If (f.Login(Username, Password)) Then
+        'If My.Settings.validate Then
 
-                If CheckBoxCred.Checked Then
-                    My.Settings.login_username = Username.Text
-                    My.Settings.login_password = Password.Text
-                End If
-                PanelControl.Show()
-                Me.Visible = False
-            Else
-                MsgBox("Acceso no valido", MsgBoxStyle.Critical)
+        'Else
+        'Me.Visible = False
+        'Dim form As New validate
+        'form.Show()
+        'End If
+
+        If (f.Login(Username, Password)) Then
+
+            If CheckBoxCred.Checked Then
+                My.Settings.login_username = Username.Text
+                My.Settings.login_password = Password.Text
             End If
-        Else
+            PanelControl.Show()
             Me.Visible = False
-            Dim form As New validate
-            form.Show()
+        Else
+            MsgBox("Acceso no valido", MsgBoxStyle.Critical)
         End If
+
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,7 +29,7 @@
         Password.ForeColor = Color.FromArgb(36, 59, 121)
         Username.Text = My.Settings.login_username
         Password.Text = My.Settings.login_password
-        f.ComprobarLicence()
+        'f.ComprobarLicence()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
